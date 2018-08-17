@@ -309,9 +309,7 @@ abstract class AbstractBaseRepository extends EntityRepository implements Reposi
      */
     public function addGenericCriteria(array $criteria = []): array
     {
-        if ((isset($criteria['status']) || !array_key_exists('status', $criteria))
-            && property_exists($this->getEntityName(), 'status')
-        ) {
+        if (false === isset($criteria['status']) && property_exists($this->getEntityName(), 'status')) {
             $excludedStatus             = isset($criteria['excludedStatus']) ?? $criteria['excludedStatus'];
             $excludedStatus             = is_array($excludedStatus) ? $excludedStatus : [$excludedStatus];
             $criteria['excludedStatus'] = array_merge([AbstractBaseEntity::STATUS_DELETED], $excludedStatus);

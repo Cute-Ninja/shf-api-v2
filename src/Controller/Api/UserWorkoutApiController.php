@@ -35,7 +35,10 @@ class UserWorkoutApiController extends AbstractApiController implements Standard
     {
         $builder = $this->getUserWorkoutRepository()
                         ->findManyByCriteriaBuilder(
-                            ['user' => $request->query->get('user')]
+                            [
+                                'user'   => $request->query->get('user'),
+                                'status' => $request->query->get('status')
+                            ]
                         );
 
         return $this->getSuccessResponseBuilder()->buildMultiObjectResponse(

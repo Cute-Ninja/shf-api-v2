@@ -15,10 +15,14 @@ class UserWorkoutProxyController extends AbstractApiController
      */
     public function getMany(Request $request): Response
     {
+        $queryParameters = $request->query->all();
+        $queryParameters['user']   = $this->getUser()->getId();
+        $queryParameters['groups'] = 'workout';
+
         return $this->forward(
             'App\Controller\Api\UserWorkoutApiController:getMany',
             [],
-            ['user' => $this->getUser()->getId(), 'groups' => 'workout']
+            $queryParameters
         );
     }
 }
