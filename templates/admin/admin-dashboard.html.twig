@@ -1,0 +1,18 @@
+{% trans_default_domain 'admin' %}
+
+{% extends 'admin/admin-base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/js/admin-dashboard.js') }}"></script>
+{% endblock %}
+
+{% block title %}{{ parent() }}{{ 'admin.dashboard.title'|trans }}{% endblock %}
+
+{% block body %}
+    <main>
+        <h2>{{ 'admin.dashboard.title'|trans }}</h2>
+
+        <div id="target"></div>
+    </main>
+{% endblock %}

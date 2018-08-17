@@ -1,0 +1,27 @@
+App\Entity\WaterTrackerEntry:
+    type: entity
+    table: "`water_tracker_entry`"
+    repositoryClass: App\Repository\WaterTrackerEntryRepository
+    id:
+        id:
+            type: integer
+            length: null
+            unique: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+
+    fields:
+        quantity:
+            type: integer
+            nullable: false
+            unique: false
+
+    manyToOne:
+        tracker:
+            targetEntity: App\Entity\WaterTracker
+            inversedBy: entries
+            joinColumn:
+                name: tracker_id
+                referencedColumnName: id

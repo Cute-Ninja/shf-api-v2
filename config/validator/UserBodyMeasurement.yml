@@ -1,0 +1,18 @@
+App\Entity\UserBodyMeasurement:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [user]
+
+    properties:
+        height:
+            - Range:
+                min: 100
+                max: 270
+        weight:
+            - Range:
+                min: 40
+                max: 500
+        restingHeartRate:
+            - Range:
+                min: 20
+                max: 150

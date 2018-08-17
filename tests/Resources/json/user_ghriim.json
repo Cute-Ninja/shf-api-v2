@@ -1,0 +1,13 @@
+{
+  "username": "ghriim",
+  "email": "ghriim@fakemail.com",
+  "roles": ["USER"],
+  "bodyMeasurement": {
+    "id": 1,
+    "height": 183,
+    "weight": 77,
+    "restingHeartRate": 70,
+    "status": "active"
+  },
+  "status": "active"
+}

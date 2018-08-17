@@ -1,0 +1,16 @@
+App\Entity\WaterTrackerEntry:
+    ghriim_tracker_entries_{100, 200, 500, 250, 300}:
+        __construct: ["@ghriim_tracker"]
+        quantity: <current()>
+
+    user_{1..10}_tracker_entry_100:
+        __construct: ["@user_tracker_<current()>"]
+        quantity: 100
+
+    user_{1..10}_tracker_entry_250:
+        __construct: ["@user_tracker_<current()>"]
+        quantity: 250
+
+    user_{1..10}_tracker_entry_330:
+        __construct: ["@user_tracker_<current()>"]
+        quantity: 330

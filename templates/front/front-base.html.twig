@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/css/front.css') }}">
+{% endblock %}
+
+{% block page_content %}
+    <header class="uk-navbar-container tm-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below" uk-sticky>
+        <div class="uk-container uk-container-expand">
+            <nav class="uk-navbar">
+                <div class="uk-navbar-left">
+                    <a class="uk-navbar-item uk-logo" href="{{ path('front_page_dashboard') }}" title="Access to home page">
+                        SHC - Super Hero Factory</a>
+                </div>
+                <div class="uk-navbar-right">
+                    <ul class="uk-navbar-nav uk-visible@m">
+                        {% if app.user %}
+                            <li>
+                                <a href="{{ path('front_page_dashboard') }}" title="Home page">
+                                    <i class="material-icons">home</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('front_page_profile') }}" title="Profile">
+                                    <i class="material-icons">person</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('front_page_workouts') }}" title="Workouts">
+                                    <i class="material-icons">fitness_center</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('logout') }}" title="Logout">
+                                    <i class="material-icons">lock</i>
+                                </a>
+                            </li>
+                        {% elseif app.request.pathinfo != path('login') %}
+                            <li>
+                                <a href="{{ path('login') }}" title="Login">Login</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="uk-section uk-section-default">
+        <div class="uk-container">
+            <div>
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+{% endblock %}

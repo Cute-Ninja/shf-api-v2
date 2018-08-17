@@ -1,0 +1,60 @@
+api_login_check:
+    path: /api/login_check
+
+app.swagger_ui:
+    path: /api/doc
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
+
+app.swagger:
+    path: /api/doc.json
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger }
+
+########################################################################################################################
+#                                                      API                                                             #
+########################################################################################################################
+
+api_body_measurement:
+    resource: "routes/api/body_measurement_api.yml"
+    prefix: /api
+    type: rest
+
+api_user:
+    resource: "routes/api/user_api.yml"
+    type: rest
+
+api_water_tracker:
+    resource: "routes/api/water_tracker_api.yml"
+    type: rest
+
+api_water_tracker_entry:
+    resource: "routes/api/water_tracker_entry_api.yml"
+    type: rest
+
+api_workout:
+    resource: "routes/api/workout_api.yml"
+    type: rest
+
+api_user_favorite_workout:
+    resource: "routes/api/user_favorite_workout_api.yml"
+    type: rest
+
+########################################################################################################################
+#                                                      WEB                                                             #
+########################################################################################################################
+login:
+    path: /login
+    methods: [GET|POST]
+    controller: App\Controller\SecurityController::login
+
+logout:
+    path: /logout
+
+admin:
+    resource: "routes/admin/admin_page.yml"
+    prefix: /admin
+
+front:
+    resource: "routes/front/front_page.yml"
+    prefix: /front

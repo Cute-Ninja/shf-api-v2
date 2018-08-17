@@ -1,0 +1,20 @@
+App\Entity\AbstractBaseEntity:
+    type: mappedSuperclass
+    fields:
+        status:
+            type: string
+            scale: 0
+            length: 25
+            unique: false
+            nullable: false
+        createdAt:
+            type: datetime
+            unique: false
+            nullable: false
+        updatedAt:
+            type: datetime
+            unique: false
+            nullable: false
+    lifecycleCallbacks:
+        prePersist: [logCreate]
+        preUpdate: [logUpdate]

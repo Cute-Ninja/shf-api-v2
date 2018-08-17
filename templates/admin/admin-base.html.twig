@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/css/admin.css') }}">
+{% endblock %}
+
+{% block page_content %}
+    <header class="uk-navbar-container tm-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below">
+        <div class="uk-container uk-container-expand">
+            <nav class="uk-navbar">
+                <div class="uk-navbar-left">
+                    <a class="uk-navbar-item uk-logo" href="{{ path('admin_page_dashboard') }}" title="Access to home page">
+                        SHC - Super Hero Factory</a>
+                </div>
+                <div class="uk-navbar-right">
+                    <ul class="uk-navbar-nav uk-visible@m">
+                        {% if app.user %}
+                            <li><a href="{{ path('admin_page_dashboard') }}" title="Home page"><span  uk-icon="home"></span></a></li>
+                            <li><a href="{{ path('admin_page_user') }}" title="Users"><span uk-icon="users"></span></a></li>
+                            <li><a href="{{ path('logout') }}" title="Logout"><span uk-icon="sign-out"></span></a></li>
+                        {% elseif app.request.pathinfo != path('login') %}
+                            <li><a href="{{ path('login') }}" title="Login">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+    </header>
+    <div class="uk-section uk-section-default shf-page-content">
+        <div class="uk-container">
+            <div class="uk-height-1-1">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+{% endblock %}

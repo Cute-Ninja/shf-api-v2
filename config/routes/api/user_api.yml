@@ -1,0 +1,43 @@
+api_user_list:
+    path: /api/users
+    controller: App\Controller\Api\UserApiController::getMany
+    methods: GET
+
+api_user_get:
+    path: /api/users/{username}
+    controller: App\Controller\Api\UserApiController::getOne
+    methods: GET
+
+api_user_post:
+    path: /api/users/registration
+    controller: App\Controller\Api\UserApiController::post
+    methods: POST
+
+api_user_put:
+    path: /api/users/{username}
+    controller: App\Controller\Api\UserApiController::put
+    methods: PUT
+
+api_user_delete:
+    path: /api/users/{username}
+    controller: App\Controller\Api\UserApiController::delete
+    methods: DELETE
+
+
+
+front_api_user_me:
+    path: /front/api/users/me
+    controller: App\Controller\Front\UserProxyController::me
+    methods: GET
+
+
+
+admin_api_user_list:
+    path: /admin/api/users
+    controller: App\Controller\Admin\UserProxyController::getMany
+    methods: GET
+
+admin_api_user_get:
+    path: /admin/api/users/{username}
+    controller: App\Controller\Admin\UserProxyController::getOne
+    methods: GET

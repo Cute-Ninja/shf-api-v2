@@ -1,0 +1,9 @@
+admin_page_dashboard:
+    path: /dashboard
+    methods: GET
+    controller: App\Controller\Admin\PageAdminController::dashboard
+
+admin_page_user:
+    path: /user
+    methods: GET
+    controller: App\Controller\Admin\PageAdminController::user

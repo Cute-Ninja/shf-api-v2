@@ -1,0 +1,5 @@
+admin:
+    dashboard:
+        title: Dashboard
+    user:
+        title: Users

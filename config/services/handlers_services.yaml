@@ -1,0 +1,4 @@
+services:
+    shf_handler.authentication.success:
+        class: App\Handlers\Authentication\LoginSuccessHandler
+        arguments:  ['@router', '@doctrine']

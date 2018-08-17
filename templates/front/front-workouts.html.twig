@@ -1,0 +1,17 @@
+{% trans_default_domain 'front' %}
+
+{% extends 'front/front-base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/js/front-workouts.js') }}"></script>
+{% endblock %}
+
+{% block title %}{{ parent() }}{{ 'front.workouts.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div>
+        <h2>{{ 'front.workouts.title'|trans }}</h2>
+        <div id="standard-workouts"></div>
+    </div>
+{% endblock %}

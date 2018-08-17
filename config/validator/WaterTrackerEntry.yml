@@ -1,0 +1,7 @@
+App\Entity\WaterTrackerEntry:
+    properties:
+        quantity:
+            - Type: integer
+            - Range:
+                min: 100
+                max: 2000

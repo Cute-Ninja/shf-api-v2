@@ -1,0 +1,17 @@
+{% trans_default_domain 'front' %}
+
+{% extends 'front/front-base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/js/front-profile.js') }}"></script>
+{% endblock %}
+
+
+{% block title %}{{ parent() }}{{ 'front.profile.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div>
+        <h2>{{ 'front.profile.title'|trans }}</h2>
+    </div>
+{% endblock %}

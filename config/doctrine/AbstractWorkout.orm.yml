@@ -1,0 +1,48 @@
+App\Entity\AbstractWorkout:
+    type: entity
+    table: "`workout`"
+    repositoryClass: App\Repository\WorkoutRepository
+    inheritanceType: SINGLE_TABLE
+    discriminatorColumn:
+        name: source
+        type: string
+    discriminatorMap:
+        shf: App\Entity\ShfWorkout
+        community: App\Entity\CommunityWorkout
+
+    id:
+        id:
+            type: integer
+            length: null
+            unique: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+
+    fields:
+        name:
+            type: string
+            length: 255
+            unique: true
+            nullable: false
+
+        difficulty:
+            type: integer
+            unique: false
+            nullable: true
+
+        duration:
+            type: integer
+            unique: false
+            nullable: true
+
+        calories:
+            type: integer
+            unique: false
+            nullable: true
+
+        experience:
+            type: integer
+            unique: false
+            nullable: true

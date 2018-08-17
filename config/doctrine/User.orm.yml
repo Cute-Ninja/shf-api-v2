@@ -1,0 +1,44 @@
+App\Entity\User:
+    type: entity
+    table: "`user`"
+    repositoryClass: App\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            length: null
+            unique: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+
+    fields:
+            username:
+                type: string
+                unique: true
+                nullable: false
+                length: 150
+            email:
+                type: string
+                unique: true
+                nullable: false
+                length: 150
+            password:
+                type: string
+                length: 255
+                unique: false
+                nullable: false
+            isAdmin:
+                type: boolean
+                unique: false
+                nullable: false
+            roles:
+                type: array
+                unique: false
+                nullable: false
+
+    oneToOne:
+        bodyMeasurement:
+            targetEntity: App\Entity\UserBodyMeasurement
+            mappedBy: user
+            nullable: true

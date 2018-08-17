@@ -1,0 +1,40 @@
+api_user_favorite_workout_list:
+    path: /api/favorite-workouts
+    controller: App\Controller\Api\UserFavoriteWorkoutApiController::getMany
+    methods: GET
+
+api_user_favorite_workout_get:
+    path: /api/favorite-workouts/{id}
+    controller: App\Controller\Api\UserFavoriteWorkoutApiController::getOne
+    methods: GET
+
+api_user_favorite_workout_post:
+    path: /api/favorite-workouts
+    controller: App\Controller\Api\UserFavoriteWorkoutApiController::post
+    methods: POST
+
+api_user_favorite_workout_put:
+    path: /api/favorite-workouts/{id}
+    controller: App\Controller\Api\UserFavoriteWorkoutApiController::put
+    methods: PUT
+
+api_user_favorite_workout_delete:
+    path: /api/favorite-workouts/{id}
+    controller: App\Controller\Api\UserFavoriteWorkoutApiController::delete
+    methods: DELETE
+
+
+front_api_user_favorite_workout_get_many:
+    path: /front/api/favorite-workouts
+    controller: App\Controller\Front\UserFavoriteWorkoutProxyController::getMany
+    methods: GET
+
+front_api_user_favorite_workout_post:
+    path: /front/api/favorite-workouts
+    controller: App\Controller\Front\UserFavoriteWorkoutProxyController::post
+    methods: POST
+
+front_api_user_favorite_workout_delete:
+    path: /front/api/favorite-workouts/{id}
+    controller: App\Controller\Front\UserFavoriteWorkoutProxyController::delete
+    methods: DELETE

@@ -1,0 +1,14 @@
+front_page_dashboard:
+    path: /dashboard
+    methods: GET
+    controller: App\Controller\Front\PageFrontController::dashboard
+
+front_page_profile:
+    path: /profile
+    methods: GET
+    controller: App\Controller\Front\PageFrontController::profile
+
+front_page_workouts:
+    path: /workouts
+    methods: GET
+    controller: App\Controller\Front\PageFrontController::workouts

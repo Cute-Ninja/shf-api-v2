@@ -1,0 +1,16 @@
+App\Entity\ShfWorkout:
+    ares:
+        name: Ares
+        difficulty: 4
+
+    ares_lvl_2:
+        name: Ares Lvl 2
+        difficulty: 6
+
+    hermes:
+        name: Hermes
+        difficulty: 3
+
+    hermes_lvl_2:
+        name: Hermes Lvl 2
+        difficulty: 5

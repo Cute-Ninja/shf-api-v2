@@ -1,0 +1,20 @@
+App\Entity\UserEquipment:
+    ghriim_equipment_{jump_rope, foam_roller, massage_ball, tuba}:
+        user: "@ghriim"
+        equipment: "@equipment_<current()>"
+
+    user_{1..10}_equipement_jump_rope:
+        user: "@user_<current()>"
+        equipment: "@equipment_jump_rope"
+
+    user_{1..5}_equipement_kettlebell:
+        user: "@user_<current()>"
+        equipment: "@equipment_kettlebell"
+
+    user_{5..10}_equipement_resistance_band:
+        user: "@user_<current()>"
+        equipment: "@equipment_resistance_band"
+
+    user_{4..8}_equipement_kettlebell:
+        user: "@user_<current()>"
+        equipment: "@equipment_kettlebell"

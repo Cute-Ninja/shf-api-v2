@@ -1,0 +1,11 @@
+App\Entity\CommunityWorkout:
+    type: entity
+
+    manyToOne:
+        creator:
+            targetEntity: App\Entity\User
+            nullable: false
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+

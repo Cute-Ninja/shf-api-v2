@@ -1,0 +1,7 @@
+front:
+    dashboard:
+        title: Dashboard
+    profile:
+        title: Mon profil
+    workouts:
+        title: Entraînements

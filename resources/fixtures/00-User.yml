@@ -1,0 +1,20 @@
+App\Entity\User:
+    base_user (template):
+        password: "\\$2y\\$13\\$xuk1duzZe5Xr7swiTrPHMu6ee7dm4dTaTsqbEWZaL5OZI.jzW7e5y" #plain password: test123
+
+    base_player (template, extends base_user):
+        roles: ["USER"]
+
+
+    ghost (extends base_user):
+        username: ghost
+        email: "ghost\\@shf.com"
+        roles: ["ROLE_ADMIN_DASHBOARD_READ","ROLE_ADMIN_USER_READ","ROLE_ADMIN_USER_WRITE","ROLE_ADMIN_USER_DELETE"]
+
+    ghriim (extends base_player):
+        username: ghriim
+        email: "ghriim\\@fakemail.com"
+
+    user_{1..10} (extends base_player):
+        username: user_<current()>
+        email: "user_<current()>\\@fakemail.com"

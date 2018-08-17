@@ -1,0 +1,28 @@
+App\Entity\UserFavoriteWorkout:
+    type: entity
+    table: "`user_favorite_workout`"
+    repositoryClass: App\Repository\UserFavoriteWorkoutRepository
+    id:
+        id:
+            type: integer
+            length: null
+            unique: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+
+    manyToOne:
+        workout:
+            targetEntity: App\Entity\AbstractWorkout
+            nullable: false
+            joinColumn:
+                name: workout_id
+                referencedColumnName: id
+
+        user:
+            targetEntity: App\Entity\User
+            nullable: false
+            joinColumn:
+                name: user_id
+                referencedColumnName: id

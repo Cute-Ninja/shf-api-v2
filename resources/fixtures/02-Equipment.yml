@@ -1,0 +1,12 @@
+App\Entity\Equipment:
+    equipment_{jump_rope, resistance_band, medicine_ball}:
+        name: <current()>
+
+    equipment_{foam_roller, massage_ball}:
+        name: <current()>
+
+    equipment_{dumbbell, weighted_vest, kettlebell, traction_bar}:
+        name: <current()>
+
+    equipment_{tuba, fin, pool_buoys, swim_paddles}:
+        name: <current()>

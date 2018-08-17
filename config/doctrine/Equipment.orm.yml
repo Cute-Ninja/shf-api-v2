@@ -1,0 +1,20 @@
+App\Entity\Equipment:
+    type: entity
+    table: "`equipment`"
+    repositoryClass: App\Repository\EquipmentRepository
+    id:
+        id:
+            type: integer
+            length: null
+            unique: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+
+    fields:
+        name:
+            type: string
+            length: 250
+            nullable: false
+            unique: true

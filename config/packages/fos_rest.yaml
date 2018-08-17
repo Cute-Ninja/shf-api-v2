@@ -1,0 +1,12 @@
+fos_rest:
+    serializer:
+        serialize_null: true
+    routing_loader:
+        default_format: json
+    body_converter:
+        enabled: false
+    format_listener: true
+    view:
+        view_response_listener: 'force'
+    service:
+        serializer: fos_rest.serializer.symfony

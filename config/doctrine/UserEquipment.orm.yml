@@ -1,0 +1,28 @@
+App\Entity\UserEquipment:
+    type: entity
+    table: "`user_equipment`"
+    repositoryClass: App\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            length: null
+            unique: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+
+    manyToOne:
+        equipment:
+            targetEntity: App\Entity\Equipment
+            nullable: false
+            joinColumn:
+                name: equipment_id
+                referencedColumnName: id
+
+        user:
+            targetEntity: App\Entity\User
+            nullable: false
+            joinColumn:
+                name: user_id
+                referencedColumnName: id

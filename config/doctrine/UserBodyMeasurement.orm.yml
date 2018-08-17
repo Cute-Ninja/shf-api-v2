@@ -1,0 +1,38 @@
+App\Entity\UserBodyMeasurement:
+    type: entity
+    table: "`user_body_measurement`"
+    repositoryClass: App\Repository\UserBodyMeasurementRepository
+    id:
+        id:
+            type: integer
+            length: null
+            unique: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+
+    fields:
+        height:
+            type: integer
+            unique: false
+            nullable: true
+        weight:
+            type: integer
+            unique: false
+            nullable: true
+        restingHeartRate:
+            type: integer
+            unique: false
+            nullable: true
+
+    oneToOne:
+        user:
+            targetEntity: App\Entity\User
+            inversedBy: bodyMeasurement
+            nullable: false
+            unique: true
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                cascade: ['delete']

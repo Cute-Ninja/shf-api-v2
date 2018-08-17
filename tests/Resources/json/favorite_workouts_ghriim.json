@@ -1,0 +1,53 @@
+[{
+  "id": 1,
+  "workout": {
+    "id": 1,
+    "name": "Ares",
+    "difficulty": 4,
+    "duration": null,
+    "calories": null,
+    "experience": null,
+    "favoriteId": null,
+    "status": "active"
+  },
+  "status": "active"
+}, {
+  "id": 2,
+  "workout": {
+    "id": 3,
+    "name": "Hermes",
+    "difficulty": 3,
+    "duration": null,
+    "calories": null,
+    "experience": null,
+    "favoriteId": null,
+    "status": "active"
+  },
+  "status": "active"
+}, {
+  "id": 3,
+  "workout": {
+    "id": 5,
+    "name": "Half marathon preparation (1)",
+    "difficulty": 3,
+    "duration": null,
+    "calories": null,
+    "experience": null,
+    "favoriteId": null,
+    "status": "active"
+  },
+  "status": "active"
+}, {
+  "id": 4,
+  "workout": {
+    "id": 6,
+    "name": "Half marathon preparation (2)",
+    "difficulty": 5,
+    "duration": null,
+    "calories": null,
+    "experience": null,
+    "favoriteId": null,
+    "status": "active"
+  },
+  "status": "active"
+}]

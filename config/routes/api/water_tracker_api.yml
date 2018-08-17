@@ -1,0 +1,41 @@
+api_water_tracker_list:
+    path: /api/water-trackers
+    controller: App\Controller\Api\WaterTrackerApiController::getMany
+    methods: GET
+
+api_water_tracker_get_today:
+    path: /api/water-trackers/today
+    controller: App\Controller\Api\WaterTrackerApiController::getToday
+    methods: GET
+
+api_water_tracker_get:
+    path: /api/water-trackers/{id}
+    controller: App\Controller\Api\WaterTrackerApiController::getOne
+    methods: GET
+
+api_water_tracker_post:
+    path: /api/water-trackers
+    controller: App\Controller\Api\WaterTrackerApiController::post
+    methods: POST
+
+api_water_tracker_put:
+    path: /api/water-trackers/{id}
+    controller: App\Controller\Api\WaterTrackerApiController::put
+    methods: PUT
+
+api_water_tracker_delete:
+    path: /api/water-trackers/{id}
+    controller: App\Controller\Api\WaterTrackerApiController::delete
+    methods: DELETE
+
+
+
+front_api_water_tracker_list:
+    path: /front/api/water-trackers
+    controller: App\Controller\Front\WaterTrackerProxyController::getMany
+    methods: GET
+
+front_api_water_tracker_get_today:
+    path: /front/api/water-trackers/today
+    controller: App\Controller\Front\WaterTrackerProxyController::getToday
+    methods: GET

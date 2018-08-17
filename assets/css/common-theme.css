@@ -1,0 +1,23 @@
+body, .uk-section-default {
+    background-color: #f6f6f6;
+}
+
+header.uk-navbar-container:not(.uk-navbar-transparent) {
+    background: linear-gradient(to left, #28a5f5, #1e87f0);
+}
+
+header a.uk-logo, .uk-navbar-nav > li > a {
+    color: #FFF;
+}
+
+.shf-form-width-large {
+    width: 335px;
+}
+
+#login-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}

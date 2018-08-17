@@ -1,0 +1,21 @@
+[{
+  "target": 2000,
+  "entries": [{
+    "quantity": 100,
+    "status": "active"
+  }, {
+    "quantity": 200,
+    "status": "active"
+  }, {
+    "quantity": 500,
+    "status": "active"
+  }, {
+    "quantity": 250,
+    "status": "active"
+  }, {
+    "quantity": 300,
+    "status": "active"
+  }],
+  "status": "active",
+  "sumDrank": 1350
+}]

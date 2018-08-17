@@ -1,0 +1,13 @@
+App\Entity\UserFavoriteWorkout:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [user, workout]
+
+    properties:
+        user:
+            - NotNull: ~
+            - Type: App\Entity\User
+        workout:
+            - NotNull: ~
+            - Type: App\Entity\AbstractWorkout
+

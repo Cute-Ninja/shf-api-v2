@@ -1,0 +1,63 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+            cost:      13
+
+    providers:
+        user_provider:
+            entity: { class: App\Entity\User, property: username }
+
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        api_doc:
+            pattern: ^/api/doc
+            security: false
+
+        api_login:
+            pattern: /api/login
+            stateless: true
+            anonymous: true
+            form_login:
+                check_path:               /api/login_check
+                username_parameter:       username
+                password_parameter:       password
+                success_handler:          lexik_jwt_authentication.handler.authentication_success
+                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+                require_previous_session: false
+
+        api_register:
+            pattern: /api/users/registration
+            methods: [POST]
+            anonymous: true
+            stateless: true
+
+        api_secured_area:
+            provider:  user_provider
+            pattern:   ^/api
+            stateless: true
+            guard:
+                authenticators:
+                    - shf_api.jwt_token_authenticator
+
+        secured_area:
+            anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login
+                success_handler: shf_handler.authentication.success
+            logout:
+                path:   /logout
+                target: /login
+
+    access_control:
+        - { path: /api/login,              roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /api/users/registration, roles: IS_AUTHENTICATED_ANONYMOUSLY, methods: [POST] }
+        - { path: ^/api,                   roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/admin,                 roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/front,                 roles: IS_AUTHENTICATED_FULLY }
+        - { path: /login,                  roles: IS_AUTHENTICATED_ANONYMOUSLY }

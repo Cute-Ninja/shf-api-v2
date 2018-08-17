@@ -1,0 +1,2 @@
+App\Entity\ShfWorkout:
+    type: entity

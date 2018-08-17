@@ -1,0 +1,34 @@
+@import "front-theme.css";
+
+.water-tracker-entries {
+    margin: 0;
+}
+
+.water-tracker-entries > div {
+    padding: 5px;
+}
+
+.water-tracker-entry {
+    border: 1px solid lightgray;
+    width: 100%;
+    text-align: center;
+    padding: 0 0 1em 0;
+}
+
+.water-tracker-entry .entry-actions {
+    padding: 5px 5px 10px 0;
+}
+
+.water-tracker-entries .water-tracker-entry-quantity,
+    .water-tracker-entries .water-tracker-entry-date {
+    display: block;
+}
+
+.water-tracker-entries > .water-tracker-entry-quantity {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.water-tracker-entries .water-tracker-entry-date {
+    color: grey;
+}

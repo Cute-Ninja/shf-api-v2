@@ -1,0 +1,3 @@
+header.uk-navbar-container:not(.uk-navbar-transparent) {
+    background: linear-gradient(to left, #df4315, #e63214);
+}
