@@ -1,0 +1,30 @@
+api_user_workout_list:
+    path: /api/user-workouts
+    controller: App\Controller\Api\UserWorkoutApiController::getMany
+    methods: GET
+
+api_user_workout_get:
+    path: /api/user-workouts/{id}
+    controller: App\Controller\Api\UserWorkoutApiController::getOne
+    methods: GET
+
+api_user_workout_post:
+    path: /api/user-workouts
+    controller: App\Controller\Api\UserWorkoutApiController::post
+    methods: POST
+
+api_user_workout_put:
+    path: /api/user-workouts/{id}
+    controller: App\Controller\Api\UserWorkoutApiController::put
+    methods: PUT
+
+api_user_workout_delete:
+    path: /api/user-workouts/{id}
+    controller: App\Controller\Api\UserWorkoutApiController::delete
+    methods: DELETE
+
+
+front_api_user_workout_get_many:
+    path: /front/api/user-workouts
+    controller: App\Controller\Front\UserWorkoutProxyController::getMany
+    methods: GET

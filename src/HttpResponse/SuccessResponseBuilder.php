@@ -41,7 +41,14 @@ class SuccessResponseBuilder extends AbstractResponseBuilder
                     : '';
             };
 
-            $normalizer->setCallbacks(['createdAt' => $callback, 'updatedAt' => $callback]);
+            $normalizer->setCallbacks(
+                [
+                    'createdAt' => $callback,
+                    'updatedAt' => $callback,
+                    'scheduledDate' => $callback,
+                    'completionDate' => $callback,
+                ]
+            );
 
             $this->serializer = new Serializer(
                 [$normalizer],

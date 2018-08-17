@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "scheduledDate": "",
+    "completionDate": "2018-02-02T22:22:22+00:00",
+    "workout": {
+      "id": 1,
+      "name": "Ares",
+      "difficulty": 4,
+      "duration": null,
+      "calories": null,
+      "experience": null,
+      "favoriteId": null,
+      "status": "active"
+    },
+    "status": "active"
+  },
+  {
+    "id": 2,
+    "scheduledDate": "",
+    "completionDate": "2018-02-02T22:22:22+00:00",
+    "workout": {
+      "id": 3,
+      "name": "Hermes",
+      "difficulty": 3,
+      "duration": null,
+      "calories": null,
+      "experience": null,
+      "favoriteId": null,
+      "status": "active"
+    },
+    "status": "active"
+  },
+  {
+    "id": 3,
+    "scheduledDate": "",
+    "completionDate": "2018-02-02T22:22:22+00:00",
+    "workout": {
+      "id": 5,
+      "name": "Half marathon preparation (1)",
+      "difficulty": 3,
+      "duration": null,
+      "calories": null,
+      "experience": null,
+      "favoriteId": null,
+      "status": "active"
+    },
+    "status": "active"
+  },
+  {
+    "id": 4,
+    "scheduledDate": "",
+    "completionDate": "2018-02-02T22:22:22+00:00",
+    "workout": {
+      "id": 6,
+      "name": "Half marathon preparation (2)",
+      "difficulty": 5,
+      "duration": null,
+      "calories": null,
+      "experience": null,
+      "favoriteId": null,
+      "status": "active"
+    },
+    "status": "active"
+  },
+  {
+    "id": 5,
+    "scheduledDate": "2020-01-01T11:11:11+00:00",
+    "completionDate": "",
+    "workout": {
+      "id": 1,
+      "name": "Ares",
+      "difficulty": 4,
+      "duration": null,
+      "calories": null,
+      "experience": null,
+      "favoriteId": null,
+      "status": "active"
+    },
+    "status": "active"
+  },
+  {
+    "id": 6,
+    "scheduledDate": "2020-01-01T11:11:11+00:00",
+    "completionDate": "",
+    "workout": {
+      "id": 3,
+      "name": "Hermes",
+      "difficulty": 3,
+      "duration": null,
+      "calories": null,
+      "experience": null,
+      "favoriteId": null,
+      "status": "active"
+    },
+    "status": "active"
+  },
+  {
+    "id": 7,
+    "scheduledDate": "2020-01-01T11:11:11+00:00",
+    "completionDate": "",
+    "workout": {
+      "id": 5,
+      "name": "Half marathon preparation (1)",
+      "difficulty": 3,
+      "duration": null,
+      "calories": null,
+      "experience": null,
+      "favoriteId": null,
+      "status": "active"
+    },
+    "status": "active"
+  },
+  {
+    "id": 8,
+    "scheduledDate": "2020-01-01T11:11:11+00:00",
+    "completionDate": "",
+    "workout": {
+      "id": 6,
+      "name": "Half marathon preparation (2)",
+      "difficulty": 5,
+      "duration": null,
+      "calories": null,
+      "experience": null,
+      "favoriteId": null,
+      "status": "active"
+    },
+    "status": "active"
+  }
+]

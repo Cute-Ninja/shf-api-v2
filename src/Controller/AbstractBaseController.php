@@ -6,10 +6,12 @@ use App\Entity\AbstractBaseEntity;
 use App\Entity\AbstractWorkout;
 use App\Entity\User;
 use App\Entity\UserFavoriteWorkout;
+use App\Entity\UserWorkout;
 use App\Entity\WaterTracker;
 use App\Entity\WaterTrackerEntry;
 use App\Repository\UserFavoriteWorkoutRepository;
 use App\Repository\UserRepository;
+use App\Repository\UserWorkoutRepository;
 use App\Repository\WaterTrackerEntryRepository;
 use App\Repository\WaterTrackerRepository;
 use App\Repository\WorkoutRepository;
@@ -133,5 +135,13 @@ abstract class AbstractBaseController extends FOSRestController
     protected function getUserFavoriteWorkoutRepository(): UserFavoriteWorkoutRepository
     {
         return $this->getEntityManager()->getRepository(UserFavoriteWorkout::class);
+    }
+
+    /**
+     * @return UserWorkoutRepository
+     */
+    protected function getUserWorkoutRepository(): UserWorkoutRepository
+    {
+        return $this->getEntityManager()->getRepository(UserWorkout::class);
     }
 }
