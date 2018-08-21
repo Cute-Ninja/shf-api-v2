@@ -24,8 +24,13 @@
     </testsuites>
 
     <filter>
-        <whitelist>
-            <directory>src</directory>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src/Controller</directory>
+            <directory suffix=".php">src/Entity</directory>
+            <directory suffix=".php">src/Event</directory>
+            <directory suffix=".php">src/Form</directory>
+            <directory suffix=".php">src/HttpResponse</directory>
+            <directory suffix=".php">src/Repository</directory>
         </whitelist>
     </filter>
 </phpunit>
