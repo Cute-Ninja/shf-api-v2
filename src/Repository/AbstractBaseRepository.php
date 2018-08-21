@@ -272,31 +272,26 @@ abstract class AbstractBaseRepository extends EntityRepository implements Reposi
      */
     public function computeCriterionCondition($alias, $fieldName, $value, $exclude = false): array
     {
-        $operator       = $exclude ? '!=' : '=';
-        $condition      = $alias . '.' . $fieldName . ' ' . $operator . ' :' . $alias . '_' . $fieldName;
-        $parameterField = $alias . '_' . $fieldName;
-        $parameterValue = $value !== false && empty($value) ? null : $value;
         if (null === $value) {
             return [null, null, null];
         }
 
+        $operator       = $exclude ? '!=' : '=';
+        $condition      = $alias . '.' . $fieldName . ' ' . $operator . ' :' . $alias . '_' . $fieldName;
+        $parameterField = $alias . '_' . $fieldName;
+        $parameterValue = $value !== false && empty($value) ? null : $value;
+
         if (is_array($value)) {
             $operator  = $exclude ? 'NOT IN' : 'IN';
             $condition = $alias . '.' . $fieldName . ' ' . $operator . ' (:' . $alias . '_' . $fieldName . ')';
-
-            return [$condition, $parameterField, $parameterValue];
-        }
-
-        if ('NULL' === $value) {
+        } elseif ('NULL' === $value) {
             $condition = $alias . '.' . $fieldName . ' IS NULL';
-
-            return [$condition, null, null];
-        }
-
-        if ('NOT NULL' === $value) {
+            $parameterField = null;
+            $parameterValue = null;
+        }elseif ('NOT NULL' === $value) {
             $condition = $alias . '.' . $fieldName . ' IS NOT NULL';
-
-            return [$condition, null, null];
+            $parameterField = null;
+            $parameterValue = null;
         }
 
         return [$condition, $parameterField, $parameterValue];
