@@ -33,7 +33,7 @@ export default class UserWorkouts extends React.Component {
         return (
             <div>
                 {userWorkouts.map((userWorkout, index) => (
-                    <div>
+                    <div key={workout.id} className="uk-card uk-card-default uk-margin-bottom">
                         {userWorkout.workout.name}
                         <Moment format="LLLL">
                             {userWorkout.scheduledDate}
