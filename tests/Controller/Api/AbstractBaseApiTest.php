@@ -4,18 +4,16 @@ namespace App\Tests\Controller\Api;
 
 use App\Entity\User;
 use App\Repository\AbstractBaseRepository;
+use App\Tests\Controller\ShfTestInterface;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
-abstract class AbstractBaseApiTest extends WebTestCase
+abstract class AbstractBaseApiTest extends WebTestCase implements ShfTestInterface
 {
     public const AUTHORIZATION_HEADER_PREFIX = 'Bearer';
-    public const AUTHENTICATION_ADMIN_USERNAME = 'ghost';
-    public const AUTHENTICATION_PERSONAL_USERNAME = 'ghriim';
-    public const AUTHENTICATION_DEFAULT_PASSWORD = 'test123';
 
     /**
      * @var User
@@ -34,7 +32,7 @@ abstract class AbstractBaseApiTest extends WebTestCase
      *
      * @return Client
      */
-    protected function buildAuthenticatedUser($saveUser = false): Client
+    public function buildAuthenticatedUser($saveUser = false): Client
     {
         $client = $this->buildAuthentication(self::AUTHENTICATION_PERSONAL_USERNAME);
 
@@ -49,11 +47,10 @@ abstract class AbstractBaseApiTest extends WebTestCase
     /**
      * @return Client
      */
-    protected function buildAuthenticatedAdmin(): Client
+    public function buildAuthenticatedAdmin(): Client
     {
         return $this->buildAuthentication(self::AUTHENTICATION_ADMIN_USERNAME);
     }
-
 
     /**
      * @param Client $client
