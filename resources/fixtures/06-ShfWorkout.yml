@@ -14,3 +14,7 @@ App\Entity\ShfWorkout:
     hermes_lvl_2:
         name: Hermes Lvl 2
         difficulty: 5
+
+    helios:
+        name: Helios
+        difficulty: 3

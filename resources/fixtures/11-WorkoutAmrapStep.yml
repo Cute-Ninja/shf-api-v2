@@ -1,0 +1,36 @@
+App\Entity\WorkoutAmrapStep:
+    ares_lvl_2_position_1:
+        position: 1
+        duration: 90
+        workout: "@ares_lvl_2"
+        exercise: "@push_up"
+
+    ares_lvl_2_position_2:
+        position: 2
+        duration: 90
+        workout: "@ares_lvl_2"
+        exercise: "@crunch"
+
+    ares_lvl_2_position_3:
+        position: 3
+        duration: 90
+        workout: "@ares_lvl_2"
+        exercise: "@squat"
+
+    ares_lvl_2_position_5:
+        position: 5
+        duration: 90
+        workout: "@ares_lvl_2"
+        exercise: "@push_up"
+
+    ares_lvl_2_position_6:
+        position: 6
+        duration: 90
+        workout: "@ares_lvl_2"
+        exercise: "@crunch"
+
+    ares_lvl_2_position_7:
+        position: 7
+        duration: 90
+        workout: "@ares_lvl_2"
+        exercise: "@squat"

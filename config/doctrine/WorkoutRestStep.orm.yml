@@ -1,0 +1,8 @@
+App\Entity\WorkoutRestStep:
+    type: entity
+    fields:
+        duration:
+            column: duration
+            type: integer
+            nullable: false
+            unique: false

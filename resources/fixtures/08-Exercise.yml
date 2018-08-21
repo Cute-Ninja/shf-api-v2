@@ -50,9 +50,13 @@ App\Entity\Exercise:
         type: repetition
         equipments: ["@equipment_jump_rope"]
 
-    run:
-        name: Run
+    run_distance:
+        name: Run (objective distance)
         type: distance
+
+    run_duration:
+        name: Run (objective duration)
+        type: duration
 
     bike_ride:
         name: Bike ride

@@ -2,11 +2,14 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Serializer\Annotation as Serializer;
+
 class Exercise extends AbstractBaseEntity
 {
     public const TYPE_REST       = 'rest';
     public const TYPE_REPETITION = 'repetition';
     public const TYPE_DISTANCE   = 'distance';
+    public const TYPE_DURATION   = 'duration';
     public const TYPE_HOLD       = 'hold';
 
     /**

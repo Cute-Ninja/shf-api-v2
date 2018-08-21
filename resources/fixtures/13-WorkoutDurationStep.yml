@@ -1,0 +1,18 @@
+App\Entity\WorkoutDurationStep:
+    hermes_position_1:
+        position: 1
+        duration: 240
+        workout: "@hermes"
+        exercise: "@run_duration"
+
+    hermes_position_3:
+        position: 3
+        duration: 240
+        workout: "@hermes"
+        exercise: "@run_duration"
+
+    hermes_position_5:
+        position: 5
+        duration: 240
+        workout: "@hermes"
+        exercise: "@run_duration"

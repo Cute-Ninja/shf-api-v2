@@ -1,0 +1,36 @@
+App\Entity\WorkoutRestStep:
+    ares_lvl_2_position_4_rest:
+        position: 4
+        duration: 120
+        workout: "@ares_lvl_2"
+        exercise: "@rest"
+
+    ares_lvl_2_position_8_rest:
+        position: 8
+        duration: 120
+        workout: "@ares_lvl_2"
+        exercise: "@rest"
+
+    hermes_position_2:
+        position: 2
+        duration: 240
+        workout: "@hermes"
+        exercise: "@walking_rest"
+
+    hermes_position_4:
+        position: 4
+        duration: 240
+        workout: "@hermes"
+        exercise: "@walking_rest"
+
+    ares_position_4_rest:
+        position: 4
+        duration: 120
+        workout: "@ares"
+        exercise: "@rest"
+
+    ares_position_8_rest:
+        position: 8
+        duration: 120
+        workout: "@ares"
+        exercise: "@rest"

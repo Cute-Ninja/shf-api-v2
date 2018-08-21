@@ -1,0 +1,36 @@
+App\Entity\WorkoutRepsStep:
+    ares_position_1:
+        position: 1
+        numberOfRepetition: 25
+        workout: "@ares"
+        exercise: "@push_up"
+
+    ares_position_2:
+        position: 2
+        numberOfRepetition: 50
+        workout: "@ares"
+        exercise: "@crunch"
+
+    ares_position_3:
+        position: 3
+        numberOfRepetition: 100
+        workout: "@ares"
+        exercise: "@squat"
+
+    ares_position_5:
+        position: 5
+        numberOfRepetition: 25
+        workout: "@ares"
+        exercise: "@push_up"
+
+    ares_position_6:
+        position: 6
+        numberOfRepetition: 50
+        workout: "@ares"
+        exercise: "@crunch"
+
+    ares_position_7:
+        position: 7
+        numberOfRepetition: 100
+        workout: "@ares"
+        exercise: "@squat"

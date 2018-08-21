@@ -1,0 +1,43 @@
+App\Entity\AbstractWorkoutStep:
+    type: entity
+    table: "`workout_step`"
+    repositoryClass: App\Repository\WorkoutStepRepository
+    inheritanceType: SINGLE_TABLE
+    discriminatorColumn:
+        name: source
+        type: string
+    discriminatorMap:
+        amrap: App\Entity\WorkoutAmrapStep
+        distance: App\Entity\WorkoutDistanceStep
+        duration: App\Entity\WorkoutDurationStep
+        reps: App\Entity\WorkoutRepsStep
+        rest: App\Entity\WorkoutRestStep
+
+    id:
+        id:
+            type: integer
+            length: null
+            unique: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+
+    fields:
+            position:
+                column: position
+                type: integer
+                nullable: false
+                unique: false
+
+    manyToOne:
+            workout:
+                targetEntity: App\Entity\AbstractWorkout
+                joinColumn:
+                    name: workout_id
+                    referencedColumnName: id
+            exercise:
+                targetEntity: App\Entity\Exercise
+                joinColumn:
+                    name: exercise_id
+                    referencedColumnName: id
