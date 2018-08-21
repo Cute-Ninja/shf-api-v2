@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @covers App\HttpResponse\ServerErrorResponseBuilder
+ * @covers \App\HttpResponse\ServerErrorResponseBuilder
  */
 class ServerErrorResponseBuilderTest extends WebTestCase
 {

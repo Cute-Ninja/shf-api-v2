@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormInterface;
 
 /**
- * @covers App\Form\Error\ApiFormError
+ * @covers \App\Form\Error\ApiFormError
  */
 class ApiFormErrorTest extends WebTestCase
 {

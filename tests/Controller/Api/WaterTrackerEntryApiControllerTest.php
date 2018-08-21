@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @covers App\Controller\Api\WaterTrackerEntryApiController
+ * @covers \App\Controller\Api\WaterTrackerEntryApiController
  */
 class WaterTrackerEntryApiControllerTest extends AbstractBaseApiTest
 {

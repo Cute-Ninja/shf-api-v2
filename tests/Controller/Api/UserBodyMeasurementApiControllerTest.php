@@ -5,7 +5,7 @@ namespace App\Tests\Controller\Api;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @covers App\Controller\Api\UserBodyMeasurementApiController
+ * @covers \App\Controller\Api\UserBodyMeasurementApiController
  */
 class UserBodyMeasurementApiControllerTest extends AbstractBaseApiTest
 {

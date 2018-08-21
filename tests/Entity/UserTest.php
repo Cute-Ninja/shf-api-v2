@@ -6,7 +6,7 @@ use App\Entity\User;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers App\Entity\User
+ * @covers \App\Entity\User
  */
 class UserTest extends TestCase
 {

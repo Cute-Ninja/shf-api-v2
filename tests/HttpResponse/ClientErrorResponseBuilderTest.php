@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @covers App\HttpResponse\ClientErrorResponseBuilder
+ * @covers \App\HttpResponse\ClientErrorResponseBuilder
  */
 class ClientErrorResponseBuilderTest extends WebTestCase
 {

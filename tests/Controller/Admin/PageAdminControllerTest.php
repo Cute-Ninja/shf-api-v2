@@ -5,6 +5,9 @@ namespace App\Tests\Controller\Admin;
 use App\Tests\Controller\AbstractPageControllerTest;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @covers \App\Controller\Admin\PageAdminController
+ */
 class PageAdminControllerTest extends AbstractPageControllerTest
 {
     /**

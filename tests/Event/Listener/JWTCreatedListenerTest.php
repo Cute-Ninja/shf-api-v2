@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
- * @covers App\Event\Listener\JWTCreatedListener
+ * @covers \App\Event\Listener\JWTCreatedListener
  */
 class JWTCreatedListenerTest extends TestCase
 {

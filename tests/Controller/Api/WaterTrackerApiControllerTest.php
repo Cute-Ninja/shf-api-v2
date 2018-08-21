@@ -5,7 +5,7 @@ namespace App\Tests\Controller\Api;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @covers App\Controller\Api\WaterTrackerApiController
+ * @covers \App\Controller\Api\WaterTrackerApiController
  */
 class WaterTrackerApiControllerTest extends AbstractBaseApiTest
 {

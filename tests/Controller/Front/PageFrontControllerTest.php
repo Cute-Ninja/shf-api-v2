@@ -5,6 +5,9 @@ namespace App\Tests\Controller\Front;
 use App\Tests\Controller\AbstractPageControllerTest;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @covers \App\Controller\Front\PageFrontController
+ */
 class PageFrontControllerTest extends AbstractPageControllerTest
 {
     /**
