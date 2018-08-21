@@ -14,10 +14,12 @@ App\Entity\UserWorkout:
 
     fields:
         scheduledDate:
+            column: scheduled_date
             type: datetime
             unique: false
             nullable: true
         completionDate:
+            column: completion_date
             type: datetime
             unique: false
             nullable: true

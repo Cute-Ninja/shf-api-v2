@@ -2,7 +2,13 @@
 
 namespace App\Repository;
 
-class ExerciseRepository
+class ExerciseRepository extends AbstractBaseRepository
 {
-
+    /**
+     * {@inheritdoc}
+     */
+    public function getAlias(): string
+    {
+        return 'exercise';
+    }
 }

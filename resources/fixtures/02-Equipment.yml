@@ -8,5 +8,5 @@ App\Entity\Equipment:
     equipment_{dumbbell, weighted_vest, kettlebell, traction_bar}:
         name: <current()>
 
-    equipment_{tuba, fin, pool_buoys, swim_paddles}:
+    equipment_{tuba, fin, pool_buoys, swim_paddles, bike}:
         name: <current()>

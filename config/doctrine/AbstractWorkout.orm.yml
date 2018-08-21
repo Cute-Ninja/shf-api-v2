@@ -22,27 +22,28 @@ App\Entity\AbstractWorkout:
 
     fields:
         name:
+            column: name
             type: string
             length: 255
             unique: true
             nullable: false
-
         difficulty:
+            column: difficulty
             type: integer
             unique: false
             nullable: true
-
         duration:
+            column: duration
             type: integer
             unique: false
             nullable: true
-
         calories:
+            column: calories
             type: integer
             unique: false
             nullable: true
-
         experience:
+            column: experience
             type: integer
             unique: false
             nullable: true

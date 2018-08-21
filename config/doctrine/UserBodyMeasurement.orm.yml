@@ -14,14 +14,17 @@ App\Entity\UserBodyMeasurement:
 
     fields:
         height:
+            column: height
             type: integer
             unique: false
             nullable: true
         weight:
+            column: weight
             type: integer
             unique: false
             nullable: true
         restingHeartRate:
+            column: resting_heart_rate
             type: integer
             unique: false
             nullable: true

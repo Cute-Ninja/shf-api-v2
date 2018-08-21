@@ -1,0 +1,64 @@
+App\Entity\Exercise:
+    rest:
+        name: Rest
+        type: rest
+
+    walking_rest:
+        name: Walking rest
+        type: rest
+
+    push_up:
+        name: Push up
+        type: repetition
+
+    crunch:
+        name: Crunch
+        type: repetition
+
+    plank:
+        name: Plank
+        type: hold
+
+    squat:
+        name: Squat
+        type: repetition
+
+    electric_chair:
+        name: Electric chair
+        type: hold
+
+    burpee:
+        name: Burpee
+        type: repetition
+
+    box_jump:
+        name: Box jump
+        type: repetition
+
+    pull_up:
+        name: Pull up
+        type: repetition
+        equipments: ["@equipment_traction_bar"]
+
+    single_under:
+        name: Single under
+        type: repetition
+        equipments: ["@equipment_jump_rope"]
+
+    double_under:
+        name: Double under
+        type: repetition
+        equipments: ["@equipment_jump_rope"]
+
+    run:
+        name: Run
+        type: distance
+
+    bike_ride:
+        name: Bike ride
+        type: distance
+        equipments: ["@equipment_bike"]
+
+    front_crawl:
+        name: Front crawl
+        type: distance

@@ -1,41 +1,42 @@
 App\Entity\Exercise:
-   type: entity
-      table: "`exercise`"
-      repositoryClass: CuteNinja\HOT\App\Repository\ExerciseRepository
-      id:
-          id:
-              type: integer
-              scale: 0
-              length: null
-              unique: false
-              nullable: false
-              precision: 0
-              id: true
-              generator:
-                  strategy: IDENTITY
+    type: entity
+    table: "`exercise`"
+    repositoryClass: App\Repository\ExerciseRepository
 
-      fields:
-          name:
-              column: name
-              type: string
-              length: 25
-              unique: true
-              nullable: false
-          type:
-              column: type
-              type: string
-              length: 25
-              unique: false
-              nullable: false
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
 
-      manyToMany:
-          equipments:
-              targetEntity: CuteNinja\HOT\App\Entity\Equipment
-              joinTable:
-                  name: exercise_has_equipment
-                  joinColumns:
-                      name: exercise_id
-                      referencedColumnName: id
-                  inverseJoinColumns:
-                      equipment_id:
-                      referencedColumnName: id
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            unique: true
+            nullable: false
+        type:
+            column: type
+            type: string
+            length: 25
+            unique: false
+            nullable: false
+
+    manyToMany:
+        equipments:
+            targetEntity: App\Entity\Equipment
+            joinTable:
+                name: exercise_has_equipment
+                joinColumns:
+                    exercise_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    equipment_id:
+                        referencedColumnName: id

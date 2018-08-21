@@ -2,16 +2,19 @@ App\Entity\AbstractBaseEntity:
     type: mappedSuperclass
     fields:
         status:
+            column: status
             type: string
             scale: 0
             length: 25
             unique: false
             nullable: false
         createdAt:
+            column: created_at
             type: datetime
             unique: false
             nullable: false
         updatedAt:
+            column: update_at
             type: datetime
             unique: false
             nullable: false

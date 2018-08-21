@@ -14,31 +14,37 @@ App\Entity\User:
 
     fields:
             username:
+                column: username
                 type: string
                 unique: true
                 nullable: false
                 length: 150
             email:
+                column: email
                 type: string
                 unique: true
                 nullable: false
                 length: 150
             password:
+                column: password
                 type: string
                 length: 255
                 unique: false
                 nullable: false
             isAdmin:
+                column: is_admin
                 type: boolean
                 unique: false
                 nullable: false
             roles:
+                column: roles
                 type: array
                 unique: false
                 nullable: false
 
     oneToOne:
         bodyMeasurement:
+            column: body_measurement_id
             targetEntity: App\Entity\UserBodyMeasurement
             mappedBy: user
             nullable: true
