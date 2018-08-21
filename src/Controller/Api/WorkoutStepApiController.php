@@ -2,17 +2,19 @@
 
 namespace App\Controller\Api;
 
-use App\Entity\AbstractWorkout;
+use App\Entity\AbstractWorkoutStep;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class WorkoutApiController extends AbstractApiController implements StandardApiInterface
+
+class WorkoutStepApiController extends AbstractApiController
 {
     /**
      * @var Request $request
+     * @var int     $workoutId
      *
      * @return Response
      *
@@ -21,7 +23,7 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      *     description="Returns the list Workouts",
      *     @SWG\Schema(
      *         type="array",
-     *         @SWG\Items(ref=@Model(type=AbstractWorkout::class, groups={"default"}))
+     *         @SWG\Items(ref=@Model(type=AbstractWorkoutStep::class, groups={"default"}))
      *     )
      * )
      * @SWG\Response(
@@ -29,24 +31,13 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      *     description="No Workout found for the search parameters used"
      * )
      *
-     * @SWG\Tag(name="Workout")
+     * @SWG\Tag(name="WorkoutStep")
      * @Security(name="Bearer")
      */
-    public function getMany(Request $request): Response
+    public function getMany(Request $request, int $workoutId): Response
     {
-        $builder = $this->getWorkoutRepository()
-                        ->findManyByCriteriaBuilder();
-
-        if ($user = $request->get('user')) {
-            $favorites = $this->getUserFavoriteWorkoutRepository()
-                              ->findManyByCriteria(['user' => $user]);
-
-            if (false === empty($favorites)) {
-                foreach ($favorites as $favorite) {
-                    $favorite->getWorkout()->setFavoriteId($favorite->getId());
-                }
-            }
-        }
+        $builder = $this->getWorkoutStepRepository()
+                        ->findManyByCriteriaBuilder(['workout' => $workoutId], ['exercise'], ['position' => 'ASC']);
 
         return $this->getSuccessResponseBuilder()->buildMultiObjectResponse(
             $this->paginate($builder, $request),
@@ -58,7 +49,8 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
 
     /**
      * @var Request $request
-     * @var string  $id
+     * @var int     $workoutId
+     * @var int     $id
      *
      * @return Response
      *
@@ -67,16 +59,17 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      *     description="Not implemented"
      * )
      *
-     * @SWG\Tag(name="Workout")
+     * @SWG\Tag(name="WorkoutStep")
      * @Security(name="Bearer")
      */
-    public function getOne(Request $request, string $id): Response
+    public function getOne(Request $request, int $workoutId, int $id): Response
     {
         return $this->getServerErrorResponseBuilder()->notImplemented();
     }
 
     /**
      * @var Request $request
+     * @var int     $workoutId
      *
      * @return Response
      *
@@ -85,17 +78,18 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      *     description="Not implemented"
      * )
      *
-     * @SWG\Tag(name="Workout")
+     * @SWG\Tag(name="WorkoutStep")
      * @Security(name="Bearer")
      */
-    public function post(Request $request): Response
+    public function post(Request $request, int $workoutId): Response
     {
         return $this->getServerErrorResponseBuilder()->notImplemented();
     }
 
     /**
      * @var Request $request
-     * @var string  $id
+     * @var int     $workoutId
+     * @var int     $id
      *
      * @return Response
      *
@@ -104,30 +98,52 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      *     description="Not implemented"
      * )
      *
-     * @SWG\Tag(name="Workout")
+     * @SWG\Tag(name="WorkoutStep")
      * @Security(name="Bearer")
      */
-    public function put(Request $request, string $id): Response
+    public function put(Request $request, int $workoutId, int $id): Response
     {
         return $this->getServerErrorResponseBuilder()->notImplemented();
     }
 
     /**
      * @var Request $request
-     * @var string  $id
+     * @var int     $workoutId
+     * @var int     $id
      *
      * @return Response
      *
      * @SWG\Response(
-     *     response=501,
-     *     description="Not implemented"
+     *     response=204,
+     *     description="The WorkoutStep has been deleted successfully"
+     * )
+     * @SWG\Response(
+     *     response=403,
+     *     description="You are not allowed to delete this WorkoutStep"
+     * )
+     * @SWG\Response(
+     *     response=404,
+     *     description="No id was matching an existing WorkoutStep"
      * )
      *
-     * @SWG\Tag(name="Workout")
+     * @SWG\Tag(name="WorkoutStep")
      * @Security(name="Bearer")
      */
-    public function delete(Request $request, string $id): Response
+    public function delete(Request $request, int $workoutId, int $id): Response
     {
-        return $this->getServerErrorResponseBuilder()->notImplemented();
+        $step = $this->getWorkoutStepRepository()
+                     ->findOneByCriteria(['id' => $id, 'workout' => $workoutId]);
+
+        if (null === $step) {
+            return $this->getClientErrorResponseBuilder()->notFound();
+        }
+
+        $this->getEntityManager()->remove($step);
+        $this->getEntityManager()->flush();
+
+        return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
+            $step->getWorkout(),
+            $this->getSerializationGroup($request)
+        );
     }
 }

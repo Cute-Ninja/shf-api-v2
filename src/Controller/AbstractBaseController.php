@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\AbstractBaseEntity;
 use App\Entity\AbstractWorkout;
+use App\Entity\AbstractWorkoutStep;
 use App\Entity\User;
 use App\Entity\UserFavoriteWorkout;
 use App\Entity\UserWorkout;
@@ -15,6 +16,7 @@ use App\Repository\UserWorkoutRepository;
 use App\Repository\WaterTrackerEntryRepository;
 use App\Repository\WaterTrackerRepository;
 use App\Repository\WorkoutRepository;
+use App\Repository\WorkoutStepRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\QueryBuilder;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -143,5 +145,13 @@ abstract class AbstractBaseController extends FOSRestController
     protected function getUserWorkoutRepository(): UserWorkoutRepository
     {
         return $this->getEntityManager()->getRepository(UserWorkout::class);
+    }
+
+    /**
+     * @return WorkoutStepRepository
+     */
+    protected function getWorkoutStepRepository(): WorkoutStepRepository
+    {
+        return $this->getEntityManager()->getRepository(AbstractWorkoutStep::class);
     }
 }
