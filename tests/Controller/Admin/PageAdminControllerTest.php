@@ -33,6 +33,10 @@ class PageAdminControllerTest extends AbstractPageControllerTest
         $client = $this->buildAuthenticatedAdmin();
         $client->request('GET', $url);
 
+        if (500 === $client->getResponse()->getStatusCode()) {
+            echo($client->getResponse()->getContent()); die;
+        }
+
         $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }
 
