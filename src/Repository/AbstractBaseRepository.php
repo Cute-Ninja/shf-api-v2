@@ -228,37 +228,53 @@ abstract class AbstractBaseRepository extends EntityRepository implements Reposi
         $dqlPart    = $queryBuilder->getDQLPart($dqlPartName);
         $newDqlPart = [];
 
-        if (count($dqlPart)) {
-            $queryBuilder->resetDQLPart($dqlPartName);
-            if ('join' === $dqlPartName) {
-                foreach ($dqlPart as $root => $elements) {
-                    foreach ($elements as $element) {
-                        preg_match(
-                            '/^(?P<joinType>[^ ]+) JOIN (?P<join>[^ ]+) (?P<alias>[^ ]+)/', $element->__toString(),
-                            $matches
-                        );
-                        if (!array_key_exists($matches['alias'], $newDqlPart)) {
-                            $newDqlPart[$matches['alias']] = $element;
-                        }
-                    }
-                    $dqlPart[$root] = array_values($newDqlPart);
+        if (0 === count($dqlPart)) {
+            return;
+        }
+
+        $queryBuilder->resetDQLPart($dqlPartName);
+        if ('join' === $dqlPartName) {
+            $this->cleanJoinFromQuery($queryBuilder, $dqlPart, $dqlPartName, $newDqlPart);
+
+            return;
+        }
+
+        foreach ($dqlPart as $element) {
+            $newDqlPart[$element->__toString()] = $element;
+        }
+
+        $dqlPart = array_values($newDqlPart);
+        foreach ($dqlPart as $element) {
+            $queryBuilder->add($dqlPartName, $element, true);
+        }
+    }
+
+    /**
+     * @param QueryBuilder $queryBuilder
+     * @param              $dqlPart
+     * @param string       $dqlPartName
+     * @param array        $newDqlPart
+     */
+    private function cleanJoinFromQuery(QueryBuilder $queryBuilder, $dqlPart, string $dqlPartName, array $newDqlPart)
+    {
+        foreach ($dqlPart as $root => $elements) {
+            foreach ($elements as $element) {
+                preg_match(
+                    '/^(?P<joinType>[^ ]+) JOIN (?P<join>[^ ]+) (?P<alias>[^ ]+)/',
+                    $element->__toString(),
+                    $matches
+                );
+
+                if (false === array_key_exists($matches['alias'], $newDqlPart)) {
+                    $newDqlPart[$matches['alias']] = $element;
                 }
-                $dqlPart = array_shift($dqlPart);
-                foreach ($dqlPart as $element) {
-                    $queryBuilder->add($dqlPartName, [$element], true);
-                }
-
-                return;
             }
+            $dqlPart[$root] = array_values($newDqlPart);
+        }
 
-            foreach ($dqlPart as $element) {
-                $newDqlPart[$element->__toString()] = $element;
-            }
-
-            $dqlPart = array_values($newDqlPart);
-            foreach ($dqlPart as $element) {
-                $queryBuilder->add($dqlPartName, $element, true);
-            }
+        $dqlPart = array_shift($dqlPart);
+        foreach ($dqlPart as $element) {
+            $queryBuilder->add($dqlPartName, [$element], true);
         }
     }
 
