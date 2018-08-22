@@ -23,8 +23,21 @@ class PageFrontController extends AbstractBaseController
         return $this->render('front/front-profile.html.twig');
     }
 
+    /**
+     * @return Response
+     */
     public function workouts(): Response
     {
         return $this->render('front/front-workouts.html.twig');
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function workout(int $id): Response
+    {
+        return $this->render('front/front-workout.html.twig', ['workoutId' => $id]);
     }
 }

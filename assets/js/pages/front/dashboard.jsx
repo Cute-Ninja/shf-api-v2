@@ -11,7 +11,7 @@ ReactDOM.render(
 
 ReactDOM.render(
     <UserWorkouts />,
-    document.getElementById('planned-workouts')
+    document.getElementById('scheduled-workouts')
 );
 
 ReactDOM.render(

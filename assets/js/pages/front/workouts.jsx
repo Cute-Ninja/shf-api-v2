@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import StandardWorkouts from '../../components/front/Workouts/index';
+import Workouts from '../../components/front/Workouts/list';
 
 ReactDOM.render(
-    <StandardWorkouts />,
-    document.getElementById('standard-workouts')
+    <Workouts />,
+    document.getElementById('workouts')
 );

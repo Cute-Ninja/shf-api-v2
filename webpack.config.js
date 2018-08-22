@@ -14,6 +14,7 @@ Encore
 
     .addEntry('js/front-dashboard', './assets/js/pages/front/dashboard.jsx')
     .addEntry('js/front-workouts', './assets/js/pages/front/workouts.jsx')
+    .addEntry('js/front-workout', './assets/js/pages/front/workout.jsx')
 
     .addEntry('images/login-background', './assets/img/login/login-background.jpg')
 

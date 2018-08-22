@@ -31,12 +31,19 @@ api_workout_delete:
 
 
 
-front_api_workout_get_many_reference:
+front_api_workout_list_reference:
     path: /front/api/reference/workouts
     controller: App\Controller\Front\WorkoutProxyController::getManyReference
     methods: GET
 
-front_api_workout_get_many_personal:
+front_api_workout_list_personal:
     path: /front/api/personal/workouts
     controller: App\Controller\Front\WorkoutProxyController::getManyPersonal
     methods: GET
+
+front_api_workout_get:
+    path: /front/api/workouts/{id}
+    controller: App\Controller\Front\WorkoutProxyController::getOne
+    methods: GET
+    requirements:
+        id: \d+

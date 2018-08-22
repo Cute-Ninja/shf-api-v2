@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation as Serializer;
 
 abstract class AbstractWorkout extends AbstractBaseEntity
@@ -67,6 +68,13 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     protected $creator;
 
     /**
+     * @var AbstractWorkoutStep[]
+     *
+     * @Serializer\Groups({"steps"})
+     */
+    protected $workoutSteps;
+
+    /**
      * @deprecated since 17/08/2018
      *
      * Used for serialization only
@@ -81,6 +89,11 @@ abstract class AbstractWorkout extends AbstractBaseEntity
      * @return string
      */
     abstract public function getType(): string;
+
+    public function __construct()
+    {
+        $this->workoutSteps = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -200,6 +213,22 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     public function setCreator(User $creator): void
     {
         $this->creator = $creator;
+    }
+
+    /**
+     * @return AbstractWorkoutStep[]|ArrayCollection|array
+     */
+    public function getWorkoutSteps()
+    {
+        return $this->workoutSteps;
+    }
+
+    /**
+     * @param AbstractWorkoutStep[]|ArrayCollection|array $workoutSteps
+     */
+    public function setWorkoutSteps($workoutSteps): void
+    {
+        $this->workoutSteps = $workoutSteps;
     }
 
     /**

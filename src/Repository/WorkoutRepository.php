@@ -53,6 +53,20 @@ class WorkoutRepository extends AbstractBaseRepository
     }
 
     /**
+     * @param QueryBuilder $queryBuilder
+     */
+    public function addSelectWorkoutStep(QueryBuilder $queryBuilder): void
+    {
+        $queryBuilder->leftJoin($this->getAlias() . '.workoutSteps', 'workout_step')
+                     ->addSelect('workout_step');
+
+        $queryBuilder->leftJoin('workout_step.exercise', 'workout_step_exercise')
+                     ->addSelect('workout_step_exercise');
+
+        $queryBuilder->addOrderBy('workout_step.position', 'ASC');
+    }
+
+    /**
      * @return string
      */
     public function getAlias(): string

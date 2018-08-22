@@ -5,6 +5,7 @@
   "duration": null,
   "calories": null,
   "experience": null,
+  "source": "shf",
   "favoriteId": null,
   "status": "active"
 }, {
@@ -14,6 +15,7 @@
   "duration": null,
   "calories": null,
   "experience": null,
+  "source": "shf",
   "favoriteId": null,
   "status": "active"
 }, {
@@ -23,6 +25,7 @@
   "duration": null,
   "calories": null,
   "experience": null,
+  "source": "shf",
   "favoriteId": null,
   "status": "active"
 }, {
@@ -32,6 +35,7 @@
   "duration": null,
   "calories": null,
   "experience": null,
+  "source": "shf",
   "favoriteId": null,
   "status": "active"
 }, {
@@ -41,24 +45,41 @@
   "duration": null,
   "calories": null,
   "experience": null,
+  "source": "shf",
   "favoriteId": null,
   "status": "active"
 }, {
   "id": 6,
+  "name": "Helios by Ghriim",
+  "difficulty": 3,
+  "duration": null,
+  "calories": null,
+  "experience": null,
+  "source": "community",
+  "favoriteId": null,
+  "status": "active"
+}, {
+  "scheduledDate": null,
+  "completionDate": null,
+  "id": 7,
   "name": "Half marathon preparation (1)",
   "difficulty": 3,
   "duration": null,
   "calories": null,
   "experience": null,
+  "source": "community",
   "favoriteId": null,
   "status": "active"
 }, {
-  "id": 7,
+  "scheduledDate": null,
+  "completionDate": null,
+  "id": 8,
   "name": "Half marathon preparation (2)",
   "difficulty": 5,
   "duration": null,
   "calories": null,
   "experience": null,
+  "source": "community",
   "favoriteId": null,
   "status": "active"
 }]

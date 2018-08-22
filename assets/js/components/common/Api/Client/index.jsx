@@ -19,6 +19,25 @@ function getMany(url, parameters = null) {
         });
 }
 
+function getOne(url, id, parameters = null) {
+    let urlParameters = parameters ? "?" + urlEncodeParameters(parameters) : "";
+    return fetch(
+        "http://127.0.0.1:8001/front/api/" + url + "/" + id + urlParameters,
+        {credentials: 'same-origin'}
+    )
+        .then(response => {
+            return new Promise((success) => {
+                if (200 === response.status) {
+                    success(response.json());
+                } else if (404 === response.status) {
+                    success(null);
+                } else {
+                    UIkit.notification('An error as occurred (code: ' + response.status + ')', 'danger');
+                }
+            });
+        });
+}
+
 function post(url, parameters) {
     return fetch("http://127.0.0.1:8001/front/api/" + url, {
             method: 'POST',
@@ -72,7 +91,7 @@ function urlEncodeParameters(parametersBag) {
 }
 
 const Client = {
-    getMany, post, deleteOne
+    getMany, getOne, post, deleteOne
 };
 
 export default Client;

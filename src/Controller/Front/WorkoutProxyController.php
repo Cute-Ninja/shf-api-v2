@@ -43,4 +43,21 @@ class WorkoutProxyController extends AbstractApiController
             $params
         );
     }
+
+    /**
+     * @param Request $request
+     * @param int     $id
+     *
+     * @return Response
+     */
+    public function getOne(Request $request, int $id): Response
+    {
+        $params = $request->query->all();
+
+        return $this->forward(
+            'App\Controller\Api\WorkoutApiController:getOne',
+            ['id' => $id],
+            $params
+        );
+    }
 }

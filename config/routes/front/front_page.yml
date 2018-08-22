@@ -12,3 +12,10 @@ front_page_workouts:
     path: /workouts
     methods: GET
     controller: App\Controller\Front\PageFrontController::workouts
+
+front_page_workout:
+    path: /workouts/{id}
+    methods: GET
+    controller: App\Controller\Front\PageFrontController::workout
+    requirements:
+        id: \d+

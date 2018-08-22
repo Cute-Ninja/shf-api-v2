@@ -13,7 +13,10 @@ export default class UserWorkouts extends React.Component {
     }
 
     componentDidMount() {
-        Client.getMany("personal/workouts", {status: 'scheduled'})
+        Client.getMany(
+            "personal/workouts",
+            {status: 'scheduled'}
+        )
             .then(
                 (result) => {
                     this.setState({
