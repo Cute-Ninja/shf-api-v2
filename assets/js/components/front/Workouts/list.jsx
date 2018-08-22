@@ -105,13 +105,10 @@ export default class Workouts extends React.Component {
                         <div className="uk-card-header shf-remove-border-bottom">
                             <div className="uk-grid" uk-grid>
                                 <div className="uk-width-expand">
-                                    <h3 uk-toggle={"target: #workout-" + workout.id + "; animation: uk-animation-fade"}
-                                        className="uk-text-uppercase shf-clickable-neutral">{workout.name}</h3>
+                                    <h3 className="uk-text-uppercase shf-clickable-neutral">
+                                        <a href={"/front/workouts/" + workout.id}>{workout.name}</a></h3>
                                 </div>
                                 <div className="uk-text-right uk-padding-remove-left shf-clickable">
-                                    <i uk-toggle={"target: #workout-" + workout.id + "; animation: uk-animation-fade"}
-                                        className="material-icons">keyboard_arrow_down</i>
-
                                     {workout.favoriteId ? (
                                             <i onClick={() => this.removeFromFavorite(workout.name, workout.favoriteId, index)}
                                                 className="shf-padding-left-small material-icons"
@@ -124,9 +121,6 @@ export default class Workouts extends React.Component {
                                     }
                                 </div>
                             </div>
-                        </div>
-                        <div id={"workout-" + workout.id} className="uk-card-body shf-border-top" hidden>
-                            DETAILS
                         </div>
                         <div className="uk-card-footer">
                             <div className="uk-child-width-expand@s" uk-grid="true">

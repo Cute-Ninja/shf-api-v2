@@ -50,7 +50,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
 
         $response = $client->getResponse();
 
-        $this->assertEquals(Response::HTTP_NOT_IMPLEMENTED, $response->getStatusCode());
+        $this->assertEquals(Response::HTTP_NOT_FOUND, $response->getStatusCode());
         $this->assertEmpty($response->getContent());
     }
 
