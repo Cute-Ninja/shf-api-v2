@@ -2,11 +2,11 @@
 
 namespace App\Controller\Front;
 
-use App\Controller\Api\AbstractApiController;
+use App\Controller\AbstractProxyController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserProxyController extends AbstractApiController
+class UserProxyController extends AbstractProxyController
 {
     /**
      * @param Request $request
@@ -15,13 +15,11 @@ class UserProxyController extends AbstractApiController
      */
     public function me(Request $request): Response
     {
-        $params = $request->query->all();
-        $params['groups'] = $this->buildProxySerializationGroups($request, ['user-details', 'user-body-measurement']);
-
-        return $this->forward(
+        return $this->forwardToApi(
+            $request,
             'App\Controller\Api\UserApiController:getOne',
             ['username' => $this->getUser()->getUsername()],
-            $params
+            ['groups' => ['user-details', 'user-body-measurement']]
         );
     }
 }

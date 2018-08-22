@@ -31,21 +31,4 @@ abstract class AbstractApiController extends AbstractBaseController
     {
         return $this->container->get('shf.response_builder.server_error');
     }
-
-    /**
-     * @param Request $request
-     * @param array   $proxyGroups
-     *
-     * @return string
-     */
-    protected function buildProxySerializationGroups(Request $request, array $proxyGroups = []): string
-    {
-        $queryGroups = $request->get('groups');
-        $proxyGroupsAsString = implode(',', $proxyGroups);
-        if (null === $queryGroups) {
-            return $proxyGroupsAsString;
-        }
-
-        return $queryGroups . ',' . $proxyGroupsAsString;
-    }
 }

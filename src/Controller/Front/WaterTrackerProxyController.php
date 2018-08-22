@@ -2,11 +2,11 @@
 
 namespace App\Controller\Front;
 
-use App\Controller\Api\AbstractApiController;
+use App\Controller\AbstractProxyController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class WaterTrackerProxyController extends AbstractApiController
+class WaterTrackerProxyController extends AbstractProxyController
 {
     /**
      * @param Request $request
@@ -15,13 +15,9 @@ class WaterTrackerProxyController extends AbstractApiController
      */
     public function getMany(Request $request): Response
     {
-        $params = $request->query->all();
-        $params['user'] = $this->getUser()->getId();
-
-        return $this->forward(
-            'App\Controller\Api\WaterTrackerApiController:getMany',
-            [],
-            $params
+        return $this->forwardToApi(
+            $request,
+            'App\Controller\Api\WaterTrackerApiController:getMany'
         );
     }
 
@@ -32,14 +28,11 @@ class WaterTrackerProxyController extends AbstractApiController
      */
     public function getToday(Request $request): Response
     {
-        $params = $request->query->all();
-        $params['user']   = $this->getUser()->getId();
-        $params['groups'] = $this->buildProxySerializationGroups($request, ['tracker-entries']);
-
-        return $this->forward(
+        return $this->forwardToApi(
+            $request,
             'App\Controller\Api\WaterTrackerApiController:getToday',
-                [],
-            $params
-            );
+            [],
+            ['groups' => ['tracker-entries']]
+        );
     }
 }

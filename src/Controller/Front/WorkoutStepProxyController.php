@@ -2,11 +2,11 @@
 
 namespace App\Controller\Front;
 
-use App\Controller\Api\AbstractApiController;
+use App\Controller\AbstractProxyController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class WorkoutStepProxyController extends AbstractApiController
+class WorkoutStepProxyController extends AbstractProxyController
 {
     /**
      * @param Request $request
@@ -16,12 +16,10 @@ class WorkoutStepProxyController extends AbstractApiController
      */
     public function getMany(Request $request, int $workoutId): Response
     {
-        $params = $request->query->all();
-
-        return $this->forward(
+        return $this->forwardToApi(
+            $request,
             'App\Controller\Api\WorkoutStepApiController:getMany',
-            ['workoutId' => $workoutId],
-            $params
+            ['workoutId' => $workoutId]
         );
     }
 
@@ -34,13 +32,10 @@ class WorkoutStepProxyController extends AbstractApiController
      */
     public function delete(Request $request, int $workoutId, int $id): Response
     {
-        $params = $request->query->all();
-
-        return $this->forward(
+        return $this->forwardToApi(
+            $request,
             'App\Controller\Api\WorkoutStepApiController:delete',
-            ['workoutId' => $workoutId, 'id' => $id],
-            $params
+            ['workoutId' => $workoutId, 'id' => $id]
         );
     }
-
 }

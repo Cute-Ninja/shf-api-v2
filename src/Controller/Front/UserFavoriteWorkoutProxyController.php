@@ -2,11 +2,11 @@
 
 namespace App\Controller\Front;
 
-use App\Controller\Api\AbstractApiController;
+use App\Controller\AbstractProxyController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserFavoriteWorkoutProxyController extends AbstractApiController
+class UserFavoriteWorkoutProxyController extends AbstractProxyController
 {
     /**
      * @param Request $request
@@ -15,13 +15,9 @@ class UserFavoriteWorkoutProxyController extends AbstractApiController
      */
     public function getMany(Request $request): Response
     {
-        $params = $request->query->all();
-        $params['user'] = $this->getUser()->getId();
-
-        return $this->forward(
-            'App\Controller\Api\UserFavoriteWorkoutApiController:getMany',
-            [],
-            $params
+        return $this->forwardToApi(
+            $request,
+            'App\Controller\Api\UserFavoriteWorkoutApiController:getMany'
         );
     }
 
@@ -32,13 +28,9 @@ class UserFavoriteWorkoutProxyController extends AbstractApiController
      */
     public function post(Request $request): Response
     {
-        $params = $request->query->all();
-        $params['user'] = $this->getUser()->getId();
-
-        return $this->forward(
-            'App\Controller\Api\UserFavoriteWorkoutApiController:post',
-            [],
-            $params
+        return $this->forwardToApi(
+            $request,
+            'App\Controller\Api\UserFavoriteWorkoutApiController:post'
         );
     }
 
@@ -50,13 +42,10 @@ class UserFavoriteWorkoutProxyController extends AbstractApiController
      */
     public function delete(Request $request, $id): Response
     {
-        $params = $request->query->all();
-        $params['user'] = $this->getUser()->getId();
-
-        return $this->forward(
-            'App\Controller\Api\UserFavoriteWorkoutApiController:delete',
-            ['id' => $id],
-            $params
+        return $this->forwardToApi(
+            $request,
+            'App\Controller\Api\UserFavoriteWorkoutApiController:post',
+            ['id' => $id]
         );
     }
 }
