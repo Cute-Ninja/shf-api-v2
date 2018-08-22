@@ -16,10 +16,14 @@ class WaterTrackerEntryProxyController extends AbstractApiController
      */
     public function post(Request $request, $trackerId): Response
     {
+        $params = $request->query->all();
+        $params['user']   = $this->getUser()->getId();
+        $params['groups'] = $this->buildProxySerializationGroups($request, ['tracker-entries']);
+
         return $this->forward(
             'App\Controller\Api\WaterTrackerEntryApiController:post',
             ['trackerId' => $trackerId],
-            ['user' => $this->getUser()->getId(), 'groups' => 'tracker-entries']
+            $params
         );
     }
 
@@ -32,12 +36,14 @@ class WaterTrackerEntryProxyController extends AbstractApiController
      */
     public function put(Request $request, $trackerId, $id): Response
     {
-        $request->query->set('user', $this->getUser()->getId());
+        $params = $request->query->all();
+        $params['user']   = $this->getUser()->getId();
+        $params['groups'] = $this->buildProxySerializationGroups($request, ['tracker-entries']);
 
         return $this->forward(
             'App\Controller\Api\WaterTrackerEntryApiController:put',
             ['trackerId' => $trackerId, 'id' => $id],
-            ['user' => $this->getUser()->getId(), 'groups' => 'tracker-entries']
+            $params
         );
     }
 
@@ -50,10 +56,14 @@ class WaterTrackerEntryProxyController extends AbstractApiController
      */
     public function delete(Request $request, $trackerId, $id): Response
     {
+        $params = $request->query->all();
+        $params['user']   = $this->getUser()->getId();
+        $params['groups'] = $this->buildProxySerializationGroups($request, ['tracker-entries']);
+
         return $this->forward(
             'App\Controller\Api\WaterTrackerEntryApiController:delete',
             ['trackerId' => $trackerId, 'id' => $id],
-            ['user' => $this->getUser()->getId(), 'groups' => 'tracker-entries']
+            $params
         );
     }
 

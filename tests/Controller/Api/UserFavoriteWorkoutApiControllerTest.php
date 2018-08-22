@@ -21,8 +21,12 @@ class UserFavoriteWorkoutApiControllerTest extends AbstractBaseApiTest
 
     public function testGetManyAuthorized(): void
     {
-        $client = $this->buildAuthenticatedUser();
-        $this->buildGetRequest($client, 'favorite-workouts');
+        $client = $this->buildAuthenticatedUser(true);
+        $this->buildGetRequest(
+            $client,
+            'favorite-workouts',
+            ['user' => $this->user->getId()]
+        );
 
         $response = $client->getResponse();
 
@@ -36,7 +40,7 @@ class UserFavoriteWorkoutApiControllerTest extends AbstractBaseApiTest
     public function testGetOneUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildGetRequest($client, 'favorite-workouts/not_existing');
+        $this->buildGetRequest($client, 'favorite-workouts/0000');
 
         $response = $client->getResponse();
 
@@ -46,7 +50,7 @@ class UserFavoriteWorkoutApiControllerTest extends AbstractBaseApiTest
     public function testGetOneAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildGetRequest($client, 'favorite-workouts/not_existing');
+        $this->buildGetRequest($client, 'favorite-workouts/0000');
 
         $response = $client->getResponse();
 
@@ -102,7 +106,7 @@ class UserFavoriteWorkoutApiControllerTest extends AbstractBaseApiTest
     public function testPutUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildPutRequest($client, 'favorite-workouts/not_existing');
+        $this->buildPutRequest($client, 'favorite-workouts/0000');
 
         $response = $client->getResponse();
 
@@ -112,7 +116,7 @@ class UserFavoriteWorkoutApiControllerTest extends AbstractBaseApiTest
     public function testPutAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildPutRequest($client,'favorite-workouts/not_existing');
+        $this->buildPutRequest($client,'favorite-workouts/0000');
 
         $response = $client->getResponse();
 
@@ -123,7 +127,7 @@ class UserFavoriteWorkoutApiControllerTest extends AbstractBaseApiTest
     public function testDeleteUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildDeleteRequest($client, 'favorite-workouts/not_existing');
+        $this->buildDeleteRequest($client, 'favorite-workouts/0000');
 
         $response = $client->getResponse();
 
@@ -145,7 +149,7 @@ class UserFavoriteWorkoutApiControllerTest extends AbstractBaseApiTest
     public function testDeleteNotFound(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildDeleteRequest($client, 'favorite-workouts/not_existing');
+        $this->buildDeleteRequest($client, 'favorite-workouts/0000');
 
         $response = $client->getResponse();
 

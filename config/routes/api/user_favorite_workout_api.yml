@@ -7,6 +7,8 @@ api_user_favorite_workout_get:
     path: /api/favorite-workouts/{id}
     controller: App\Controller\Api\UserFavoriteWorkoutApiController::getOne
     methods: GET
+    requirements:
+        id: \d+
 
 api_user_favorite_workout_post:
     path: /api/favorite-workouts
@@ -17,11 +19,15 @@ api_user_favorite_workout_put:
     path: /api/favorite-workouts/{id}
     controller: App\Controller\Api\UserFavoriteWorkoutApiController::put
     methods: PUT
+    requirements:
+        id: \d+
 
 api_user_favorite_workout_delete:
     path: /api/favorite-workouts/{id}
     controller: App\Controller\Api\UserFavoriteWorkoutApiController::delete
     methods: DELETE
+    requirements:
+        id: \d+
 
 
 front_api_user_favorite_workout_get_many:
@@ -38,3 +44,5 @@ front_api_user_favorite_workout_delete:
     path: /front/api/favorite-workouts/{id}
     controller: App\Controller\Front\UserFavoriteWorkoutProxyController::delete
     methods: DELETE
+    requirements:
+        id: \d+

@@ -16,10 +16,12 @@ class WorkoutStepProxyController extends AbstractApiController
      */
     public function getMany(Request $request, int $workoutId): Response
     {
+        $params = $request->query->all();
+
         return $this->forward(
             'App\Controller\Api\WorkoutStepApiController:getMany',
             ['workoutId' => $workoutId],
-            ['groups' => $request->get('groups')]
+            $params
         );
     }
 
@@ -32,10 +34,12 @@ class WorkoutStepProxyController extends AbstractApiController
      */
     public function delete(Request $request, int $workoutId, int $id): Response
     {
+        $params = $request->query->all();
+
         return $this->forward(
             'App\Controller\Api\WorkoutStepApiController:delete',
             ['workoutId' => $workoutId, 'id' => $id],
-            ['groups' => $request->get('groups')]
+            $params
         );
     }
 

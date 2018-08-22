@@ -1,0 +1,24 @@
+App\Entity\PersonalWorkout:
+    type: entity
+    repositoryClass: App\Repository\PersonalWorkoutRepository
+
+    fields:
+        scheduledDate:
+            name: scheduled_date
+            type:  datetime
+            unique: false
+            nullable: true
+        completionDate:
+            name: completion_date
+            type:  datetime
+            unique: false
+            nullable: true
+
+    manyToOne:
+        owner:
+            targetEntity: App\Entity\User
+            nullable: false
+            joinColumn:
+                name: owner_id
+                referencedColumnName: id
+

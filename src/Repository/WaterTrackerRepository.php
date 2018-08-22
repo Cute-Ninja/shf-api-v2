@@ -29,12 +29,12 @@ class WaterTrackerRepository extends AbstractBaseRepository
      */
     public function addCriterionCreatedBetween(QueryBuilder $queryBuilder, array $interval): bool
     {
-        if (false === isset($interval['start']) || isset($interval['end'])) {
+        if (false === isset($interval['start']) || false === isset($interval['end'])) {
             return false;
         }
 
-        $queryBuilder->andWhere('created >= :start_date')
-                     ->andWhere('created <= :end_date')
+        $queryBuilder->andWhere($this->getAlias() . '.createdAt >= :start_date')
+                     ->andWhere($this->getAlias() . '.createdAt <= :end_date')
                      ->setParameter('start_date', $interval['start'])
                      ->setParameter('end_date', $interval['end']);
 

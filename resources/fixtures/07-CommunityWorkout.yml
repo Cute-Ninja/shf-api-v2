@@ -1,11 +1,14 @@
-App\Entity\CommunityWorkout:
-    ghriimWorkout1:
+App\Entity\PersonalWorkout:
+    ghriim_workout_1:
         name: Half marathon preparation (1)
         difficulty: 3
+        source: community
         creator: "@ghriim"
+        owner: "@ghriim"
 
-    ghriimWorkout2:
+    ghriim_workout_2:
         name: Half marathon preparation (2)
         difficulty: 5
+        source: community
         creator: "@ghriim"
-
+        owner: "@ghriim"

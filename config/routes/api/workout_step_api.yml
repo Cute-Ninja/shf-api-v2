@@ -2,34 +2,52 @@ api_workout_step_list:
     path: /api/workouts/{workoutId}/steps
     controller: App\Controller\Api\WorkoutStepApiController::getMany
     methods: GET
+    requirements:
+        workoutId: \d+
 
 api_workout_step_get:
     path: /api/workouts/{workoutId}/steps/{id}
     controller: App\Controller\Api\WorkoutStepApiController::getOne
     methods: GET
+    requirements:
+        workoutId: \d+
+        id: \d+
 
 api_workout_step_post:
     path: /api/workouts/{workoutId}/steps
     controller: App\Controller\Api\WorkoutStepApiController::post
     methods: POST
+    requirements:
+        workoutId: \d+
 
 api_workout_step_put:
     path: /api/workouts/{workoutId}/steps/{id}
     controller: App\Controller\Api\WorkoutStepApiController::put
     methods: PUT
+    requirements:
+        workoutId: \d+
+        id: \d+
 
 api_workout_step_delete:
     path: /api/workouts/{workoutId}/steps/{id}
     controller: App\Controller\Api\WorkoutStepApiController::delete
     methods: DELETE
+    requirements:
+        workoutId: \d+
+        id: \d+
 
 
 front_api_workout_step_get_many:
     path: /front/api/workouts/{workoutId}/steps
     controller: App\Controller\Front\WorkoutStepProxyController::getMany
     methods: GET
+    requirements:
+        workoutId: \d+
 
 front_api_workout_step_delete:
     path: /front/api/workouts/{workoutId}/steps/{id}
     controller: App\Controller\Front\WorkoutStepProxyController::delete
     methods: GET
+    requirements:
+        workoutId: \d+
+        id: \d+

@@ -36,7 +36,7 @@
   "status": "active"
 }, {
   "id": 5,
-  "name": "Half marathon preparation (1)",
+  "name": "Helios",
   "difficulty": 3,
   "duration": null,
   "calories": null,
@@ -45,6 +45,15 @@
   "status": "active"
 }, {
   "id": 6,
+  "name": "Half marathon preparation (1)",
+  "difficulty": 3,
+  "duration": null,
+  "calories": null,
+  "experience": null,
+  "favoriteId": null,
+  "status": "active"
+}, {
+  "id": 7,
   "name": "Half marathon preparation (2)",
   "difficulty": 5,
   "duration": null,

@@ -6,6 +6,10 @@ use Symfony\Component\Serializer\Annotation as Serializer;
 
 abstract class AbstractWorkout extends AbstractBaseEntity
 {
+    public const WORKOUT_SOURCE_SHF = 'shf';
+    public const WORKOUT_SOURCE_COMMUNITY = 'community';
+
+
     /**
      * @var int
      *
@@ -49,6 +53,20 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     protected $experience;
 
     /**
+     * @var string
+     *
+     * @Serializer\Groups({"default", "test"})
+     */
+    protected $source;
+
+    /**
+     * @var User
+     *
+     * @Serializer\Groups({"creator"})
+     */
+    protected $creator;
+
+    /**
      * @deprecated since 17/08/2018
      *
      * Used for serialization only
@@ -62,7 +80,7 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     /**
      * @return string
      */
-    abstract public function getSource(): string;
+    abstract public function getType(): string;
 
     /**
      * @return int
@@ -137,6 +155,22 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     }
 
     /**
+     * @return string
+     */
+    public function getSource(): string
+    {
+        return $this->source;
+    }
+
+    /**
+     * @param string $source
+     */
+    public function setSource(string $source): void
+    {
+        $this->source = $source;
+    }
+
+    /**
      * @return int|null
      */
     public function getExperience(): ?int
@@ -150,6 +184,22 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     public function setExperience(int $experience): void
     {
         $this->experience = $experience;
+    }
+
+    /**
+     * @return User
+     */
+    public function getCreator(): User
+    {
+        return $this->creator;
+    }
+
+    /**
+     * @param User $creator
+     */
+    public function setCreator(User $creator): void
+    {
+        $this->creator = $creator;
     }
 
     /**

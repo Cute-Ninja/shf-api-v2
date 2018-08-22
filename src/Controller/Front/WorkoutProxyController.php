@@ -3,6 +3,8 @@
 namespace App\Controller\Front;
 
 use App\Controller\Api\AbstractApiController;
+use App\Entity\PersonalWorkout;
+use App\Entity\ReferenceWorkout;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -13,12 +15,32 @@ class WorkoutProxyController extends AbstractApiController
      *
      * @return Response
      */
-    public function getMany(Request $request): Response
+    public function getManyPersonal(Request $request): Response
     {
+        $params = $request->query->all();
+        $params['type'] = PersonalWorkout::TYPE_PERSONAL;
+
         return $this->forward(
             'App\Controller\Api\WorkoutApiController:getMany',
             [],
-            ['user' => $this->getUser()->getId(), 'groups' => $request->get('groups')]
+            $params
+        );
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function getManyReference(Request $request): Response
+    {
+        $params = $request->query->all();
+        $params['type'] = ReferenceWorkout::TYPE_REFERENCE;
+
+        return $this->forward(
+            'App\Controller\Api\WorkoutApiController:getMany',
+            [],
+            $params
         );
     }
 }

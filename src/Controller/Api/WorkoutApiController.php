@@ -2,7 +2,10 @@
 
 namespace App\Controller\Api;
 
+use App\Controller\Api\ActionHelper\GetManyWorkoutActionHelper;
 use App\Entity\AbstractWorkout;
+use App\Entity\PersonalWorkout;
+use App\Entity\ReferenceWorkout;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;
@@ -34,18 +37,13 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      */
     public function getMany(Request $request): Response
     {
-        $builder = $this->getWorkoutRepository()
-                        ->findManyByCriteriaBuilder();
+        $type = $request->get('type');
 
-        if ($user = $request->get('user')) {
-            $favorites = $this->getUserFavoriteWorkoutRepository()
-                              ->findManyByCriteria(['user' => $user]);
+        $actionHelper = new GetManyWorkoutActionHelper($this->getEntityManager());
+        $builder      = $actionHelper->getWorkoutBuilder($request);
 
-            if (false === empty($favorites)) {
-                foreach ($favorites as $favorite) {
-                    $favorite->getWorkout()->setFavoriteId($favorite->getId());
-                }
-            }
+        if (ReferenceWorkout::TYPE_REFERENCE === $type && $userId = $request->get('user')) {
+            $actionHelper->loadFavoriteWorkoutIds($userId);
         }
 
         return $this->getSuccessResponseBuilder()->buildMultiObjectResponse(

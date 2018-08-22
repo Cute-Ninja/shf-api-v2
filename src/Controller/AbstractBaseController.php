@@ -5,14 +5,16 @@ namespace App\Controller;
 use App\Entity\AbstractBaseEntity;
 use App\Entity\AbstractWorkout;
 use App\Entity\AbstractWorkoutStep;
+use App\Entity\PersonalWorkout;
+use App\Entity\ReferenceWorkout;
 use App\Entity\User;
 use App\Entity\UserFavoriteWorkout;
-use App\Entity\UserWorkout;
 use App\Entity\WaterTracker;
 use App\Entity\WaterTrackerEntry;
+use App\Repository\PersonalWorkoutRepository;
+use App\Repository\ReferenceWorkoutRepository;
 use App\Repository\UserFavoriteWorkoutRepository;
 use App\Repository\UserRepository;
-use App\Repository\UserWorkoutRepository;
 use App\Repository\WaterTrackerEntryRepository;
 use App\Repository\WaterTrackerRepository;
 use App\Repository\WorkoutRepository;
@@ -131,20 +133,28 @@ abstract class AbstractBaseController extends FOSRestController
         return $this->getEntityManager()->getRepository(AbstractWorkout::class);
     }
 
+    /**
+     * @return ReferenceWorkoutRepository
+     */
+    public function getReferenceWorkoutRepository(): ReferenceWorkoutRepository
+    {
+        return $this->getEntityManager()->getRepository(ReferenceWorkout::class);
+    }
+
+    /**
+     * @return PersonalWorkoutRepository
+     */
+    public function getPersonalWorkoutRepository(): PersonalWorkoutRepository
+    {
+        return $this->getEntityManager()->getRepository(PersonalWorkout::class);
+    }
+
     /***
      * @return UserFavoriteWorkoutRepository
      */
     protected function getUserFavoriteWorkoutRepository(): UserFavoriteWorkoutRepository
     {
         return $this->getEntityManager()->getRepository(UserFavoriteWorkout::class);
-    }
-
-    /**
-     * @return UserWorkoutRepository
-     */
-    protected function getUserWorkoutRepository(): UserWorkoutRepository
-    {
-        return $this->getEntityManager()->getRepository(UserWorkout::class);
     }
 
     /**

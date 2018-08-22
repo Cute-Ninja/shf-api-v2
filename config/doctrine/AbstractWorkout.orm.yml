@@ -1,14 +1,17 @@
 App\Entity\AbstractWorkout:
     type: entity
     table: "`workout`"
+    indexes:
+        source_index:
+          columns: [ source ]
     repositoryClass: App\Repository\WorkoutRepository
     inheritanceType: SINGLE_TABLE
     discriminatorColumn:
-        name: source
+        name: type
         type: string
     discriminatorMap:
-        shf: App\Entity\ShfWorkout
-        community: App\Entity\CommunityWorkout
+        reference: App\Entity\ReferenceWorkout
+        personal: App\Entity\PersonalWorkout
 
     id:
         id:
@@ -25,7 +28,7 @@ App\Entity\AbstractWorkout:
             column: name
             type: string
             length: 255
-            unique: true
+            unique: false
             nullable: false
         difficulty:
             column: difficulty
@@ -47,3 +50,15 @@ App\Entity\AbstractWorkout:
             type: integer
             unique: false
             nullable: true
+        source:
+            column: source
+            unique: false
+            nullable: false
+
+    manyToOne:
+        creator:
+            targetEntity: App\Entity\User
+            nullable: false
+            joinColumn:
+                name: creator_id
+                referencedColumnName: id

@@ -8,35 +8,35 @@ export default class UserWorkouts extends React.Component {
         super(props);
         this.state = {
             isLoaded: false,
-            userWorkouts: null
+            workouts: null
         };
     }
 
     componentDidMount() {
-        Client.getMany("user-workouts", {status: 'scheduled'})
+        Client.getMany("personal/workouts", {status: 'scheduled'})
             .then(
                 (result) => {
                     this.setState({
                         isLoaded: true,
-                        userWorkouts: result
+                        workouts: result
                     });
                 }
             );
     }
 
     render() {
-        const {isLoaded, userWorkouts} = this.state;
+        const {isLoaded, workouts} = this.state;
         if (!isLoaded) {
             return <div>Loading...</div>;
         }
 
         return (
             <div>
-                {userWorkouts.map((userWorkout, index) => (
+                {workouts.map((workout, index) => (
                     <div key={workout.id} className="uk-card uk-card-default uk-margin-bottom">
-                        {userWorkout.workout.name}
+                        {workout.name}
                         <Moment format="LLLL">
-                            {userWorkout.scheduledDate}
+                            {workout.scheduledDate}
                         </Moment>
                     </div>
                 ))}

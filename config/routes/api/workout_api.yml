@@ -7,6 +7,8 @@ api_workout_get:
     path: /api/workouts/{id}
     controller: App\Controller\Api\WorkoutApiController::getOne
     methods: GET
+    requirements:
+        id: \d+
 
 api_workout_post:
     path: /api/workouts
@@ -17,14 +19,24 @@ api_workout_put:
     path: /api/workouts/{id}
     controller: App\Controller\Api\WorkoutApiController::put
     methods: PUT
+    requirements:
+        id: \d+
 
 api_workout_delete:
     path: /api/workouts/{id}
     controller: App\Controller\Api\WorkoutApiController::delete
     methods: DELETE
+    requirements:
+        id: \d+
 
 
-front_api_workout_get_many:
-    path: /front/api/workouts
-    controller: App\Controller\Front\WorkoutProxyController::getMany
+
+front_api_workout_get_many_reference:
+    path: /front/api/reference/workouts
+    controller: App\Controller\Front\WorkoutProxyController::getManyReference
+    methods: GET
+
+front_api_workout_get_many_personal:
+    path: /front/api/personal/workouts
+    controller: App\Controller\Front\WorkoutProxyController::getManyPersonal
     methods: GET

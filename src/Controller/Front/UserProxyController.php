@@ -15,10 +15,13 @@ class UserProxyController extends AbstractApiController
      */
     public function me(Request $request): Response
     {
+        $params = $request->query->all();
+        $params['groups'] = $this->buildProxySerializationGroups($request, ['user-details', 'user-body-measurement']);
+
         return $this->forward(
             'App\Controller\Api\UserApiController:getOne',
             ['username' => $this->getUser()->getUsername()],
-            ['groups' => 'user-details,user-body-measurement']
+            $params
         );
     }
 }

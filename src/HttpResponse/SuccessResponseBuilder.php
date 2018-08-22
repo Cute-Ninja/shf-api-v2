@@ -38,7 +38,7 @@ class SuccessResponseBuilder extends AbstractResponseBuilder
             $callback = function ($dateTime) {
                 return $dateTime instanceof \DateTime
                     ? $dateTime->format(\DateTime::ATOM)
-                    : '';
+                    : null;
             };
 
             $normalizer->setCallbacks(

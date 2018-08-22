@@ -15,10 +15,13 @@ class UserFavoriteWorkoutProxyController extends AbstractApiController
      */
     public function getMany(Request $request): Response
     {
+        $params = $request->query->all();
+        $params['user'] = $this->getUser()->getId();
+
         return $this->forward(
             'App\Controller\Api\UserFavoriteWorkoutApiController:getMany',
             [],
-            ['user' => $this->getUser()->getId()]
+            $params
         );
     }
 
@@ -29,10 +32,13 @@ class UserFavoriteWorkoutProxyController extends AbstractApiController
      */
     public function post(Request $request): Response
     {
+        $params = $request->query->all();
+        $params['user'] = $this->getUser()->getId();
+
         return $this->forward(
             'App\Controller\Api\UserFavoriteWorkoutApiController:post',
             [],
-            ['user' => $this->getUser()->getId()]
+            $params
         );
     }
 
@@ -44,12 +50,13 @@ class UserFavoriteWorkoutProxyController extends AbstractApiController
      */
     public function delete(Request $request, $id): Response
     {
-        $request->query->set('user', $this->getUser()->getId());
+        $params = $request->query->all();
+        $params['user'] = $this->getUser()->getId();
 
         return $this->forward(
             'App\Controller\Api\UserFavoriteWorkoutApiController:delete',
             ['id' => $id],
-            ['user' => $this->getUser()->getId()]
+            $params
         );
     }
 }

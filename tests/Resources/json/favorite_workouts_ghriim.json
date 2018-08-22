@@ -27,7 +27,7 @@
 }, {
   "id": 3,
   "workout": {
-    "id": 5,
+    "id": 6,
     "name": "Half marathon preparation (1)",
     "difficulty": 3,
     "duration": null,
@@ -40,7 +40,7 @@
 }, {
   "id": 4,
   "workout": {
-    "id": 6,
+    "id": 7,
     "name": "Half marathon preparation (2)",
     "difficulty": 5,
     "duration": null,

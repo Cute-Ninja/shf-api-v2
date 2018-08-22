@@ -36,7 +36,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
     public function testGetOneUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildGetRequest($client, 'workouts/not_existing');
+        $this->buildGetRequest($client, 'workouts/0000');
 
         $response = $client->getResponse();
 
@@ -46,7 +46,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
     public function testGetOneAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildGetRequest($client, 'workouts/not_existing');
+        $this->buildGetRequest($client, 'workouts/0000');
 
         $response = $client->getResponse();
 
@@ -78,7 +78,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
     public function testPutUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildPutRequest($client, 'workouts/not_existing');
+        $this->buildPutRequest($client, 'workouts/0000');
 
         $response = $client->getResponse();
 
@@ -88,7 +88,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
     public function testPutAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildPutRequest($client,'workouts/not_existing');
+        $this->buildPutRequest($client,'workouts/0000');
 
         $response = $client->getResponse();
 
@@ -99,7 +99,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
     public function testDeleteUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildDeleteRequest($client, 'workouts/not_existing');
+        $this->buildDeleteRequest($client, 'workouts/0000');
 
         $response = $client->getResponse();
 
@@ -109,7 +109,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
     public function testDeleteAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildDeleteRequest($client, 'workouts/not_existing');
+        $this->buildDeleteRequest($client, 'workouts/0000');
 
         $response = $client->getResponse();
 

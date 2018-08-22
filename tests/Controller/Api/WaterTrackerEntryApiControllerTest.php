@@ -19,7 +19,7 @@ class WaterTrackerEntryApiControllerTest extends AbstractBaseApiTest
     public function testGetManyUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildGetRequest($client, 'water-trackers/not_existing/entries');
+        $this->buildGetRequest($client, 'water-trackers/0000/entries');
 
         $response = $client->getResponse();
 
@@ -29,7 +29,7 @@ class WaterTrackerEntryApiControllerTest extends AbstractBaseApiTest
     public function testGetManyAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildGetRequest($client, 'water-trackers/not_existing/entries');
+        $this->buildGetRequest($client, 'water-trackers/0000/entries');
 
         $response = $client->getResponse();
 
@@ -40,7 +40,7 @@ class WaterTrackerEntryApiControllerTest extends AbstractBaseApiTest
     public function testGetOneUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildGetRequest($client, 'water-trackers/not_existing/entries/not_existing');
+        $this->buildGetRequest($client, 'water-trackers/0000/entries/0000');
 
         $response = $client->getResponse();
 
@@ -50,7 +50,7 @@ class WaterTrackerEntryApiControllerTest extends AbstractBaseApiTest
     public function testGetOneAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildGetRequest($client, 'water-trackers/not_existing/entries/not_existing');
+        $this->buildGetRequest($client, 'water-trackers/0000/entries/0000');
 
         $response = $client->getResponse();
 
@@ -61,7 +61,7 @@ class WaterTrackerEntryApiControllerTest extends AbstractBaseApiTest
     public function testPostUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildPostRequest($client, 'water-trackers/not_existing/entries');
+        $this->buildPostRequest($client, 'water-trackers/0000/entries');
 
         $response = $client->getResponse();
 
@@ -111,7 +111,7 @@ class WaterTrackerEntryApiControllerTest extends AbstractBaseApiTest
     public function testPutUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildPutRequest($client, 'water-trackers/not_existing/entries/not_existing');
+        $this->buildPutRequest($client, 'water-trackers/0000/entries/0000');
 
         $response = $client->getResponse();
 
@@ -121,7 +121,7 @@ class WaterTrackerEntryApiControllerTest extends AbstractBaseApiTest
     public function testPutAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildPutRequest($client,'water-trackers/not_existing/entries/not_existing');
+        $this->buildPutRequest($client,'water-trackers/0000/entries/0000');
 
         $response = $client->getResponse();
 
@@ -132,7 +132,7 @@ class WaterTrackerEntryApiControllerTest extends AbstractBaseApiTest
     public function testDeleteUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildDeleteRequest($client, 'water-trackers/not_existing/entries/not_existing');
+        $this->buildDeleteRequest($client, 'water-trackers/0000/entries/0000');
 
         $response = $client->getResponse();
 

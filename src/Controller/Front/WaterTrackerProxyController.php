@@ -15,10 +15,13 @@ class WaterTrackerProxyController extends AbstractApiController
      */
     public function getMany(Request $request): Response
     {
+        $params = $request->query->all();
+        $params['user'] = $this->getUser()->getId();
+
         return $this->forward(
             'App\Controller\Api\WaterTrackerApiController:getMany',
             [],
-            ['user' => $this->getUser()->getId()]
+            $params
         );
     }
 
@@ -29,10 +32,14 @@ class WaterTrackerProxyController extends AbstractApiController
      */
     public function getToday(Request $request): Response
     {
+        $params = $request->query->all();
+        $params['user']   = $this->getUser()->getId();
+        $params['groups'] = $this->buildProxySerializationGroups($request, ['tracker-entries']);
+
         return $this->forward(
             'App\Controller\Api\WaterTrackerApiController:getToday',
                 [],
-                ['user' => $this->getUser()->getId(), 'groups' => 'tracker-entries']
+            $params
             );
     }
 }

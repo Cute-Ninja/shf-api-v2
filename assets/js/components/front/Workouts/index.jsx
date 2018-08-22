@@ -13,6 +13,7 @@ export default class Workouts extends React.Component {
 
         this.addToFavorite = this.addToFavorite.bind(this);
         this.removeFromFavorite = this.removeFromFavorite.bind(this);
+        this.loadWorkouts = this.loadWorkouts.bind(this)
     }
 
     addToFavorite(workoutId, index) {
@@ -52,12 +53,12 @@ export default class Workouts extends React.Component {
             workouts: workouts
         });
     }
-
-    componentDidMount() {
+    
+    loadWorkouts(source) {
         Client.getMany(
-                "workouts",
-                {groups : []}
-            )
+            "reference/workouts",
+            {source : source}
+        )
             .then(
                 (result) => {
                     this.setState({
@@ -71,6 +72,10 @@ export default class Workouts extends React.Component {
             });
     }
 
+    componentDidMount() {
+        this.loadWorkouts('shf');
+    }
+
     render() {
         const {error, isLoaded, workouts} = this.state;
         if (error) {
@@ -81,6 +86,20 @@ export default class Workouts extends React.Component {
 
         return (
             <div>
+                <div className="uk-clearfix">
+                    <div className="uk-inline uk-margin-bottom uk-float-right">
+                        <button type="button" className="uk-button uk-button-primary">
+                            Source&nbsp;<span uk-icon="icon:  triangle-down"></span></button>
+                        <div uk-dropdown="mode: click">
+                            <ul className="uk-nav uk-dropdown-nav">
+                                <li onClick={() => this.loadWorkouts('shf')}>
+                                    <a href="#">SHF</a></li>
+                                <li onClick={() => this.loadWorkouts('community')}>
+                                    <a href="#">Community</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 {workouts.map((workout, index) => (
                     <div key={workout.id} className="uk-card uk-card-default uk-margin-bottom">
                         <div className="uk-card-header shf-remove-border-bottom">
@@ -105,6 +124,9 @@ export default class Workouts extends React.Component {
                                     }
                                 </div>
                             </div>
+                        </div>
+                        <div id={"workout-" + workout.id} className="uk-card-body shf-border-top" hidden>
+                            DETAILS
                         </div>
                         <div className="uk-card-footer">
                             <div className="uk-child-width-expand@s" uk-grid="true">

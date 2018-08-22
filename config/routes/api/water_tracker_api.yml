@@ -12,6 +12,8 @@ api_water_tracker_get:
     path: /api/water-trackers/{id}
     controller: App\Controller\Api\WaterTrackerApiController::getOne
     methods: GET
+    requirements:
+        id: \d+
 
 api_water_tracker_post:
     path: /api/water-trackers
@@ -22,11 +24,15 @@ api_water_tracker_put:
     path: /api/water-trackers/{id}
     controller: App\Controller\Api\WaterTrackerApiController::put
     methods: PUT
+    requirements:
+        id: \d+
 
 api_water_tracker_delete:
     path: /api/water-trackers/{id}
     controller: App\Controller\Api\WaterTrackerApiController::delete
     methods: DELETE
+    requirements:
+        id: \d+
 
 
 
