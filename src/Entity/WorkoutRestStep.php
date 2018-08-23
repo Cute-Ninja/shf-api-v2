@@ -14,6 +14,14 @@ class WorkoutRestStep extends AbstractWorkoutStep
     protected $duration;
 
     /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return self::TYPE_REST;
+    }
+
+    /**
      * @return int
      */
     public function getDuration(): int

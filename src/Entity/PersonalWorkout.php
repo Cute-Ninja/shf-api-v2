@@ -6,7 +6,10 @@ use Symfony\Component\Serializer\Annotation as Serializer;
 
 class PersonalWorkout extends AbstractWorkout
 {
-    public const TYPE_PERSONAL = 'personal';
+
+    public const STATUS_SCHEDULED = 'scheduled';
+    public const STATUS_OVERDUE   = 'overdue';
+    public const STATUS_COMPLETED = 'completed';
 
     /**
      * @var \DateTime
@@ -46,10 +49,13 @@ class PersonalWorkout extends AbstractWorkout
     }
 
     /**
-     * @param \DateTime|null $scheduledDate
+     * @param \DateTime $scheduledDate
      */
-    public function setScheduledDate($scheduledDate): void
+    public function setScheduledDate(\DateTime $scheduledDate): void
     {
+        if ($this->isSchedulableStatus() && new \DateTime() < $scheduledDate) {
+            $this->setStatus(self::STATUS_SCHEDULED);
+        }
         $this->scheduledDate = $scheduledDate;
     }
 
@@ -62,10 +68,11 @@ class PersonalWorkout extends AbstractWorkout
     }
 
     /**
-     * @param \DateTime|null $completionDate
+     * @param \DateTime $completionDate
      */
-    public function setCompletionDate($completionDate): void
+    public function setCompletionDate(\DateTime $completionDate): void
     {
+        $this->setStatus(self::STATUS_COMPLETED);
         $this->completionDate = $completionDate;
     }
 
@@ -83,5 +90,18 @@ class PersonalWorkout extends AbstractWorkout
     public function setOwner($owner): void
     {
         $this->owner = $owner;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSchedulableStatus(): bool
+    {
+        $schedulableStatus = [
+            self::STATUS_OVERDUE => self::STATUS_OVERDUE,
+            self::STATUS_ACTIVE => self::STATUS_ACTIVE
+        ];
+
+        return isset($schedulableStatus[$this->getStatus()]);
     }
 }

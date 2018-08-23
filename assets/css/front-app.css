@@ -1,5 +1,10 @@
 @import "front-theme.css";
 
+.water-tracker-score {
+    color: grey;
+    font-size: 0.8em;
+}
+
 .water-tracker-entries {
     margin: 0;
 }
@@ -31,4 +36,17 @@
 
 .water-tracker-entries .water-tracker-entry-date {
     color: grey;
+}
+
+.workout-step-action-complete > .material-icons,
+    .workout-step-action-undo > .material-icons {
+    font-size: 2em;
+}
+
+.workout-step-action-undo > .material-icons {
+    color: #df6714;
+}
+
+.workout-step-action-complete > .material-icons {
+    color: #36914b;
 }

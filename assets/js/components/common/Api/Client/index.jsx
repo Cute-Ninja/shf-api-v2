@@ -3,7 +3,7 @@ import UIkit from 'uikit';
 function getMany(url, parameters = null) {
     let urlParameters = parameters ? "?" + urlEncodeParameters(parameters) : "";
     return fetch(
-            "http://127.0.0.1:8001/front/api/" + url + urlParameters,
+            getFrontUrl() + url + urlParameters,
             {credentials: 'same-origin'}
         )
         .then(response => {
@@ -22,7 +22,7 @@ function getMany(url, parameters = null) {
 function getOne(url, id, parameters = null) {
     let urlParameters = parameters ? "?" + urlEncodeParameters(parameters) : "";
     return fetch(
-        "http://127.0.0.1:8001/front/api/" + url + "/" + id + urlParameters,
+        getFrontUrl() + url + "/" + id + urlParameters,
         {credentials: 'same-origin'}
     )
         .then(response => {
@@ -39,7 +39,7 @@ function getOne(url, id, parameters = null) {
 }
 
 function post(url, parameters) {
-    return fetch("http://127.0.0.1:8001/front/api/" + url, {
+    return fetch(getFrontUrl() + url, {
             method: 'POST',
             credentials: 'same-origin',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -52,8 +52,8 @@ function post(url, parameters) {
         });
 }
 
-function deleteOne (url, objectId) {
-    return fetch("http://127.0.0.1:8001/front/api/" + url + "/" + objectId, {
+function deleteOne (url, id) {
+    return fetch(getFrontUrl() + url + "/" + id, {
             method: 'DELETE',
             credentials: 'same-origin'
         })
@@ -68,6 +68,26 @@ function deleteOne (url, objectId) {
                 }
             });
         });
+}
+
+function patch(url, action,parameters) {
+    let urlParameters = parameters ? "?" + urlEncodeParameters(parameters) : "";
+    return fetch(getFrontUrl() + url + "/" + action + urlParameters, {
+                method: 'PATCH',
+                credentials: 'same-origin',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
+            .then(response => {
+                return new Promise((success) => {
+                    if (200 === response.status) {
+                        success(response.json());
+                    } else if (204 === response.status) {
+                        success([]);
+                    } else {
+                        UIkit.notification('An error as occurred (code: ' + response.status + ')', 'danger');
+                    }
+                });
+            });
 }
 
 function urlEncodeParameters(parametersBag) {
@@ -90,8 +110,24 @@ function urlEncodeParameters(parametersBag) {
     return parameters.join('&')
 }
 
+function getFrontUrl() {
+    return getRootUrl() + '/front/api/';
+}
+
+function getAdminUrl() {
+    return getRootUrl() + '/admin/api/';
+}
+
+function getRootUrl() {
+    if (typeof window !== 'undefined') {
+        return location.protocol + '//' + location.host;
+    }
+
+    UIkit.notification('Could not determine server address', 'danger');
+}
+
 const Client = {
-    getMany, getOne, post, deleteOne
+    getMany, getOne, post, deleteOne, patch
 };
 
 export default Client;

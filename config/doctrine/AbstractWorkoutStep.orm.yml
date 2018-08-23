@@ -33,7 +33,6 @@ App\Entity\AbstractWorkoutStep:
     manyToOne:
             workout:
                 targetEntity: App\Entity\AbstractWorkout
-                inversedBy: workoutSteps
                 joinColumn:
                     name: workout_id
                     referencedColumnName: id

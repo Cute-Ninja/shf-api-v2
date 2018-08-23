@@ -18,7 +18,7 @@ abstract class AbstractProxyController extends Controller
      */
     protected function forwardToApi(Request $request, string $controller, array $path = [], array $extraParams = []): Response
     {
-        $groups = $this->buildProxySerializationGroups($request, $extraParams['groups']);
+        $groups = $this->buildProxySerializationGroups($request, isset($extraParams['groups']) ? $extraParams['groups'] : []);
 
         $params = array_merge($extraParams, $request->query->all());
         $params['groups'] = $groups;

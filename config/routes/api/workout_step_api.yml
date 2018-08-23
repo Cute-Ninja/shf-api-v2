@@ -36,6 +36,14 @@ api_workout_step_delete:
         workoutId: \d+
         id: \d+
 
+api_workout_step_patch:
+    path: /api/workouts/steps/{action}
+    controller: App\Controller\Api\WorkoutStepApiController::patch
+    methods: PATCH
+    requirements:
+        workoutId: \d+
+        action: complete|undo
+
 
 front_api_workout_step_get_many:
     path: /front/api/workouts/{workoutId}/steps
@@ -51,3 +59,11 @@ front_api_workout_step_delete:
     requirements:
         workoutId: \d+
         id: \d+
+
+front_api_workout_step_patch:
+    path: /front/api/workouts/{workoutId}/steps/{action}
+    controller: App\Controller\Front\WorkoutStepProxyController::patch
+    methods: PATCH
+    requirements:
+        workoutId: \d+
+        action: complete|undo

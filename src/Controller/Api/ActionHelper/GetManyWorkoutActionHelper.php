@@ -34,7 +34,8 @@ class GetManyWorkoutActionHelper
         $type = $request->get('type');
         $params = [
             'source'  => $request->get('source'),
-            'creator' => $request->get('creator')
+            'creator' => $request->get('creator'),
+            'status'  => $request->get('status')
         ];
 
         if (PersonalWorkout::TYPE_PERSONAL === $type) {

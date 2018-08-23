@@ -19,7 +19,7 @@ class WorkoutProxyController extends AbstractProxyController
     {
         return $this->forwardToApi(
             $request,
-            'App\Controller\Api\WaterTrackerApiController:getMany',
+            'App\Controller\Api\WorkoutApiController:getMany',
             [],
             ['type' => PersonalWorkout::TYPE_PERSONAL]
         );
@@ -34,7 +34,7 @@ class WorkoutProxyController extends AbstractProxyController
     {
         return $this->forwardToApi(
             $request,
-            'App\Controller\Api\WaterTrackerApiController:getMany',
+            'App\Controller\Api\WorkoutApiController:getMany',
             [],
             ['type' => ReferenceWorkout::TYPE_REFERENCE]
         );
@@ -50,7 +50,7 @@ class WorkoutProxyController extends AbstractProxyController
     {
         return $this->forwardToApi(
             $request,
-            'App\Controller\Api\WaterTrackerApiController:getMany',
+            'App\Controller\Api\WorkoutApiController:getOne',
             ['id' => $id]
         );
     }

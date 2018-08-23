@@ -5,6 +5,8 @@ App\Entity\PersonalWorkout:
         source: community
         creator: "@ghriim"
         owner: "@ghriim"
+        scheduledDate: <(new \DateTime('2099-01-01'))>
+
 
     ghriim_workout_2:
         name: Half marathon preparation (2)
@@ -12,3 +14,4 @@ App\Entity\PersonalWorkout:
         source: community
         creator: "@ghriim"
         owner: "@ghriim"
+        scheduledDate: <(new \DateTime('2099-01-08'))>

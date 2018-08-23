@@ -6,6 +6,8 @@ use Symfony\Component\Serializer\Annotation as Serializer;
 
 abstract class AbstractWorkoutStep extends AbstractBaseEntity
 {
+    public const STATUS_DONE = 'done';
+
     public const TYPE_REST     = 'rest';
     public const TYPE_DISTANCE = 'distance';
     public const TYPE_DURATION = 'duration';
@@ -28,6 +30,8 @@ abstract class AbstractWorkoutStep extends AbstractBaseEntity
 
     /**
      * @var AbstractWorkout $workout
+     *
+     * @Serializer\Groups({"default", "test"})
      */
     protected $workout;
 
@@ -37,6 +41,13 @@ abstract class AbstractWorkoutStep extends AbstractBaseEntity
      * @Serializer\Groups({"default", "test"})
      */
     protected $exercise;
+
+    /**
+     * @return string
+     *
+     * @Serializer\Groups({"default", "test"})
+     */
+    abstract public function getType(): string;
 
     /**
      * @return int

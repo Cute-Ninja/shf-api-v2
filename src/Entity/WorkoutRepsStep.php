@@ -14,6 +14,14 @@ class WorkoutRepsStep extends AbstractWorkoutStep
     protected $numberOfRepetition;
 
     /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return self::TYPE_REPS;
+    }
+
+    /**
      * @return int
      */
     public function getNumberOfRepetition(): int

@@ -38,4 +38,20 @@ class WorkoutStepProxyController extends AbstractProxyController
             ['workoutId' => $workoutId, 'id' => $id]
         );
     }
+
+    /**
+     * @param Request $request
+     * @param int     $workoutId
+     * @param string  $action
+     *
+     * @return Response
+     */
+    public function patch(Request $request, int $workoutId, string $action): Response
+    {
+        return $this->forwardToApi(
+            $request,
+            'App\Controller\Api\WorkoutStepApiController:patch',
+            ['workoutId' => $workoutId, 'action' => $action]
+        );
+    }
 }

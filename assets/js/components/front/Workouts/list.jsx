@@ -103,7 +103,7 @@ export default class Workouts extends React.Component {
                 {workouts.map((workout, index) => (
                     <div key={workout.id} className="uk-card uk-card-default uk-margin-bottom">
                         <div className="uk-card-header shf-remove-border-bottom">
-                            <div className="uk-grid" uk-grid>
+                            <div className="uk-grid" uk-grid="true">
                                 <div className="uk-width-expand">
                                     <h3 className="uk-text-uppercase shf-clickable-neutral">
                                         <a href={"/front/workouts/" + workout.id}>{workout.name}</a></h3>

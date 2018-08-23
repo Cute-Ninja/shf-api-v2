@@ -23,8 +23,14 @@ App\Entity\WorkoutDurationStep:
         workout: "@ghriim_workout_1"
         exercise: "@run_duration"
 
+    ghriim_workout_1_position_3:
+        position: 3
+        duration: 3600
+        workout: "@ghriim_workout_1"
+        exercise: "@run_duration"
+
     ghriim_workout_2_position_1:
         position: 1
         duration: 7200
-        workout: "@ghriim_workout_1"
+        workout: "@ghriim_workout_2"
         exercise: "@run_duration"

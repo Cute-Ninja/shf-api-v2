@@ -10,7 +10,8 @@
       "experience": null,
       "source": "shf",
       "favoriteId": null,
-      "status": "active"
+      "status": "active",
+      "type": "reference"
     },
     "status": "active"
   },
@@ -25,15 +26,32 @@
       "experience": null,
       "source": "shf",
       "favoriteId": null,
-      "status": "active"
+      "status": "active",
+      "type": "reference"
     },
     "status": "active"
   },
   {
     "id": 3,
     "workout": {
-      "scheduledDate": null,
+      "scheduledDate": "2099-01-01T00:00:00+01:00",
       "completionDate": null,
+      "owner": {
+        "id": 1,
+        "username": "ghriim",
+        "email": "ghriim@fakemail.com",
+        "roles": [
+          "USER"
+        ],
+        "bodyMeasurement": {
+          "id": 1,
+          "height": 183,
+          "weight": 77,
+          "restingHeartRate": 70,
+          "status": "active"
+        },
+        "status": "active"
+      },
       "id": 7,
       "name": "Half marathon preparation (1)",
       "difficulty": 3,
@@ -42,15 +60,32 @@
       "experience": null,
       "source": "community",
       "favoriteId": null,
-      "status": "active"
+      "status": "scheduled",
+      "type": "personal"
     },
     "status": "active"
   },
   {
     "id": 4,
     "workout": {
-      "scheduledDate": null,
+      "scheduledDate": "2099-01-08T00:00:00+01:00",
       "completionDate": null,
+      "owner": {
+        "id": 1,
+        "username": "ghriim",
+        "email": "ghriim@fakemail.com",
+        "roles": [
+          "USER"
+        ],
+        "bodyMeasurement": {
+          "id": 1,
+          "height": 183,
+          "weight": 77,
+          "restingHeartRate": 70,
+          "status": "active"
+        },
+        "status": "active"
+      },
       "id": 8,
       "name": "Half marathon preparation (2)",
       "difficulty": 5,
@@ -59,7 +94,8 @@
       "experience": null,
       "source": "community",
       "favoriteId": null,
-      "status": "active"
+      "status": "scheduled",
+      "type": "personal"
     },
     "status": "active"
   }

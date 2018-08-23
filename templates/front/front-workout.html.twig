@@ -10,8 +10,11 @@
 {% block title %}{{ parent() }}{{ 'front.workouts.title'|trans }}{% endblock %}
 
 {% block body %}
-    <div>
-        <h2>{{ 'front.workout.title'|trans }}</h2>
-        <div id="workout" data-workout-id="{{ workoutId }}"></div>
+    <div id="workout-details" data-workout-id="{{ workoutId }}">
+        <h3>Workout</h3>
+        <div id="workout"></div>
+
+        <h3>Exercises</h3>
+        <div id="workout-steps"></div>
     </div>
 {% endblock %}

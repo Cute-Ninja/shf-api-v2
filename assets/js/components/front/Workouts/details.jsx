@@ -15,7 +15,6 @@ export default class Workout extends React.Component {
         Client.getOne(
             "workouts",
             this.props.workoutId,
-            {groups: ['steps']}
         )
             .then(
                 (result) => {
@@ -38,21 +37,13 @@ export default class Workout extends React.Component {
         return (
             <div key={workout.id} className="uk-card uk-card-default uk-margin-bottom">
                 <div className="uk-card-header shf-remove-border-bottom">
-                    <div className="uk-grid" uk-grid>
-                        <div className="uk-width-expand">
-                            <h3 className="uk-text-uppercase shf-clickable-neutral">{workout.name}</h3>
-                        </div>
-                    </div>
+                    <h3 className="uk-text-uppercase">{workout.name}</h3>
                 </div>
                 <div className="uk-card-body">
-                    {workout.workoutSteps.map((workoutStep, index) => (
-                        <div>
-                            {workoutStep.exercise.name} {workoutStep.position}
-                        </div>
-                    ))}
+                    BODY
                 </div>
                 <div className="uk-card-footer">
-
+                    FOOTER
                 </div>
             </div>
         );

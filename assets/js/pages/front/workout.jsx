@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Workout from '../../components/front/Workouts/details';
+import WorkoutSteps from "../../components/front/WorkoutSteps/list";
 
-let element   = document.getElementById("workout");
-let workoutId = element.getAttribute('data-workout-id');
+let container = document.getElementById("workout-details");
+let workoutId = container.getAttribute('data-workout-id');
 
 ReactDOM.render(
     <Workout workoutId={workoutId} />,
-    element
+    document.getElementById("workout")
+);
+
+ReactDOM.render(
+    <WorkoutSteps workoutId={workoutId} />,
+    document.getElementById("workout-steps")
 );

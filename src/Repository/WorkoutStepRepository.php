@@ -7,6 +7,7 @@ use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method AbstractWorkoutStep findOneByCriteria(array $criteria = [], array $selects = [])
+ * @method AbstractWorkoutStep[] findManyByCriteria(array $criteria = [], array $selects = [], array $orders = [], $limit = null): array
  */
 class WorkoutStepRepository extends AbstractBaseRepository
 {
@@ -19,6 +20,15 @@ class WorkoutStepRepository extends AbstractBaseRepository
     public function addCriterionWorkout(QueryBuilder $queryBuilder, $workoutId): bool
     {
         return $this->addCriterion($queryBuilder, $this->getAlias(), 'workout', $workoutId);
+    }
+
+    /**
+     * @param QueryBuilder $queryBuilder
+     */
+    public function addSelectWorkout(QueryBuilder $queryBuilder): void
+    {
+        $queryBuilder->leftJoin($this->getAlias() . '.workout', 'workout_step_workout')
+                     ->addSelect('workout_step_workout');
     }
 
     /**

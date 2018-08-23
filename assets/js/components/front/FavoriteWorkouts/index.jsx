@@ -69,7 +69,9 @@ export default class FavoriteWorkouts extends React.Component {
                     <tbody>
                         {favorites.map((favorite, index) => (
                             <tr ref={'favorite-workout-' + favorite.id} key={favorite.id}>
-                                <td>{favorite.workout.name}</td>
+                                <td>
+                                    <a href={"/front/workouts/" + favorite.workout.id}>{favorite.workout.name}</a>
+                                </td>
                                 <td>{favorite.workout.difficulty}</td>
                                 <td>{favorite.workout.duration}</td>
                                 <td>

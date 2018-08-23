@@ -37,10 +37,14 @@ export default class UserWorkouts extends React.Component {
             <div>
                 {workouts.map((workout, index) => (
                     <div key={workout.id} className="uk-card uk-card-default uk-margin-bottom">
-                        {workout.name}
-                        <Moment format="LLLL">
-                            {workout.scheduledDate}
-                        </Moment>
+                        <div className="uk-clearfix">
+                            <div className="uk-float-left">
+                                <a href={"/front/workouts/" + workout.id}>{workout.name}</a>
+                            </div>
+                            <div className="uk-float-right">
+                                <Moment format="LLLL">{workout.scheduledDate}</Moment>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>

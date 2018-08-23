@@ -7,7 +7,8 @@
   "experience": null,
   "source": "shf",
   "favoriteId": null,
-  "status": "active"
+  "status": "active",
+  "type": "reference"
 }, {
   "id": 2,
   "name": "Ares Lvl 2",
@@ -17,7 +18,8 @@
   "experience": null,
   "source": "shf",
   "favoriteId": null,
-  "status": "active"
+  "status": "active",
+  "type": "reference"
 }, {
   "id": 3,
   "name": "Hermes",
@@ -27,7 +29,8 @@
   "experience": null,
   "source": "shf",
   "favoriteId": null,
-  "status": "active"
+  "status": "active",
+  "type": "reference"
 }, {
   "id": 4,
   "name": "Hermes Lvl 2",
@@ -37,7 +40,8 @@
   "experience": null,
   "source": "shf",
   "favoriteId": null,
-  "status": "active"
+  "status": "active",
+  "type": "reference"
 }, {
   "id": 5,
   "name": "Helios",
@@ -47,7 +51,8 @@
   "experience": null,
   "source": "shf",
   "favoriteId": null,
-  "status": "active"
+  "status": "active",
+  "type": "reference"
 }, {
   "id": 6,
   "name": "Helios by Ghriim",
@@ -57,9 +62,10 @@
   "experience": null,
   "source": "community",
   "favoriteId": null,
-  "status": "active"
+  "status": "active",
+  "type": "reference"
 }, {
-  "scheduledDate": null,
+  "scheduledDate": "2099-01-01T00:00:00+01:00",
   "completionDate": null,
   "owner": {
     "username": "ghriim",
@@ -82,9 +88,10 @@
   "experience": null,
   "source": "community",
   "favoriteId": null,
-  "status": "active"
+  "status": "scheduled",
+  "type": "personal"
 }, {
-  "scheduledDate": null,
+  "scheduledDate": "2099-01-08T00:00:00+01:00",
   "completionDate": null,
   "owner": {
     "username": "ghriim",
@@ -107,5 +114,6 @@
   "experience": null,
   "source": "community",
   "favoriteId": null,
-  "status": "active"
+  "status": "scheduled",
+  "type": "personal"
 }]

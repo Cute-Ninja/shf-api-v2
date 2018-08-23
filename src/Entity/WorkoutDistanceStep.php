@@ -14,6 +14,14 @@ class WorkoutDistanceStep extends AbstractWorkoutStep
     protected $distance;
 
     /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return self::TYPE_DISTANCE;
+    }
+
+    /**
      * @return int
      */
     public function getDistance(): int

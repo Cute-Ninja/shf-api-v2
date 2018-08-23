@@ -14,6 +14,14 @@ class WorkoutAmrapStep extends AbstractWorkoutStep
     protected $duration;
 
     /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return self::TYPE_AMRAP;
+    }
+
+    /**
      * @return int
      */
     public function getDuration(): int

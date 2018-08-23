@@ -62,8 +62,3 @@ App\Entity\AbstractWorkout:
             joinColumn:
                 name: creator_id
                 referencedColumnName: id
-
-    oneToMany:
-        workoutSteps:
-            targetEntity: App\Entity\AbstractWorkoutStep
-            mappedBy: workout
