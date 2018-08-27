@@ -5,12 +5,16 @@ namespace App\Controller\Api\ActionHelper;
 use App\Entity\AbstractWorkout;
 use App\Entity\AbstractWorkoutStep;
 use App\Entity\PersonalWorkout;
+use App\Exception\Http\NotImplementedHttpException;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PatchWorkoutActionHelper
 {
+    private const PATCH_ACTION_COMPLETE = 'complete';
+    private const PATCH_ACTION_UNDO = 'undo';
+
     /**
      * @var ObjectManager
      */
@@ -19,6 +23,27 @@ class PatchWorkoutActionHelper
     public function __construct(ObjectManager $entityManager)
     {
         $this->entityManager = $entityManager;
+    }
+
+    /**
+     * @param string $action
+     * @param int    $workoutId
+     *
+     * @return AbstractWorkout
+     *
+     * @throws NotFoundHttpException|AccessDeniedHttpException|NotImplementedHttpException
+     */
+    public function doPatchAction(string $action, int $workoutId): AbstractWorkout
+    {
+        if (self::PATCH_ACTION_COMPLETE === $action) {
+            return $this->completeWorkout($workoutId);
+        }
+
+        if (self::PATCH_ACTION_UNDO === $action) {
+            return $this->undoWorkout($workoutId);
+        }
+
+        throw new NotImplementedHttpException();
     }
 
     /**

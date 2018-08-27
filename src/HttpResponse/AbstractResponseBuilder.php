@@ -27,7 +27,7 @@ abstract class AbstractResponseBuilder
      *
      * @return Response
      */
-    public function ok($data = null, $headers = [])
+    public function ok($data = null, $headers = []): Response
     {
         $code = null === $data || true === empty($data) ? Response::HTTP_NO_CONTENT : Response::HTTP_OK ;
 
@@ -39,7 +39,7 @@ abstract class AbstractResponseBuilder
      *
      * @return Response
      */
-    protected function handle(View $view)
+    protected function handle(View $view): Response
     {
         return $this->viewHandler->handle($view);
     }
@@ -47,7 +47,7 @@ abstract class AbstractResponseBuilder
     /**
      * @return SuccessResponseBuilder
      */
-    protected function getSuccessResponseBuilder()
+    protected function getSuccessResponseBuilder():SuccessResponseBuilder
     {
         return new SuccessResponseBuilder($this->viewHandler);
     }
@@ -55,7 +55,7 @@ abstract class AbstractResponseBuilder
     /**
      * @return ClientErrorResponseBuilder
      */
-    protected function getClientErrorResponseBuilder()
+    protected function getClientErrorResponseBuilder(): ClientErrorResponseBuilder
     {
         return new ClientErrorResponseBuilder($this->viewHandler);
     }
@@ -63,7 +63,7 @@ abstract class AbstractResponseBuilder
     /**
      * @return ServerErrorResponseBuilder
      */
-    protected function getServerErrorResponseBuilder()
+    protected function getServerErrorResponseBuilder(): ServerErrorResponseBuilder
     {
         return new ServerErrorResponseBuilder($this->viewHandler);
     }

@@ -5,8 +5,10 @@ namespace App\Controller\Api;
 use App\Controller\Api\ActionHelper\GetManyWorkoutActionHelper;
 use App\Controller\Api\ActionHelper\PatchWorkoutActionHelper;
 use App\Entity\AbstractWorkout;
+use App\Entity\AbstractWorkoutStep;
 use App\Entity\PersonalWorkout;
 use App\Entity\ReferenceWorkout;
+use App\Exception\Http\NotImplementedHttpException;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;
@@ -17,8 +19,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class WorkoutApiController extends AbstractApiController implements StandardApiInterface
 {
-    private const PATCH_ACTION_COMPLETE = 'complete';
-    private const PATCH_ACTION_UNDO = 'undo';
 
     /**
      * @var Request $request
@@ -177,22 +177,18 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
     {
         $helper = new PatchWorkoutActionHelper($this->getEntityManager());
         try {
-            if (self::PATCH_ACTION_COMPLETE === $action) {
-                $step = $helper->completeWorkout($request->query->get('id'));
-            } elseif(self::PATCH_ACTION_UNDO === $action) {
-                $step = $helper->undoWorkout($request->query->get('id'));
-            } else {
-                return $this->getServerErrorResponseBuilder()->notImplemented();
-            }
+            $step = $helper->doPatchAction($action, $request->query->get('id'));
 
             return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
                 $step,
                 $this->getSerializationGroup($request)
             );
-        } catch (NotFoundHttpException $exception) {
+        }  catch (NotFoundHttpException $exception) {
             $errorResponse = $this->getClientErrorResponseBuilder()->notFound();
         } catch (AccessDeniedHttpException $exception) {
             $errorResponse = $this->getClientErrorResponseBuilder()->forbidden();
+        } catch (NotImplementedHttpException $exception) {
+            $errorResponse = $this->getServerErrorResponseBuilder()->notImplemented();
         }
 
         return $errorResponse;
