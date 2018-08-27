@@ -115,4 +115,24 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
 
         $this->assertEquals(Response::HTTP_NOT_IMPLEMENTED, $response->getStatusCode());
     }
+
+    public function testPatchCompleteUnauthorized(): void
+    {
+        $this->assertTrue(false, 'Reminder to implement this test');
+    }
+
+    public function testPatchCompleteAuthorized(): void
+    {
+        $this->assertTrue(false, 'Reminder to implement this test');
+    }
+
+    public function testPatchUndoUnauthorized(): void
+    {
+        $this->assertTrue(false, 'Reminder to implement this test');
+    }
+
+    public function testPatchUndoAuthorized(): void
+    {
+        $this->assertTrue(false, 'Reminder to implement this test');
+    }
 }
