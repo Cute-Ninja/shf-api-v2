@@ -167,11 +167,15 @@ class WorkoutStepApiController extends AbstractApiController
      * )
      * @SWG\Response(
      *     response=403,
-     *     description="You are not allowed to delete this WorkoutStep"
+     *     description="You are not allowed to do this action"
      * )
      * @SWG\Response(
      *     response=404,
      *     description="No id was matching an existing WorkoutStep"
+     * )
+     * @SWG\Response(
+     *     response=501,
+     *     description="The selected action is not available"
      * )
      *
      * @SWG\Tag(name="WorkoutStep")
@@ -195,8 +199,6 @@ class WorkoutStepApiController extends AbstractApiController
             );
         } catch (NotFoundHttpException $exception) {
             $errorResponse = $this->getClientErrorResponseBuilder()->notFound();
-        } catch (AccessDeniedHttpException $exception) {
-            $errorResponse = $this->getClientErrorResponseBuilder()->forbidden();
         }
 
         return $errorResponse;

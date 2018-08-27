@@ -29,6 +29,13 @@ api_workout_delete:
     requirements:
         id: \d+
 
+api_workout_patch:
+    path: /api/workouts/{action}
+    controller: App\Controller\Api\WorkoutApiController::patch
+    methods: PATCH
+    requirements:
+        action: complete|undo
+
 
 
 front_api_workout_list_reference:
@@ -47,3 +54,10 @@ front_api_workout_get:
     methods: GET
     requirements:
         id: \d+
+
+front_api_workout_patch:
+    path: /front/api/workouts/{action}
+    controller: App\Controller\Front\WorkoutProxyController::patch
+    methods: PATCH
+    requirements:
+        action: complete|undo

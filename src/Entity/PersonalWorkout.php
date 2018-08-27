@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Utils\DateUtils;
 use Symfony\Component\Serializer\Annotation as Serializer;
 
 class PersonalWorkout extends AbstractWorkout
@@ -38,6 +39,23 @@ class PersonalWorkout extends AbstractWorkout
     public function getType(): string
     {
         return self::TYPE_PERSONAL;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status): void
+    {
+        if (self::STATUS_ACTIVE === $status) {
+            $scheduledDate = $this->getScheduledDate();
+            if (null !== $scheduledDate && false === DateUtils::isPassed($scheduledDate)) {
+                $status = self::STATUS_SCHEDULED;
+            } elseif (null !== $scheduledDate && true === DateUtils::isPassed($scheduledDate)) {
+                $status = self::STATUS_OVERDUE;
+            }
+        }
+
+        parent::setStatus($status);
     }
 
     /**
