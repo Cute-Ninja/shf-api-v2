@@ -1,4 +1,5 @@
 [{
+  "id": 1,
   "username": "ghriim",
   "email": "ghriim@fakemail.com",
   "roles": ["USER"],
@@ -11,6 +12,7 @@
   },
   "status": "active"
 }, {
+  "id": 2,
   "username": "user_1",
   "email": "user_1@fakemail.com",
   "roles": ["USER"],
@@ -23,6 +25,7 @@
   },
   "status": "active"
 }, {
+  "id": 3,
   "username": "user_2",
   "email": "user_2@fakemail.com",
   "roles": ["USER"],
@@ -35,6 +38,7 @@
   },
   "status": "active"
 }, {
+  "id": 4,
   "username": "user_3",
   "email": "user_3@fakemail.com",
   "roles": ["USER"],
@@ -47,6 +51,7 @@
   },
   "status": "active"
 }, {
+  "id": 5,
   "username": "user_4",
   "email": "user_4@fakemail.com",
   "roles": ["USER"],
@@ -59,6 +64,7 @@
   },
   "status": "active"
 }, {
+  "id": 6,
   "username": "user_5",
   "email": "user_5@fakemail.com",
   "roles": ["USER"],
@@ -71,6 +77,7 @@
   },
   "status": "active"
 }, {
+  "id": 7,
   "username": "user_6",
   "email": "user_6@fakemail.com",
   "roles": ["USER"],
@@ -83,6 +90,7 @@
   },
   "status": "active"
 }, {
+  "id": 8,
   "username": "user_7",
   "email": "user_7@fakemail.com",
   "roles": ["USER"],
@@ -95,6 +103,7 @@
   },
   "status": "active"
 }, {
+  "id": 9,
   "username": "user_8",
   "email": "user_8@fakemail.com",
   "roles": ["USER"],
@@ -107,6 +116,7 @@
   },
   "status": "active"
 }, {
+  "id": 10,
   "username": "user_9",
   "email": "user_9@fakemail.com",
   "roles": ["USER"],
@@ -119,6 +129,7 @@
   },
   "status": "active"
 }, {
+  "id": 11,
   "username": "user_10",
   "email": "user_10@fakemail.com",
   "roles": ["USER"],
@@ -131,6 +142,7 @@
   },
   "status": "active"
 }, {
+  "id": 12,
   "username": "ghost",
   "email": "ghost@shf.com",
   "roles": ["ROLE_ADMIN_DASHBOARD_READ", "ROLE_ADMIN_USER_READ", "ROLE_ADMIN_USER_WRITE", "ROLE_ADMIN_USER_DELETE"],
