@@ -10,7 +10,7 @@ class User extends AbstractBaseEntity implements UserInterface
     /**
      * @var int
      *
-     * @Serializer\Groups({"default"})
+     * @Serializer\Groups({"default", "test"})
      */
     protected $id;
 

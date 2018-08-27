@@ -22,4 +22,17 @@ class UserProxyController extends AbstractProxyController
             ['groups' => ['user-details', 'user-body-measurement']]
         );
     }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function post(Request $request): Response
+    {
+        return $this->forwardToApi(
+            $request,
+            'App\Controller\Api\UserApiController:post'
+        );
+    }
 }

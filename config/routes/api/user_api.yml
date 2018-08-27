@@ -30,6 +30,11 @@ front_api_user_me:
     controller: App\Controller\Front\UserProxyController::me
     methods: GET
 
+front_api_user_post:
+    path: /front/api/users
+    controller: App\Controller\Front\UserProxyController::post
+    methods: POST
+
 
 
 admin_api_user_list:
