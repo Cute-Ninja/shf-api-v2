@@ -1,4 +1,0 @@
-security:
-    firewalls:
-        secured_area:
-            http_basic: ~

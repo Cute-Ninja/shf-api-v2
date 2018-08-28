@@ -17,10 +17,10 @@ class PageFrontControllerTest extends AbstractPageControllerTest
      */
     public function testPagesUnauthorized(string $url): void
     {
-        $client = static::createClient();
-        $client->request('GET', $url);
+        $this->client = static::createClient();
+        $this->client->request('GET', $url);
 
-        $this->assertEquals(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertEquals(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
     }
 
     /**
@@ -30,10 +30,10 @@ class PageFrontControllerTest extends AbstractPageControllerTest
      */
     public function testPagesAuthorized(string $url): void
     {
-        $client = $this->buildAuthenticatedUser();
-        $client->request('GET', $url);
+        $this->client = $this->buildAuthenticatedUser();
+        $this->client->request('GET', $url);
 
-        $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
+        $this->assertEquals(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
     }
 
     /**

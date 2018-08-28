@@ -2,6 +2,8 @@
 
 namespace App\Tests\Controller;
 
+use Symfony\Component\BrowserKit\Cookie;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Throwable;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -56,9 +58,19 @@ abstract class AbstractPageControllerTest extends WebTestCase implements ShfTest
      */
     private function buildAuthentication(string $username): Client
     {
-        return static::createClient(array(), array(
-            'PHP_AUTH_USER' => $username,
-            'PHP_AUTH_PW'   => self::AUTHENTICATION_DEFAULT_PASSWORD,
-        ));
+        $client  = static::createClient();
+        $session = $client->getContainer()->get('session');
+
+        $firewallName = 'secure_area';
+        $firewallContext = 'secured_area';
+
+        $token = new UsernamePasswordToken($username, null, $firewallName, array('ROLE_ADMIN'));
+        $session->set('_security_'.$firewallContext, serialize($token));
+        $session->save();
+
+        $cookie = new Cookie($session->getName(), $session->getId());
+        $client->getCookieJar()->set($cookie);
+
+        return $client;
     }
 }
