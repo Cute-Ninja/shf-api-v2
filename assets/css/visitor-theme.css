@@ -1,0 +1,13 @@
+#index-screen-start {
+    background: url(../img/index/index-background.jpg) center;
+    background-size: cover;
+}
+
+#index-screen-start .uk-navbar {
+    background-color: #FFF;
+}
+
+header .uk-logo, header .uk-logo:hover {
+    color: #1e87f0;
+    font-weight: 700;
+}

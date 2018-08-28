@@ -1,0 +1,6 @@
+visitor:
+    login:
+        title: Connection
+        form:
+            username: Username
+            password: Password

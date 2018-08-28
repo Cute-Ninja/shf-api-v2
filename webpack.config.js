@@ -18,7 +18,7 @@ Encore
 
     .addEntry('images/login-background', './assets/img/login/login-background.jpg')
 
-    .addStyleEntry('css/app', './assets/css/common-app.css')
+    .addStyleEntry('css/visitor', './assets/css/visitor-app.css')
     .addStyleEntry('css/front', './assets/css/front-app.css')
     .addStyleEntry('css/admin', './assets/css/admin-app.css')
 

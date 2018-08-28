@@ -40,7 +40,7 @@ class PatchWorkoutActionHelper
         }
 
         if (self::PATCH_ACTION_UNDO === $action) {
-            return $this->undoWorkout($workoutId);
+            return $this->undoCompleteWorkout($workoutId);
         }
 
         throw new NotImplementedHttpException();
@@ -74,7 +74,7 @@ class PatchWorkoutActionHelper
      *
      * @throws NotFoundHttpException|AccessDeniedHttpException
      */
-    public function undoWorkout(int $workoutId): AbstractWorkout
+    public function undoCompleteWorkout(int $workoutId): AbstractWorkout
     {
         $workout = $this->getWorkout($workoutId);
         if ($workout instanceof PersonalWorkout) {

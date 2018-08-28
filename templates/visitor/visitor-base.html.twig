@@ -1,0 +1,39 @@
+{% trans_default_domain 'visitor' %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Super Hero Factory{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/css/visitor.css') }}">
+{% endblock %}
+
+{% block page_content %}
+    <div id="index-screen-start" class="uk-height-1-1">
+        <header class="uk-navbar uk-visible@m">
+            <div class="uk-navbar-left">
+                <a href="{{ path('index') }}" class="uk-navbar-item uk-logo">Super Hero Factory</a>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="{{ path('register') }}" title="Register" class="uk-button uk-button-primary">Register</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('login') }}" title="Login" class="uk-button uk-button-default">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="uk-container">
+            <div>
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <div>
+        {% block aside %}{% endblock %}
+    </div>
+{% endblock %}

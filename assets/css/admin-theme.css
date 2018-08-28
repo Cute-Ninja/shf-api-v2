@@ -1,3 +1,11 @@
+header a.uk-logo, .uk-navbar-nav > li > a {
+    color: #FFF;
+}
+
+header a.uk-logo:hover, .uk-navbar-nav > li > a:hover {
+    color: #e1e1e1;
+}
+
 header.uk-navbar-container:not(.uk-navbar-transparent) {
     background: linear-gradient(to left, #df4315, #e63214);
 }

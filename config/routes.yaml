@@ -47,13 +47,11 @@ api_user_favorite_workout:
 ########################################################################################################################
 #                                                      WEB                                                             #
 ########################################################################################################################
-login:
-    path: /login
-    methods: [GET|POST]
-    controller: App\Controller\SecurityController::login
-
 logout:
     path: /logout
+
+visitor:
+    resource: "routes/visitor/visitor_page.yml"
 
 admin:
     resource: "routes/admin/admin_page.yml"

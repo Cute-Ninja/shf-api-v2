@@ -34,7 +34,7 @@ api_workout_patch:
     controller: App\Controller\Api\WorkoutApiController::patch
     methods: PATCH
     requirements:
-        action: complete|undo
+        action: complete|undo-complete
 
 
 
@@ -60,4 +60,4 @@ front_api_workout_patch:
     controller: App\Controller\Front\WorkoutProxyController::patch
     methods: PATCH
     requirements:
-        action: complete|undo
+        action: complete|undo-complete

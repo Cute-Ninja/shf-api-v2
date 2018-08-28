@@ -116,23 +116,71 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
         $this->assertEquals(Response::HTTP_NOT_IMPLEMENTED, $response->getStatusCode());
     }
 
+    public function testPatchUnknownActionUnauthorized(): void
+    {
+        $client = static::createClient();
+        $this->buildPatchRequest($client, 'workouts/unknown', ['id' => 7]);
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_NOT_FOUND, $response->getStatusCode());
+    }
+
+    public function testPatchUnknownActionAuthorized(): void
+    {
+        $client = $this->buildAuthenticatedUser();
+        $this->buildPatchRequest($client, 'workouts/unknown', ['id' => 7]);
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_NOT_FOUND, $response->getStatusCode());
+    }
+
     public function testPatchCompleteUnauthorized(): void
     {
-        $this->assertTrue(false, 'Reminder to implement this test');
+        $client = static::createClient();
+        $this->buildPatchRequest($client, 'workouts/complete', ['id' => 7]);
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
     public function testPatchCompleteAuthorized(): void
     {
-        $this->assertTrue(false, 'Reminder to implement this test');
+        $client = $this->buildAuthenticatedUser();
+        $this->buildPatchRequest($client, 'workouts/complete', ['id' => 7]);
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertEquals(
+            $this->loadDataFromJsonFile('json/workouts_half_prepation_1_complete'),
+            json_decode($response->getContent(), true)
+        );
     }
 
-    public function testPatchUndoUnauthorized(): void
+    public function testPatchUndoCompleteUnauthorized(): void
     {
-        $this->assertTrue(false, 'Reminder to implement this test');
+        $client = static::createClient();
+        $this->buildPatchRequest($client, 'workouts/undo-complete', ['id' => 7]);
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
-    public function testPatchUndoAuthorized(): void
+    public function testPatchUndoCompleteAuthorized(): void
     {
-        $this->assertTrue(false, 'Reminder to implement this test');
+        $client = $this->buildAuthenticatedUser();
+        $this->buildPatchRequest($client, 'workouts/undo-complete', ['id' => 7]);
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertEquals(
+            $this->loadDataFromJsonFile('json/workouts_half_preparation_1_undo_complete'),
+            json_decode($response->getContent(), true)
+        );
     }
 }

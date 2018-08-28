@@ -36,7 +36,7 @@ export default class WorkoutStep extends React.Component {
         let action = null;
         if (workoutStep.workout.type === 'personal') {
             if (workoutStep.status === 'done') {
-                action = (<a onClick={() => this.markWorkoutStepAs(workoutStep.id, 'undo')}
+                action = (<a onClick={() => this.markWorkoutStepAs(workoutStep.id, 'undo-complete')}
                              title="Re-open exercise" className="workout-step-action-undo">
                     <i className="material-icons">remove_circle_outline</i></a>);
             } else {

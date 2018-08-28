@@ -1,0 +1,14 @@
+login:
+    path: /login
+    methods: [GET|POST]
+    controller: App\Controller\Visitor\PageVisitorController::login
+
+index:
+    path: /
+    methods: [GET]
+    controller: App\Controller\Visitor\PageVisitorController::index
+
+register:
+    path: /register
+    methods: [GET|POST]
+    controller: App\Controller\Visitor\PageVisitorController::register

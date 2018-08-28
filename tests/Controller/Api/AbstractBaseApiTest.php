@@ -99,6 +99,18 @@ abstract class AbstractBaseApiTest extends WebTestCase implements ShfTestInterfa
     }
 
     /**
+     * @param Client $client
+     * @param string $url
+     * @param array  $parameters
+     */
+    protected function buildPatchRequest(Client $client, string $url, array $parameters = []): void
+    {
+        $parameters['groups'] = 'test';
+
+        $client->request('PATCH', "/api/$url?" . http_build_query($parameters));
+    }
+
+    /**
      * @param string $filename
      *
      * @return array
