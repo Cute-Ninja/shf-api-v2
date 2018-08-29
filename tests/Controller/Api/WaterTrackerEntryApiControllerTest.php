@@ -162,7 +162,7 @@ class WaterTrackerEntryApiControllerTest extends AbstractBaseApiTest
     private function getTrackerDay(Client $client): WaterTracker
     {
         if (null === $this->trackerDay) {
-            $this->trackerDay = $this->getDocumentRepository($client, WaterTracker::class)
+            $this->trackerDay = $this->getRepository($client, WaterTracker::class)
                                      ->findOneByCriteria(['user' => $this->user->getId()]);
         }
 

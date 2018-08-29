@@ -37,7 +37,7 @@ api_workout_step_delete:
         id: \d+
 
 api_workout_step_patch:
-    path: /api/workouts/steps/{action}
+    path: /api/workouts/{workoutId}/steps/{action}
     controller: App\Controller\Api\WorkoutStepApiController::patch
     methods: PATCH
     requirements:

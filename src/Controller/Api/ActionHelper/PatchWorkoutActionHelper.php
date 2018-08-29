@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class PatchWorkoutActionHelper
 {
     private const PATCH_ACTION_COMPLETE = 'complete';
-    private const PATCH_ACTION_UNDO = 'undo';
+    private const PATCH_ACTION_UNDO = 'undo-complete';
 
     /**
      * @var ObjectManager
@@ -112,7 +112,7 @@ class PatchWorkoutActionHelper
     {
         $steps = $this->entityManager
                       ->getRepository(AbstractWorkoutStep::class)
-                      ->findManyByCriteria(['workout', $workout]);
+                      ->findManyByCriteria(['workout' => $workout]);
 
         $stepStatus = $this->convertToStepStatus($workoutStatus);
         foreach ($steps as $step) {

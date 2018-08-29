@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class PatchWorkoutStepActionHelper
 {
     private const PATCH_ACTION_COMPLETE = 'complete';
-    private const PATCH_ACTION_UNDO = 'undo';
+    private const PATCH_ACTION_UNDO = 'undo-complete';
 
     /**
      * @var ObjectManager

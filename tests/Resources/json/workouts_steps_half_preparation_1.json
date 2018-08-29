@@ -2,6 +2,34 @@
   "duration": 3600,
   "id": 12,
   "position": 1,
+  "workout": {
+    "scheduledDate": "2099-01-01T00:00:00+00:00",
+    "completionDate": null,
+    "owner": {
+      "id": 1,
+      "username": "ghriim",
+      "email": "ghriim@fakemail.com",
+      "roles": ["USER"],
+      "bodyMeasurement": {
+        "id": 1,
+        "height": 183,
+        "weight": 77,
+        "restingHeartRate": 70,
+        "status": "active"
+      },
+      "status": "active"
+    },
+    "id": 7,
+    "name": "Half marathon preparation (1)",
+    "difficulty": 3,
+    "duration": null,
+    "calories": null,
+    "experience": null,
+    "source": "community",
+    "favoriteId": null,
+    "status": "scheduled",
+    "type": "personal"
+  },
   "exercise": {
     "id": 14,
     "name": "Run (objective duration)",
@@ -14,6 +42,34 @@
   "duration": 300,
   "id": 27,
   "position": 2,
+  "workout": {
+    "scheduledDate": "2099-01-01T00:00:00+00:00",
+    "completionDate": null,
+    "owner": {
+      "id": 1,
+      "username": "ghriim",
+      "email": "ghriim@fakemail.com",
+      "roles": ["USER"],
+      "bodyMeasurement": {
+        "id": 1,
+        "height": 183,
+        "weight": 77,
+        "restingHeartRate": 70,
+        "status": "active"
+      },
+      "status": "active"
+    },
+    "id": 7,
+    "name": "Half marathon preparation (1)",
+    "difficulty": 3,
+    "duration": null,
+    "calories": null,
+    "experience": null,
+    "source": "community",
+    "favoriteId": null,
+    "status": "scheduled",
+    "type": "personal"
+  },
   "exercise": {
     "id": 2,
     "name": "Walking rest",
@@ -26,6 +82,34 @@
   "duration": 3600,
   "id": 13,
   "position": 3,
+  "workout": {
+    "scheduledDate": "2099-01-01T00:00:00+00:00",
+    "completionDate": null,
+    "owner": {
+      "id": 1,
+      "username": "ghriim",
+      "email": "ghriim@fakemail.com",
+      "roles": ["USER"],
+      "bodyMeasurement": {
+        "id": 1,
+        "height": 183,
+        "weight": 77,
+        "restingHeartRate": 70,
+        "status": "active"
+      },
+      "status": "active"
+    },
+    "id": 7,
+    "name": "Half marathon preparation (1)",
+    "difficulty": 3,
+    "duration": null,
+    "calories": null,
+    "experience": null,
+    "source": "community",
+    "favoriteId": null,
+    "status": "scheduled",
+    "type": "personal"
+  },
   "exercise": {
     "id": 14,
     "name": "Run (objective duration)",

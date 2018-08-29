@@ -19,7 +19,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
         $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
-    public function testGetManyCompleteAuthorized(): void
+    public function testGetManyAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
         $this->buildGetRequest($client, 'workouts/7/steps');
@@ -35,7 +35,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testGetOneUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildGetRequest($client, 'workouts/0000/steps/0000');
+        $this->buildGetRequest($client, 'workouts/7/steps/13');
 
         $response = $client->getResponse();
 
@@ -45,7 +45,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testGetOneAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildGetRequest($client, 'workouts/0000/steps/0000');
+        $this->buildGetRequest($client, 'workouts/7/steps/13');
 
         $response = $client->getResponse();
 
@@ -56,7 +56,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testPostUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildPostRequest($client, 'workouts/0000/steps');
+        $this->buildPostRequest($client, 'workouts/7/steps');
 
         $response = $client->getResponse();
 
@@ -66,7 +66,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testPostAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildPostRequest($client, 'workouts/0000/steps');
+        $this->buildPostRequest($client, 'workouts/7/steps');
 
         $response = $client->getResponse();
 
@@ -77,7 +77,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testPutUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildPutRequest($client, 'workouts/0000/steps/0000');
+        $this->buildPutRequest($client, 'workouts/7/steps/13');
 
         $response = $client->getResponse();
 
@@ -87,7 +87,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testPutAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildPutRequest($client,'workouts/0000/steps/0000');
+        $this->buildPutRequest($client,'workouts/7/steps/13');
 
         $response = $client->getResponse();
 
@@ -108,7 +108,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testDeleteNotFoundAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildDeleteRequest($client, 'workouts/7/steps/0000');
+        $this->buildDeleteRequest($client, 'workouts/0000/steps/0000');
 
         $response = $client->getResponse();
 

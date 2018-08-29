@@ -15,19 +15,21 @@ class Exercise extends AbstractBaseEntity
     /**
      * @var int
      *
-     * @Serializer\Groups({"default"})
+     * @Serializer\Groups({"default", "test"})
      */
     protected $id;
 
     /**
      * @var string
      *
-     * @Serializer\Groups({"default"})
+     * @Serializer\Groups({"default", "test"})
      */
     protected $name;
 
     /**
      * @var string $type
+     *
+     * @Serializer\Groups({"default", "test"})
      */
     protected $type;
 

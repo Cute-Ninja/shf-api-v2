@@ -141,11 +141,4 @@
     "status": "active"
   },
   "status": "active"
-}, {
-  "id": 12,
-  "username": "ghost",
-  "email": "ghost@shf.com",
-  "roles": ["ROLE_ADMIN_DASHBOARD_READ", "ROLE_ADMIN_USER_READ", "ROLE_ADMIN_USER_WRITE", "ROLE_ADMIN_USER_DELETE"],
-  "bodyMeasurement": null,
-  "status": "active"
 }]
