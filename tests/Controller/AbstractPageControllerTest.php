@@ -2,8 +2,11 @@
 
 namespace App\Tests\Controller;
 
+use App\Entity\User;
+use App\Repository\AbstractBaseRepository;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Throwable;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -59,18 +62,33 @@ abstract class AbstractPageControllerTest extends WebTestCase implements ShfTest
     private function buildAuthentication(string $username): Client
     {
         $client  = static::createClient();
+        $user = $this->getRepository($client, User::class)->findOneByCriteria(['username' => $username]);
+        if (null === $user) {
+            throw new AuthenticationException('User could not be found for username ' . $username);
+        }
+
         $session = $client->getContainer()->get('session');
 
-        $firewallName = 'secure_area';
-        $firewallContext = 'secured_area';
-
-        $token = new UsernamePasswordToken($username, null, $firewallName, array('ROLE_ADMIN'));
-        $session->set('_security_'.$firewallContext, serialize($token));
+        $token = new UsernamePasswordToken($user, null, 'secure_area', $user->getRoles());
+        $session->set('_security_secured_area', serialize($token));
         $session->save();
 
         $cookie = new Cookie($session->getName(), $session->getId());
         $client->getCookieJar()->set($cookie);
 
         return $client;
+    }
+
+    /**
+     * @param Client $client
+     * @param string $className
+     *
+     * @return AbstractBaseRepository
+     */
+    protected function getRepository(Client $client, $className): AbstractBaseRepository
+    {
+        $manager = $client->getContainer()->get('doctrine')->getManager();
+
+        return $manager->getRepository($className);
     }
 }

@@ -37,7 +37,7 @@ abstract class AbstractBaseApiTest extends WebTestCase implements ShfTestInterfa
         $client = $this->buildAuthentication(self::AUTHENTICATION_PERSONAL_USERNAME);
 
         if (true === $saveUser && null === $this->user) {
-            $this->user = $this->getDocumentRepository($client, User::class)
+            $this->user = $this->getRepository($client, User::class)
                                ->findOneByCriteria(['username' => self::AUTHENTICATION_PERSONAL_USERNAME]);
         }
 
@@ -126,7 +126,7 @@ abstract class AbstractBaseApiTest extends WebTestCase implements ShfTestInterfa
      *
      * @return AbstractBaseRepository
      */
-    protected function getDocumentRepository(Client $client, $className): AbstractBaseRepository
+    protected function getRepository(Client $client, $className): AbstractBaseRepository
     {
         $manager = $client->getContainer()->get('doctrine')->getManager();
 

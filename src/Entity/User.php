@@ -67,6 +67,11 @@ class User extends AbstractBaseEntity implements UserInterface
         return $this->id;
     }
 
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
     /**
      * @return null|string
      */

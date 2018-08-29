@@ -3,12 +3,12 @@ login:
     methods: [GET|POST]
     controller: App\Controller\Visitor\PageVisitorController::login
 
-index:
+visitor_index:
     path: /
     methods: [GET]
     controller: App\Controller\Visitor\PageVisitorController::index
 
-register:
+visitor_register:
     path: /register
     methods: [GET|POST]
     controller: App\Controller\Visitor\PageVisitorController::register

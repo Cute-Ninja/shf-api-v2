@@ -2,8 +2,13 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use Doctrine\ORM\QueryBuilder;
 
+/**
+ * @method User findOneByCriteria(array $criteria = [], array $selects = [])
+ * @method User[] findManyByCriteria(array $criteria = [], array $selects = [], array $orders = [], $limit = null): array
+ */
 class UserRepository extends AbstractBaseRepository
 {
     /**
