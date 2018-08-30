@@ -1,7 +1,7 @@
-App\Entity\WaterTrackerEntry:
+App\Entity\WaterTracker\WaterTrackerEntry:
     type: entity
     table: "`water_tracker_entry`"
-    repositoryClass: App\Repository\WaterTrackerEntryRepository
+    repositoryClass: App\Repository\WaterTracker\WaterTrackerEntryRepository
     id:
         id:
             type: integer
@@ -21,7 +21,7 @@ App\Entity\WaterTrackerEntry:
 
     manyToOne:
         tracker:
-            targetEntity: App\Entity\WaterTracker
+            targetEntity: App\Entity\WaterTracker\WaterTracker
             inversedBy: entries
             joinColumn:
                 name: tracker_id

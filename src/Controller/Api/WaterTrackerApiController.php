@@ -2,7 +2,7 @@
 
 namespace App\Controller\Api;
 
-use App\Entity\WaterTracker;
+use App\Entity\WaterTracker\WaterTracker;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;

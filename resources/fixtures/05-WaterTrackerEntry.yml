@@ -1,4 +1,4 @@
-App\Entity\WaterTrackerEntry:
+App\Entity\WaterTracker\WaterTrackerEntry:
     ghriim_tracker_entries_{100, 200, 500, 250, 300}:
         __construct: ["@ghriim_tracker"]
         quantity: <current()>

@@ -1,4 +1,4 @@
-App\Entity\WaterTrackerEntry:
+App\Entity\WaterTracker\WaterTrackerEntry:
     properties:
         quantity:
             - Type: integer

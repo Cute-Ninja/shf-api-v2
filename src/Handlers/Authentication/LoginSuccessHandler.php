@@ -3,8 +3,8 @@
 namespace App\Handlers\Authentication;
 
 use App\Entity\User\User;
-use App\Entity\WaterTracker;
-use App\Repository\WaterTrackerRepository;
+use App\Entity\WaterTracker\WaterTracker;
+use App\Repository\WaterTracker\WaterTrackerRepository;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\RouterInterface;

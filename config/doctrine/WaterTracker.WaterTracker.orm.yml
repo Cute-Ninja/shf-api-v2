@@ -1,7 +1,7 @@
-App\Entity\WaterTracker:
+App\Entity\WaterTracker\WaterTracker:
     type: entity
     table: "`water_tracker`"
-    repositoryClass: App\Repository\WaterTrackerRepository
+    repositoryClass: App\Repository\WaterTracker\WaterTrackerRepository
     id:
         id:
             type: integer
@@ -21,7 +21,7 @@ App\Entity\WaterTracker:
 
     oneToMany:
         entries:
-            targetEntity: App\Entity\WaterTrackerEntry
+            targetEntity: App\Entity\WaterTracker\WaterTrackerEntry
             mappedBy: tracker
             cascade: ['persist']
 

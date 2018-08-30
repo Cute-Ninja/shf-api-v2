@@ -2,7 +2,7 @@
 
 namespace App\Controller\Api;
 
-use App\Entity\WaterTrackerEntry;
+use App\Entity\WaterTracker\WaterTrackerEntry;
 use App\Form\Type\WaterTrackerEntryType;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;

@@ -2,7 +2,7 @@
 
 namespace App\Tests\Controller\Api;
 
-use App\Entity\WaterTracker;
+use App\Entity\WaterTracker\WaterTracker;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Component\HttpFoundation\Response;
 

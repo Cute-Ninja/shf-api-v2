@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\WaterTracker;
 
+use App\Entity\AbstractBaseEntity;
 use App\Entity\User\User;
 use Doctrine\ORM\PersistentCollection;
 use Symfony\Component\Serializer\Annotation as Serializer;

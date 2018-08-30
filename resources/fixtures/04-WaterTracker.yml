@@ -1,4 +1,4 @@
-App\Entity\WaterTracker:
+App\Entity\WaterTracker\WaterTracker:
     ghriim_tracker:
         target: 2000
         user: "@ghriim"

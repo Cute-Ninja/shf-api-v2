@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\WaterTracker;
 
-use App\Entity\WaterTracker;
+use App\Entity\WaterTracker\WaterTracker;
+use App\Repository\AbstractBaseRepository;
 use Doctrine\ORM\QueryBuilder;
 
 /**
