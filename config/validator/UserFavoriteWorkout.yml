@@ -6,7 +6,7 @@ App\Entity\User\UserFavoriteWorkout:
     properties:
         user:
             - NotNull: ~
-            - Type: App\Entity\User
+            - Type: App\Entity\User\User
         workout:
             - NotNull: ~
             - Type: App\Entity\AbstractWorkout

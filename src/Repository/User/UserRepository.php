@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\User;
 
 use App\Entity\User\User;
+use App\Repository\AbstractBaseRepository;
 use Doctrine\ORM\QueryBuilder;
 
 /**

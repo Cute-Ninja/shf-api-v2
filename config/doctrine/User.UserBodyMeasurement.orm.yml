@@ -1,7 +1,7 @@
 App\Entity\User\UserBodyMeasurement:
     type: entity
     table: "`user_body_measurement`"
-    repositoryClass: App\Repository\UserBodyMeasurementRepository
+    repositoryClass: App\Repository\User\UserBodyMeasurementRepository
     id:
         id:
             type: integer

@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\User;
+
+use App\Repository\AbstractBaseRepository;
 
 class UserEquipmentRepository extends AbstractBaseRepository
 {

@@ -30,7 +30,7 @@ class PageAdminControllerTest extends AbstractPageControllerTest
      */
     public function testPagesAuthorized(string $url): void
     {
-        $this->client = $this->buildAuthenticatedAdmin();
+        $this->buildAuthenticatedAdmin();
         $this->client->request('GET', $url);
 
         $this->assertEquals(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());

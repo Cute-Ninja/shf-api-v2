@@ -1,0 +1,4 @@
+App\Entity\PersonalWorkout:
+    properties:
+        scheduledDate:
+            - Date: ~

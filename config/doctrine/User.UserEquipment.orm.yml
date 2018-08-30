@@ -1,7 +1,7 @@
 App\Entity\User\UserEquipment:
     type: entity
     table: "`user_equipment`"
-    repositoryClass: App\Repository\UserEquipmentRepository
+    repositoryClass: App\Repository\User\UserEquipmentRepository
     id:
         id:
             type: integer

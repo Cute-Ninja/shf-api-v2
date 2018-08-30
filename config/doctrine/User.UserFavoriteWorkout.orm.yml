@@ -1,7 +1,7 @@
 App\Entity\User\UserFavoriteWorkout:
     type: entity
     table: "`user_favorite_workout`"
-    repositoryClass: App\Repository\UserFavoriteWorkoutRepository
+    repositoryClass: App\Repository\User\UserFavoriteWorkoutRepository
     id:
         id:
             type: integer

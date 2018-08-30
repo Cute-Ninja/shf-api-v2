@@ -61,22 +61,24 @@ abstract class AbstractPageControllerTest extends WebTestCase implements ShfTest
      */
     private function buildAuthentication(string $username): Client
     {
-        $client  = static::createClient();
-        $user = $this->getRepository($client, User::class)->findOneByCriteria(['username' => $username]);
+        $this->client = static::createClient();
+        $user = $this->getRepository($this->client, User::class)
+                     ->findOneByCriteria(['username' => $username, 'status' => User::STATUS_ACTIVE]);
+
         if (null === $user) {
-            throw new AuthenticationException('User could not be found for username ' . $username);
+            throw new AuthenticationException('/!\ User could not be found for username ' . $username);
         }
 
-        $session = $client->getContainer()->get('session');
+        $session = $this->client->getContainer()->get('session');
 
         $token = new UsernamePasswordToken($user, null, 'secure_area', $user->getRoles());
         $session->set('_security_secured_area', serialize($token));
         $session->save();
 
         $cookie = new Cookie($session->getName(), $session->getId());
-        $client->getCookieJar()->set($cookie);
+        $this->client->getCookieJar()->set($cookie);
 
-        return $client;
+        return $this->client;
     }
 
     /**

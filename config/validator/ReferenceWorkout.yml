@@ -2,7 +2,3 @@ App\Entity\ReferenceWorkout:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [name]
-
-    properties:
-        scheduledDate:
-            - Date: ~
