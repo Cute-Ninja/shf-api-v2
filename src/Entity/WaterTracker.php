@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\User\User;
 use Doctrine\ORM\PersistentCollection;
 use Symfony\Component\Serializer\Annotation as Serializer;
 

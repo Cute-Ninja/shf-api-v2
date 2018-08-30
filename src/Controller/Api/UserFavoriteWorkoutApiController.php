@@ -2,7 +2,7 @@
 
 namespace App\Controller\Api;
 
-use App\Entity\UserFavoriteWorkout;
+use App\Entity\User\UserFavoriteWorkout;
 use App\Form\Type\UserFavoriteWorkoutType;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;

@@ -1,7 +1,7 @@
-App\Entity\UserFavoriteWorkout:
+App\Entity\User\UserEquipment:
     type: entity
-    table: "`user_favorite_workout`"
-    repositoryClass: App\Repository\UserFavoriteWorkoutRepository
+    table: "`user_equipment`"
+    repositoryClass: App\Repository\UserEquipmentRepository
     id:
         id:
             type: integer
@@ -13,15 +13,15 @@ App\Entity\UserFavoriteWorkout:
                 strategy: IDENTITY
 
     manyToOne:
-        workout:
-            targetEntity: App\Entity\AbstractWorkout
+        equipment:
+            targetEntity: App\Entity\Equipment
             nullable: false
             joinColumn:
-                name: workout_id
+                name: equipment_id
                 referencedColumnName: id
 
         user:
-            targetEntity: App\Entity\User
+            targetEntity: App\Entity\User\User
             nullable: false
             joinColumn:
                 name: user_id

@@ -3,8 +3,8 @@
 namespace App\Form\Type;
 
 use App\Entity\AbstractWorkout;
-use App\Entity\User;
-use App\Entity\UserFavoriteWorkout;
+use App\Entity\User\User;
+use App\Entity\User\UserFavoriteWorkout;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

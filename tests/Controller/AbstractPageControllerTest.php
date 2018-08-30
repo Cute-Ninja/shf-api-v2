@@ -2,7 +2,7 @@
 
 namespace App\Tests\Controller;
 
-use App\Entity\User;
+use App\Entity\User\User;
 use App\Repository\AbstractBaseRepository;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;

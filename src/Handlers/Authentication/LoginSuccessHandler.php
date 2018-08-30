@@ -2,7 +2,7 @@
 
 namespace App\Handlers\Authentication;
 
-use App\Entity\User;
+use App\Entity\User\User;
 use App\Entity\WaterTracker;
 use App\Repository\WaterTrackerRepository;
 use Doctrine\Bundle\DoctrineBundle\Registry;

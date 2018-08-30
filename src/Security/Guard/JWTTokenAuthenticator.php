@@ -2,7 +2,7 @@
 
 namespace App\Security\Guard;
 
-use App\Entity\User;
+use App\Entity\User\User;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\ExpiredTokenException;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Guard\JWTTokenAuthenticator as BaseAuthenticator;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -22,7 +22,7 @@ class JWTTokenAuthenticator extends BaseAuthenticator
         $payload = $preAuthToken->getPayload();
 
         if (false === password_verify($user->getPassword(), $payload['hash'])) {
-            throw new ExpiredTokenException();
+            throw new ExpiredTokenException('Token is expired');
         }
 
         return $user;

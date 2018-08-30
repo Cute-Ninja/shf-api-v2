@@ -16,7 +16,7 @@ App\Entity\PersonalWorkout:
 
     manyToOne:
         owner:
-            targetEntity: App\Entity\User
+            targetEntity: App\Entity\User\User
             nullable: false
             joinColumn:
                 name: owner_id

@@ -1,4 +1,4 @@
-App\Entity\UserEquipment:
+App\Entity\User\UserEquipment:
     ghriim_equipment_{jump_rope, foam_roller, massage_ball, tuba}:
         user: "@ghriim"
         equipment: "@equipment_<current()>"

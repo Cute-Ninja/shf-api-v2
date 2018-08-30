@@ -27,7 +27,7 @@ App\Entity\WaterTracker:
 
     manyToOne:
         user:
-            targetEntity: App\Entity\User
+            targetEntity: App\Entity\User\User
             joinColumn:
                 name: user_id
                 referencedColumnName: id

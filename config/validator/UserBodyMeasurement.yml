@@ -1,4 +1,4 @@
-App\Entity\UserBodyMeasurement:
+App\Entity\User\UserBodyMeasurement:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [user]

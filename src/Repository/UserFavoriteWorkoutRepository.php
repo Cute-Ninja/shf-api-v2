@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\UserFavoriteWorkout;
+use App\Entity\User\UserFavoriteWorkout;
 use Doctrine\ORM\QueryBuilder;
 
 /**

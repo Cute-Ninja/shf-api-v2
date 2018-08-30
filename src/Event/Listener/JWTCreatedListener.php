@@ -2,10 +2,8 @@
 
 namespace App\Event\Listener;
 
-use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 class JWTCreatedListener
 {

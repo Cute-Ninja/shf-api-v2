@@ -1,4 +1,4 @@
-App\Entity\User:
+App\Entity\User\User:
     type: entity
     table: "`user`"
     repositoryClass: App\Repository\UserRepository
@@ -45,6 +45,6 @@ App\Entity\User:
     oneToOne:
         bodyMeasurement:
             column: body_measurement_id
-            targetEntity: App\Entity\UserBodyMeasurement
+            targetEntity: App\Entity\User\UserBodyMeasurement
             mappedBy: user
             nullable: true

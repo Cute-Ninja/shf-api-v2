@@ -2,9 +2,7 @@
 
 namespace App\HttpResponse;
 
-use FOS\RestBundle\View\View;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ServerErrorResponseBuilder extends AbstractResponseBuilder
 {

@@ -3,7 +3,7 @@
 namespace App\Controller\Api\ActionHelper;
 
 use App\Entity\AbstractWorkout;
-use App\Entity\User;
+use App\Entity\User\User;
 
 class PostWorkoutActionHelper
 {

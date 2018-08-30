@@ -1,4 +1,4 @@
-App\Entity\User:
+App\Entity\User\User:
     base_user (template):
         password: "\\$2y\\$13\\$xuk1duzZe5Xr7swiTrPHMu6ee7dm4dTaTsqbEWZaL5OZI.jzW7e5y" #plain password: test123
 

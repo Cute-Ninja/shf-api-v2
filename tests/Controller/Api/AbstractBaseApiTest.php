@@ -2,7 +2,7 @@
 
 namespace App\Tests\Controller\Api;
 
-use App\Entity\User;
+use App\Entity\User\User;
 use App\Repository\AbstractBaseRepository;
 use App\Tests\Controller\ShfTestInterface;
 use Symfony\Bundle\FrameworkBundle\Client;

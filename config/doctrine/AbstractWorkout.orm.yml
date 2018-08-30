@@ -57,7 +57,7 @@ App\Entity\AbstractWorkout:
 
     manyToOne:
         creator:
-            targetEntity: App\Entity\User
+            targetEntity: App\Entity\User\User
             nullable: false
             joinColumn:
                 name: creator_id

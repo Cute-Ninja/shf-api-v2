@@ -3,7 +3,6 @@
 namespace App\HttpResponse;
 
 use App\Form\Error\ApiFormError;
-use FOS\RestBundle\View\View;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

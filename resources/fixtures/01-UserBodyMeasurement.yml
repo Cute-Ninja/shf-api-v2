@@ -1,4 +1,4 @@
-App\Entity\UserBodyMeasurement:
+App\Entity\User\UserBodyMeasurement:
     ghriim_measurement:
         user: '@ghriim'
         height: 183

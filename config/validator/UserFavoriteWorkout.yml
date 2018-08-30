@@ -1,4 +1,4 @@
-App\Entity\UserFavoriteWorkout:
+App\Entity\User\UserFavoriteWorkout:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [user, workout]

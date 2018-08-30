@@ -2,7 +2,7 @@
 
 namespace App\Controller\Api;
 
-use App\Entity\User;
+use App\Entity\User\User;
 use App\Form\Type\UserBodyMeasurementType;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
