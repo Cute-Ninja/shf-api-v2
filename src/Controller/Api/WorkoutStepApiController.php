@@ -74,7 +74,6 @@ class WorkoutStepApiController extends AbstractApiController
     /**
      * @var Request $request
      * @var int     $workoutId
-     * @var string  $stepType
      *
      * @return Response
      *
@@ -86,7 +85,36 @@ class WorkoutStepApiController extends AbstractApiController
      * @SWG\Tag(name="WorkoutStep")
      * @Security(name="Bearer")
      */
-    public function post(Request $request, int $workoutId, string $stepType): Response
+    public function post(Request $request, int $workoutId): Response
+    {
+        return $this->getServerErrorResponseBuilder()->notImplemented();
+    }
+
+    /**
+     * @var Request $request
+     * @var int     $workoutId
+     * @var string  $stepType
+     *
+     * @return Response
+     *
+     * @SWG\Response(
+     *     response=200,
+     *     description="The Step has been successfully add and returned",
+     *     @Model(type=AbstractWorkoutStep::class, groups={"default"})
+     * )
+     * @SWG\Response(
+     *     response=404,
+     *     description="No id was matching an existing Step"
+     * )
+     * @SWG\Response(
+     *     response=422,
+     *     description="Error in the form you are submitted (details in Response body).",
+     * )
+     *
+     * @SWG\Tag(name="WorkoutStep")
+     * @Security(name="Bearer")
+     */
+    public function postWithType(Request $request, int $workoutId, string $stepType): Response
     {
         $workout = $this->getWorkoutRepository()->findOneByCriteria(['id' => $workoutId]);
         if (null === $workout) {

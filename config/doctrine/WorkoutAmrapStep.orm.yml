@@ -6,3 +6,8 @@ App\Entity\WorkoutAmrapStep:
             type: integer
             nullable: false
             unique: false
+        repsDone:
+            column: reps_done
+            type: integer
+            nullable: false
+            unique: false

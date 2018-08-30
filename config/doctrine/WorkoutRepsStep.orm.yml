@@ -1,8 +1,8 @@
 App\Entity\WorkoutRepsStep:
     type: entity
     fields:
-        numberOfRepetition:
-            column: number_of_repetition
+        repsPlanned:
+            column: reps_planned
             type: integer
             nullable: false
             unique: false

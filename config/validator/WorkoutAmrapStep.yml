@@ -1,4 +1,0 @@
-App\Entity\WorkoutAmrapStep:
-    properties:
-        duration:
-            - Type: integer

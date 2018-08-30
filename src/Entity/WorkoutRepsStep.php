@@ -7,11 +7,11 @@ use Symfony\Component\Serializer\Annotation as Serializer;
 class WorkoutRepsStep extends AbstractWorkoutStep
 {
     /**
-     * @var int $numberOfRepetition
+     * @var int $repsPlanned
      *
      * @Serializer\Groups({"default", "test"})
      */
-    protected $numberOfRepetition = 0;
+    protected $repsPlanned = 0;
 
     /**
      * @return string
@@ -24,16 +24,16 @@ class WorkoutRepsStep extends AbstractWorkoutStep
     /**
      * @return int
      */
-    public function getNumberOfRepetition(): int
+    public function getRepsPlanned(): int
     {
-        return $this->numberOfRepetition;
+        return $this->repsPlanned;
     }
 
     /**
-     * @param int|null $numberOfRepetition
+     * @param int $repsPlanned
      */
-    public function setNumberOfRepetition(?int $numberOfRepetition): void
+    public function setRepsPlanned(int $repsPlanned): void
     {
-        $this->numberOfRepetition = $numberOfRepetition ?? 0;
+        $this->repsPlanned = $repsPlanned ?? 0;
     }
 }

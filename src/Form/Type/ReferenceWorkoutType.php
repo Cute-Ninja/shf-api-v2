@@ -2,10 +2,10 @@
 
 namespace App\Form\Type;
 
-use App\Entity\WorkoutAmrapStep;
+use App\Entity\ReferenceWorkout;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class WorkoutAmrapStepType extends AbstractWorkoutStepType
+class ReferenceWorkoutType extends AbstractWorkoutType
 {
     /**
      * @param OptionsResolver $resolver
@@ -14,7 +14,7 @@ class WorkoutAmrapStepType extends AbstractWorkoutStepType
     {
         $resolver->setDefaults(
             [
-                'data_class' => WorkoutAmrapStep::class
+                'data_class' => ReferenceWorkout::class
             ]
         );
     }

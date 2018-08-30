@@ -67,13 +67,14 @@ class PersonalWorkout extends AbstractWorkout
     }
 
     /**
-     * @param \DateTime $scheduledDate
+     * @param \DateTime|null $scheduledDate
      */
-    public function setScheduledDate(\DateTime $scheduledDate): void
+    public function setScheduledDate(?\DateTime $scheduledDate): void
     {
         if ($this->isSchedulableStatus() && new \DateTime() < $scheduledDate) {
             $this->setStatus(self::STATUS_SCHEDULED);
         }
+
         $this->scheduledDate = $scheduledDate;
     }
 

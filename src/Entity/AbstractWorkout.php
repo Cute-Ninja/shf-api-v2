@@ -95,9 +95,9 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -159,9 +159,9 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSource(): string
+    public function getSource(): ?string
     {
         return $this->source;
     }

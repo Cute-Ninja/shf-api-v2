@@ -15,6 +15,13 @@ api_workout_post:
     controller: App\Controller\Api\WorkoutApiController::post
     methods: POST
 
+api_workout_post_with_type:
+    path: /api/workouts/{workoutType}
+    controller: App\Controller\Api\WorkoutApiController::postWithType
+    methods: POST
+    requirements:
+        workoutType: reference|personal
+
 api_workout_put:
     path: /api/workouts/{id}
     controller: App\Controller\Api\WorkoutApiController::put
@@ -54,6 +61,13 @@ front_api_workout_get:
     methods: GET
     requirements:
         id: \d+
+
+front_api_workout_post_with_type:
+    path: /api/workouts/{workoutType}
+    controller: App\Controller\Api\WorkoutProxyController::postWithType
+    methods: POST
+    requirements:
+        workoutType: reference|personal
 
 front_api_workout_patch:
     path: /front/api/workouts/{action}

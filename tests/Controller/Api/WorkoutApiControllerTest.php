@@ -75,6 +75,52 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
         $this->assertEmpty($response->getContent());
     }
 
+    public function testPostWithTypeUnauthorized(): void
+    {
+        $client = static::createClient();
+        $this->buildPostRequest($client, 'workouts/personal');
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
+    }
+
+    public function testPostWithTypeAuthorizedWithFormError(): void
+    {
+        $client = $this->buildAuthenticatedUser();
+        $this->buildPostRequest(
+            $client,
+            'workouts/personal',
+            [
+                'name' => '',
+            ]
+        );
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
+        $this->assertNotEmpty($response->getContent());
+    }
+
+
+    public function testPostWithTypeAuthorizedWithoutFormError(): void
+    {
+        $client = $this->buildAuthenticatedUser();
+        $this->buildPostRequest(
+            $client,
+            'workouts/personal',
+            [
+                'name' => 'test workout',
+                'source' => 'shf'
+            ]
+        );
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertNotEmpty($response->getContent());
+    }
+
     public function testPutUnauthorized(): void
     {
         $client = static::createClient();

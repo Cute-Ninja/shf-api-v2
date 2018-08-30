@@ -3,6 +3,7 @@
 namespace App\Controller\Front;
 
 use App\Controller\AbstractProxyController;
+use App\Entity\AbstractWorkout;
 use App\Entity\PersonalWorkout;
 use App\Entity\ReferenceWorkout;
 use Symfony\Component\HttpFoundation\Request;
@@ -52,6 +53,23 @@ class WorkoutProxyController extends AbstractProxyController
             $request,
             'App\Controller\Api\WorkoutApiController:getOne',
             ['id' => $id]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @param string  $workoutType
+     *
+     * @return Response
+     */
+    public function postWithType(Request $request, string $workoutType): Response
+    {
+        $request->request->set('source', AbstractWorkout::WORKOUT_SOURCE_COMMUNITY);
+
+        return $this->forwardToApi(
+            $request,
+            'App\Controller\Api\WorkoutApiController:postWithType',
+            ['workoutType' => $workoutType]
         );
     }
 

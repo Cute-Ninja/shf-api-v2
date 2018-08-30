@@ -1,0 +1,9 @@
+App\Entity\AbstractWorkout:
+    properties:
+        name:
+            - NotBlank: ~
+            - Length:
+                max: 150
+        source:
+            - NotBlank: ~
+            - Choice: ['shf', 'community']

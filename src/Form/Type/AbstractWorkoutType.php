@@ -2,14 +2,12 @@
 
 namespace App\Form\Type;
 
-use App\Entity\Exercise;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Faker\Provider\Text;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-abstract class AbstractWorkoutStepType extends AbstractType
+class AbstractWorkoutType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -17,11 +15,8 @@ abstract class AbstractWorkoutStepType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        if ('POST' === $options['method']) {
-            $builder->add('position', TextType::class)
-                    ->add('estimatedDuration', IntegerType::class)
-                    ->add('exercise', EntityType::class, ['class' => Exercise::class]);
-        }
+        $builder->add('name', TextType::class)
+                ->add('source', TextType::class);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Controller\Api;
 
 use App\Controller\Api\ActionHelper\GetManyWorkoutActionHelper;
 use App\Controller\Api\ActionHelper\PatchWorkoutActionHelper;
+use App\Controller\Api\ActionHelper\PostWorkoutActionHelper;
 use App\Entity\AbstractWorkout;
 use App\Entity\AbstractWorkoutStep;
 use App\Entity\PersonalWorkout;
@@ -107,6 +108,50 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
     public function post(Request $request): Response
     {
         return $this->getServerErrorResponseBuilder()->notImplemented();
+    }
+
+    /**
+     * @var Request $request
+     * @var string  $workoutType
+     *
+     * @return Response
+     *
+     * @SWG\Response(
+     *     response=200,
+     *     description="The Workout has been successfully add and returned",
+     *     @Model(type=AbstractWorkout::class, groups={"default"})
+     * )
+     * @SWG\Response(
+     *     response=404,
+     *     description="No id was matching an existing Workout"
+     * )
+     * @SWG\Response(
+     *     response=422,
+     *     description="Error in the form you are submitted (details in Response body).",
+     * )
+     *
+     * @SWG\Tag(name="Workout")
+     * @Security(name="Bearer")
+     */
+    public function postWithType(Request $request, string $workoutType): Response
+    {
+        $helper  = new PostWorkoutActionHelper();
+        $workout = $helper->buildWorkoutFromType($workoutType, $this->getUser());
+
+        $form = $this->createForm($helper->buildFormNameFromType($workoutType), $workout, ['method' => 'POST']);
+
+        $form->handleRequest($request);
+        if (false === $form->isSubmitted() || false === $form->isValid()) {
+            return $this->getClientErrorResponseBuilder()->jsonResponseFormError($form);
+        }
+
+        $this->getEntityManager()->persist($workout);
+        $this->getEntityManager()->flush();
+
+        return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
+            $workout,
+            $this->getSerializationGroup($request)
+        );
     }
 
     /**

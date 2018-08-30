@@ -26,6 +26,22 @@ class WorkoutStepProxyController extends AbstractProxyController
     /**
      * @param Request $request
      * @param int     $workoutId
+     * @param string  $stepType
+     *
+     * @return Response
+     */
+    public function post(Request $request, int $workoutId, string $stepType): Response
+    {
+        return $this->forwardToApi(
+            $request,
+            'App\Controller\Api\WorkoutStepApiController:getMany',
+            ['workoutId' => $workoutId, 'stepType' => $stepType]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @param int     $workoutId
      * @param int     $id
      *
      * @return Response

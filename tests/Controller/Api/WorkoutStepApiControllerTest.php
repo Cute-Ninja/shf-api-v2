@@ -56,6 +56,27 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testPostUnauthorized(): void
     {
         $client = static::createClient();
+        $this->buildPostRequest($client, 'workouts/7/steps');
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
+    }
+
+    public function testPostAuthorized(): void
+    {
+        $client = $this->buildAuthenticatedUser();
+        $this->buildPostRequest($client,'workouts/7/steps');
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_NOT_IMPLEMENTED, $response->getStatusCode());
+        $this->assertEmpty($response->getContent());
+    }
+
+    public function testPostWithTypeUnauthorized(): void
+    {
+        $client = static::createClient();
         $this->buildPostRequest($client, 'workouts/7/steps/amrap');
 
         $response = $client->getResponse();
@@ -63,7 +84,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
         $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
-    public function testPostAuthorizedWithFormError(): void
+    public function testPostWithTypeAuthorizedWithFormError(): void
     {
         $client = $this->buildAuthenticatedUser();
         $this->buildPostRequest(
@@ -83,7 +104,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     }
 
 
-    public function testPostAuthorizedWithoutFormError(): void
+    public function testPostWithTypeAuthorizedWithoutFormError(): void
     {
         $client = $this->buildAuthenticatedUser();
         $this->buildPostRequest(
