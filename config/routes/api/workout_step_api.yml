@@ -14,11 +14,12 @@ api_workout_step_get:
         id: \d+
 
 api_workout_step_post:
-    path: /api/workouts/{workoutId}/steps
+    path: /api/workouts/{workoutId}/steps/{stepType}
     controller: App\Controller\Api\WorkoutStepApiController::post
     methods: POST
     requirements:
         workoutId: \d+
+        stepType: amrap|distance|duration|reps|rest
 
 api_workout_step_put:
     path: /api/workouts/{workoutId}/steps/{id}

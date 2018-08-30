@@ -1,42 +1,42 @@
 App\Entity\WorkoutRestStep:
     ares_lvl_2_position_4_rest:
         position: 4
-        duration: 120
         workout: "@ares_lvl_2"
         exercise: "@rest"
+        estimatedDuration: 45
 
     ares_lvl_2_position_8_rest:
         position: 8
-        duration: 120
         workout: "@ares_lvl_2"
         exercise: "@rest"
+        estimatedDuration: 45
 
     hermes_position_2:
         position: 2
-        duration: 240
         workout: "@hermes"
         exercise: "@walking_rest"
+        estimatedDuration: 45
 
     hermes_position_4:
         position: 4
-        duration: 240
         workout: "@hermes"
         exercise: "@walking_rest"
+        estimatedDuration: 45
 
     ares_position_4_rest:
         position: 4
-        duration: 120
         workout: "@ares"
         exercise: "@rest"
+        estimatedDuration: 45
 
     ares_position_8_rest:
         position: 8
-        duration: 120
         workout: "@ares"
         exercise: "@rest"
+        estimatedDuration: 45
 
     ghriim_workout_1_position_2:
         position: 2
-        duration: 300
         workout: "@ghriim_workout_1"
         exercise: "@walking_rest"
+        estimatedDuration: 45

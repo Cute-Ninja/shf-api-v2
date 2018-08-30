@@ -60,7 +60,9 @@ class ClientErrorResponseBuilderTest extends WebTestCase
         $response = $this->responseBuilder->badRequest($message);
 
         $this->assertEquals(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
-        $this->assertEquals($message, $response->getContent());
+
+        $responseContent = json_decode($response->getContent());
+        $this->assertEquals($message, $responseContent['message']);
     }
 
     public function testJsonResponseFormError(): void

@@ -56,22 +56,50 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testPostUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildPostRequest($client, 'workouts/7/steps');
+        $this->buildPostRequest($client, 'workouts/7/steps/amrap');
 
         $response = $client->getResponse();
 
         $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
-    public function testPostAuthorized(): void
+    public function testPostAuthorizedWithFormError(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildPostRequest($client, 'workouts/7/steps');
+        $this->buildPostRequest(
+            $client,
+            'workouts/7/steps/amrap',
+            [
+                'position' => 3,
+                'exercise' => 0,
+                'estimatedDuration' => 'not_a_number'
+            ]
+        );
 
         $response = $client->getResponse();
 
-        $this->assertEquals(Response::HTTP_NOT_IMPLEMENTED, $response->getStatusCode());
-        $this->assertEmpty($response->getContent());
+        $this->assertEquals(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
+        $this->assertNotEmpty($response->getContent());
+    }
+
+
+    public function testPostAuthorizedWithoutFormError(): void
+    {
+        $client = $this->buildAuthenticatedUser();
+        $this->buildPostRequest(
+            $client,
+            'workouts/7/steps/amrap',
+            [
+                'position' => 3,
+                'exercise' => 1,
+                'estimatedDuration' => 60
+            ]
+        );
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertNotEmpty($response->getContent());
     }
 
     public function testPutUnauthorized(): void

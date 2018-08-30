@@ -29,6 +29,13 @@ abstract class AbstractWorkoutStep extends AbstractBaseEntity
     protected $position;
 
     /**
+     * @var int $estimatedDuration (in seconds)
+     *
+     * @Serializer\Groups({"default", "test"})
+     */
+    protected $estimatedDuration;
+
+    /**
      * @var AbstractWorkout $workout
      *
      * @Serializer\Groups({"default", "test"})
@@ -58,9 +65,9 @@ abstract class AbstractWorkoutStep extends AbstractBaseEntity
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPosition(): int
+    public function getPosition(): ?int
     {
         return $this->position;
     }
@@ -71,6 +78,29 @@ abstract class AbstractWorkoutStep extends AbstractBaseEntity
     public function setPosition(int $position): void
     {
         $this->position = $position;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getEstimatedDuration(): ?int
+    {
+        return $this->estimatedDuration;
+    }
+
+    /**
+     * @param int $estimatedDuration
+     */
+    public function setEstimatedDuration(int $estimatedDuration): void
+    {
+        try {
+        $workoutDuration = $this->getWorkout()->getEstimatedDuration();
+        $this->getWorkout()->setEstimatedDuration($workoutDuration - $this->estimatedDuration + $estimatedDuration);
+        } catch (\Exception $e) {
+            var_dump([$this->getId(), $this->getType()]); die;
+        }
+
+        $this->estimatedDuration = $estimatedDuration;
     }
 
     /**
@@ -90,9 +120,9 @@ abstract class AbstractWorkoutStep extends AbstractBaseEntity
     }
 
     /**
-     * @return Exercise
+     * @return Exercise|null
      */
-    public function getExercise(): Exercise
+    public function getExercise(): ?Exercise
     {
         return $this->exercise;
     }

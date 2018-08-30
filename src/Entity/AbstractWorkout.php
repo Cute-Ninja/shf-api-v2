@@ -38,7 +38,7 @@ abstract class AbstractWorkout extends AbstractBaseEntity
      *
      * @Serializer\Groups({"default", "test"})
      */
-    protected $duration;
+    protected $estimatedDuration;
 
     /**
      * @var int
@@ -129,17 +129,17 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     /**
      * @return int|null
      */
-    public function getDuration(): ?int
+    public function getEstimatedDuration(): ?int
     {
-        return $this->duration;
+        return $this->estimatedDuration;
     }
 
     /**
-     * @param int $duration
+     * @param int $estimatedDuration
      */
-    public function setDuration(int $duration): void
+    public function setEstimatedDuration(int $estimatedDuration): void
     {
-        $this->duration = $duration;
+        $this->estimatedDuration = $estimatedDuration;
     }
 
     /**

@@ -4,33 +4,39 @@ App\Entity\WorkoutRepsStep:
         numberOfRepetition: 25
         workout: "@ares"
         exercise: "@push_up"
+        estimatedDuration: 30
 
     ares_position_2:
         position: 2
         numberOfRepetition: 50
         workout: "@ares"
         exercise: "@crunch"
+        estimatedDuration: 60
 
     ares_position_3:
         position: 3
         numberOfRepetition: 100
         workout: "@ares"
         exercise: "@squat"
+        estimatedDuration: 60
 
     ares_position_5:
         position: 5
         numberOfRepetition: 25
         workout: "@ares"
         exercise: "@push_up"
+        estimatedDuration: 30
 
     ares_position_6:
         position: 6
         numberOfRepetition: 50
         workout: "@ares"
         exercise: "@crunch"
+        estimatedDuration: 60
 
     ares_position_7:
         position: 7
         numberOfRepetition: 100
         workout: "@ares"
         exercise: "@squat"
+        estimatedDuration: 60

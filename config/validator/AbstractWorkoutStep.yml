@@ -1,0 +1,8 @@
+App\Entity\AbstractWorkoutStep:
+    properties:
+        position:
+            - NotNull: ~
+            - Type: integer
+        exercise:
+            - NotNull: ~
+            - Type: App\Entity\Exercise

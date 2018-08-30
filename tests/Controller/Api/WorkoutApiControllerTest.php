@@ -155,7 +155,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
 
         $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
         $this->assertEquals(
-            $this->loadDataFromJsonFile('json/workouts_half_prepation_1_complete'),
+            $this->loadDataFromJsonFile('json/workouts_half_preparation_1_complete'),
             json_decode($response->getContent(), true)
         );
     }

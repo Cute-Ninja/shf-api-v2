@@ -35,8 +35,8 @@ App\Entity\AbstractWorkout:
             type: integer
             unique: false
             nullable: true
-        duration:
-            column: duration
+        estimatedDuration:
+            column: estimated_duration
             type: integer
             unique: false
             nullable: true

@@ -1,102 +1,93 @@
-[
-  {
+[{
+  "id": 1,
+  "workout": {
     "id": 1,
-    "workout": {
-      "id": 1,
-      "name": "Ares",
-      "difficulty": 4,
-      "duration": null,
-      "calories": null,
-      "experience": null,
-      "source": "shf",
-      "favoriteId": null,
-      "status": "active",
-      "type": "reference"
-    },
-    "status": "active"
+    "name": "Ares",
+    "difficulty": 4,
+    "estimatedDuration": 390,
+    "calories": null,
+    "experience": null,
+    "source": "shf",
+    "favoriteId": null,
+    "status": "active",
+    "type": "reference"
   },
-  {
-    "id": 2,
-    "workout": {
-      "id": 3,
-      "name": "Hermes",
-      "difficulty": 3,
-      "duration": null,
-      "calories": null,
-      "experience": null,
-      "source": "shf",
-      "favoriteId": null,
-      "status": "active",
-      "type": "reference"
-    },
-    "status": "active"
-  },
-  {
+  "status": "active"
+}, {
+  "id": 2,
+  "workout": {
     "id": 3,
-    "workout": {
-      "scheduledDate": "2099-01-01T00:00:00+00:00",
-      "completionDate": null,
-      "owner": {
-        "id": 1,
-        "username": "ghriim",
-        "email": "ghriim@fakemail.com",
-        "roles": [
-          "USER"
-        ],
-        "bodyMeasurement": {
-          "id": 1,
-          "height": 183,
-          "weight": 77,
-          "restingHeartRate": 70,
-          "status": "active"
-        },
-        "status": "active"
-      },
-      "id": 7,
-      "name": "Half marathon preparation (1)",
-      "difficulty": 3,
-      "duration": null,
-      "calories": null,
-      "experience": null,
-      "source": "community",
-      "favoriteId": null,
-      "status": "scheduled",
-      "type": "personal"
-    },
-    "status": "active"
+    "name": "Hermes",
+    "difficulty": 3,
+    "estimatedDuration": 5490,
+    "calories": null,
+    "experience": null,
+    "source": "shf",
+    "favoriteId": null,
+    "status": "active",
+    "type": "reference"
   },
-  {
-    "id": 4,
-    "workout": {
-      "scheduledDate": "2099-01-08T00:00:00+00:00",
-      "completionDate": null,
-      "owner": {
+  "status": "active"
+}, {
+  "id": 3,
+  "workout": {
+    "scheduledDate": "2099-01-01T00:00:00+00:00",
+    "completionDate": null,
+    "owner": {
+      "id": 1,
+      "username": "ghriim",
+      "email": "ghriim@fakemail.com",
+      "roles": ["USER"],
+      "bodyMeasurement": {
         "id": 1,
-        "username": "ghriim",
-        "email": "ghriim@fakemail.com",
-        "roles": [
-          "USER"
-        ],
-        "bodyMeasurement": {
-          "id": 1,
-          "height": 183,
-          "weight": 77,
-          "restingHeartRate": 70,
-          "status": "active"
-        },
+        "height": 183,
+        "weight": 77,
+        "restingHeartRate": 70,
         "status": "active"
       },
-      "id": 8,
-      "name": "Half marathon preparation (2)",
-      "difficulty": 5,
-      "duration": null,
-      "calories": null,
-      "experience": null,
-      "source": "community",
-      "favoriteId": null,
-      "status": "scheduled",
-      "type": "personal"
+      "status": "active"
     },
-    "status": "active"
-  }
-]
+    "id": 7,
+    "name": "Half marathon preparation (1)",
+    "difficulty": 3,
+    "estimatedDuration": 3645,
+    "calories": null,
+    "experience": null,
+    "source": "community",
+    "favoriteId": null,
+    "status": "scheduled",
+    "type": "personal"
+  },
+  "status": "active"
+}, {
+  "id": 4,
+  "workout": {
+    "scheduledDate": "2099-01-08T00:00:00+00:00",
+    "completionDate": null,
+    "owner": {
+      "id": 1,
+      "username": "ghriim",
+      "email": "ghriim@fakemail.com",
+      "roles": ["USER"],
+      "bodyMeasurement": {
+        "id": 1,
+        "height": 183,
+        "weight": 77,
+        "restingHeartRate": 70,
+        "status": "active"
+      },
+      "status": "active"
+    },
+    "id": 8,
+    "name": "Half marathon preparation (2)",
+    "difficulty": 5,
+    "estimatedDuration": 1800,
+    "calories": null,
+    "experience": null,
+    "source": "community",
+    "favoriteId": null,
+    "status": "scheduled",
+    "type": "personal"
+  },
+  "status": "active"
+}]

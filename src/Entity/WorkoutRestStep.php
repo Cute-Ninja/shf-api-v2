@@ -11,7 +11,7 @@ class WorkoutRestStep extends AbstractWorkoutStep
      *
      * @Serializer\Groups({"default", "test"})
      */
-    protected $duration;
+    protected $duration = 0;
 
     /**
      * @return string
@@ -30,10 +30,10 @@ class WorkoutRestStep extends AbstractWorkoutStep
     }
 
     /**
-     * @param int $duration
+     * @param int|null $duration
      */
-    public function setDuration(int $duration): void
+    public function setDuration(?int $duration): void
     {
-        $this->duration = $duration;
+        $this->duration = $duration ?? 0;
     }
 }

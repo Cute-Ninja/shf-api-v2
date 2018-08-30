@@ -4,9 +4,11 @@ App\Entity\WorkoutDistanceStep:
         distance: 20
         workout: "@helios"
         exercise: "@bike_ride"
+        estimatedDuration: 1200
 
     ghriim_helios_position_1:
         position: 1
         distance: 20
         workout: "@ghriim_helios"
         exercise: "@bike_ride"
+        estimatedDuration: 1200

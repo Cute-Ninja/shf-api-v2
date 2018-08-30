@@ -3,7 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Controller\Api\ActionHelper\PatchWorkoutStepActionHelper;
-use App\Entity\AbstractWorkout;
+use App\Controller\Api\ActionHelper\PostWorkoutStepActionHelper;
 use App\Entity\AbstractWorkoutStep;
 use App\Exception\Http\NotImplementedHttpException;
 use Nelmio\ApiDocBundle\Annotation\Model;
@@ -74,6 +74,7 @@ class WorkoutStepApiController extends AbstractApiController
     /**
      * @var Request $request
      * @var int     $workoutId
+     * @var string  $stepType
      *
      * @return Response
      *
@@ -85,9 +86,30 @@ class WorkoutStepApiController extends AbstractApiController
      * @SWG\Tag(name="WorkoutStep")
      * @Security(name="Bearer")
      */
-    public function post(Request $request, int $workoutId): Response
+    public function post(Request $request, int $workoutId, string $stepType): Response
     {
-        return $this->getServerErrorResponseBuilder()->notImplemented();
+        $workout = $this->getWorkoutRepository()->findOneByCriteria(['id' => $workoutId]);
+        if (null === $workout) {
+            return $this->getClientErrorResponseBuilder()->notFound();
+        }
+
+        $helper = new PostWorkoutStepActionHelper();
+        $step   = $helper->buildStepFromType($stepType, $workout);
+
+        $form = $this->createForm($helper->buildFormNameFromType($stepType), $step, ['method' => 'POST']);
+
+        $form->handleRequest($request);
+        if (false === $form->isSubmitted() || false === $form->isValid()) {
+            return $this->getClientErrorResponseBuilder()->jsonResponseFormError($form);
+        }
+
+        $this->getEntityManager()->persist($step);
+        $this->getEntityManager()->flush();
+
+        return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
+            $step,
+            $this->getSerializationGroup($request)
+        );
     }
 
     /**

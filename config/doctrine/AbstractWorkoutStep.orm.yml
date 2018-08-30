@@ -24,11 +24,16 @@ App\Entity\AbstractWorkoutStep:
                 strategy: IDENTITY
 
     fields:
-            position:
-                column: position
-                type: integer
-                nullable: false
-                unique: false
+        position:
+            column: position
+            type: integer
+            nullable: false
+            unique: false
+        estimatedDuration:
+            column: estimated_duration
+            type: integer
+            unique: false
+            nullable: true
 
     manyToOne:
             workout:

@@ -11,7 +11,7 @@ class WorkoutRepsStep extends AbstractWorkoutStep
      *
      * @Serializer\Groups({"default", "test"})
      */
-    protected $numberOfRepetition;
+    protected $numberOfRepetition = 0;
 
     /**
      * @return string
@@ -30,10 +30,10 @@ class WorkoutRepsStep extends AbstractWorkoutStep
     }
 
     /**
-     * @param int $numberOfRepetition
+     * @param int|null $numberOfRepetition
      */
-    public function setNumberOfRepetition(int $numberOfRepetition): void
+    public function setNumberOfRepetition(?int $numberOfRepetition): void
     {
-        $this->numberOfRepetition = $numberOfRepetition;
+        $this->numberOfRepetition = $numberOfRepetition ?? 0;
     }
 }

@@ -93,8 +93,7 @@ class UserFavoriteWorkoutApiController extends AbstractApiController implements 
         );
 
         $form->handleRequest($request);
-        if (false === $form->isSubmitted()
-            || false === $form->isValid()) {
+        if (false === $form->isSubmitted() || false === $form->isValid()) {
             return $this->getClientErrorResponseBuilder()->jsonResponseFormError($form);
         }
 

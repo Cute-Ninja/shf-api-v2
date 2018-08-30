@@ -11,7 +11,7 @@ class WorkoutDistanceStep extends AbstractWorkoutStep
      *
      * @Serializer\Groups({"default", "test"})
      */
-    protected $distance;
+    protected $distance = 0;
 
     /**
      * @return string
@@ -30,10 +30,10 @@ class WorkoutDistanceStep extends AbstractWorkoutStep
     }
 
     /**
-     * @param int $distance
+     * @param int|null $distance
      */
-    public function setDistance(int $distance): void
+    public function setDistance(?int $distance): void
     {
-        $this->distance = $distance;
+        $this->distance = $distance ?? 0;
     }
 }
