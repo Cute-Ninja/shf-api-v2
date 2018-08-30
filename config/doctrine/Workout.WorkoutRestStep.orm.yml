@@ -1,8 +1,8 @@
-App\Entity\WorkoutDistanceStep:
+App\Entity\Workout\WorkoutRestStep:
     type: entity
     fields:
-        distance:
-            column: distance
+        duration:
+            column: duration
             type: integer
             nullable: false
             unique: false

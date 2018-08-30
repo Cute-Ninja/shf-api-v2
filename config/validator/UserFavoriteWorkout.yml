@@ -9,5 +9,5 @@ App\Entity\User\UserFavoriteWorkout:
             - Type: App\Entity\User\User
         workout:
             - NotNull: ~
-            - Type: App\Entity\AbstractWorkout
+            - Type: App\Entity\Workout\AbstractWorkout
 

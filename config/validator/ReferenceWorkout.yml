@@ -1,4 +1,4 @@
-App\Entity\ReferenceWorkout:
+App\Entity\Workout\ReferenceWorkout:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [name]

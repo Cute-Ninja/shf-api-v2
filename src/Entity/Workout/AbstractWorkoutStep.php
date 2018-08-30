@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Workout;
 
+use App\Entity\AbstractBaseEntity;
 use Symfony\Component\Serializer\Annotation as Serializer;
 
 abstract class AbstractWorkoutStep extends AbstractBaseEntity

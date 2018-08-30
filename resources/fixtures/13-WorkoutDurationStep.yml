@@ -1,4 +1,4 @@
-App\Entity\WorkoutDurationStep:
+App\Entity\Workout\WorkoutDurationStep:
     hermes_position_1:
         position: 1
         workout: "@hermes"

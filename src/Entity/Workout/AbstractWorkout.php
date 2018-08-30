@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Workout;
 
+use App\Entity\AbstractBaseEntity;
 use App\Entity\User\User;
 use Symfony\Component\Serializer\Annotation as Serializer;
 

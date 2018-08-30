@@ -1,4 +1,4 @@
-App\Entity\WorkoutAmrapStep:
+App\Entity\Workout\WorkoutAmrapStep:
     type: entity
     fields:
         duration:

@@ -1,7 +1,7 @@
-App\Entity\Equipment:
+App\Entity\Workout\Equipment:
     type: entity
     table: "`equipment`"
-    repositoryClass: App\Repository\EquipmentRepository
+    repositoryClass: App\Repository\Workout\EquipmentRepository
     id:
         id:
             type: integer

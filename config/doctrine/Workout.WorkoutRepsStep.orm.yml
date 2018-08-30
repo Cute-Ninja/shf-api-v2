@@ -1,8 +1,8 @@
-App\Entity\WorkoutRestStep:
+App\Entity\Workout\WorkoutRepsStep:
     type: entity
     fields:
-        duration:
-            column: duration
+        repsPlanned:
+            column: reps_planned
             type: integer
             nullable: false
             unique: false

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Workout;
 
 use App\Entity\User\User;
 use App\Utils\DateUtils;

@@ -1,4 +1,4 @@
-App\Entity\Exercise:
+App\Entity\Workout\Exercise:
     rest:
         name: Rest
         type: rest

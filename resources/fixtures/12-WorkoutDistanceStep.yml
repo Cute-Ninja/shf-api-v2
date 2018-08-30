@@ -1,4 +1,4 @@
-App\Entity\WorkoutDistanceStep:
+App\Entity\Workout\WorkoutDistanceStep:
     helios_position_1:
         position: 1
         distance: 20

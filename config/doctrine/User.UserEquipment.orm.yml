@@ -14,7 +14,7 @@ App\Entity\User\UserEquipment:
 
     manyToOne:
         equipment:
-            targetEntity: App\Entity\Equipment
+            targetEntity: App\Entity\Workout\Equipment
             nullable: false
             joinColumn:
                 name: equipment_id

@@ -1,4 +1,4 @@
-App\Entity\PersonalWorkout:
+App\Entity\Workout\PersonalWorkout:
     ghriim_workout_1:
         name: Half marathon preparation (1)
         difficulty: 3

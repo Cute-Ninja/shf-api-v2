@@ -1,17 +1,17 @@
-App\Entity\AbstractWorkout:
+App\Entity\Workout\AbstractWorkout:
     type: entity
     table: "`workout`"
     indexes:
         source_index:
           columns: [ source ]
-    repositoryClass: App\Repository\WorkoutRepository
+    repositoryClass: App\Repository\Workout\WorkoutRepository
     inheritanceType: SINGLE_TABLE
     discriminatorColumn:
         name: type
         type: string
     discriminatorMap:
-        reference: App\Entity\ReferenceWorkout
-        personal: App\Entity\PersonalWorkout
+        reference: App\Entity\Workout\ReferenceWorkout
+        personal: App\Entity\Workout\PersonalWorkout
 
     id:
         id:

@@ -1,6 +1,6 @@
-App\Entity\PersonalWorkout:
+App\Entity\Workout\PersonalWorkout:
     type: entity
-    repositoryClass: App\Repository\PersonalWorkoutRepository
+    repositoryClass: App\Repository\Workout\PersonalWorkoutRepository
 
     fields:
         scheduledDate:

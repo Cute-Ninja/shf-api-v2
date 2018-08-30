@@ -1,4 +1,4 @@
-App\Entity\WorkoutRestStep:
+App\Entity\Workout\WorkoutRestStep:
     ares_lvl_2_position_4_rest:
         position: 4
         workout: "@ares_lvl_2"

@@ -1,4 +1,4 @@
-App\Entity\AbstractWorkout:
+App\Entity\Workout\AbstractWorkout:
     properties:
         name:
             - NotBlank: ~

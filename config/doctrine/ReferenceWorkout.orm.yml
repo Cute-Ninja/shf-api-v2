@@ -1,3 +1,0 @@
-App\Entity\ReferenceWorkout:
-    type: entity
-    repositoryClass: App\Repository\ReferenceWorkoutRepository

@@ -1,4 +1,4 @@
-App\Entity\Equipment:
+App\Entity\Workout\Equipment:
     equipment_{jump_rope, resistance_band, medicine_ball}:
         name: <current()>
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Workout;
 
 use Symfony\Component\Serializer\Annotation as Serializer;
 
-class WorkoutAmrapStep extends AbstractWorkoutStep
+class WorkoutRestStep extends AbstractWorkoutStep
 {
     /**
      * @var int $duration
@@ -14,16 +14,11 @@ class WorkoutAmrapStep extends AbstractWorkoutStep
     protected $duration = 0;
 
     /**
-     * @var integer $repsDone
-     */
-    protected $repsDone = 0;
-
-    /**
      * @return string
      */
     public function getType(): string
     {
-        return self::TYPE_AMRAP;
+        return self::TYPE_REST;
     }
 
     /**
@@ -35,26 +30,10 @@ class WorkoutAmrapStep extends AbstractWorkoutStep
     }
 
     /**
-     * @param int| $duration
+     * @param int|null $duration
      */
     public function setDuration(?int $duration): void
     {
         $this->duration = $duration ?? 0;
-    }
-
-    /**
-     * @return int
-     */
-    public function getRepsDone(): int
-    {
-        return $this->repsDone;
-    }
-
-    /**
-     * @param int $repsDone
-     */
-    public function setRepsDone(int $repsDone): void
-    {
-        $this->repsDone = $repsDone ?? 0;
     }
 }

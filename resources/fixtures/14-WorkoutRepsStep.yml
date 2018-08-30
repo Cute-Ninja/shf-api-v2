@@ -1,4 +1,4 @@
-App\Entity\WorkoutRepsStep:
+App\Entity\Workout\WorkoutRepsStep:
     ares_position_1:
         position: 1
         repsPlanned: 25

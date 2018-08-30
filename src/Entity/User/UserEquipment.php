@@ -3,7 +3,7 @@
 namespace App\Entity\User;
 
 use App\Entity\AbstractBaseEntity;
-use App\Entity\Equipment;
+use App\Entity\Workout\Equipment;
 use Symfony\Component\Serializer\Annotation as Serializer;
 
 class UserEquipment extends AbstractBaseEntity

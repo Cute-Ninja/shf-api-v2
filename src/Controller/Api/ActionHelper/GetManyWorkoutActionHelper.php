@@ -2,11 +2,10 @@
 
 namespace App\Controller\Api\ActionHelper;
 
-use App\Entity\AbstractWorkout;
-use App\Entity\PersonalWorkout;
-use App\Entity\ReferenceWorkout;
+use App\Entity\Workout\AbstractWorkout;
+use App\Entity\Workout\PersonalWorkout;
+use App\Entity\Workout\ReferenceWorkout;
 use App\Entity\User\UserFavoriteWorkout;
-use App\Repository\UserFavoriteWorkoutRepository;
 use App\Repository\WorkoutRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\QueryBuilder;

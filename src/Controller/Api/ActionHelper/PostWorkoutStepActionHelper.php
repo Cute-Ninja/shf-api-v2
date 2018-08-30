@@ -2,8 +2,8 @@
 
 namespace App\Controller\Api\ActionHelper;
 
-use App\Entity\AbstractWorkout;
-use App\Entity\AbstractWorkoutStep;
+use App\Entity\Workout\AbstractWorkout;
+use App\Entity\Workout\AbstractWorkoutStep;
 
 class PostWorkoutStepActionHelper
 {

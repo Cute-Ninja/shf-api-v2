@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Workout;
 
 class ReferenceWorkout extends AbstractWorkout
 {

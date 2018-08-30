@@ -14,7 +14,7 @@ App\Entity\User\UserFavoriteWorkout:
 
     manyToOne:
         workout:
-            targetEntity: App\Entity\AbstractWorkout
+            targetEntity: App\Entity\Workout\AbstractWorkout
             nullable: false
             joinColumn:
                 name: workout_id

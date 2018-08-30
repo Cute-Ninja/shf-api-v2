@@ -3,7 +3,7 @@
 namespace App\Entity\User;
 
 use App\Entity\AbstractBaseEntity;
-use App\Entity\AbstractWorkout;
+use App\Entity\Workout\AbstractWorkout;
 use Symfony\Component\Serializer\Annotation as Serializer;
 
 class UserFavoriteWorkout extends AbstractBaseEntity

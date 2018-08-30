@@ -1,7 +1,7 @@
-App\Entity\Exercise:
+App\Entity\Workout\Exercise:
     type: entity
     table: "`exercise`"
-    repositoryClass: App\Repository\ExerciseRepository
+    repositoryClass: App\Repository\Workout\ExerciseRepository
 
     id:
         id:
@@ -31,7 +31,7 @@ App\Entity\Exercise:
 
     manyToMany:
         equipments:
-            targetEntity: App\Entity\Equipment
+            targetEntity: App\Entity\Workout\Equipment
             joinTable:
                 name: exercise_has_equipment
                 joinColumns:

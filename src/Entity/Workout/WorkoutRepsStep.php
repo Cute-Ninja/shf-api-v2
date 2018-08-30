@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Workout;
 
 use Symfony\Component\Serializer\Annotation as Serializer;
 

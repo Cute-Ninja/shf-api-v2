@@ -2,7 +2,7 @@
 
 namespace App\Form\Type;
 
-use App\Entity\Exercise;
+use App\Entity\Workout\Exercise;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;

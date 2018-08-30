@@ -1,4 +1,4 @@
-App\Entity\ReferenceWorkout:
+App\Entity\Workout\ReferenceWorkout:
     ares:
         name: Ares
         difficulty: 4

@@ -1,4 +1,4 @@
-App\Entity\WorkoutAmrapStep:
+App\Entity\Workout\WorkoutAmrapStep:
     ares_lvl_2_position_1:
         position: 1
         workout: "@ares_lvl_2"

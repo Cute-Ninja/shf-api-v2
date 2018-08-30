@@ -1,17 +1,17 @@
-App\Entity\AbstractWorkoutStep:
+App\Entity\Workout\AbstractWorkoutStep:
     type: entity
     table: "`workout_step`"
-    repositoryClass: App\Repository\WorkoutStepRepository
+    repositoryClass: App\Repository\Workout\WorkoutStepRepository
     inheritanceType: SINGLE_TABLE
     discriminatorColumn:
         name: source
         type: string
     discriminatorMap:
-        amrap: App\Entity\WorkoutAmrapStep
-        distance: App\Entity\WorkoutDistanceStep
-        duration: App\Entity\WorkoutDurationStep
-        reps: App\Entity\WorkoutRepsStep
-        rest: App\Entity\WorkoutRestStep
+        amrap: App\Entity\Workout\WorkoutAmrapStep
+        distance: App\Entity\Workout\WorkoutDistanceStep
+        duration: App\Entity\Workout\WorkoutDurationStep
+        reps: App\Entity\Workout\WorkoutRepsStep
+        rest: App\Entity\Workout\WorkoutRestStep
 
     id:
         id:
@@ -37,12 +37,12 @@ App\Entity\AbstractWorkoutStep:
 
     manyToOne:
             workout:
-                targetEntity: App\Entity\AbstractWorkout
+                targetEntity: App\Entity\Workout\AbstractWorkout
                 joinColumn:
                     name: workout_id
                     referencedColumnName: id
             exercise:
-                targetEntity: App\Entity\Exercise
+                targetEntity: App\Entity\Workout\Exercise
                 joinColumn:
                     name: exercise_id
                     referencedColumnName: id
