@@ -1,31 +1,24 @@
 <?php
 
-namespace App\Form\Type;
+namespace App\Form\Type\User;
 
-use App\Entity\User\User;
+use App\Entity\User\UserBodyMeasurement;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class UserBodyMeasurementType extends AbstractType
 {
-    public const CONTEXT_CREATE = 'create';
-    public const CONTEXT_EDIT   = 'edit';
-
     /**
      * @param FormBuilderInterface $builder
      * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('username', TextType::class)
-                ->add('email', EmailType::class);
-
-        if ($options['context'] === self::CONTEXT_CREATE) {
-            $builder->add('password', TextType::class);
-        }
+        $builder->add('height', IntegerType::class)
+                ->add('weight', IntegerType::class)
+                ->add('restingHeartRate', IntegerType::class);
     }
 
     /**
@@ -35,8 +28,7 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'data_class' => User::class,
-                'context'    => null
+                'data_class' => UserBodyMeasurement::class
             ]
         );
     }

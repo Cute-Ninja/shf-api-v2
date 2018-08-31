@@ -4,7 +4,7 @@ namespace App\Controller\Api;
 
 use App\Controller\Api\ActionHelper\PatchWorkoutStepActionHelper;
 use App\Controller\Api\ActionHelper\PostWorkoutStepActionHelper;
-use App\Entity\AbstractWorkoutStep;
+use App\Entity\Workout\AbstractWorkoutStep;
 use App\Exception\Http\NotImplementedHttpException;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;

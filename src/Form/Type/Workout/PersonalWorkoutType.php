@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form\Type;
+namespace App\Form\Type\Workout;
 
 use App\Entity\Workout\PersonalWorkout;
 use Symfony\Component\Form\Extension\Core\Type\DateType;

@@ -3,7 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Entity\User\User;
-use App\Form\Type\UserBodyMeasurementType;
+use App\Form\Type\User\UserBodyMeasurementType;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;

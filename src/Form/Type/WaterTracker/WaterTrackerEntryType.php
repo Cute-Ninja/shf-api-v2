@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Form\Type;
+namespace App\Form\Type\WaterTracker;
 
-use App\Entity\User\UserBodyMeasurement;
+use App\Entity\WaterTracker\WaterTrackerEntry;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserBodyMeasurementType extends AbstractType
+class WaterTrackerEntryType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,9 +16,7 @@ class UserBodyMeasurementType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('height', IntegerType::class)
-                ->add('weight', IntegerType::class)
-                ->add('restingHeartRate', IntegerType::class);
+        $builder->add('quantity', IntegerType::class);
     }
 
     /**
@@ -28,7 +26,8 @@ class UserBodyMeasurementType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'data_class' => UserBodyMeasurement::class
+                'data_class' => WaterTrackerEntry::class,
+                 'allow_extra_fields' => true
             ]
         );
     }

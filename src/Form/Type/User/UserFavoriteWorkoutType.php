@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Form\Type;
+namespace App\Form\Type\User;
 
-use App\Entity\WaterTracker\WaterTrackerEntry;
+use App\Entity\Workout\AbstractWorkout;
+use App\Entity\User\User;
+use App\Entity\User\UserFavoriteWorkout;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class WaterTrackerEntryType extends AbstractType
+class UserFavoriteWorkoutType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,7 +18,8 @@ class WaterTrackerEntryType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('quantity', IntegerType::class);
+        $builder->add('user', EntityType::class, ['class' => User::class])
+                ->add('workout', EntityType::class, ['class' => AbstractWorkout::class]);
     }
 
     /**
@@ -26,8 +29,7 @@ class WaterTrackerEntryType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'data_class' => WaterTrackerEntry::class,
-                 'allow_extra_fields' => true
+                'data_class' => UserFavoriteWorkout::class,
             ]
         );
     }

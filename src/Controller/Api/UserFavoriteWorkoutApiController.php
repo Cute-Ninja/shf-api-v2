@@ -3,7 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Entity\User\UserFavoriteWorkout;
-use App\Form\Type\UserFavoriteWorkoutType;
+use App\Form\Type\User\UserFavoriteWorkoutType;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;

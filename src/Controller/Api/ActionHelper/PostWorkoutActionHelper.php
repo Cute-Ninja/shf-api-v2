@@ -11,7 +11,6 @@ class PostWorkoutActionHelper
     /**
      * @param string $workoutType
      * @param User   $creator
-     * @param string $source
      *
      * @return AbstractWorkout
      */
@@ -36,6 +35,6 @@ class PostWorkoutActionHelper
     {
         $className = ucfirst($workoutType) . 'WorkoutType';
 
-        return "App\\Form\\Type\\$className";
+        return "App\\Form\\Type\\Workout\\$className";
     }
 }

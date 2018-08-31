@@ -6,7 +6,7 @@ use App\Entity\Workout\AbstractWorkout;
 use App\Entity\Workout\PersonalWorkout;
 use App\Entity\Workout\ReferenceWorkout;
 use App\Entity\User\UserFavoriteWorkout;
-use App\Repository\WorkoutRepository;
+use App\Repository\Workout\WorkoutRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\HttpFoundation\Request;

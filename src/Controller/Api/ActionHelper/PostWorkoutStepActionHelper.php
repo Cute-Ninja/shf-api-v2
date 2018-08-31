@@ -34,6 +34,6 @@ class PostWorkoutStepActionHelper
     {
         $className = 'Workout' . ucfirst($stepType) . 'StepType';
 
-        return "App\\Form\\Type\\$className";
+        return "App\\Form\\Type\\Workout\\$className";
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Entity\WaterTracker\WaterTrackerEntry;
-use App\Form\Type\WaterTrackerEntryType;
+use App\Form\Type\WaterTracker\WaterTrackerEntryType;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;

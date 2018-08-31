@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form\Type;
+namespace App\Form\Type\Workout;
 
 use App\Entity\Workout\WorkoutDistanceStep;
 use Symfony\Component\OptionsResolver\OptionsResolver;

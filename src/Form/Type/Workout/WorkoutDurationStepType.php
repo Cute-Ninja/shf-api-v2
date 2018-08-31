@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Form\Type;
+namespace App\Form\Type\Workout;
 
-use App\Entity\Workout\ReferenceWorkout;
+use App\Entity\Workout\WorkoutDurationStep;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ReferenceWorkoutType extends AbstractWorkoutType
+class WorkoutDurationStepType extends AbstractWorkoutStepType
 {
     /**
      * @param OptionsResolver $resolver
@@ -14,7 +14,7 @@ class ReferenceWorkoutType extends AbstractWorkoutType
     {
         $resolver->setDefaults(
             [
-                'data_class' => ReferenceWorkout::class
+                'data_class' => WorkoutDurationStep::class
             ]
         );
     }

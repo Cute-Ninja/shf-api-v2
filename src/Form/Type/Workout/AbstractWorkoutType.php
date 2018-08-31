@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form\Type;
+namespace App\Form\Type\Workout;
 
 use Faker\Provider\Text;
 use Symfony\Component\Form\AbstractType;
