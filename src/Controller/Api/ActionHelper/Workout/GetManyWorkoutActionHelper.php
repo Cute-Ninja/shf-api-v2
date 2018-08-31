@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api\ActionHelper;
+namespace App\Controller\Api\ActionHelper\Workout;
 
 use App\Entity\Workout\AbstractWorkout;
 use App\Entity\Workout\PersonalWorkout;

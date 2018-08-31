@@ -2,9 +2,9 @@
 
 namespace App\Controller\Api;
 
-use App\Controller\Api\ActionHelper\GetManyWorkoutActionHelper;
-use App\Controller\Api\ActionHelper\PatchWorkoutActionHelper;
-use App\Controller\Api\ActionHelper\PostWorkoutActionHelper;
+use App\Controller\Api\ActionHelper\Workout\GetManyWorkoutActionHelper;
+use App\Controller\Api\ActionHelper\Workout\PatchWorkoutActionHelper;
+use App\Controller\Api\ActionHelper\Workout\PostWorkoutActionHelper;
 use App\Entity\Workout\AbstractWorkout;
 use App\Entity\Workout\ReferenceWorkout;
 use App\Exception\Http\NotImplementedHttpException;

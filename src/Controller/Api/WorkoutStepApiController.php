@@ -2,8 +2,8 @@
 
 namespace App\Controller\Api;
 
-use App\Controller\Api\ActionHelper\PatchWorkoutStepActionHelper;
-use App\Controller\Api\ActionHelper\PostWorkoutStepActionHelper;
+use App\Controller\Api\ActionHelper\Workout\PatchWorkoutStepActionHelper;
+use App\Controller\Api\ActionHelper\Workout\PostWorkoutStepActionHelper;
 use App\Entity\Workout\AbstractWorkoutStep;
 use App\Exception\Http\NotImplementedHttpException;
 use Nelmio\ApiDocBundle\Annotation\Model;
