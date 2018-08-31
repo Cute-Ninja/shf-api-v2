@@ -3,9 +3,9 @@
 namespace App\Controller\Front;
 
 use App\Controller\AbstractProxyController;
-use App\Entity\AbstractWorkout;
-use App\Entity\PersonalWorkout;
-use App\Entity\ReferenceWorkout;
+use App\Entity\Workout\AbstractWorkout;
+use App\Entity\Workout\PersonalWorkout;
+use App\Entity\Workout\ReferenceWorkout;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

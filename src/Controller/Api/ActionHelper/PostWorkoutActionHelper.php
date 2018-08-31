@@ -18,7 +18,7 @@ class PostWorkoutActionHelper
     public function buildWorkoutFromType(string $workoutType, User $creator): AbstractWorkout
     {
         $className = ucfirst($workoutType) . 'Workout';
-        $classPath = "App\\Entity\\$className";
+        $classPath = "App\\Entity\\Workout\\$className";
 
         /** @var AbstractWorkout $workout */
         $workout = new $classPath;

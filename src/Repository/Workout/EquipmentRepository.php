@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Workout;
+
+use App\Repository\AbstractBaseRepository;
 
 class EquipmentRepository extends AbstractBaseRepository
 {

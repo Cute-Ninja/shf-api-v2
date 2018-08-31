@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Workout;
 
-use App\Entity\PersonalWorkout;
-use App\Entity\ReferenceWorkout;
+use App\Entity\Workout\PersonalWorkout;
+use App\Entity\Workout\ReferenceWorkout;
+use App\Repository\AbstractBaseRepository;
 use Doctrine\ORM\QueryBuilder;
 
 class WorkoutRepository extends AbstractBaseRepository
@@ -18,7 +19,7 @@ class WorkoutRepository extends AbstractBaseRepository
     {
         if (PersonalWorkout::TYPE_PERSONAL === $type) {
             $class = PersonalWorkout::class;
-        } elseif (ReferenceWorkout::TYPE_REFERENCE=== $type) {
+        } elseif (ReferenceWorkout::TYPE_REFERENCE === $type) {
             $class = ReferenceWorkout::class;
         } else {
             return false;

@@ -2,7 +2,7 @@
 
 namespace App\Form\Type;
 
-use App\Entity\WorkoutRepsStep;
+use App\Entity\Workout\WorkoutRepsStep;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class WorkoutRepsStepType extends AbstractWorkoutStepType

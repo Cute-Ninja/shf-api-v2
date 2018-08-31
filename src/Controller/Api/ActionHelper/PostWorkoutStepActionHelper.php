@@ -16,7 +16,7 @@ class PostWorkoutStepActionHelper
     public function buildStepFromType(string $stepType, AbstractWorkout $workout): AbstractWorkoutStep
     {
         $className = 'Workout' . ucfirst($stepType) . 'Step';
-        $classPath = "App\\Entity\\$className";
+        $classPath = "App\\Entity\\Workout\\$className";
 
         /** @var AbstractWorkoutStep $step */
         $step = new $classPath;

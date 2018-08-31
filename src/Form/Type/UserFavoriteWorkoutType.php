@@ -2,7 +2,7 @@
 
 namespace App\Form\Type;
 
-use App\Entity\AbstractWorkout;
+use App\Entity\Workout\AbstractWorkout;
 use App\Entity\User\User;
 use App\Entity\User\UserFavoriteWorkout;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;

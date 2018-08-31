@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Workout;
 
-use App\Entity\AbstractWorkoutStep;
+use App\Entity\Workout\AbstractWorkoutStep;
+use App\Repository\AbstractBaseRepository;
 use Doctrine\ORM\QueryBuilder;
 
 /**

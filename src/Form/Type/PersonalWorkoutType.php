@@ -2,7 +2,7 @@
 
 namespace App\Form\Type;
 
-use App\Entity\PersonalWorkout;
+use App\Entity\Workout\PersonalWorkout;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;

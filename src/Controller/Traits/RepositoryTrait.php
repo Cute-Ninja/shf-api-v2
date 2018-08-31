@@ -2,10 +2,10 @@
 
 namespace App\Controller\Traits;
 
-use App\Entity\AbstractWorkout;
-use App\Entity\AbstractWorkoutStep;
-use App\Entity\PersonalWorkout;
-use App\Entity\ReferenceWorkout;
+use App\Entity\Workout\AbstractWorkout;
+use App\Entity\Workout\AbstractWorkoutStep;
+use App\Entity\Workout\PersonalWorkout;
+use App\Entity\Workout\ReferenceWorkout;
 use App\Entity\User\User;
 use App\Entity\User\UserFavoriteWorkout;
 use App\Entity\WaterTracker\WaterTracker;
@@ -16,8 +16,8 @@ use App\Repository\User\UserFavoriteWorkoutRepository;
 use App\Repository\User\UserRepository;
 use App\Repository\WaterTracker\WaterTrackerEntryRepository;
 use App\Repository\WaterTracker\WaterTrackerRepository;
-use App\Repository\WorkoutRepository;
-use App\Repository\WorkoutStepRepository;
+use App\Repository\Workout\WorkoutRepository;
+use App\Repository\Workout\WorkoutStepRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 
 trait RepositoryTrait
