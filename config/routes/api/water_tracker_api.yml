@@ -1,35 +1,35 @@
 api_water_tracker_list:
     path: /api/water-trackers
-    controller: App\Controller\Api\WaterTrackerApiController::getMany
+    controller: App\Controller\Api\WaterTracker\WaterTrackerApiController::getMany
     methods: GET
 
 api_water_tracker_get_today:
     path: /api/water-trackers/today
-    controller: App\Controller\Api\WaterTrackerApiController::getToday
+    controller: App\Controller\Api\WaterTracker\WaterTrackerApiController::getToday
     methods: GET
 
 api_water_tracker_get:
     path: /api/water-trackers/{id}
-    controller: App\Controller\Api\WaterTrackerApiController::getOne
+    controller: App\Controller\Api\WaterTracker\WaterTrackerApiController::getOne
     methods: GET
     requirements:
         id: \d+
 
 api_water_tracker_post:
     path: /api/water-trackers
-    controller: App\Controller\Api\WaterTrackerApiController::post
+    controller: App\Controller\Api\WaterTracker\WaterTrackerApiController::post
     methods: POST
 
 api_water_tracker_put:
     path: /api/water-trackers/{id}
-    controller: App\Controller\Api\WaterTrackerApiController::put
+    controller: App\Controller\Api\WaterTracker\WaterTrackerApiController::put
     methods: PUT
     requirements:
         id: \d+
 
 api_water_tracker_delete:
     path: /api/water-trackers/{id}
-    controller: App\Controller\Api\WaterTrackerApiController::delete
+    controller: App\Controller\Api\WaterTracker\WaterTrackerApiController::delete
     methods: DELETE
     requirements:
         id: \d+
@@ -38,10 +38,10 @@ api_water_tracker_delete:
 
 front_api_water_tracker_list:
     path: /front/api/water-trackers
-    controller: App\Controller\Front\WaterTrackerProxyController::getMany
+    controller: App\Controller\Front\WaterTracker\WaterTrackerProxyController::getMany
     methods: GET
 
 front_api_water_tracker_get_today:
     path: /front/api/water-trackers/today
-    controller: App\Controller\Front\WaterTrackerProxyController::getToday
+    controller: App\Controller\Front\WaterTracker\WaterTrackerProxyController::getToday
     methods: GET

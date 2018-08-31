@@ -1,44 +1,44 @@
 api_workout_list:
     path: /api/workouts
-    controller: App\Controller\Api\WorkoutApiController::getMany
+    controller: App\Controller\Api\Workout\WorkoutApiController::getMany
     methods: GET
 
 api_workout_get:
     path: /api/workouts/{id}
-    controller: App\Controller\Api\WorkoutApiController::getOne
+    controller: App\Controller\Api\Workout\WorkoutApiController::getOne
     methods: GET
     requirements:
         id: \d+
 
 api_workout_post:
     path: /api/workouts
-    controller: App\Controller\Api\WorkoutApiController::post
+    controller: App\Controller\Api\Workout\WorkoutApiController::post
     methods: POST
 
 api_workout_post_with_type:
     path: /api/workouts/{workoutType}
-    controller: App\Controller\Api\WorkoutApiController::postWithType
+    controller: App\Controller\Api\Workout\WorkoutApiController::postWithType
     methods: POST
     requirements:
         workoutType: reference|personal
 
 api_workout_put:
     path: /api/workouts/{id}
-    controller: App\Controller\Api\WorkoutApiController::put
+    controller: App\Controller\Api\Workout\WorkoutApiController::put
     methods: PUT
     requirements:
         id: \d+
 
 api_workout_delete:
     path: /api/workouts/{id}
-    controller: App\Controller\Api\WorkoutApiController::delete
+    controller: App\Controller\Api\Workout\WorkoutApiController::delete
     methods: DELETE
     requirements:
         id: \d+
 
 api_workout_patch:
     path: /api/workouts/{action}
-    controller: App\Controller\Api\WorkoutApiController::patch
+    controller: App\Controller\Api\Workout\WorkoutApiController::patch
     methods: PATCH
     requirements:
         action: complete|undo-complete
@@ -47,31 +47,31 @@ api_workout_patch:
 
 front_api_workout_list_reference:
     path: /front/api/reference/workouts
-    controller: App\Controller\Front\WorkoutProxyController::getManyReference
+    controller: App\Controller\Front\Workout\WorkoutProxyController::getManyReference
     methods: GET
 
 front_api_workout_list_personal:
     path: /front/api/personal/workouts
-    controller: App\Controller\Front\WorkoutProxyController::getManyPersonal
+    controller: App\Controller\Front\Workout\WorkoutProxyController::getManyPersonal
     methods: GET
 
 front_api_workout_get:
     path: /front/api/workouts/{id}
-    controller: App\Controller\Front\WorkoutProxyController::getOne
+    controller: App\Controller\Front\Workout\WorkoutProxyController::getOne
     methods: GET
     requirements:
         id: \d+
 
 front_api_workout_post_with_type:
     path: /api/workouts/{workoutType}
-    controller: App\Controller\Api\WorkoutProxyController::postWithType
+    controller: App\Controller\Api\Workout\WorkoutProxyController::postWithType
     methods: POST
     requirements:
         workoutType: reference|personal
 
 front_api_workout_patch:
     path: /front/api/workouts/{action}
-    controller: App\Controller\Front\WorkoutProxyController::patch
+    controller: App\Controller\Front\Workout\WorkoutProxyController::patch
     methods: PATCH
     requirements:
         action: complete|undo-complete

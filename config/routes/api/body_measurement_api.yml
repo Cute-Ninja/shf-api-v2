@@ -1,24 +1,24 @@
 api_body_measurement_list:
     path: /users/body-measurements
-    controller: App\Controller\Api\UserBodyMeasurementApiController::getMany
+    controller: App\Controller\Api\User\UserBodyMeasurementApiController::getMany
     methods: GET
 
 api_body_measurement_get:
     path: /users/{username}/body-measurements
-    controller: App\Controller\Api\UserBodyMeasurementApiController::getOne
+    controller: App\Controller\Api\User\UserBodyMeasurementApiController::getOne
     methods: GET
 
 api_body_measurement_post:
     path: /users/body-measurements
-    controller: App\Controller\Api\UserBodyMeasurementApiController::post
+    controller: App\Controller\Api\User\UserBodyMeasurementApiController::post
     methods: POST
 
 api_body_measurement_put:
     path: /users/{username}/body-measurements
-    controller: App\Controller\Api\UserBodyMeasurementApiController::put
+    controller: App\Controller\Api\User\UserBodyMeasurementApiController::put
     methods: PUT
 
 api_body_measurement_delete:
     path: /users/{username}/body-measurements
-    controller: App\Controller\Api\UserBodyMeasurementApiController::delete
+    controller: App\Controller\Api\User\UserBodyMeasurementApiController::delete
     methods: DELETE

@@ -1,30 +1,30 @@
 api_user_favorite_workout_list:
     path: /api/favorite-workouts
-    controller: App\Controller\Api\UserFavoriteWorkoutApiController::getMany
+    controller: App\Controller\Api\User\UserFavoriteWorkoutApiController::getMany
     methods: GET
 
 api_user_favorite_workout_get:
     path: /api/favorite-workouts/{id}
-    controller: App\Controller\Api\UserFavoriteWorkoutApiController::getOne
+    controller: App\Controller\Api\User\UserFavoriteWorkoutApiController::getOne
     methods: GET
     requirements:
         id: \d+
 
 api_user_favorite_workout_post:
     path: /api/favorite-workouts
-    controller: App\Controller\Api\UserFavoriteWorkoutApiController::post
+    controller: App\Controller\Api\User\UserFavoriteWorkoutApiController::post
     methods: POST
 
 api_user_favorite_workout_put:
     path: /api/favorite-workouts/{id}
-    controller: App\Controller\Api\UserFavoriteWorkoutApiController::put
+    controller: App\Controller\Api\User\UserFavoriteWorkoutApiController::put
     methods: PUT
     requirements:
         id: \d+
 
 api_user_favorite_workout_delete:
     path: /api/favorite-workouts/{id}
-    controller: App\Controller\Api\UserFavoriteWorkoutApiController::delete
+    controller: App\Controller\Api\User\UserFavoriteWorkoutApiController::delete
     methods: DELETE
     requirements:
         id: \d+
@@ -32,17 +32,17 @@ api_user_favorite_workout_delete:
 
 front_api_user_favorite_workout_get_many:
     path: /front/api/favorite-workouts
-    controller: App\Controller\Front\UserFavoriteWorkoutProxyController::getMany
+    controller: App\Controller\Front\User\UserFavoriteWorkoutProxyController::getMany
     methods: GET
 
 front_api_user_favorite_workout_post:
     path: /front/api/favorite-workouts
-    controller: App\Controller\Front\UserFavoriteWorkoutProxyController::post
+    controller: App\Controller\Front\User\UserFavoriteWorkoutProxyController::post
     methods: POST
 
 front_api_user_favorite_workout_delete:
     path: /front/api/favorite-workouts/{id}
-    controller: App\Controller\Front\UserFavoriteWorkoutProxyController::delete
+    controller: App\Controller\Front\User\UserFavoriteWorkoutProxyController::delete
     methods: DELETE
     requirements:
         id: \d+

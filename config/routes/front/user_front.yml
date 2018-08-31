@@ -1,4 +1,4 @@
 front_user_profile:
     path: /profile
-    controller: App\Controller\Front\UserFrontController::profile
+    controller: App\Controller\Front\User\UserFrontController::profile
     methods: GET

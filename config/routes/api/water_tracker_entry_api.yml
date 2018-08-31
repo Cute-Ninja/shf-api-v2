@@ -1,13 +1,13 @@
 api_water_tracker_entry_list:
     path: /api/water-trackers/{trackerId}/entries
-    controller: App\Controller\Api\WaterTrackerEntryApiController::getMany
+    controller: App\Controller\Api\WaterTracker\WaterTrackerEntryApiController::getMany
     methods: GET
     requirements:
         trackerId: \d+
 
 api_water_tracker_entry_get:
     path: /api/water-trackers/{trackerId}/entries/{id}
-    controller: App\Controller\Api\WaterTrackerEntryApiController::getOne
+    controller: App\Controller\Api\WaterTracker\WaterTrackerEntryApiController::getOne
     methods: GET
     requirements:
         trackerId: \d+
@@ -15,14 +15,14 @@ api_water_tracker_entry_get:
 
 api_water_tracker_entry_post:
     path: /api/water-trackers/{trackerId}/entries
-    controller: App\Controller\Api\WaterTrackerEntryApiController::post
+    controller: App\Controller\Api\WaterTracker\WaterTrackerEntryApiController::post
     methods: POST
     requirements:
         trackerId: \d+
 
 api_water_tracker_entry_put:
     path: /api/water-trackers/{trackerId}/entries/{id}
-    controller: App\Controller\Api\WaterTrackerEntryApiController::put
+    controller: App\Controller\Api\WaterTracker\WaterTrackerEntryApiController::put
     methods: PUT
     requirements:
         trackerId: \d+
@@ -30,7 +30,7 @@ api_water_tracker_entry_put:
 
 api_water_tracker_entry_delete:
     path: /api/water-trackers/{trackerId}/entries/{id}
-    controller: App\Controller\Api\WaterTrackerEntryApiController::delete
+    controller: App\Controller\Api\WaterTracker\WaterTrackerEntryApiController::delete
     methods: DELETE
     requirements:
         trackerId: \d+
@@ -39,14 +39,14 @@ api_water_tracker_entry_delete:
 
 front_api_water_tracker_entry_post:
     path: /front/api/water-trackers/{trackerId}/entries
-    controller: App\Controller\Front\WaterTrackerEntryProxyController::post
+    controller: App\Controller\Front\WaterTracker\WaterTrackerEntryProxyController::post
     methods: POST
     requirements:
         trackerId: \d+
 
 front_api_water_tracker_entry_put:
     path: /front/api/water-trackers/{trackerId}/entries/{id}
-    controller: App\Controller\Front\WaterTrackerEntryProxyController::put
+    controller: App\Controller\Front\WaterTracker\WaterTrackerEntryProxyController::put
     methods: PUT
     requirements:
         trackerId: \d+
@@ -54,9 +54,8 @@ front_api_water_tracker_entry_put:
 
 front_api_water_tracker_entry_delete:
     path: /front/api/water-trackers/{trackerId}/entries/{id}
-    controller: App\Controller\Front\WaterTrackerEntryProxyController::delete
+    controller: App\Controller\Front\WaterTracker\WaterTrackerEntryProxyController::delete
     methods: DELETE
     requirements:
         trackerId: \d+
         id: \d+
-

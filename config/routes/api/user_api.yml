@@ -1,48 +1,48 @@
 api_user_list:
     path: /api/users
-    controller: App\Controller\Api\UserApiController::getMany
+    controller: App\Controller\Api\User\UserApiController::getMany
     methods: GET
 
 api_user_get:
     path: /api/users/{username}
-    controller: App\Controller\Api\UserApiController::getOne
+    controller: App\Controller\Api\User\UserApiController::getOne
     methods: GET
 
 api_user_post:
     path: /api/users/registration
-    controller: App\Controller\Api\UserApiController::post
+    controller: App\Controller\Api\User\UserApiController::post
     methods: POST
 
 api_user_put:
     path: /api/users/{username}
-    controller: App\Controller\Api\UserApiController::put
+    controller: App\Controller\Api\User\UserApiController::put
     methods: PUT
 
 api_user_delete:
     path: /api/users/{username}
-    controller: App\Controller\Api\UserApiController::delete
+    controller: App\Controller\Api\User\UserApiController::delete
     methods: DELETE
 
 
 
 front_api_user_me:
     path: /front/api/users/me
-    controller: App\Controller\Front\UserProxyController::me
+    controller: App\Controller\Front\User\UserProxyController::me
     methods: GET
 
 front_api_user_post:
     path: /front/api/users
-    controller: App\Controller\Front\UserProxyController::post
+    controller: App\Controller\Front\User\UserProxyController::post
     methods: POST
 
 
 
 admin_api_user_list:
     path: /admin/api/users
-    controller: App\Controller\Admin\UserProxyController::getMany
+    controller: App\Controller\Admin\User\UserProxyController::getMany
     methods: GET
 
 admin_api_user_get:
     path: /admin/api/users/{username}
-    controller: App\Controller\Admin\UserProxyController::getOne
+    controller: App\Controller\Admin\User\UserProxyController::getOne
     methods: GET
