@@ -1,0 +1,4 @@
+App\Entity\Workout\TrainingPlan:
+    half_marathon_preparation:
+        name: Half Marathon Preparation
+        duration: 4

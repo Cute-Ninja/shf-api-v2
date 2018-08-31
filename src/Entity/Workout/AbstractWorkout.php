@@ -13,6 +13,7 @@ abstract class AbstractWorkout extends AbstractBaseEntity
 
     public const TYPE_REFERENCE = 'reference';
     public const TYPE_PERSONAL = 'personal';
+    public const TYPE_TRAINING_PLAN = 'training-plan';
 
     /**
      * @var int

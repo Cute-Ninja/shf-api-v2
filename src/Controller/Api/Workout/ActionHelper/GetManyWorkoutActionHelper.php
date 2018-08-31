@@ -6,6 +6,7 @@ use App\Entity\Workout\AbstractWorkout;
 use App\Entity\Workout\PersonalWorkout;
 use App\Entity\Workout\ReferenceWorkout;
 use App\Entity\User\UserFavoriteWorkout;
+use App\Entity\Workout\TrainingPlanWorkout;
 use App\Repository\Workout\WorkoutRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\QueryBuilder;
@@ -32,9 +33,9 @@ class GetManyWorkoutActionHelper
     {
         $type = $request->get('type');
         $params = [
-            'source'  => $request->get('source'),
-            'creator' => $request->get('creator'),
-            'status'  => $request->get('status')
+            'source'     => $request->get('source'),
+            'creator'    => $request->get('creator'),
+            'status'     => $request->get('status')
         ];
 
         if (PersonalWorkout::TYPE_PERSONAL === $type) {
@@ -42,6 +43,8 @@ class GetManyWorkoutActionHelper
             $entityClass     = PersonalWorkout::class;
         } elseif (ReferenceWorkout::TYPE_REFERENCE === $type) {
             $entityClass     = ReferenceWorkout::class;
+        } elseif(TrainingPlanWorkout::TYPE_TRAINING_PLAN === $type) {
+            $entityClass     = TrainingPlanWorkout::class;
         } else {
             $entityClass     = AbstractWorkout::class;
         }

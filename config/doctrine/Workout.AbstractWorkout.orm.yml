@@ -12,6 +12,7 @@ App\Entity\Workout\AbstractWorkout:
     discriminatorMap:
         reference: App\Entity\Workout\ReferenceWorkout
         personal: App\Entity\Workout\PersonalWorkout
+        training-plan: App\Entity\Workout\TrainingPlanWorkout
 
     id:
         id:

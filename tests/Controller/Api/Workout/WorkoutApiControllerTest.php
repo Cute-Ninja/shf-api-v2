@@ -2,6 +2,7 @@
 
 namespace App\Tests\Controller\Api\Workout;
 
+use App\Entity\Workout\ReferenceWorkout;
 use App\Tests\Controller\Api\AbstractBaseApiTest;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -23,13 +24,17 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
     public function testGetManyAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildGetRequest($client, 'workouts');
+        $this->buildGetRequest(
+            $client,
+            'workouts',
+            ['type' => ReferenceWorkout::TYPE_REFERENCE]
+        );
 
         $response = $client->getResponse();
 
         $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
         $this->assertEquals(
-            $this->loadDataFromJsonFile('json/workouts'),
+            $this->loadDataFromJsonFile('json/workouts_reference'),
             json_decode($response->getContent(), true)
         );
     }

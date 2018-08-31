@@ -1,0 +1,11 @@
+App\Entity\Workout\TrainingPlanWorkout:
+    type: entity
+    repositoryClass: App\Repository\Workout\TrainingPlanWorkoutRepository
+
+    manyToOne:
+        trainingPlan:
+            targetEntity: App\Entity\Workout\TrainingPlan
+            nullable: false
+            joinColumn:
+                name: training_plan_id
+                referencedColumnName: id

@@ -1,0 +1,24 @@
+App\Entity\Workout\TrainingPlanWorkout:
+    half_marathon_run_1:
+        name: First run
+        source: shf
+        creator: "@ghost"
+        trainingPlan: "@half_marathon_preparation"
+
+    half_marathon_run_2:
+        name: Second run
+        source: shf
+        creator: "@ghost"
+        trainingPlan: "@half_marathon_preparation"
+
+    half_marathon_run_3:
+        name: Third run
+        source: shf
+        creator: "@ghost"
+        trainingPlan: "@half_marathon_preparation"
+
+    half_marathon_run_4:
+        name: Forth run
+        source: shf
+        creator: "@ghost"
+        trainingPlan: "@half_marathon_preparation"

@@ -1,0 +1,26 @@
+App\Entity\Workout\TrainingPlan:
+    type: entity
+    table: "`training_plan`"
+    repositoryClass: App\Repository\Workout\TrainingPlanRepository
+    id:
+        id:
+            type: integer
+            length: null
+            unique: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+
+    fields:
+            name:
+                column: name
+                type: string
+                unique: true
+                nullable: false
+                length: 150
+            duration:
+                column: duration
+                type: integer
+                unique: false
+                nullable: false
