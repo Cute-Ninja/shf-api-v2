@@ -35,6 +35,13 @@ class PersonalWorkout extends AbstractWorkout
     protected $owner;
 
     /**
+     * @var ReferenceWorkout
+     *
+     * @Serializer\Groups({"reference"})
+     */
+    protected $referenceWorkout;
+
+    /**
      * @return string
      */
     public function getType(): string
@@ -110,6 +117,22 @@ class PersonalWorkout extends AbstractWorkout
     public function setOwner($owner): void
     {
         $this->owner = $owner;
+    }
+
+    /**
+     * @return ReferenceWorkout|null
+     */
+    public function getReferenceWorkout(): ?ReferenceWorkout
+    {
+        return $this->referenceWorkout;
+    }
+
+    /**
+     * @param ReferenceWorkout $referenceWorkout
+     */
+    public function setReferenceWorkout(ReferenceWorkout $referenceWorkout): void
+    {
+        $this->referenceWorkout = $referenceWorkout;
     }
 
     /**

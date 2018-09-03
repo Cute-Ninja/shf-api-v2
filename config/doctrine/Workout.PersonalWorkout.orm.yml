@@ -21,4 +21,9 @@ App\Entity\Workout\PersonalWorkout:
             joinColumn:
                 name: owner_id
                 referencedColumnName: id
-
+        referenceWorkout:
+            targetEntity: App\Entity\Workout\ReferenceWorkout
+            nullable: false
+            joinColumn:
+                name: reference_id
+                referencedColumnName: id
