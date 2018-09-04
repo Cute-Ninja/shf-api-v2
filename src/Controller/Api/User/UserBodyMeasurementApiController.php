@@ -12,7 +12,7 @@ use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserBodyMeasurementApiController extends AbstractApiController implements StandardApiInterface
+class UserBodyMeasurementApiController extends AbstractApiController
 {
     /**
      * @var Request $request

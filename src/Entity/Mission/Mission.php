@@ -3,6 +3,7 @@
 namespace App\Entity\Mission;
 
 use App\Entity\AbstractBaseEntity;
+use Symfony\Component\Serializer\Annotation as Serializer;
 
 class Mission extends AbstractBaseEntity
 {

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Traits;
 
+use App\Entity\Mission\Mission;
 use App\Entity\Workout\AbstractWorkout;
 use App\Entity\Workout\AbstractWorkoutStep;
 use App\Entity\Workout\PersonalWorkout;
@@ -10,8 +11,9 @@ use App\Entity\User\User;
 use App\Entity\User\UserFavoriteWorkout;
 use App\Entity\WaterTracker\WaterTracker;
 use App\Entity\WaterTracker\WaterTrackerEntry;
-use App\Repository\PersonalWorkoutRepository;
-use App\Repository\ReferenceWorkoutRepository;
+use App\Repository\Mission\MissionRepository;
+use App\Repository\Workout\PersonalWorkoutRepository;
+use App\Repository\Workout\ReferenceWorkoutRepository;
 use App\Repository\User\UserFavoriteWorkoutRepository;
 use App\Repository\User\UserRepository;
 use App\Repository\WaterTracker\WaterTrackerEntryRepository;
@@ -89,5 +91,13 @@ trait RepositoryTrait
     protected function getWorkoutStepRepository(): WorkoutStepRepository
     {
         return $this->getEntityManager()->getRepository(AbstractWorkoutStep::class);
+    }
+
+    /**
+     * @return MissionRepository
+     */
+    protected function getMissionRepository(): MissionRepository
+    {
+        return $this->getEntityManager()->getRepository(Mission::class);
     }
 }

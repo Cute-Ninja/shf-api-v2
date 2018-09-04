@@ -63,7 +63,7 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
 
     /**
      * @var Request $request
-     * @var string  $id
+     * @var int     $id
      *
      * @return Response
      *
@@ -75,7 +75,7 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      * @SWG\Tag(name="Workout")
      * @Security(name="Bearer")
      */
-    public function getOne(Request $request, string $id): Response
+    public function getOne(Request $request, int $id): Response
     {
         $groups = $this->getSerializationGroup($request);
 
@@ -156,7 +156,7 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
 
     /**
      * @var Request $request
-     * @var string  $id
+     * @var int     $id
      *
      * @return Response
      *
@@ -168,14 +168,14 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      * @SWG\Tag(name="Workout")
      * @Security(name="Bearer")
      */
-    public function put(Request $request, string $id): Response
+    public function put(Request $request, int $id): Response
     {
         return $this->getServerErrorResponseBuilder()->notImplemented();
     }
 
     /**
      * @var Request $request
-     * @var string  $id
+     * @var int     $id
      *
      * @return Response
      *
@@ -187,7 +187,7 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      * @SWG\Tag(name="Workout")
      * @Security(name="Bearer")
      */
-    public function delete(Request $request, string $id): Response
+    public function delete(Request $request, int $id): Response
     {
         return $this->getServerErrorResponseBuilder()->notImplemented();
     }

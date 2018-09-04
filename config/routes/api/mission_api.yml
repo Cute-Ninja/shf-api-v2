@@ -1,0 +1,36 @@
+api_mission_list:
+    path: /api/missions
+    controller: App\Controller\Api\Mission\MissionApiController::getMany
+    methods: GET
+
+api_mission_get:
+    path: /api/missions/{id}
+    controller: App\Controller\Api\Mission\MissionApiController::getOne
+    methods: GET
+    requirements:
+        id: \d+
+
+api_mission_post:
+    path: /api/missions
+    controller: App\Controller\Api\Mission\MissionApiController::post
+    methods: POST
+
+api_mission_put:
+    path: /api/missions/{id}
+    controller: App\Controller\Api\Mission\MissionApiController::put
+    methods: PUT
+    requirements:
+        id: \d+
+
+api_mission_delete:
+    path: /api/missions/{id}
+    controller: App\Controller\Api\Mission\MissionApiController::delete
+    methods: DELETE
+    requirements:
+        id: \d+
+
+
+front_api_mission_list:
+    path: /front/api/missions
+    controller: App\Controller\Front\Mission\MissionProxyController::getMany
+    methods: GET

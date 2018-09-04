@@ -9,11 +9,11 @@ interface StandardApiInterface
 {
     public function getMany(Request $request): Response;
 
-    public function getOne(Request $request, string $id): Response;
+    public function getOne(Request $request, int $id): Response;
 
     public function post(Request $request): Response;
 
-    public function put(Request $request, string $id): Response;
+    public function put(Request $request, int $id): Response;
 
-    public function delete(Request $request, string $id): Response;
+    public function delete(Request $request, int $id): Response;
 }

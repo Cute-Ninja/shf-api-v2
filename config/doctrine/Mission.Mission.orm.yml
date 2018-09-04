@@ -1,7 +1,7 @@
 App\Entity\Mission\Mission:
     type: entity
     table: "`mission`"
-    repositoryClass: App\Repository\Workout\MissionRepository
+    repositoryClass: App\Repository\Mission\MissionRepository
 
     id:
         id:

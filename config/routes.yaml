@@ -44,6 +44,10 @@ api_user_favorite_workout:
     resource: "routes/api/user_favorite_workout_api.yml"
     type: rest
 
+api_mission:
+    resource: "routes/api/mission_api.yml"
+    type: rest
+
 ########################################################################################################################
 #                                                      WEB                                                             #
 ########################################################################################################################
