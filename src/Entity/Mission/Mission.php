@@ -11,6 +11,7 @@ class Mission extends AbstractBaseEntity
     public const PERIODICITY_WEEKLY = 'weekly';
     public const PERIODICITY_ON_OFF = 'on-off';
 
+    public const WATER_TRACKER_DAILY_MISSION_ID = 1;
     /**
      * @var int
      *
@@ -52,6 +53,11 @@ class Mission extends AbstractBaseEntity
      * @Serializer\Groups({"default", "test"})
      */
     protected $periodicity;
+
+    /**
+     * @var bool
+     */
+    protected $autoCalculated = true;
 
     /**
      * @return int
@@ -139,5 +145,21 @@ class Mission extends AbstractBaseEntity
     public function setPeriodicity(string $periodicity): void
     {
         $this->periodicity = $periodicity;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAutoCalculated(): bool
+    {
+        return $this->autoCalculated;
+    }
+
+    /**
+     * @param bool $autoCalculated
+     */
+    public function setAutoCalculated(bool $autoCalculated): void
+    {
+        $this->autoCalculated = $autoCalculated;
     }
 }

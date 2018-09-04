@@ -3,6 +3,7 @@ App\Entity\Mission\Mission:
         name: Drink up
         description: Complete your daily goal of water !
         experience: 150
+        objective: 2000
         periodicity: daily
 
     daily_squat:
@@ -10,18 +11,21 @@ App\Entity\Mission\Mission:
         description: Do 30 squats. Beginner can split this exercise in 3x10 squats with 1 min rest.
         experience: 150
         periodicity: daily
+        autoCalculated: false
 
     daily_plank:
         name: Strong core
         description: Do 1 min plank. Beginner can split this exercise in 2x30sec with 1 min rest.
         experience: 150
         periodicity: daily
+        autoCalculated: false
 
     daily_push_up:
         name: Armstrong
         description: Do 20 push up. Beginner can split this exercise in 4x5 push up with 1 min rest, on be on their knees.
         experience: 150
         periodicity: daily
+        autoCalculated: false
 
     weekly_workout:
         name: One step to legendary

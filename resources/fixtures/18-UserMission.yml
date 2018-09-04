@@ -1,54 +1,42 @@
 App\Entity\User\UserMission:
     ghriim_daily_water_tracker_1:
-        mission: '@daily_water_tracker'
-        user: '@ghriim'
+        __construct: ['@ghriim', '@daily_water_tracker']
         completionDate: <(new \DateTime('2018-08-31 00:00:00'))>
         current: 2200
-        objective: 2000
 
     ghriim_daily_squat_1:
-        mission: '@daily_squat'
-        user: '@ghriim'
+        __construct: ['@ghriim', '@daily_squat']
         completionDate: <(new \DateTime('2018-08-31 00:00:00'))>
 
     ghriim_daily_plank_1:
-        mission: '@daily_plank'
-        user: '@ghriim'
+        __construct: ['@ghriim', '@daily_plank']
         completionDate: <(new \DateTime('2018-08-31 00:00:00'))>
 
     ghriim_daily_push_up_1:
-        mission: '@daily_push_up'
-        user: '@ghriim'
+        __construct: ['@ghriim', '@daily_push_up']
         completionDate: <(new \DateTime('2018-08-31 00:00:00'))>
 
     ghriim_daily_water_tracker_2:
-        mission: '@daily_water_tracker'
-        user: '@ghriim'
+        __construct: ['@ghriim', '@daily_water_tracker']
         completionDate: <(new \DateTime('2018-09-03 00:00:00'))>
         current: 2000
-        objective: 2000
 
     ghriim_daily_squat_2:
-        mission: '@daily_squat'
-        user: '@ghriim'
+        __construct: ['@ghriim', '@daily_squat']
         completionDate: <(new \DateTime('2018-09-03 00:00:00'))>
 
     ghriim_daily_plank_2:
-        mission: '@daily_plank'
-        user: '@ghriim'
+        __construct: ['@ghriim', '@daily_plank']
         completionDate: <(new \DateTime('2018-09-03 00:00:00'))>
 
     ghriim_daily_push_up_2:
-        mission: '@daily_push_up'
-        user: '@ghriim'
+        __construct: ['@ghriim', '@daily_push_up']
         completionDate: <(new \DateTime('2018-09-03 00:00:00'))>
 
     ghriim_weekly_workout_1:
-        mission: '@weekly_workout'
-        user: '@ghriim'
+        __construct: ['@ghriim', '@weekly_workout']
         completionDate: <(new \DateTime('2018-08-31 00:00:00'))>
 
     ghriim_weekly_workout_2:
-        mission: '@weekly_workout'
-        user: '@ghriim'
+        __construct: ['@ghriim', '@weekly_workout']
         completionDate: <(new \DateTime('2018-09-03 00:00:00'))>

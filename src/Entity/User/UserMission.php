@@ -2,10 +2,14 @@
 
 namespace App\Entity\User;
 
+use App\Entity\AbstractBaseEntity;
 use App\Entity\Mission\Mission;
+use Symfony\Component\Serializer\Annotation as Serializer;
 
-class UserMission
+class UserMission extends AbstractBaseEntity
 {
+    public const STATUS_COMPLETED = 'completed';
+
     /**
      * @var int
      *
@@ -18,7 +22,7 @@ class UserMission
      *
      * @Serializer\Groups({"default", "test"})
      */
-    protected $current;
+    protected $current = 0;
 
     /**
      * @var int
@@ -49,6 +53,19 @@ class UserMission
     protected $user;
 
     /**
+     * UserMission constructor.
+     *
+     * @param User    $user
+     * @param Mission $mission
+     */
+    public function __construct(User $user, Mission $mission)
+    {
+        $this->setUser($user);
+        $this->setMission($mission);
+        $this->setObjective($mission->getObjective());
+    }
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -70,6 +87,18 @@ class UserMission
     public function setCurrent(int $current): void
     {
         $this->current = $current;
+
+        if ($this->getCurrent() === $this->getObjective()) {
+            $this->setStatus(self::STATUS_COMPLETED);
+        }
+    }
+
+    /**
+     * @param int $valueToAdd
+     */
+    public function incrementCurrent(int $valueToAdd): void
+    {
+        $this->setCurrent($this->getCurrent() + $valueToAdd);
     }
 
     /**
@@ -81,9 +110,9 @@ class UserMission
     }
 
     /**
-     * @param int $objective
+     * @param int|null $objective
      */
-    public function setObjective(int $objective): void
+    public function setObjective(?int $objective): void
     {
         $this->objective = $objective;
     }
@@ -102,6 +131,8 @@ class UserMission
     public function setCompletionDate(\DateTime $completionDate): void
     {
         $this->completionDate = $completionDate;
+
+        $this->setStatus(self::STATUS_COMPLETED);
     }
 
     /**
@@ -134,5 +165,17 @@ class UserMission
     public function setUser(User $user): void
     {
         $this->user = $user;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status): void
+    {
+        if (self::STATUS_COMPLETED === $status && null === $this->getCompletionDate()) {
+            $this->setCompletionDate(new \DateTime());
+        }
+
+        parent::setStatus($status);
     }
 }

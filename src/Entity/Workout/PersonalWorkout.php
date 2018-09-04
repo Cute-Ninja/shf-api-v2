@@ -8,7 +8,6 @@ use Symfony\Component\Serializer\Annotation as Serializer;
 
 class PersonalWorkout extends AbstractWorkout
 {
-
     public const STATUS_SCHEDULED = 'scheduled';
     public const STATUS_OVERDUE   = 'overdue';
     public const STATUS_COMPLETED = 'completed';
@@ -63,6 +62,10 @@ class PersonalWorkout extends AbstractWorkout
             }
         }
 
+        if (self::STATUS_COMPLETED === $status) {
+            $this->setCompletionDate(new \DateTime());
+        }
+
         parent::setStatus($status);
     }
 
@@ -99,7 +102,6 @@ class PersonalWorkout extends AbstractWorkout
      */
     public function setCompletionDate(\DateTime $completionDate): void
     {
-        $this->setStatus(self::STATUS_COMPLETED);
         $this->completionDate = $completionDate;
     }
 

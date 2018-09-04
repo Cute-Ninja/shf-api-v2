@@ -41,3 +41,8 @@ App\Entity\Mission\Mission:
             type: string
             unique: false
             nullable: false
+        autoCalculated:
+            column: auto_calculated
+            type: boolean
+            unique: false
+            nullable: false

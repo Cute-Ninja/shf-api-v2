@@ -3,6 +3,7 @@
 namespace App\Controller\Api\WaterTracker;
 
 use App\Controller\Api\AbstractApiController;
+use App\Controller\Api\WaterTracker\ActionHelper\PostWaterTrackerEntryActionHelper;
 use App\Entity\WaterTracker\WaterTrackerEntry;
 use App\Form\Type\WaterTracker\WaterTrackerEntryType;
 use Nelmio\ApiDocBundle\Annotation\Model;
@@ -102,8 +103,8 @@ class WaterTrackerEntryApiController extends AbstractApiController
             return $this->getClientErrorResponseBuilder()->jsonResponseFormError($form);
         }
 
-        $this->getEntityManager()->persist($trackerEntry);
-        $this->getEntityManager()->flush();
+        $helper = new PostWaterTrackerEntryActionHelper($this->getEntityManager());
+        $helper->saveEntry($tracker->getUser(), $trackerEntry);
 
         return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
             $tracker,

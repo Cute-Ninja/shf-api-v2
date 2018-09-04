@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\AbstractBaseEntity;
+use App\Repository\User\UserMissionRepository;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\QueryBuilder;
@@ -35,6 +36,7 @@ abstract class AbstractBaseRepository extends EntityRepository implements Reposi
         try {
             return $queryBuilder->getQuery()->getOneOrNullResult();
         } catch (NonUniqueResultException $exception) {
+            // @TODO Log this case
             return null;
         }
     }
