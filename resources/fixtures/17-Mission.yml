@@ -1,0 +1,54 @@
+App\Entity\Mission\Mission:
+    daily_water_tracker:
+        name: Drink up
+        description: Complete your daily goal of water !
+        experience: 150
+        periodicity: daily
+
+    daily_squat:
+        name: Don't skip leg day
+        description: Do 30 squats. Beginner can split this exercise in 3x10 squats with 1 min rest.
+        experience: 150
+        periodicity: daily
+
+    daily_plank:
+        name: Strong core
+        description: Do 1 min plank. Beginner can split this exercise in 2x30sec with 1 min rest.
+        experience: 150
+        periodicity: daily
+
+    daily_push_up:
+        name: Armstrong
+        description: Do 20 push up. Beginner can split this exercise in 4x5 push up with 1 min rest, on be on their knees.
+        experience: 150
+        periodicity: daily
+
+    weekly_workout:
+        name: One step to legendary
+        description: Complete at least one workout this week.
+        experience: 250
+        periodicity: weekly
+
+    one_off_level_5:
+        name: Reach level 5
+        objective: 5
+        experience: 500
+        periodicity: on-off
+
+    one_off_level_10:
+        name: Reach level 10
+        objective: 10
+        experience: 1000
+        periodicity: on-off
+
+    one_off_make_friends:
+        name: Make 3 friends
+        objective: 3
+        experience: 250
+        periodicity: on-off
+
+    one_off_favorite_workouts:
+        name: Add 5 workouts to your favorites
+        objective: 5
+        experience: 250
+        periodicity: on-off

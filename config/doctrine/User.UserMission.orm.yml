@@ -1,0 +1,45 @@
+App\Entity\User\UserMission:
+    type: entity
+    table: "`user_mission`"
+    repositoryClass: App\Repository\User\UserMissionRepository
+    id:
+        id:
+            type: integer
+            length: null
+            unique: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+
+    fields:
+        current:
+            name: current
+            type: integer
+            unique: false
+            nullable: true
+        objective:
+            name: objective
+            type: integer
+            unique: false
+            nullable: true
+        completionDate:
+            name: completion_date
+            type: datetime
+            unique: false
+            nullable: true
+
+    manyToOne:
+        mission:
+            targetEntity: App\Entity\Mission\Mission
+            nullable: false
+            joinColumn:
+                name: mission_id
+                referencedColumnName: id
+
+        user:
+            targetEntity: App\Entity\User\User
+            nullable: false
+            joinColumn:
+                name: user_id
+                referencedColumnName: id

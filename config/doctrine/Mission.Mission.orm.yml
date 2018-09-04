@@ -1,0 +1,43 @@
+App\Entity\Mission\Mission:
+    type: entity
+    table: "`mission`"
+    repositoryClass: App\Repository\Workout\MissionRepository
+
+    id:
+        id:
+            type: integer
+            length: null
+            unique: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+
+    fields:
+        name:
+            column: name
+            type: string
+            length: 150
+            unique: false
+            nullable: false
+        description:
+            column: description
+            type: string
+            length: 255
+            unique: false
+            nullable: true
+        objective:
+            column: objective
+            type: integer
+            unique: false
+            nullable: true
+        experience:
+            column: experience
+            type: integer
+            unique: false
+            nullable: true
+        periodicity:
+            column: periodicity
+            type: string
+            unique: false
+            nullable: false
