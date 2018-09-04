@@ -5,6 +5,9 @@ namespace App\Tests\Controller\Api\Mission;
 use App\Tests\Controller\Api\AbstractBaseApiTest;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @covers \App\Controller\Api\Mission\MissionApiController
+ */
 class MissionApiControllerTest extends AbstractBaseApiTest
 {
     public function testGetManyUnauthorized(): void
