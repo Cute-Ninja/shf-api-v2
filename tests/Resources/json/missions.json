@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "name": "Drink up",
+    "description": "Complete your daily goal of water !",
+    "objective": null,
+    "experience": 150,
+    "periodicity": "daily",
+    "status": "active"
+  },
+  {
+    "id": 2,
+    "name": "Don't skip leg day",
+    "description": "Do 30 squats. Beginner can split this exercise in 3x10 squats with 1 min rest.",
+    "objective": null,
+    "experience": 150,
+    "periodicity": "daily",
+    "status": "active"
+  },
+  {
+    "id": 3,
+    "name": "Strong core",
+    "description": "Do 1 min plank. Beginner can split this exercise in 2x30sec with 1 min rest.",
+    "objective": null,
+    "experience": 150,
+    "periodicity": "daily",
+    "status": "active"
+  },
+  {
+    "id": 4,
+    "name": "Armstrong",
+    "description": "Do 20 push up. Beginner can split this exercise in 4x5 push up with 1 min rest, on be on their knees.",
+    "objective": null,
+    "experience": 150,
+    "periodicity": "daily",
+    "status": "active"
+  },
+  {
+    "id": 5,
+    "name": "One step to legendary",
+    "description": "Complete at least one workout this week.",
+    "objective": null,
+    "experience": 250,
+    "periodicity": "weekly",
+    "status": "active"
+  },
+  {
+    "id": 6,
+    "name": "Reach level 5",
+    "description": null,
+    "objective": 5,
+    "experience": 500,
+    "periodicity": "on-off",
+    "status": "active"
+  },
+  {
+    "id": 7,
+    "name": "Reach level 10",
+    "description": null,
+    "objective": 10,
+    "experience": 1000,
+    "periodicity": "on-off",
+    "status": "active"
+  },
+  {
+    "id": 8,
+    "name": "Make 3 friends",
+    "description": null,
+    "objective": 3,
+    "experience": 250,
+    "periodicity": "on-off",
+    "status": "active"
+  },
+  {
+    "id": 9,
+    "name": "Add 5 workouts to your favorites",
+    "description": null,
+    "objective": 5,
+    "experience": 250,
+    "periodicity": "on-off",
+    "status": "active"
+  }
+]
