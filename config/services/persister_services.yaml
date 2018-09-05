@@ -1,0 +1,12 @@
+services:
+    shf_api.persister.user_daily_mission:
+        class: App\Domain\Persister\UserMission\UserDailyMissionPersister
+        autowire: true
+
+    shf_api.persister.user_weekly_mission:
+        class: App\Domain\Persister\UserMission\UserWeeklyMissionPersister
+        autowire: true
+
+    shf_api.persister.user_one_off_mission:
+        class: App\Domain\Persister\UserMission\UserOneOffMissionPersister
+        autowire: true

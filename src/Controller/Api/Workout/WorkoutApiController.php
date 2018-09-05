@@ -4,9 +4,6 @@ namespace App\Controller\Api\Workout;
 
 use App\Controller\Api\AbstractApiController;
 use App\Controller\Api\StandardApiInterface;
-use App\Controller\Api\Workout\ActionHelper\GetManyWorkoutActionHelper;
-use App\Controller\Api\Workout\ActionHelper\PatchWorkoutActionHelper;
-use App\Controller\Api\Workout\ActionHelper\PostWorkoutActionHelper;
 use App\Entity\Workout\AbstractWorkout;
 use App\Entity\Workout\ReferenceWorkout;
 use App\Exception\Http\NotImplementedHttpException;
@@ -46,7 +43,7 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
     {
         $type = $request->get('type');
 
-        $actionHelper = new GetManyWorkoutActionHelper($this->getEntityManager());
+        $actionHelper = $this->get('shf_api.action_helper.workout.get_many');
         $builder      = $actionHelper->getWorkoutBuilder($request);
 
         if (ReferenceWorkout::TYPE_REFERENCE === $type && $userId = $request->get('user')) {
@@ -135,7 +132,7 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      */
     public function postWithType(Request $request, string $workoutType): Response
     {
-        $helper  = new PostWorkoutActionHelper();
+        $helper  = $this->get('shf_api.action_helper.workout.post');
         $workout = $helper->buildWorkoutFromType($workoutType, $this->getUser());
 
         $form = $this->createForm($helper->buildFormNameFromType($workoutType), $workout, ['method' => 'POST']);
@@ -220,7 +217,7 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      */
     public function patch(Request $request, string $action): Response
     {
-        $helper = new PatchWorkoutActionHelper($this->getEntityManager());
+        $helper = $this->get('shf_api.action_helper.workout.patch');
         try {
             $step = $helper->doPatchAction($action, $request->query->get('id'));
 

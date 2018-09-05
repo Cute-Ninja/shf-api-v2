@@ -1,0 +1,40 @@
+services:
+    shf_api.action_helper.water_tracker_entry.post:
+        class: App\Controller\Api\WaterTracker\ActionHelper\PostWaterTrackerEntryActionHelper
+        autowire: true
+        public: true
+
+    shf_api.action_helper.user_mission.patch:
+        class: App\Controller\Api\User\ActionHelper\PatchUserMissionActionHelper
+        autowire: true
+        public: true
+
+    shf_api.action_helper.user_favorite_workout.post:
+        class: App\Controller\Api\User\ActionHelper\PostUserFavoriteWorkoutActionHelper
+        autowire: true
+        public: true
+
+    shf_api.action_helper.workout.get_many:
+        class: App\Controller\Api\Workout\ActionHelper\GetManyWorkoutActionHelper
+        autowire: true
+        public: true
+
+    shf_api.action_helper.workout.post:
+        class: App\Controller\Api\Workout\ActionHelper\PostWorkoutActionHelper
+        autowire: true
+        public: true
+
+    shf_api.action_helper.workout.patch:
+        class: App\Controller\Api\Workout\ActionHelper\PatchWorkoutActionHelper
+        autowire: true
+        public: true
+
+    shf_api.action_helper.workout_step.post:
+        class: App\Controller\Api\Workout\ActionHelper\PostWorkoutStepActionHelper
+        autowire: true
+        public: true
+
+    shf_api.action_helper.workout_step.patch:
+        class: App\Controller\Api\Workout\ActionHelper\PatchWorkoutStepActionHelper
+        autowire: true
+        public: true

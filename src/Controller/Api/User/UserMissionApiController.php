@@ -4,7 +4,6 @@ namespace App\Controller\Api\User;
 
 use App\Controller\Api\AbstractApiController;
 use App\Controller\Api\StandardApiInterface;
-use App\Controller\Api\User\ActionHelper\PatchMissionActionHelper;
 use App\Exception\Http\NotImplementedHttpException;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;
@@ -132,7 +131,7 @@ class UserMissionApiController extends AbstractApiController implements Standard
      */
     public function patch(Request $request, string $action): Response
     {
-        $helper = new PatchMissionActionHelper($this->getEntityManager());
+        $helper = $this->get('shf_api.action_helper.user_mission.patch');
         try {
             $userMission = $helper->doPatchAction($action, $this->getUser(), $request->query->get('missionId'));
 

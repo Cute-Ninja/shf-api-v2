@@ -28,6 +28,8 @@ class UserFavoriteWorkoutProxyController extends AbstractProxyController
      */
     public function post(Request $request): Response
     {
+        $request->request->set('user', $this->getUser()->getId());
+
         return $this->forwardToApi(
             $request,
             'App\Controller\Api\User\UserFavoriteWorkoutApiController:post'
@@ -44,7 +46,7 @@ class UserFavoriteWorkoutProxyController extends AbstractProxyController
     {
         return $this->forwardToApi(
             $request,
-            'App\Controller\Api\User\UserFavoriteWorkoutApiController:post',
+            'App\Controller\Api\User\UserFavoriteWorkoutApiController:delete',
             ['id' => $id]
         );
     }

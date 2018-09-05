@@ -2,9 +2,14 @@
 
 namespace App\Repository\User;
 
+use App\Entity\User\UserMission;
 use App\Repository\AbstractBaseRepository;
 use Doctrine\ORM\QueryBuilder;
 
+/**
+ * @method UserMission findOneByCriteria(array $criteria = [], array $selects = [])
+ * @method UserMission[] findManyByCriteria(array $criteria = [], array $selects = [], array $orders = [], $limit = null): array
+ */
 class UserMissionRepository extends AbstractBaseRepository
 {
     /**
@@ -47,6 +52,20 @@ class UserMissionRepository extends AbstractBaseRepository
                      ->setParameter('end_date', $interval['end']);
 
         return true;
+    }
+
+    /**
+     * @param QueryBuilder $queryBuilder
+     * @param bool|null    $autoCalculated
+     *
+     * @return bool
+     */
+    public function addCriterionAutoCalculated(QueryBuilder $queryBuilder, ?bool $autoCalculated): bool
+    {
+        $queryBuilder->leftJoin($this->getAlias() . '.mission', 'user_mission_mission');
+        $queryBuilder->addSelect('user_mission_mission');
+
+        return $this->addCriterion($queryBuilder, 'user_mission_mission', 'autoCalculated', $autoCalculated);
     }
 
     /**

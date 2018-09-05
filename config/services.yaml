@@ -3,6 +3,8 @@ imports:
     - { resource: services/handlers_services.yaml }
     - { resource: services/api_services.yaml }
     - { resource: services/security_services.yaml }
+    - { resource: services/persister_services.yaml }
+    - { resource: services/action_helper_services.yaml }
 
 parameters:
     locale: 'en'

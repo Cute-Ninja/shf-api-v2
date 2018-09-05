@@ -29,7 +29,7 @@ class UserMission extends AbstractBaseEntity
      *
      * @Serializer\Groups({"default", "test"})
      */
-    protected $objective;
+    protected $objective = 0;
 
     /**
      * @var \DateTime
@@ -91,14 +91,6 @@ class UserMission extends AbstractBaseEntity
         if ($this->getCurrent() === $this->getObjective()) {
             $this->setStatus(self::STATUS_COMPLETED);
         }
-    }
-
-    /**
-     * @param int $valueToAdd
-     */
-    public function incrementCurrent(int $valueToAdd): void
-    {
-        $this->setCurrent($this->getCurrent() + $valueToAdd);
     }
 
     /**

@@ -12,6 +12,8 @@ class Mission extends AbstractBaseEntity
     public const PERIODICITY_ON_OFF = 'on-off';
 
     public const WATER_TRACKER_DAILY_MISSION_ID = 1;
+    public const FAVORITES_WORKOUT_MISSION_ID = 9;
+
     /**
      * @var int
      *

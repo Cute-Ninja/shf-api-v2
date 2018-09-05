@@ -103,7 +103,7 @@ class WaterTrackerEntryApiController extends AbstractApiController
             return $this->getClientErrorResponseBuilder()->jsonResponseFormError($form);
         }
 
-        $helper = new PostWaterTrackerEntryActionHelper($this->getEntityManager());
+        $helper = $this->get('shf_api.action_helper.water_tracker_entry.post');
         $helper->saveEntry($tracker->getUser(), $trackerEntry);
 
         return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(

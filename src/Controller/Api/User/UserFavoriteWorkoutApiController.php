@@ -99,8 +99,8 @@ class UserFavoriteWorkoutApiController extends AbstractApiController implements 
             return $this->getClientErrorResponseBuilder()->jsonResponseFormError($form);
         }
 
-        $this->getEntityManager()->persist($favorite);
-        $this->getEntityManager()->flush();
+        $helper = $this->get('shf_api.action_helper.user_favorite_workout.post');
+        $helper->saveFavorite($favorite);
 
         return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
             $favorite,

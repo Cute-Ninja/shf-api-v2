@@ -3,8 +3,6 @@
 namespace App\Controller\Api\Workout;
 
 use App\Controller\Api\AbstractApiController;
-use App\Controller\Api\Workout\ActionHelper\PatchWorkoutStepActionHelper;
-use App\Controller\Api\Workout\ActionHelper\PostWorkoutStepActionHelper;
 use App\Entity\Workout\AbstractWorkoutStep;
 use App\Exception\Http\NotImplementedHttpException;
 use Nelmio\ApiDocBundle\Annotation\Model;
@@ -122,7 +120,7 @@ class WorkoutStepApiController extends AbstractApiController
             return $this->getClientErrorResponseBuilder()->notFound();
         }
 
-        $helper = new PostWorkoutStepActionHelper();
+        $helper = $this->get('shf_api.action_helper.workout_step.post');
         $step   = $helper->buildStepFromType($stepType, $workout);
 
         $form = $this->createForm($helper->buildFormNameFromType($stepType), $step, ['method' => 'POST']);
@@ -231,7 +229,7 @@ class WorkoutStepApiController extends AbstractApiController
      */
     public function patch(Request $request, int $workoutId, string $action): Response
     {
-        $helper = new PatchWorkoutStepActionHelper($this->getEntityManager());
+        $helper = $this->get('shf_api.action_helper.workout_step.patch');
         try {
             $step = $helper->doPatchAction($action, $workoutId, $request->query->get('id'));
 
