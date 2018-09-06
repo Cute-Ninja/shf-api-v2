@@ -2,10 +2,10 @@
 
 namespace App\Domain\Persister\UserMission;
 
+use App\Domain\Manager\NotificationManager;
 use App\Entity\Mission\Mission;
 use App\Entity\User\User;
 use App\Entity\User\UserMission;
-use App\Entity\WaterTracker\WaterTrackerEntry;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
@@ -16,9 +16,21 @@ abstract class AbstractUserMissionPersister
      */
     protected $entityManager;
 
-    public function __construct(ObjectManager $entityManager)
+    /**
+     * @var NotificationManager
+     */
+    protected $notificationManager;
+
+    /**
+     * AbstractUserMissionPersister constructor.
+     *
+     * @param ObjectManager       $entityManager
+     * @param NotificationManager $notificationManager
+     */
+    public function __construct(ObjectManager $entityManager, NotificationManager $notificationManager)
     {
         $this->entityManager = $entityManager;
+        $this->notificationManager = $notificationManager;
     }
 
     abstract protected function getUserMissionCriteria();
@@ -48,6 +60,8 @@ abstract class AbstractUserMissionPersister
         $userMission->incrementCurrent($incrementCurrentValue);
 
         $this->entityManager->persist($userMission);
+
+        $this->notificationManager->notify($user);
 
         return $userMission;
     }

@@ -1,13 +1,22 @@
 services:
     shf.response_builder.success:
         class: App\HttpResponse\SuccessResponseBuilder
-        arguments: ['@fos_rest.view_handler']
+        arguments:
+            - '@fos_rest.view_handler'
+            - '@security.token_storage'
+            - '@shf_api.manager.notification'
         public: true
     shf.response_builder.client_error:
         class: App\HttpResponse\ClientErrorResponseBuilder
-        arguments: ['@fos_rest.view_handler']
+        arguments:
+            - '@fos_rest.view_handler'
+            - '@security.token_storage'
+            - '@shf_api.manager.notification'
         public: true
     shf.response_builder.server_error:
         class: App\HttpResponse\ServerErrorResponseBuilder
-        arguments: ['@fos_rest.view_handler']
+        arguments:
+            - '@fos_rest.view_handler'
+            - '@security.token_storage'
+            - '@shf_api.manager.notification'
         public: true

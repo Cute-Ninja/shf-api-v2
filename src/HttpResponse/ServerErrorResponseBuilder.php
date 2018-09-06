@@ -2,6 +2,7 @@
 
 namespace App\HttpResponse;
 
+use FOS\RestBundle\View\View;
 use Symfony\Component\HttpFoundation\Response;
 
 class ServerErrorResponseBuilder extends AbstractResponseBuilder
@@ -16,7 +17,7 @@ class ServerErrorResponseBuilder extends AbstractResponseBuilder
         $code    = $e->getCode() ?: Response::HTTP_INTERNAL_SERVER_ERROR;
         $message = $e->getMessage() ?: null;
 
-        return new Response($message, $code);
+        return $this->handle(View::create(['message' => $message], $code, []));
     }
 
     /**
@@ -24,6 +25,6 @@ class ServerErrorResponseBuilder extends AbstractResponseBuilder
      */
     public function notImplemented(): Response
     {
-        return new Response(null, Response::HTTP_NOT_IMPLEMENTED);
+        return $this->handle(View::create(null, Response::HTTP_NOT_IMPLEMENTED, []));
     }
 }

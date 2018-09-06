@@ -2,12 +2,14 @@
 
 namespace App\HttpResponse;
 
+use App\Domain\Manager\NotificationManager;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandlerInterface;
 use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Router;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
@@ -25,11 +27,17 @@ class SuccessResponseBuilder extends AbstractResponseBuilder
     /**
      * SuccessResponseBuilder constructor.
      *
-     * @param ViewHandlerInterface $viewHandler
+     * @param ViewHandlerInterface  $viewHandler
+     * @param TokenStorageInterface $storage
+     * @param NotificationManager   $notificationManager
      */
-    public function __construct(ViewHandlerInterface $viewHandler)
+    public function __construct(
+        ViewHandlerInterface $viewHandler,
+        TokenStorageInterface $storage,
+        NotificationManager $notificationManager
+    )
     {
-        parent::__construct($viewHandler);
+        parent::__construct($viewHandler, $storage, $notificationManager);
 
         try {
             $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
@@ -121,23 +129,6 @@ class SuccessResponseBuilder extends AbstractResponseBuilder
         );
 
         return $this->ok($normalizedObjects, $headers);
-    }
-
-    /**
-     * @param       $object
-     * @param array $serializationGroups
-     *
-     * @return Response
-     */
-    public function created($object, array $serializationGroups = []): Response
-    {
-        $normalizedObject = $this->serializer->normalize(
-            $object,
-            null,
-            ['groups' => $serializationGroups]
-        );
-
-        return $this->handle(View::create($normalizedObject, Response::HTTP_CREATED));
     }
 
     /**

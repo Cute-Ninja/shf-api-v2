@@ -3,8 +3,8 @@
 namespace App\HttpResponse;
 
 use App\Form\Error\ApiFormError;
+use FOS\RestBundle\View\View;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class ClientErrorResponseBuilder extends AbstractResponseBuilder
@@ -14,7 +14,7 @@ class ClientErrorResponseBuilder extends AbstractResponseBuilder
      */
     public function forbidden(): Response
     {
-        return new Response(null, Response::HTTP_FORBIDDEN);
+        return $this->handle(View::create(null, Response::HTTP_FORBIDDEN, []));
     }
 
     /**
@@ -22,7 +22,7 @@ class ClientErrorResponseBuilder extends AbstractResponseBuilder
      */
     public function unauthorized(): Response
     {
-        return new Response(null, Response::HTTP_UNAUTHORIZED);
+        return $this->handle(View::create(null, Response::HTTP_UNAUTHORIZED, []));
     }
 
     /**
@@ -30,29 +30,29 @@ class ClientErrorResponseBuilder extends AbstractResponseBuilder
      */
     public function notFound(): Response
     {
-        return new Response(null, Response::HTTP_NOT_FOUND);
+        return $this->handle(View::create(null, Response::HTTP_NOT_FOUND, []));
     }
 
     /**
      * @param string $message
      *
-     * @return JsonResponse
+     * @return Response
      */
-    public function badRequest($message): JsonResponse
+    public function badRequest($message): Response
     {
-        return new JsonResponse(['message' => $message], Response::HTTP_BAD_REQUEST);
+        return $this->handle(View::create(['message' => $message], Response::HTTP_BAD_REQUEST, []));
     }
 
     /**
      * @param FormInterface $form
      *
-     * @return JsonResponse
+     * @return Response
      */
     public function jsonResponseFormError(FormInterface $form): Response
     {
         $apiFormError = new ApiFormError();
         $data = $apiFormError->getFormErrorsAsFormattedArray($form);
 
-        return new JsonResponse($data, Response::HTTP_UNPROCESSABLE_ENTITY);
+        return $this->handle(View::create($data, Response::HTTP_UNPROCESSABLE_ENTITY, []));
     }
 }

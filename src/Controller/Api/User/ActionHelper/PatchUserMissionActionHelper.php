@@ -8,6 +8,7 @@ use App\Entity\User\UserMission;
 use App\Exception\Http\NotImplementedHttpException;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PatchUserMissionActionHelper
 {
@@ -40,6 +41,10 @@ class PatchUserMissionActionHelper
      */
     public function doPatchAction(string $action, User $user, $missionId): UserMission
     {
+        if (null === $missionId) {
+            throw new NotFoundHttpException();
+        }
+
         $userMission = null;
         if (self::PATCH_ACTION_COMPLETE === $action) {
             $userMission = $this->dailyMissionPersister->saveManualMission($user, $missionId);

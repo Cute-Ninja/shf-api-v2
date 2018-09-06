@@ -1,0 +1,2 @@
+App\Entity\Notification\WebNotification:
+    type: entity

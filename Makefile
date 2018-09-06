@@ -1,7 +1,8 @@
 APP_CONSOLE=php bin/console
 
 dev_clear_cache:
-	-rm -rf app/cache/dev
+	rm -rf var/cache/dev
+	$(APP_CONSOLE) shf_api:cache:clear --env=dev
 	$(APP_CONSOLE) cache:clear --env=dev
 
 dev_reset_db:

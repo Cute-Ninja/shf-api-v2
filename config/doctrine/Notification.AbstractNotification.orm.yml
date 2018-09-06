@@ -1,0 +1,42 @@
+App\Entity\Notification\AbstractNotification:
+    type: entity
+    table: "`notification`"
+    repositoryClass: App\Repository\Notification\NotificationRepository
+    inheritanceType: SINGLE_TABLE
+    discriminatorColumn:
+        name: type
+        type: string
+    discriminatorMap:
+        web: App\Entity\Notification\WebNotification
+
+    id:
+        id:
+            type: integer
+            length: null
+            unique: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+
+    fields:
+        title:
+            column: title
+            type: string
+            length: 150
+            unique: false
+            nullable: false
+        target:
+            column: target
+            type: string
+            length: 150
+            unique: false
+            nullable: false
+
+    manyToOne:
+        user:
+            targetEntity: App\Entity\User\User
+            nullable: false
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
