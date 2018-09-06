@@ -1,7 +1,7 @@
 [{
   "id": 1,
   "workout": {
-    "id": 5,
+    "id": 1,
     "name": "Ares",
     "difficulty": 4,
     "estimatedDuration": 390,
@@ -16,7 +16,7 @@
 }, {
   "id": 2,
   "workout": {
-    "id": 7,
+    "id": 3,
     "name": "Hermes",
     "difficulty": 3,
     "estimatedDuration": 5490,
