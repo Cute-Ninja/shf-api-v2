@@ -145,10 +145,7 @@ class PatchWorkoutActionHelper
     private function getWorkout(int $workoutId): AbstractWorkout
     {
         $repository = $this->entityManager->getRepository(AbstractWorkout::class);
-
-        $workout = $repository->findOneByCriteria(
-            ['id' => $workoutId]
-        );
+        $workout    = $repository->findOneByCriteria(['id' => $workoutId]);
 
         if (null === $workout) {
             throw new NotFoundHttpException();

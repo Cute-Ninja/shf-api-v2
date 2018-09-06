@@ -1,6 +1,5 @@
 {
   "scheduledDate": "2099-01-01T00:00:00+00:00",
-  "completionDate": null,
   "owner": {
     "id": 1,
     "username": "ghriim",
@@ -15,7 +14,7 @@
     },
     "status": "active"
   },
-  "id": 7,
+  "id": 11,
   "name": "Half marathon preparation (1)",
   "difficulty": 3,
   "estimatedDuration": 3645,

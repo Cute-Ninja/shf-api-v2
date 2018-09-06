@@ -4,6 +4,7 @@ namespace App\Entity\User;
 
 use App\Entity\AbstractBaseEntity;
 use App\Entity\Workout\AbstractWorkout;
+use App\Entity\Workout\ReferenceWorkout;
 use Symfony\Component\Serializer\Annotation as Serializer;
 
 class UserFavoriteWorkout extends AbstractBaseEntity
@@ -16,7 +17,7 @@ class UserFavoriteWorkout extends AbstractBaseEntity
     protected $id;
 
     /**
-     * @var AbstractWorkout
+     * @var ReferenceWorkout
      *
      * @Serializer\Groups({"default", "test"})
      */
@@ -38,17 +39,17 @@ class UserFavoriteWorkout extends AbstractBaseEntity
     }
 
     /**
-     * @return AbstractWorkout|null
+     * @return ReferenceWorkout|null
      */
-    public function getWorkout(): ?AbstractWorkout
+    public function getWorkout(): ?ReferenceWorkout
     {
         return $this->workout;
     }
 
     /**
-     * @param AbstractWorkout $workout
+     * @param ReferenceWorkout $workout
      */
-    public function setWorkout(AbstractWorkout $workout): void
+    public function setWorkout(ReferenceWorkout $workout): void
     {
         $this->workout = $workout;
     }

@@ -22,14 +22,14 @@ class UserMission extends AbstractBaseEntity
      *
      * @Serializer\Groups({"default", "test"})
      */
-    protected $current = 0;
+    protected $current;
 
     /**
      * @var int
      *
      * @Serializer\Groups({"default", "test"})
      */
-    protected $objective = 0;
+    protected $objective;
 
     /**
      * @var \DateTime
@@ -82,14 +82,26 @@ class UserMission extends AbstractBaseEntity
     }
 
     /**
-     * @param int $current
+     * @param int|null $current
      */
-    public function setCurrent(int $current): void
+    public function setCurrent(?int $current): void
     {
         $this->current = $current;
 
         if ($this->getCurrent() === $this->getObjective()) {
             $this->setStatus(self::STATUS_COMPLETED);
+        }
+    }
+
+    /**
+     * @param int|null $incrementValue
+     */
+    public function incrementCurrent(?int $incrementValue): void
+    {
+        if (null === $incrementValue && null === $this->getCurrent()) {
+            $this->setCurrent(null);
+        } else {
+            $this->setCurrent($this->getCurrent() + $incrementValue);
         }
     }
 

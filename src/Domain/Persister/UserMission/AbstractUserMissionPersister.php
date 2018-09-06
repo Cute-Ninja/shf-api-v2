@@ -7,6 +7,7 @@ use App\Entity\User\User;
 use App\Entity\User\UserMission;
 use App\Entity\WaterTracker\WaterTrackerEntry;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 abstract class AbstractUserMissionPersister
 {
@@ -29,6 +30,8 @@ abstract class AbstractUserMissionPersister
      * @param bool|null $autoCalculatedMission
      *
      * @return UserMission
+     *
+     * @throws AccessDeniedHttpException
      */
     protected function saveMission(
         User $user,
@@ -39,10 +42,10 @@ abstract class AbstractUserMissionPersister
     {
         $userMission = $this->getUserMission($user, $missionId, $autoCalculatedMission);
         if (UserMission::STATUS_COMPLETED === $userMission->getStatus()) {
-            return null;
+            throw new AccessDeniedHttpException();
         }
 
-        $userMission->setCurrent($userMission->getCurrent() + $incrementCurrentValue);
+        $userMission->incrementCurrent($incrementCurrentValue);
 
         $this->entityManager->persist($userMission);
 

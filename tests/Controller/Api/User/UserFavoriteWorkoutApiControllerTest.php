@@ -94,7 +94,7 @@ class UserFavoriteWorkoutApiControllerTest extends AbstractBaseApiTest
             'favorite-workouts',
             [
                 'user'    => $this->user->getId(),
-                'workout' => 2 // Ares lvl 2 Workout
+                'workout' => 6 // Ares lvl 2 Workout
             ]
         );
 

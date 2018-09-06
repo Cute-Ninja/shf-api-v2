@@ -1,4 +1,4 @@
 App\Entity\User\UserFavoriteWorkout:
-    fav_ghriim_{ares, hermes, ghriim_workout_1, ghriim_workout_2}:
+    fav_ghriim_{ares, hermes}:
         user: "@ghriim"
         workout: "@<current()>"

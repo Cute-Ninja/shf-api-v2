@@ -1,5 +1,5 @@
 [{
-  "id": 1,
+  "id": 5,
   "name": "Ares",
   "difficulty": 4,
   "estimatedDuration": 390,
@@ -10,7 +10,7 @@
   "status": "active",
   "type": "reference"
 }, {
-  "id": 2,
+  "id": 6,
   "name": "Ares Lvl 2",
   "difficulty": 6,
   "estimatedDuration": 450,
@@ -21,7 +21,7 @@
   "status": "active",
   "type": "reference"
 }, {
-  "id": 3,
+  "id": 7,
   "name": "Hermes",
   "difficulty": 3,
   "estimatedDuration": 5490,
@@ -32,7 +32,7 @@
   "status": "active",
   "type": "reference"
 }, {
-  "id": 4,
+  "id": 8,
   "name": "Hermes Lvl 2",
   "difficulty": 5,
   "estimatedDuration": null,
@@ -43,7 +43,7 @@
   "status": "active",
   "type": "reference"
 }, {
-  "id": 5,
+  "id": 9,
   "name": "Helios",
   "difficulty": 3,
   "estimatedDuration": 1200,
@@ -54,7 +54,7 @@
   "status": "active",
   "type": "reference"
 }, {
-  "id": 6,
+  "id": 10,
   "name": "Helios by Ghriim",
   "difficulty": 3,
   "estimatedDuration": 1200,

@@ -3,13 +3,11 @@
 namespace App\Controller\Api\User\ActionHelper;
 
 use App\Domain\Persister\UserMission\UserDailyMissionPersister;
-use App\Entity\Mission\Mission;
 use App\Entity\User\User;
 use App\Entity\User\UserMission;
 use App\Exception\Http\NotImplementedHttpException;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PatchUserMissionActionHelper
 {
@@ -38,7 +36,7 @@ class PatchUserMissionActionHelper
      *
      * @return UserMission
      *
-     * @throws NotImplementedHttpException|NotFoundHttpException|AccessDeniedHttpException
+     * @throws NotImplementedHttpException|AccessDeniedHttpException
      */
     public function doPatchAction(string $action, User $user, $missionId): UserMission
     {
@@ -47,10 +45,6 @@ class PatchUserMissionActionHelper
             $userMission = $this->dailyMissionPersister->saveManualMission($user, $missionId);
         } else {
             throw new NotImplementedHttpException();
-        }
-
-        if (null === $userMission) {
-            throw new AccessDeniedHttpException();
         }
 
         $this->entityManager->flush();

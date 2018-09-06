@@ -5,6 +5,7 @@ namespace App\Form\Type\User;
 use App\Entity\Workout\AbstractWorkout;
 use App\Entity\User\User;
 use App\Entity\User\UserFavoriteWorkout;
+use App\Entity\Workout\ReferenceWorkout;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,7 +20,7 @@ class UserFavoriteWorkoutType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('user', EntityType::class, ['class' => User::class])
-                ->add('workout', EntityType::class, ['class' => AbstractWorkout::class]);
+                ->add('workout', EntityType::class, ['class' => ReferenceWorkout::class]);
     }
 
     /**

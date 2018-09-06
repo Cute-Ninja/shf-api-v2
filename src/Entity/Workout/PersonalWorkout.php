@@ -22,7 +22,7 @@ class PersonalWorkout extends AbstractWorkout
     /**
      * @var \DateTime
      *
-     * @Serializer\Groups({"default", "test"})
+     * @Serializer\Groups({"default"})
      */
     protected $completionDate;
 

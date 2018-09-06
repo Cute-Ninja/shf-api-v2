@@ -171,7 +171,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
     public function testPatchUnknownActionUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildPatchRequest($client, 'workouts/unknown', ['id' => 7]);
+        $this->buildPatchRequest($client, 'workouts/unknown', ['id' => 11]);
 
         $response = $client->getResponse();
 
@@ -181,7 +181,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
     public function testPatchUnknownActionAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildPatchRequest($client, 'workouts/unknown', ['id' => 7]);
+        $this->buildPatchRequest($client, 'workouts/unknown', ['id' => 11]);
 
         $response = $client->getResponse();
 
@@ -191,7 +191,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
     public function testPatchCompleteUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildPatchRequest($client, 'workouts/complete', ['id' => 7]);
+        $this->buildPatchRequest($client, 'workouts/complete', ['id' => 11]);
 
         $response = $client->getResponse();
 
@@ -201,7 +201,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
     public function testPatchCompleteAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildPatchRequest($client, 'workouts/complete', ['id' => 7]);
+        $this->buildPatchRequest($client, 'workouts/complete', ['id' => 11]);
 
         $response = $client->getResponse();
 
@@ -215,7 +215,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
     public function testPatchUndoCompleteUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildPatchRequest($client, 'workouts/undo-complete', ['id' => 7]);
+        $this->buildPatchRequest($client, 'workouts/undo-complete', ['id' => 11]);
 
         $response = $client->getResponse();
 
@@ -225,7 +225,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
     public function testPatchUndoCompleteAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildPatchRequest($client, 'workouts/undo-complete', ['id' => 7]);
+        $this->buildPatchRequest($client, 'workouts/undo-complete', ['id' => 11]);
 
         $response = $client->getResponse();
 
