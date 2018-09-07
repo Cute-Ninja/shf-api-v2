@@ -16,44 +16,44 @@ app.swagger:
 ########################################################################################################################
 
 api_body_measurement:
-    resource: "routes/api/body_measurement_api.yml"
+    resource: "routes/api/body_measurement_api.yaml"
     prefix: /api
     type: rest
 
 api_user:
-    resource: "routes/api/user_api.yml"
+    resource: "routes/api/user_api.yaml"
     type: rest
 
 api_water_tracker:
-    resource: "routes/api/water_tracker_api.yml"
+    resource: "routes/api/water_tracker_api.yaml"
     type: rest
 
 api_water_tracker_entry:
-    resource: "routes/api/water_tracker_entry_api.yml"
+    resource: "routes/api/water_tracker_entry_api.yaml"
     type: rest
 
 api_workout:
-    resource: "routes/api/workout_api.yml"
+    resource: "routes/api/workout_api.yaml"
     type: rest
 
 api_workout_step:
-    resource: "routes/api/workout_step_api.yml"
+    resource: "routes/api/workout_step_api.yaml"
     type: rest
 
 api_user_favorite_workout:
-    resource: "routes/api/user_favorite_workout_api.yml"
+    resource: "routes/api/user_favorite_workout_api.yaml"
     type: rest
 
 api_mission:
-    resource: "routes/api/mission_api.yml"
+    resource: "routes/api/mission_api.yaml"
     type: rest
 
 api_user_mission:
-    resource: "routes/api/user_mission_api.yml"
+    resource: "routes/api/user_mission_api.yaml"
     type: rest
 
 api_notification:
-    resource: "routes/api/notification_api.yml"
+    resource: "routes/api/notification_api.yaml"
     type: rest
 
 ########################################################################################################################
@@ -63,12 +63,17 @@ logout:
     path: /logout
 
 visitor:
-    resource: "routes/visitor/visitor_page.yml"
+    resource: "routes/visitor/visitor_page.yaml"
 
 admin:
-    resource: "routes/admin/admin_page.yml"
+    resource: "routes/admin/admin_page.yaml"
     prefix: /admin
 
 front:
-    resource: "routes/front/front_page.yml"
+    resource: "routes/front/front_page.yaml"
     prefix: /front
+
+errors:
+    resource: "routes/test/error_api.yaml"
+    prefix: /errors
+    type: rest

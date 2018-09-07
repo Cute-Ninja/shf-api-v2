@@ -17,3 +17,8 @@ header.uk-navbar-container:not(.uk-navbar-transparent) {
 .uk-navbar-nav > li > a.uk-button.uk-button-default {
     color: #222;
 }
+
+#notifications-count .uk-badge {
+    background-color: #ef5350;
+    margin: 75% 0 0 -55%;
+}

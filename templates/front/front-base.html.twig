@@ -34,12 +34,21 @@
                             <li>
                                 <a href="#" title="Notifications">
                                     <i class="material-icons">notifications</i>
+                                    <span id="notifications-count"></span>
                                 </a>
+                                <div uk-dropdown="mode: click">
+                                    <ul class="uk-nav uk-dropdown-nav"></ul>
+                                </div>
                             </li>
                             <li>
-                                <a href="{{ path('logout') }}" title="Logout">
-                                    <i class="material-icons">lock</i>
-                                </a>
+                                <img src="https://via.placeholder.com/50x50" title="avatar" class="uk-border-circle" />
+                                <div uk-dropdown="mode: click">
+                                    <ul class="uk-nav uk-dropdown-nav">
+                                        <a href="{{ path('logout') }}" title="Logout">
+                                            <i class="material-icons">lock</i>
+                                        </a>
+                                    </ul>
+                                </div>
                             </li>
                         {% elseif app.request.pathinfo != path('login') %}
                             <li>

@@ -40,14 +40,14 @@ class UserMissionRepository extends AbstractBaseRepository
      *
      * @return bool
      */
-    public function addCriterionCompletedBetween(QueryBuilder $queryBuilder, array $interval): bool
+    public function addCriterionCreatedBetween(QueryBuilder $queryBuilder, array $interval): bool
     {
         if (false === isset($interval['start']) || false === isset($interval['end'])) {
             return false;
         }
 
-        $queryBuilder->andWhere($this->getAlias() . '.completionDate >= :start_date')
-                     ->andWhere($this->getAlias() . '.completionDate <= :end_date')
+        $queryBuilder->andWhere($this->getAlias() . '.createdAt >= :start_date')
+                     ->andWhere($this->getAlias() . '.createdAt <= :end_date')
                      ->setParameter('start_date', $interval['start'])
                      ->setParameter('end_date', $interval['end']);
 

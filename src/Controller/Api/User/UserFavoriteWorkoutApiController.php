@@ -102,7 +102,7 @@ class UserFavoriteWorkoutApiController extends AbstractApiController implements 
         $helper = $this->get('shf_api.action_helper.user_favorite_workout.post');
         $helper->saveFavorite($favorite);
 
-        return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
+        return $this->getSuccessResponseBuilder()->created(
             $favorite,
             $this->getSerializationGroup($request)
         );

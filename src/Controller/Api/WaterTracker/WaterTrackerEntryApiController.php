@@ -106,7 +106,7 @@ class WaterTrackerEntryApiController extends AbstractApiController
         $helper = $this->get('shf_api.action_helper.water_tracker_entry.post');
         $helper->saveEntry($tracker->getUser(), $trackerEntry);
 
-        return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
+        return $this->getSuccessResponseBuilder()->created(
             $tracker,
             $this->getSerializationGroup($request)
         );

@@ -1,0 +1,4 @@
+errors:
+    resource: "error_api.yaml"
+    prefix: /errors
+    type: rest

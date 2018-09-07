@@ -35,7 +35,7 @@ class UserDailyMissionPersister extends AbstractUserMissionPersister
     protected function getUserMissionCriteria(): array
     {
         return [
-            'completedBetween' => [
+            'createdBetween' => [
                 'start' => new \DateTime('today'),
                 'end' => new \DateTime('tomorrow')
             ]

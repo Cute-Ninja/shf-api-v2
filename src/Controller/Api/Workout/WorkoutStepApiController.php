@@ -133,7 +133,7 @@ class WorkoutStepApiController extends AbstractApiController
         $this->getEntityManager()->persist($step);
         $this->getEntityManager()->flush();
 
-        return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
+        return $this->getSuccessResponseBuilder()->created(
             $step,
             $this->getSerializationGroup($request)
         );

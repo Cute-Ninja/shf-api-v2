@@ -16,17 +16,17 @@ abstract class AbstractResponseBuilder
     /**
      * @var ViewHandler
      */
-    private $viewHandler;
+    protected $viewHandler;
 
     /**
      * @var TokenStorageInterface
      */
-    private $tokenStorage;
+    protected $tokenStorage;
 
     /**
      * @var NotificationManager
      */
-    private $notificationManager;
+    protected $notificationManager;
 
     /**
      * AbstractResponseBuilder constructor.
@@ -52,7 +52,7 @@ abstract class AbstractResponseBuilder
      *
      * @return Response
      */
-    public function ok($data = null, $headers = []): Response
+    public function ok($data = null, array $headers = []): Response
     {
         $code = null === $data || true === empty($data) ? Response::HTTP_NO_CONTENT : Response::HTTP_OK ;
 
@@ -66,39 +66,16 @@ abstract class AbstractResponseBuilder
      */
     protected function handle(View $view): Response
     {
-        /** @var User $user */
-        $user = $this->tokenStorage->getToken()->getUser();
-        if (null !== $user && false === $user->isAdmin()) {
-            $view->setHeader(
-                'SHF-Notification-Count',
-                $this->notificationManager->getWebNotificationCount($user)
-            );
+        if ($token = $this->tokenStorage->getToken()) {
+            $user = $token->getUser();
+            if ($user instanceof User && false === $user->isAdmin()) {
+                $view->setHeader(
+                    'SHF-Notification-Count',
+                    $this->notificationManager->getWebNotificationCount($user)
+                );
+            }
         }
 
         return $this->viewHandler->handle($view);
-    }
-
-    /**
-     * @return SuccessResponseBuilder
-     */
-    protected function getSuccessResponseBuilder():SuccessResponseBuilder
-    {
-        return new SuccessResponseBuilder($this->viewHandler, $this->tokenStorage, $this->notificationManager);
-    }
-
-    /**
-     * @return ClientErrorResponseBuilder
-     */
-    protected function getClientErrorResponseBuilder(): ClientErrorResponseBuilder
-    {
-        return new ClientErrorResponseBuilder($this->viewHandler, $this->tokenStorage, $this->notificationManager);
-    }
-
-    /**
-     * @return ServerErrorResponseBuilder
-     */
-    protected function getServerErrorResponseBuilder(): ServerErrorResponseBuilder
-    {
-        return new ServerErrorResponseBuilder($this->viewHandler, $this->tokenStorage, $this->notificationManager);
     }
 }

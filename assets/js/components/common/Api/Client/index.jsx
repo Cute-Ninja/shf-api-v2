@@ -1,4 +1,5 @@
 import UIkit from 'uikit';
+import NotificationsCount from '../../NotificationsCount';
 
 function getMany(url, parameters = null) {
     let urlParameters = parameters ? "?" + urlEncodeParameters(parameters) : "";
@@ -7,6 +8,8 @@ function getMany(url, parameters = null) {
             {credentials: 'same-origin'}
         )
         .then(response => {
+            NotificationsCount.refreshDisplay(response);
+
             return new Promise((success) => {
                 if (200 === response.status) {
                     success(response.json());
@@ -26,6 +29,8 @@ function getOne(url, id, parameters = null) {
         {credentials: 'same-origin'}
     )
         .then(response => {
+            NotificationsCount.refreshDisplay(response);
+
             return new Promise((success) => {
                 if (200 === response.status) {
                     success(response.json());
@@ -46,6 +51,8 @@ function post(url, parameters) {
             body: urlEncodeParameters(parameters)
         })
         .then(response => {
+            NotificationsCount.refreshDisplay(response);
+
             return new Promise((success, error) => {
                 true === response.ok ? success(response.json()) : error(response.status, response.json());
             });
@@ -58,6 +65,8 @@ function deleteOne (url, id) {
             credentials: 'same-origin'
         })
         .then(response => {
+            NotificationsCount.refreshDisplay(response);
+
             return new Promise((success) => {
                 if (200 === response.status) {
                     success(response.json());
@@ -78,6 +87,8 @@ function patch(url, action,parameters) {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
             .then(response => {
+                NotificationsCount.refreshDisplay(response);
+
                 return new Promise((success) => {
                     if (200 === response.status) {
                         success(response.json());

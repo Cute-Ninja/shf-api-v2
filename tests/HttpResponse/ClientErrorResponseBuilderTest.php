@@ -14,24 +14,12 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ClientErrorResponseBuilderTest extends WebTestCase
 {
-    /**
-     * @var ClientErrorResponseBuilder
-     */
-    protected $responseBuilder;
-
-    public function setUp()
-    {
-        $kernel = static::createKernel();
-        $kernel->boot();
-
-        self::$container = $kernel->getContainer();
-
-        $this->responseBuilder = self::$container->get('shf.response_builder.client_error');
-    }
-
     public function testForbidden(): void
     {
-        $response = $this->responseBuilder->forbidden();
+        $client = static::createClient();
+        $client->request('GET', '/errors/forbidden');
+
+        $response = $client->getResponse();
 
         $this->assertEquals(Response::HTTP_FORBIDDEN, $response->getStatusCode());
         $this->assertEmpty($response->getContent());
@@ -39,8 +27,10 @@ class ClientErrorResponseBuilderTest extends WebTestCase
 
     public function testUnauthorized(): void
     {
-        $response = $this->responseBuilder->unauthorized();
+        $client = static::createClient();
+        $client->request('GET', '/errors/unauthorized');
 
+        $response = $client->getResponse();
         $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
         $this->assertEmpty($response->getContent());
     }
@@ -48,7 +38,10 @@ class ClientErrorResponseBuilderTest extends WebTestCase
 
     public function testNotFound(): void
     {
-        $response = $this->responseBuilder->notFound();
+        $client = static::createClient();
+        $client->request('GET', '/errors/not-found');
+
+        $response = $client->getResponse();
 
         $this->assertEquals(Response::HTTP_NOT_FOUND, $response->getStatusCode());
         $this->assertEmpty($response->getContent());
@@ -56,33 +49,14 @@ class ClientErrorResponseBuilderTest extends WebTestCase
 
     public function testBadRequest(): void
     {
-        $message  = 'request is not formed correctly';
-        $response = $this->responseBuilder->badRequest($message);
+        $client = static::createClient();
+        $client->request('GET', '/errors/bad-request');
+
+        $response = $client->getResponse();
 
         $this->assertEquals(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
 
         $responseContent = json_decode($response->getContent());
-        $this->assertEquals($message, $responseContent->message);
-    }
-
-    public function testJsonResponseFormError(): void
-    {
-        /** @var FormInterface $form */
-        $form = static::$container->get('form.factory')->create(TestFormType::class);
-
-        $form->addError(new FormError('error global 1'));
-        $form->addError(new FormError('error global 2'));
-        $form->get('field_1')->addError(new FormError('error field 1'));
-        $form->get('field_2')->addError(new FormError('error field 2'));
-
-        $response = $this->responseBuilder->jsonResponseFormError($form);
-
-        $expected = [
-            'global' => ['error global 1', 'error global 2'],
-            'field_1' => ['error field 1'],
-            'field_2' => ['error field 2']
-        ];
-        $this->assertEquals(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
-        $this->assertEquals(json_encode($expected), $response->getContent());
+        $this->assertEquals('Not good', $responseContent->message);
     }
 }

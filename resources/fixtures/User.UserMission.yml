@@ -2,41 +2,65 @@ App\Entity\User\UserMission:
     ghriim_daily_water_tracker_1:
         __construct: ['@ghriim', '@daily_water_tracker']
         completionDate: <(new \DateTime('2018-08-31 00:00:00'))>
+        createdAt: <(new \DateTime('2018-08-31 00:00:00'))>
+        updatedAt: <(new \DateTime('2018-08-31 00:00:00'))>
         current: 2200
 
     ghriim_daily_squat_1:
         __construct: ['@ghriim', '@daily_squat']
         completionDate: <(new \DateTime('2018-08-31 00:00:00'))>
+        createdAt: <(new \DateTime('2018-08-31 00:00:00'))>
+        updatedAt: <(new \DateTime('2018-08-31 00:00:00'))>
 
     ghriim_daily_plank_1:
         __construct: ['@ghriim', '@daily_plank']
         completionDate: <(new \DateTime('2018-08-31 00:00:00'))>
+        createdAt: <(new \DateTime('2018-08-31 00:00:00'))>
+        updatedAt: <(new \DateTime('2018-08-31 00:00:00'))>
 
     ghriim_daily_push_up_1:
         __construct: ['@ghriim', '@daily_push_up']
         completionDate: <(new \DateTime('2018-08-31 00:00:00'))>
+        createdAt: <(new \DateTime('2018-08-31 00:00:00'))>
+        updatedAt: <(new \DateTime('2018-08-31 00:00:00'))>
 
     ghriim_daily_water_tracker_2:
         __construct: ['@ghriim', '@daily_water_tracker']
         completionDate: <(new \DateTime('2018-09-03 00:00:00'))>
+        createdAt: <(new \DateTime('2018-09-03 00:00:00'))>
+        updatedAt: <(new \DateTime('2018-09-03 00:00:00'))>
         current: 2000
 
     ghriim_daily_squat_2:
         __construct: ['@ghriim', '@daily_squat']
         completionDate: <(new \DateTime('2018-09-03 00:00:00'))>
+        createdAt: <(new \DateTime('2018-09-03 00:00:00'))>
+        updatedAt: <(new \DateTime('2018-09-03 00:00:00'))>
 
     ghriim_daily_plank_2:
         __construct: ['@ghriim', '@daily_plank']
         completionDate: <(new \DateTime('2018-09-03 00:00:00'))>
+        createdAt: <(new \DateTime('2018-09-03 00:00:00'))>
+        updatedAt: <(new \DateTime('2018-09-03 00:00:00'))>
 
     ghriim_daily_push_up_2:
         __construct: ['@ghriim', '@daily_push_up']
         completionDate: <(new \DateTime('2018-09-03 00:00:00'))>
+        createdAt: <(new \DateTime('2018-09-03 00:00:00'))>
+        updatedAt: <(new \DateTime('2018-09-03 00:00:00'))>
 
     ghriim_weekly_workout_1:
         __construct: ['@ghriim', '@weekly_workout']
         completionDate: <(new \DateTime('2018-08-31 00:00:00'))>
+        createdAt: <(new \DateTime('2018-09-03 00:00:00'))>
+        updatedAt: <(new \DateTime('2018-09-03 00:00:00'))>
 
     ghriim_weekly_workout_2:
         __construct: ['@ghriim', '@weekly_workout']
         completionDate: <(new \DateTime('2018-09-03 00:00:00'))>
+        createdAt: <(new \DateTime('2018-09-03 00:00:00'))>
+        updatedAt: <(new \DateTime('2018-09-03 00:00:00'))>
+
+    ghriim_daily_water_tracker_today:
+        __construct: ['@ghriim', '@daily_water_tracker']
+        current: 1350

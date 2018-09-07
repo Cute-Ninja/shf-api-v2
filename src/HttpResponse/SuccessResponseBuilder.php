@@ -63,7 +63,8 @@ class SuccessResponseBuilder extends AbstractResponseBuilder
                 [new JsonEncoder()]
             );
         } catch (\Exception $exception) {
-            $this->getServerErrorResponseBuilder()->exception($exception);
+            $errorBuilder = new ServerErrorResponseBuilder($this->viewHandler, $this->tokenStorage, $this->notificationManager);
+            $errorBuilder->exception($exception);
         }
     }
 
@@ -75,12 +76,9 @@ class SuccessResponseBuilder extends AbstractResponseBuilder
      */
     public function buildSingleObjectResponse($object, array $serializationGroups = []): Response
     {
-        if (null === $object) {
-            return $this->getClientErrorResponseBuilder()->notFound();
-        }
-
-        if (is_array($object) && empty($object)) {
-            return $this->getClientErrorResponseBuilder()->notFound();
+        if (null === $object || (is_array($object) && empty($object))) {
+            $errorBuilder = new ClientErrorResponseBuilder($this->viewHandler, $this->tokenStorage, $this->notificationManager);
+            return $errorBuilder->notFound();
         }
 
         $normalizedObject = $this->serializer->normalize(
@@ -90,6 +88,23 @@ class SuccessResponseBuilder extends AbstractResponseBuilder
         );
 
         return $this->ok($normalizedObject);
+    }
+
+    /**
+     * @param       $object
+     * @param array $serializationGroups
+     *
+     * @return Response
+     */
+    public function created($object, array $serializationGroups = []): Response
+    {
+        $normalizedObject = $this->serializer->normalize(
+            $object,
+            null,
+            ['groups' => $serializationGroups]
+        );
+
+        return $this->handle(View::create($normalizedObject, Response::HTTP_CREATED));
     }
 
     /**
@@ -107,7 +122,7 @@ class SuccessResponseBuilder extends AbstractResponseBuilder
         array $serializationGroups = array()
     ): Response {
         if (empty($pagination->getItems())) {
-            return $this->getSuccessResponseBuilder()->ok();
+            return $this->ok();
         }
 
         $paginationData = $pagination->getPaginationData();

@@ -74,18 +74,12 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      */
     public function getOne(Request $request, int $id): Response
     {
-        $groups = $this->getSerializationGroup($request);
-
         $workout = $this->getWorkoutRepository()
                         ->findOneByCriteria(['id' => $id]);
 
-        if (null === $workout) {
-            return $this->getClientErrorResponseBuilder()->notFound();
-        }
-
         return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
             $workout,
-            $groups
+            $this->getSerializationGroup($request)
         );
     }
 
@@ -145,7 +139,7 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
         $this->getEntityManager()->persist($workout);
         $this->getEntityManager()->flush();
 
-        return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
+        return $this->getSuccessResponseBuilder()->created(
             $workout,
             $this->getSerializationGroup($request)
         );

@@ -14,7 +14,7 @@ class ClientErrorResponseBuilder extends AbstractResponseBuilder
      */
     public function forbidden(): Response
     {
-        return $this->handle(View::create(null, Response::HTTP_FORBIDDEN, []));
+        return $this->handle(View::create(null, Response::HTTP_FORBIDDEN));
     }
 
     /**
@@ -22,7 +22,7 @@ class ClientErrorResponseBuilder extends AbstractResponseBuilder
      */
     public function unauthorized(): Response
     {
-        return $this->handle(View::create(null, Response::HTTP_UNAUTHORIZED, []));
+        return $this->handle(View::create(null, Response::HTTP_UNAUTHORIZED));
     }
 
     /**
@@ -30,7 +30,7 @@ class ClientErrorResponseBuilder extends AbstractResponseBuilder
      */
     public function notFound(): Response
     {
-        return $this->handle(View::create(null, Response::HTTP_NOT_FOUND, []));
+        return $this->handle(View::create(null, Response::HTTP_NOT_FOUND));
     }
 
     /**
@@ -53,6 +53,6 @@ class ClientErrorResponseBuilder extends AbstractResponseBuilder
         $apiFormError = new ApiFormError();
         $data = $apiFormError->getFormErrorsAsFormattedArray($form);
 
-        return $this->handle(View::create($data, Response::HTTP_UNPROCESSABLE_ENTITY, []));
+        return $this->handle(View::create($data, Response::HTTP_UNPROCESSABLE_ENTITY));
     }
 }

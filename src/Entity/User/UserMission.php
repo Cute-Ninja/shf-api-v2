@@ -88,7 +88,7 @@ class UserMission extends AbstractBaseEntity
     {
         $this->current = $current;
 
-        if ($this->getCurrent() === $this->getObjective()) {
+        if ($this->getCurrent() >= $this->getObjective()) {
             $this->setStatus(self::STATUS_COMPLETED);
         }
     }

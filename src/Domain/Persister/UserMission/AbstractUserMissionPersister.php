@@ -58,10 +58,11 @@ abstract class AbstractUserMissionPersister
         }
 
         $userMission->incrementCurrent($incrementCurrentValue);
-
         $this->entityManager->persist($userMission);
 
-        $this->notificationManager->notify($user);
+        if (UserMission::STATUS_COMPLETED === $userMission->getStatus()) {
+            $this->notificationManager->notify($user);
+        }
 
         return $userMission;
     }

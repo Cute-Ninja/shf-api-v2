@@ -82,9 +82,11 @@ abstract class AbstractBaseEntity
 
     public function logCreate(): void
     {
-        $date = new \DateTime();
-        $this->setCreatedAt($date);
-        $this->setUpdatedAt($date);
+        if (null === $this->createdAt) {
+            $date = new \DateTime();
+            $this->setCreatedAt($date);
+            $this->setUpdatedAt($date);
+        }
     }
 
     public function logUpdate(): void

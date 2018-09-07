@@ -1,0 +1,19 @@
+api_forbidden:
+    path: /forbidden
+    controller: App\Tests\Resources\Controller\ErrorController::forbidden
+    methods: GET
+
+api_unauthorized:
+    path: /unauthorized
+    controller: App\Tests\Resources\Controller\ErrorController::unauthorized
+    methods: GET
+
+api_not_found:
+    path: /not-found
+    controller: App\Tests\Resources\Controller\ErrorController::notFound
+    methods: GET
+
+api_bad_request:
+    path: /bad-request
+    controller: App\Tests\Resources\Controller\ErrorController::badRequest
+    methods: GET
