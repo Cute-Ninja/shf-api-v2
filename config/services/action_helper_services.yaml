@@ -38,3 +38,8 @@ services:
         class: App\Controller\Api\Workout\ActionHelper\PatchWorkoutStepActionHelper
         autowire: true
         public: true
+
+    shf_api.action_helper.notification.get_many:
+        class: App\Controller\Api\Notification\ActionHelper\GetManyNotificationHelper
+        autowire: true
+        public: true

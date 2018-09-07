@@ -1,0 +1,36 @@
+api_notification_list:
+    path: /api/notifications
+    controller: App\Controller\Api\Notification\NotificationApiController::getMany
+    methods: GET
+
+api_notification_get:
+    path: /api/notifications/{id}
+    controller: App\Controller\Api\Notification\NotificationApiController::getOne
+    methods: GET
+    requirements:
+        id: \d+
+
+api_notification_post:
+    path: /api/notifications
+    controller: App\Controller\Api\Notification\NotificationApiController::post
+    methods: POST
+
+api_notification_put:
+    path: /api/notifications/{id}
+    controller: App\Controller\Api\Notification\NotificationApiController::put
+    methods: PUT
+    requirements:
+        id: \d+
+
+api_notification_delete:
+    path: /api/notifications/{id}
+    controller: App\Controller\Api\Notification\NotificationApiController::delete
+    methods: DELETE
+    requirements:
+        id: \d+
+
+
+front_api_notification_list:
+    path: /front/api/notifications
+    controller: App\Controller\Front\Notification\NotificationProxyController::getMany
+    methods: GET

@@ -19,6 +19,12 @@ class PostWaterTrackerEntryActionHelper
      */
     protected $dailyMissionPersister;
 
+    /**
+     * PostWaterTrackerEntryActionHelper constructor.
+     *
+     * @param ObjectManager             $entityManager
+     * @param UserDailyMissionPersister $dailyMissionPersister
+     */
     public function __construct(ObjectManager $entityManager, UserDailyMissionPersister $dailyMissionPersister)
     {
         $this->entityManager = $entityManager;

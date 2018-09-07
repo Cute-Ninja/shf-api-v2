@@ -50,6 +50,22 @@ class NotificationManager
 
     /**
      * @param User $user
+     * @param int  $numberOfNotifications
+     */
+    public function decrementNotificationCount(User $user, int $numberOfNotifications): void
+    {
+        $cache = $this->getNotificationCache();
+        try {
+            $item = $cache->getItem('notifications.count.user_' . $user->getId());
+            $item->set($item->get() - $numberOfNotifications);
+            $cache->save($item);
+        } catch (InvalidArgumentException $e) {
+            var_dump('an error has occurred'); die;
+        }
+    }
+
+    /**
+     * @param User $user
      */
     public function notify(User $user): void
     {
@@ -73,7 +89,6 @@ class NotificationManager
         try {
             $item = $cache->getItem('notifications.count.user_' . $user->getId());
             $item->set($item->get() + 1);
-
             $cache->save($item);
         } catch (InvalidArgumentException $e) {
             var_dump('an error has occurred'); die;

@@ -4,23 +4,32 @@ namespace App\Entity\Notification;
 
 use App\Entity\AbstractBaseEntity;
 use App\Entity\User\User;
+use Symfony\Component\Serializer\Annotation as Serializer;
 
 abstract class AbstractNotification extends AbstractBaseEntity
 {
+    public const STATUS_SEEN = 'seen';
+
     public const NOTIFICATION_TARGET_MISSION = 'mission';
 
     /**
      * @var int
+     *
+     * @Serializer\Groups({"default", "test"})
      */
     protected $id;
 
     /**
      * @var string
+     *
+     * @Serializer\Groups({"default", "test"})
      */
     protected $title;
 
     /**
      * @var string
+     *
+     * @Serializer\Groups({"default", "test"})
      */
     protected $target;
 
