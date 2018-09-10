@@ -35,13 +35,10 @@ class GetManyNotificationHelper
 
     /**
      * @param User              $user
-     * @param SlidingPagination $pagination
+     * @param WebNotification[] $notifications
      */
-    public function doPostConsultActions(User $user, SlidingPagination $pagination): void
+    public function doPostConsultActions(User $user, array $notifications = []): void
     {
-        /** @var WebNotification[] $notifications */
-        $notifications = $pagination->getItems();
-
         $this->updateDisplayedNotifications($notifications);
         $this->notificationManager->decrementNotificationCount($user, count($notifications));
     }

@@ -65,17 +65,19 @@ class NotificationManager
     }
 
     /**
-     * @param User $user
+     * @param User   $user
+     * @param string $title
+     *
+     * @return WebNotification
      */
-    public function notify(User $user): void
+    public function notify(User $user, string $title): WebNotification
     {
         $notification = new WebNotification();
         $notification->setTarget(AbstractNotification::NOTIFICATION_TARGET_MISSION);
-        $notification->setTitle('test');
+        $notification->setTitle($title);
         $notification->setUser($user);
 
         $this->entityManager->persist($notification);
-        $this->entityManager->flush();
 
         $this->incrementNotificationCount($user);
     }

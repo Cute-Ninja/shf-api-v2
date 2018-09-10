@@ -40,16 +40,18 @@ class NotificationApiController extends AbstractApiController implements Standar
                             ['user' => $request->query->get('user')]
                         );
 
-        $pagination = $this->paginate($builder, $request);
-        $helper     = $this->get('shf_api.action_helper.notification.get_many');
+        $pagination    = $this->paginate($builder, $request);
+        $notifications = $pagination->getItems();
 
-        $helper->doPostConsultActions($this->getUser() ,$pagination);
+        $helper = $this->get('shf_api.action_helper.notification.get_many');
+        $helper->doPostConsultActions($this->getUser(), $pagination->getItems());
 
         return $this->getSuccessResponseBuilder()->buildMultiObjectResponse(
             $pagination,
             $request,
             $this->getRouter(),
-            $this->getSerializationGroup($request)
+            $this->getSerializationGroup($request),
+            $notifications
         );
     }
 

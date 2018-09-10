@@ -61,7 +61,7 @@ abstract class AbstractUserMissionPersister
         $this->entityManager->persist($userMission);
 
         if (UserMission::STATUS_COMPLETED === $userMission->getStatus()) {
-            $this->notificationManager->notify($user);
+            $this->notificationManager->notify($user, $userMission->getMission()->getName());
         }
 
         return $userMission;

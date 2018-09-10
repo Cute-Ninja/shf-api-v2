@@ -113,6 +113,7 @@ class SuccessResponseBuilder extends AbstractResponseBuilder
      * @param Request $request
      * @param Router  $router
      * @param array   $serializationGroups
+     * @param array   $items
      *
      * @return Response
      */
@@ -120,9 +121,11 @@ class SuccessResponseBuilder extends AbstractResponseBuilder
         SlidingPagination $pagination,
         Request $request,
         Router $router,
-        array $serializationGroups = array()
+        array $serializationGroups = array(),
+        array $items = null
     ): Response {
-        if (empty($pagination->getItems())) {
+        $items = $items ?? $pagination->getItems();
+        if (empty($items)) {
             return $this->ok();
         }
 
@@ -139,7 +142,7 @@ class SuccessResponseBuilder extends AbstractResponseBuilder
         }
 
         $normalizedObjects = $this->serializer->normalize(
-            $pagination->getItems(),
+            $items,
             null,
             ['groups' => $serializationGroups]
         );

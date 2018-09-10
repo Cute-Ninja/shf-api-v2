@@ -1,0 +1,5 @@
+App\Entity\Notification\WebNotification:
+    ghriim_notification_{1..10}:
+        title: 'Notification <current()>'
+        target: 'mission'
+        user: '@ghriim'
