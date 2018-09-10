@@ -29,25 +29,32 @@ class ServerErrorResponseBuilderTest extends WebTestCase
 
     public function testNotImplemented(): void
     {
-        $response = $this->responseBuilder->notImplemented();
+        $client = static::createClient();
+        $client->request('GET', '/errors/not-implemented');
+
+        $response = $client->getResponse();
 
         $this->assertEquals(Response::HTTP_NOT_IMPLEMENTED, $response->getStatusCode());
         $this->assertEmpty($response->getContent());
     }
 
     /**
-     * @param \Exception $exception
-     * @param int        $expectedCode
-     * @param string     $expectedContent
+     * @param string|null $exceptionName
+     * @param int         $expectedCode
+     * @param string      $expectedContent
      *
      * @dataProvider exceptionDataProvider
      */
-    public function testException(\Exception $exception, int $expectedCode, string $expectedContent = null): void
+    public function testException(?string $exceptionName, int $expectedCode, string $expectedContent = null): void
     {
-        $response = $this->responseBuilder->exception($exception);
+        $client = static::createClient();
+        $client->request('GET', '/errors/exception/' . $exceptionName);
+
+        $response = $client->getResponse();
 
         $this->assertEquals($expectedCode, $response->getStatusCode());
-        $this->assertEquals($expectedContent, $response->getContent());
+        $content = json_decode($response->getContent());
+        $this->assertEquals($expectedContent, $content->message);
     }
 
     /**
@@ -56,9 +63,8 @@ class ServerErrorResponseBuilderTest extends WebTestCase
     public function exceptionDataProvider(): array
     {
         return [
-            [new \LogicException(), Response::HTTP_INTERNAL_SERVER_ERROR, null],
-            [new AuthenticationException(), Response::HTTP_INTERNAL_SERVER_ERROR, null],
-            [new \Exception('Gate away error', Response::HTTP_BAD_GATEWAY), Response::HTTP_BAD_GATEWAY, 'Gate away error'],
+            ['annotation', Response::HTTP_INTERNAL_SERVER_ERROR, null],
+            ['common', Response::HTTP_INTERNAL_SERVER_ERROR, 'global exception'],
         ];
     }
 }

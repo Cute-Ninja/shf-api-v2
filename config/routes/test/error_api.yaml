@@ -17,3 +17,15 @@ api_bad_request:
     path: /bad-request
     controller: App\Tests\Resources\Controller\ErrorController::badRequest
     methods: GET
+
+api_exception:
+    path: /exception/{name}
+    controller: App\Tests\Resources\Controller\ErrorController::exception
+    methods: GET
+    requirements:
+        name: common|annotation
+
+api_not_implemented:
+    path: /not-implemented
+    controller: App\Tests\Resources\Controller\ErrorController::notImplemented
+    methods: GET

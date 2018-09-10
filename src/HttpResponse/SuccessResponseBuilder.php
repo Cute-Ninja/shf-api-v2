@@ -3,6 +3,7 @@
 namespace App\HttpResponse;
 
 use App\Domain\Manager\NotificationManager;
+use Doctrine\Common\Annotations\AnnotationException;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandlerInterface;
 use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
@@ -62,7 +63,7 @@ class SuccessResponseBuilder extends AbstractResponseBuilder
                 [$normalizer],
                 [new JsonEncoder()]
             );
-        } catch (\Exception $exception) {
+        } catch (AnnotationException $exception) {
             $errorBuilder = new ServerErrorResponseBuilder($this->viewHandler, $this->tokenStorage, $this->notificationManager);
             $errorBuilder->exception($exception);
         }
