@@ -21,9 +21,9 @@ class JWTCreatedListenerTest extends TestCase
      * @param array  $expectedRoles
      * @param string $expectedIp
      *
-     * @dataProvider userInformationDataProvider
+     * @dataProvider onJWTCreatedDataProvider
      */
-    public function testOnAuthenticationSuccessResponse(string $username, array $roles, $expectedUsername, array $expectedRoles, $expectedIp): void
+    public function testOnJWTCreated(string $username, array $roles, $expectedUsername, array $expectedRoles, $expectedIp): void
     {
         $user = new User();
         $user->setUsername($username);
@@ -61,7 +61,7 @@ class JWTCreatedListenerTest extends TestCase
     /**
      * @return array
      */
-    public function userInformationDataProvider(): array
+    public function onJWTCreatedDataProvider(): array
     {
         return [
             ['username1', ['ROLES_A'],'username1', ' roles' => ['ROLES_A'], '127.0.0.1'],

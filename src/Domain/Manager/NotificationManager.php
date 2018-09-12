@@ -67,10 +67,8 @@ class NotificationManager
     /**
      * @param User   $user
      * @param string $title
-     *
-     * @return WebNotification
      */
-    public function notify(User $user, string $title): WebNotification
+    public function notify(User $user, string $title): void
     {
         $notification = new WebNotification();
         $notification->setTarget(AbstractNotification::NOTIFICATION_TARGET_MISSION);

@@ -28,8 +28,7 @@ class JWTDecodedListener
     public function onJWTDecoded(JWTDecodedEvent $event): void
     {
         $payload = $event->getPayload();
-
-        if (!isset($payload['ip']) || $payload['ip'] !== $this->requestStack->getCurrentRequest()->getClientIp()) {
+        if (false === isset($payload['ip']) || $payload['ip'] !== $this->requestStack->getCurrentRequest()->getClientIp()) {
             $event->markAsInvalid();
         }
     }
