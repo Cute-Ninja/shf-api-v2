@@ -143,8 +143,6 @@ class UserMissionApiController extends AbstractApiController implements Standard
             $errorResponse = $this->getClientErrorResponseBuilder()->notFound();
         } catch (AccessDeniedHttpException $exception) {
             $errorResponse = $this->getClientErrorResponseBuilder()->forbidden();
-        } catch (NotImplementedHttpException $exception) {
-            $errorResponse = $this->getServerErrorResponseBuilder()->notImplemented();
         }
 
         return $errorResponse;

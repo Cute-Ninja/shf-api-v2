@@ -154,4 +154,24 @@ class UserMissionApiControllerTest extends AbstractBaseApiTest
 
         $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
     }
+
+    public function testPatchCompleteNotFound(): void
+    {
+        $client = $this->buildAuthenticatedUser();
+        $this->buildPatchRequest($client, 'user-missions/complete', ['missionId' => 666]);
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_NOT_FOUND, $response->getStatusCode());
+    }
+
+    public function testPatchCompleteAccessDenied(): void
+    {
+        $client = $this->buildAuthenticatedUser();
+        $this->buildPatchRequest($client, 'user-missions/complete', ['missionId' => 2]); // Squat already done for today
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_FORBIDDEN, $response->getStatusCode());
+    }
 }

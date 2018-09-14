@@ -48,14 +48,10 @@ class PatchUserMissionActionHelper
         $userMission = null;
         if (self::PATCH_ACTION_COMPLETE === $action) {
             $userMission = $this->dailyMissionPersister->saveManualMission($user, $missionId);
-        } else {
-            throw new NotImplementedHttpException();
+
+            $this->entityManager->flush();
         }
 
-        $this->entityManager->flush();
-
         return $userMission;
-
-
     }
 }

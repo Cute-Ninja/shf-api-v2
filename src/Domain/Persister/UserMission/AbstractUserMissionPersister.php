@@ -8,6 +8,7 @@ use App\Entity\User\User;
 use App\Entity\User\UserMission;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 abstract class AbstractUserMissionPersister
 {
@@ -43,7 +44,7 @@ abstract class AbstractUserMissionPersister
      *
      * @return UserMission
      *
-     * @throws AccessDeniedHttpException
+     * @throws AccessDeniedHttpException|NotFoundHttpException
      */
     protected function saveMission(
         User $user,
@@ -73,6 +74,8 @@ abstract class AbstractUserMissionPersister
      * @param bool $autoCalculatedMission
      *
      * @return UserMission
+     *
+     * @throws NotFoundHttpException
      */
     private function getUserMission(User $user, int $missionId, bool $autoCalculatedMission): UserMission
     {
@@ -97,11 +100,19 @@ abstract class AbstractUserMissionPersister
      * @param int $missionId
      *
      * @return Mission
+     *
+     * @throws NotFoundHttpException
      */
     private function getMissionById(int $missionId): Mission
     {
-        return $this->entityManager
-                    ->getRepository(Mission::class)
-                    ->findOneByCriteria(['id' => $missionId]);
+        $mission = $this->entityManager
+                        ->getRepository(Mission::class)
+                        ->findOneByCriteria(['id' => $missionId]);
+
+        if (null === $mission) {
+            throw  new NotFoundHttpException();
+        }
+
+        return $mission;
     }
 }

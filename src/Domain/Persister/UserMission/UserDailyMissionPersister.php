@@ -6,6 +6,8 @@ use App\Entity\Mission\Mission;
 use App\Entity\User\User;
 use App\Entity\User\UserMission;
 use App\Entity\WaterTracker\WaterTrackerEntry;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class UserDailyMissionPersister extends AbstractUserMissionPersister
 {
@@ -14,6 +16,8 @@ class UserDailyMissionPersister extends AbstractUserMissionPersister
      * @param int  $missionId
      *
      * @return UserMission
+     *
+     * @throws NotFoundHttpException|AccessDeniedHttpException
      */
     public function saveManualMission(User $user, int  $missionId): UserMission
     {
@@ -23,6 +27,8 @@ class UserDailyMissionPersister extends AbstractUserMissionPersister
     /**
      * @param User              $user
      * @param WaterTrackerEntry $entry
+     *
+     * @throws NotFoundHttpException|AccessDeniedHttpException
      */
     public function saveWaterTrackerMission(User $user, WaterTrackerEntry $entry): void
     {

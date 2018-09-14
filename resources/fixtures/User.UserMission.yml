@@ -64,3 +64,7 @@ App\Entity\User\UserMission:
     ghriim_daily_water_tracker_today:
         __construct: ['@ghriim', '@daily_water_tracker']
         current: 1350
+
+    ghriim_daily_squat_today:
+        __construct: ['@ghriim', '@daily_squat']
+        completionDate: <(new \DateTime())>
