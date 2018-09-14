@@ -107,7 +107,7 @@ class UserBodyMeasurementApiController extends AbstractApiController
         }
 
         if (false === $this->getUser()->hasRole('ROLE_ADMIN_USER_WRITE') && $this->getUser()->getId() !== $user->getId()) {
-            return$this->getClientErrorResponseBuilder()->forbidden();
+            return $this->getClientErrorResponseBuilder()->forbidden();
         }
 
         $form = $this->createForm(

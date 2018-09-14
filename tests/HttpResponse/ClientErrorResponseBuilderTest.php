@@ -2,11 +2,7 @@
 
 namespace App\Tests\HttpResponse;
 
-use App\HttpResponse\ClientErrorResponseBuilder;
-use App\Tests\Resources\Form\TestFormType;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\Form\FormError;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

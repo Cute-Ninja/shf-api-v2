@@ -83,6 +83,16 @@ class UserBodyMeasurementApiControllerTest extends AbstractBaseApiTest
         $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
+    public function testPutAuthorizedNotFound(): void
+    {
+        $client = $this->buildAuthenticatedUser();
+        $this->buildPutRequest($client, 'users/not_existing/body-measurements');
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_NOT_FOUND, $response->getStatusCode());
+    }
+
     public function testPutAuthorizedWithFormError(): void
     {
         $client = $this->buildAuthenticatedUser();
