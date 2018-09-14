@@ -24,6 +24,9 @@ use App\Repository\Workout\WorkoutRepository;
 use App\Repository\Workout\WorkoutStepRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 
+/**
+ * @codeCoverageIgnore
+ */
 trait RepositoryTrait
 {
     /**
