@@ -59,4 +59,18 @@ class ClientErrorResponseBuilderTest extends WebTestCase
         $responseContent = json_decode($response->getContent());
         $this->assertEquals('Not good', $responseContent->message);
     }
+
+    public function testFormError(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', '/errors/form-error');
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
+
+        $responseContent = json_decode($response->getContent());
+        $this->assertEquals(['global error 1', 'global error 2'], $responseContent->global);
+        $this->assertEquals(['field_1 error 1'], $responseContent->field_1);
+    }
 }

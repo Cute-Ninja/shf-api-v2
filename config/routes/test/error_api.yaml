@@ -18,6 +18,11 @@ api_bad_request:
     controller: App\Tests\Resources\Controller\ErrorController::badRequest
     methods: GET
 
+api_form_error:
+    path: /form-error
+    controller: App\Tests\Resources\Controller\ErrorController::formError
+    methods: GET
+
 api_exception:
     path: /exception/{name}
     controller: App\Tests\Resources\Controller\ErrorController::exception
