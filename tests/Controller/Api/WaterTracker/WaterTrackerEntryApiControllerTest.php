@@ -69,10 +69,23 @@ class WaterTrackerEntryApiControllerTest extends AbstractBaseApiTest
         $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
+    public function testPostAuthorizedNotFound(): void
+    {
+        $client = $this->buildAuthenticatedUser(true);
+        $this->buildPostRequest(
+            $client,
+            'water-trackers/not_existing/entries',
+            []
+        );
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_NOT_FOUND, $response->getStatusCode());
+    }
+
     public function testPostAuthorizedWithFormError(): void
     {
         $client = $this->buildAuthenticatedUser(true);
-
         $trackerDay = $this->getTrackerDay($client);
 
         $this->buildPostRequest(
