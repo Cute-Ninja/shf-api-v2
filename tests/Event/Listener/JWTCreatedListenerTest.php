@@ -29,23 +29,13 @@ class JWTCreatedListenerTest extends TestCase
         $user->setUsername($username);
         $user->setRoles($roles);
 
-        $requestStack = $this->getMockBuilder(RequestStack::class)
-                             ->disableOriginalConstructor()
-                             ->getMock();
+        $requestStack   = $this->prophesize(RequestStack::class);
+        $currentRequest = $this->prophesize(Request::class);
 
-        $currentRequest = $this->getMockBuilder(Request::class)
-                                ->disableOriginalConstructor()
-                                ->getMock();
+        $currentRequest->getClientIp()->willReturn('127.0.0.1');
+        $requestStack->getCurrentRequest()->willReturn($currentRequest);
 
-        $currentRequest->expects($this->once())
-                       ->method('getClientIp')
-                       ->willReturn('127.0.0.1');
-
-        $requestStack->expects($this->once())
-                     ->method('getCurrentRequest')
-                     ->willReturn($currentRequest);
-
-        $listener = new JWTCreatedListener($requestStack);
+        $listener = new JWTCreatedListener($requestStack->reveal());
         $event    = new JWTCreatedEvent([], $user, []);
 
         $listener->onJWTCreated($event);

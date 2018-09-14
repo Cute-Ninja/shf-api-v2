@@ -22,23 +22,13 @@ class JWTDecodedListenerTest extends TestCase
      */
     public function testOnJWTDecodedWithIpInPayload(array $payload, string $currentIp, bool $expectedResult): void
     {
-        $requestStack = $this->getMockBuilder(RequestStack::class)
-                             ->disableOriginalConstructor()
-                             ->getMock();
+        $requestStack   = $this->prophesize(RequestStack::class);
+        $currentRequest = $this->prophesize(Request::class);
 
-        $currentRequest = $this->getMockBuilder(Request::class)
-                               ->disableOriginalConstructor()
-                               ->getMock();
+        $currentRequest->getClientIp()->willReturn($currentIp);
+        $requestStack->getCurrentRequest()->willReturn($currentRequest);
 
-        $currentRequest->expects($this->once())
-                       ->method('getClientIp')
-                       ->willReturn($currentIp);
-
-        $requestStack->expects($this->once())
-                     ->method('getCurrentRequest')
-                     ->willReturn($currentRequest);
-
-        $listener = new JWTDecodedListener($requestStack);
+        $listener = new JWTDecodedListener($requestStack->reveal());
         $event    = new JWTDecodedEvent($payload);
 
         $listener->onJWTDecoded($event);
@@ -48,11 +38,9 @@ class JWTDecodedListenerTest extends TestCase
 
     public function testOnJWTDecodedWithNoIpInPayload(): void
     {
-        $requestStack = $this->getMockBuilder(RequestStack::class)
-                             ->disableOriginalConstructor()
-                             ->getMock();
+        $requestStack   = $this->prophesize(RequestStack::class);
 
-        $listener = new JWTDecodedListener($requestStack);
+        $listener = new JWTDecodedListener($requestStack->reveal());
         $event    = new JWTDecodedEvent([]);
 
         $listener->onJWTDecoded($event);
