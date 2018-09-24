@@ -1,21 +1,18 @@
 <?php
 
-namespace App\Tests\Behat\Context\Page;
+namespace App\Tests\Behat\Context;
 
 use App\Entity\User\User;
-use App\Repository\AbstractBaseRepository;
-use App\Tests\Behat\Context\SHFContextInterface;
 use App\Tests\PHPUnit\Controller\ShfTestInterface;
 use Behat\Mink\Driver\BrowserKitDriver;
 use Behat\Mink\Exception\UnsupportedDriverActionException;
-use Behat\MinkExtension\Context\MinkContext;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
-class PageContext extends MinkContext implements SHFContextInterface
+class PageContext extends AbstractBaseContext
 {
     /**
      * @var Client
@@ -81,14 +78,6 @@ class PageContext extends MinkContext implements SHFContextInterface
     }
 
     /**
-     * @Then access should be refused
-     */
-    public function accessShouldBeRefused(): void
-    {
-        $this->assertResponseStatus(403);
-    }
-
-    /**
      * @param string $expectedTitle
      *
      * @throws \Exception
@@ -108,7 +97,7 @@ class PageContext extends MinkContext implements SHFContextInterface
      *
      * @throws UnsupportedDriverActionException
      */
-    protected function buildAuthentication(string $username)
+    protected function buildAuthentication(string $username): void
     {
         $driver = $this->getSession()->getDriver();
         if (!$driver instanceof BrowserKitDriver) {
@@ -133,18 +122,5 @@ class PageContext extends MinkContext implements SHFContextInterface
 
         $cookie = new Cookie($session->getName(), $session->getId());
         $this->client->getCookieJar()->set($cookie);
-    }
-
-    /**
-     * @param Client $client
-     * @param string $className
-     *
-     * @return AbstractBaseRepository
-     */
-    protected function getRepository(Client $client, $className): AbstractBaseRepository
-    {
-        $manager = $client->getContainer()->get('doctrine')->getManager();
-
-        return $manager->getRepository($className);
     }
 }

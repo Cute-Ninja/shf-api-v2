@@ -12,7 +12,7 @@ Feature:
   Scenario: As Ghriim (a logged user) I cannot access the admin dashboard page
     Given I am logged as Ghriim
     When I visit the page "/admin/dashboard"
-    Then access should be refused
+    Then access should be forbidden
 
   @page @administrator
   Scenario: As a logged user I cannot access the admin dashboard page
@@ -32,7 +32,7 @@ Feature:
   Scenario: As Ghriim (a logged user) I cannot access the admin user page
     Given I am logged as Ghriim
     When I visit the page "/admin/user"
-    Then access should be refused
+    Then access should be forbidden
 
   @page @administrator
   Scenario: As a logged user I can access the admin user page
