@@ -24,7 +24,7 @@ default:
         Behatch\Extension: ~
         emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
             name: html
-
+            file_name: index
 
     formatters:
         pretty: ~
