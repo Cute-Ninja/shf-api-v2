@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Behat\Context;
+namespace App\tests\Behat\Context;
 
 use App\Tests\PHPUnit\Controller\ShfTestInterface;
 use Behat\Mink\Driver\BrowserKitDriver;
@@ -55,7 +55,7 @@ class ApiContext extends AbstractBaseContext
      */
     public function iRequestTheApiWithId(string $apiName, $id): void
     {
-        $this->visit("api/$apiName/$id");
+        $this->visit("api/$apiName/$id?groups=test");
     }
 
     /**
@@ -68,6 +68,28 @@ class ApiContext extends AbstractBaseContext
     {
         $this->assertResponseStatus(200);
         new Json($this->getSession()->getDriver()->getContent());
+    }
+
+    /**
+     * @param string $fileName
+     *
+     * @throws \Exception
+     *
+     * @Then the content should be similar to :fileName
+     */
+    public function contentShouldBeSimilarTo(string $fileName): void
+    {
+        $result = new Json($this->getSession()->getDriver()->getContent());
+
+        $expected = $this->loadDataFromJsonFile($fileName);
+        $actual   = json_decode($result->encode(), true);
+        if ($expected !== $actual) {
+            $message = "The result are not equals. \n";
+            $message .= 'Expected:' . print_r($this->arrayRecursiveDiff($expected, $actual), true);
+            $message .= 'Actual:'   . print_r($this->arrayRecursiveDiff($actual, $expected), true);
+
+            throw new \Exception($message);
+        }
     }
 
     /**
@@ -117,5 +139,43 @@ class ApiContext extends AbstractBaseContext
         );
 
         return $authenticationClient->getResponse();
+    }
+
+    /**
+     * @param string $filename
+     *
+     * @return array
+     */
+    protected function loadDataFromJsonFile(string $filename): array
+    {
+        return json_decode(file_get_contents('tests/Resources/json/' . $filename), true);
+    }
+
+    /**
+     * @param $array1
+     * @param $array2
+     *
+     * @return array
+     */
+    public function arrayRecursiveDiff(array $aArray1, array $aArray2): array
+    {
+        $aReturn = [];
+        foreach ($aArray1 as $mKey => $mValue) {
+            if (array_key_exists($mKey, $aArray2)) {
+                if (is_array($mValue)) {
+                    $aRecursiveDiff = $this->arrayRecursiveDiff($mValue, $aArray2[$mKey]);
+                    if (count($aRecursiveDiff)) {
+                        $aReturn[$mKey] = $aRecursiveDiff;
+                    }
+                } else {
+                    if ($mValue !== $aArray2[$mKey]) {
+                        $aReturn[$mKey] = $mValue;
+                    }
+                }
+            } else {
+                $aReturn[$mKey] = $mValue;
+            }
+        }
+        return $aReturn;
     }
 }
