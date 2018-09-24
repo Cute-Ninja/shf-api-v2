@@ -34,4 +34,9 @@ npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-pack ###
 
-tests/Reports/Coverage/
+
+###> behat/symfony2-extension ###
+behat.yml
+###< behat/symfony2-extension ###
+
+tests/Reports/

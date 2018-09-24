@@ -1,0 +1,12 @@
+default:
+    suites:
+        default:
+            contexts:
+                - FeatureContext:
+                    kernel: '@kernel'
+
+    extensions:
+        Behat\Symfony2Extension:
+            kernel:
+                bootstrap: tests/Behat/features/bootstrap/bootstrap.php
+                class: App\Kernel
