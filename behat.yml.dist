@@ -1,12 +1,32 @@
 default:
     suites:
-        default:
+        page:
+            paths:
+                - "%paths.base%/tests/Behat/Features/Page"
             contexts:
-                - FeatureContext:
-                    kernel: '@kernel'
+                - App\Tests\Behat\Context\PageContext
+        api:
+            paths:
+                - "%paths.base%/tests/Behat/Features/Api"
+            contexts:
+                - App\Tests\Behat\Context\ApiContext:
 
     extensions:
         Behat\Symfony2Extension:
             kernel:
-                bootstrap: tests/Behat/features/bootstrap/bootstrap.php
+                bootstrap: tests/Behat/bootstrap.php
                 class: App\Kernel
+        Behat\MinkExtension:
+            base_url: "http://superherofactory.com/"
+            sessions:
+                default:
+                    symfony2: ~
+        Behatch\Extension: ~
+        emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
+            name: html
+
+
+    formatters:
+        pretty: ~
+        html:
+            output_path: "%paths.base%/tests/Reports/Behat"
