@@ -65,7 +65,7 @@ class UserApiController extends AbstractApiController
      * )
      * @SWG\Response(
      *     response=404,
-     *     description="No username was mathing an existing User"
+     *     description="No username was matching an existing User"
      * )
      * @SWG\Tag(name="User")
      * @Security(name="Bearer")
@@ -109,6 +109,10 @@ class UserApiController extends AbstractApiController
      */
     public function post(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
+        if (null !== $request->headers->get('Authorization')) {
+            return $this->getClientErrorResponseBuilder()->forbidden();
+        }
+
         $user = new User();
         $form = $this->createForm(
             UserType::class,
