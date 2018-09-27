@@ -8,15 +8,28 @@ use Symfony\Component\HttpFoundation\Response;
 trait ApiThenTrait
 {
     /**
-     * @Then a proper response should be return
+     * A proper response is defined by a Status Code of 20*
+     * And valid JSON if the response has a body
+     *
+     * @Then a proper response should be returned
      */
     public function aProperResponseShouldBeReturned(): void
     {
         $statusCode = $this->getSession()->getStatusCode();
-        if (Response::HTTP_OK !== $statusCode && Response::HTTP_CREATED !== $statusCode) {
-            throw new \Exception("Status code expected: 200|201. Actual: $statusCode");
+        if (Response::HTTP_OK !== $statusCode
+            && Response::HTTP_CREATED !== $statusCode
+            && Response::HTTP_NO_CONTENT !== $statusCode) {
+            throw new \Exception("Status code expected: 200|201|204. Actual: $statusCode");
         }
-        new Json($this->getSession()->getDriver()->getContent());
+
+        $content = $this->getSession()->getDriver()->getContent();
+        if (false === empty($content)) {
+            try {
+                new Json($content);
+            } catch (\Exception $exception) {
+                throw new \Exception('Response do not contain a valid JSON');
+            }
+        }
     }
 
     /**

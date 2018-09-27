@@ -8,11 +8,6 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 trait ApiGivenTrait
 {
-    /**
-     * @var string
-     */
-    protected $token;
-
     abstract public function getSession($name = null);
     abstract public function request(string $method, string $apiName, array $parameters = []);
 
@@ -29,10 +24,8 @@ trait ApiGivenTrait
      */
     public function iAmLoggedAsGhriim(): void
     {
-        if (null === $this->token) {
-            $this->token = $this->buildAuthentication(ShfTestInterface::AUTHENTICATION_PERSONAL_USERNAME);
-        }
-        $this->getSession()->getDriver()->getClient()->setServerParameter('HTTP_Authorization', "Bearer $this->token");
+        $token = $this->buildAuthentication(ShfTestInterface::AUTHENTICATION_PERSONAL_USERNAME);
+        $this->getSession()->getDriver()->getClient()->setServerParameter('HTTP_Authorization', "Bearer $token");
     }
 
     /**
@@ -40,10 +33,8 @@ trait ApiGivenTrait
      */
     public function iAmLoggedAsAnAdministrator(): void
     {
-        if (null === $this->token) {
-            $this->token = $this->buildAuthentication(ShfTestInterface::AUTHENTICATION_ADMIN_USERNAME);
-        }
-        $this->getSession()->getDriver()->getClient()->setServerParameter('HTTP_Authorization', "Bearer $this->token");
+        $token = $this->buildAuthentication(ShfTestInterface::AUTHENTICATION_ADMIN_USERNAME);
+        $this->getSession()->getDriver()->getClient()->setServerParameter('HTTP_Authorization', "Bearer $token");
     }
 
     /**

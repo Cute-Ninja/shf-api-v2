@@ -20,25 +20,35 @@ trait ApiWhenTrait
     }
 
     /**
-     * @param string     $apiName
-     * @param string|int $id
+     * @param string    $apiName
+     * @param TableNode $tableNode
      *
-     * @When I request the api :apiName with id :id
+     * @When I want to add information using the api :apiName with the following values
      */
-    public function iRequestTheApiWithId(string $apiName, $id): void
+    public function iSubmitToTheApiTheFollowingValues(string $apiName, TableNode $tableNode): void
     {
-        $this->request('GET', "$apiName/$id");
+        $this->request('POST', $apiName, $this->getFormData($tableNode));
     }
 
     /**
      * @param string    $apiName
      * @param TableNode $tableNode
      *
-     * @When I submit to the api :apiName the following values
+     * @When I want to modify information using the api :apiName with the following values
      */
-    public function iSubmitToTheApiTheFollowingValues(string $apiName, TableNode $tableNode): void
+    public function iWantToModifyInformation(string $apiName, TableNode $tableNode): void
     {
-        $this->request('POST', $apiName, $this->getFormData($tableNode));
+        $this->request('PUT', $apiName, $this->getFormData($tableNode));
+    }
+
+    /**
+     * @param string $apiName
+     *
+     * @When I want to delete information using the api :apiName
+     */
+    public function iWantToDeleteInformation(string $apiName): void
+    {
+        $this->request('DELETE', $apiName);
     }
 
     /**

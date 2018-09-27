@@ -4,7 +4,7 @@ Feature:
   @api @visitor @user_api
   Scenario: As an anonymous user I cannot register as a new User if my information are incorrect
     Given I am an anonymous User
-    When I submit to the api "users/registration" the following values
+    When I want to add information using the api "users/registration" with the following values
       | username | failure          |
       | email    | failure          |
       | password | failure_password |
@@ -13,16 +13,16 @@ Feature:
   @api @visitor @user_api @regenerateDB
   Scenario: As an anonymous user I can register as a new User if my information are correct
     Given I am an anonymous User
-    When I submit to the api "users/registration" the following values
+    When I want to add information using the api "users/registration" with the following values
       | username | success          |
       | email    | success@fake.com |
       | password | success_password |
-    Then a proper response should be return
+    Then a proper response should be returned
 
   @api @user @user_api
   Scenario: As a logged user I cannot register as a new User
     Given I am logged as Ghriim
-    When I submit to the api "users/registration" the following values
+    When I want to add information using the api "users/registration" with the following values
       | username | failure          |
       | email    | failure@fake.com |
       | password | failure_password |
@@ -31,7 +31,7 @@ Feature:
   @api @administrator @user_api
   Scenario: As a logged administrator I cannot register as a new User
     Given I am logged as an Administrator
-    When I submit to the api "users/registration" the following values
+    When I want to add information using the api "users/registration" with the following values
       | username | failure          |
       | email    | failure@fake.com |
       | password | failure_password |

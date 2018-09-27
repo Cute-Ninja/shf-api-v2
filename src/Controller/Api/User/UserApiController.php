@@ -220,7 +220,7 @@ class UserApiController extends AbstractApiController
             return $this->getClientErrorResponseBuilder()->notFound();
         }
 
-        if (false === $this->getUser()->hasRole('ROLE_ADMIN_USER_DELETE') && $this->getUser()->getId() !== $user->getId()) {
+        if (false === $this->getUser()->hasRole('ROLE_ADMIN_USER_DELETE')) {
             return $this->getClientErrorResponseBuilder()->forbidden();
         }
 

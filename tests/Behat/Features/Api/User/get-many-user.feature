@@ -11,11 +11,12 @@ Feature:
   Scenario: As a logged user I can access the list Users over an API call
     Given I am logged as Ghriim
     When I request the api "users"
-    Then a proper response should be return
+    Then a proper response should be returned
+    And the content should be similar to "users.json"
 
   @api @administrator @user_api
   Scenario: As a logged administrator I access the list Users over an API call
     Given I am logged as an Administrator
     When I request the api "users"
-    Then a proper response should be return
+    Then a proper response should be returned
     And the content should be similar to "users.json"
