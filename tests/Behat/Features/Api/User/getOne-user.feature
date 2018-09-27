@@ -1,5 +1,5 @@
 Feature:
-  Get the details of a given user
+  Get the details of a given User
 
   @api @visitor @user_api
   Scenario: As an anonymous user I cannot access the details of an User over an API call

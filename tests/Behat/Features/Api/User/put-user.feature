@@ -29,7 +29,7 @@ Feature:
   Scenario: As a logged administrator I can modify any user information
     Given I am logged as an Administrator
     When I want to modify information using the api "users/ghriim" with the following values
-      | username | success |
+      | username | success             |
       | email    | ghriim@fakemail.com |
     Then a proper response should be returned
 
@@ -37,6 +37,6 @@ Feature:
   Scenario: As a logged administrator I cannot modify the information of a non existing user
     Given I am logged as an Administrator
     When I want to modify information using the api "users/not_existing" with the following values
-      | username | failure |
+      | username | failure              |
       | email    | failure@fakemail.com |
     Then no result should be found
