@@ -7,7 +7,7 @@ use Behat\Gherkin\Node\TableNode;
 trait ApiWhenTrait
 {
     abstract public function visit($page);
-    abstract public function request(string $method, string $apiName, array $parameters = []);
+    abstract public function request(string $method, string $apiName, array $requestParameters = [], array $queryParameters = []);
 
     /**
      * @param string $apiName
@@ -49,6 +49,18 @@ trait ApiWhenTrait
     public function iWantToDeleteInformation(string $apiName): void
     {
         $this->request('DELETE', $apiName);
+    }
+
+    /**
+     * @param string    $actionName
+     * @param string    $apiName
+     * @param TableNode $tableNode
+     *
+     * @When I want to do the action :action using the api :apiName with the following values
+     */
+    public function iWantToDoTheAction(string $actionName, string $apiName, TableNode $tableNode): void
+    {
+        $this->request('PATCH', "$apiName/$actionName", [], $this->getFormData($tableNode));
     }
 
     /**

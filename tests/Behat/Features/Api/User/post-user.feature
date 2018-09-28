@@ -1,7 +1,7 @@
 Feature:
   Register a new User
 
-  @api @visitor @user_api
+  @api @visitor @userAPI
   Scenario: As an anonymous user I cannot register as a new User if my information are incorrect
     Given I am an anonymous User
     When I want to add information using the api "users/registration" with the following values
@@ -10,7 +10,7 @@ Feature:
       | password | failure_password |
     Then form errors should be returned
 
-  @api @visitor @user_api @regenerateDB
+  @api @visitor @userAPI @regenerateDB
   Scenario: As an anonymous user I can register as a new User if my information are correct
     Given I am an anonymous User
     When I want to add information using the api "users/registration" with the following values
@@ -19,7 +19,7 @@ Feature:
       | password | success_password |
     Then a proper response should be returned
 
-  @api @user @user_api
+  @api @user @userAPI
   Scenario: As a logged user I cannot register as a new User
     Given I am logged as Ghriim
     When I want to add information using the api "users/registration" with the following values
@@ -28,7 +28,7 @@ Feature:
       | password | failure_password |
     Then access should be forbidden
 
-  @api @administrator @user_api
+  @api @administrator @userAPI
   Scenario: As a logged administrator I cannot register as a new User
     Given I am logged as an Administrator
     When I want to add information using the api "users/registration" with the following values

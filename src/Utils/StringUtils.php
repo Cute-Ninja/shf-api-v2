@@ -27,7 +27,7 @@ class StringUtils
      */
     public static function snakeToCamelCase(string $input, bool $capitalizeFirst = true): string
     {
-        return self::camelize($input, '_', $capitalizeFirst);
+        return self::toCamelCase($input, '_', $capitalizeFirst);
     }
 
     /**
@@ -38,7 +38,7 @@ class StringUtils
      */
     public static function dashesToCamelCase(string $input, bool $capitalizeFirst = true): string
     {
-        return self::camelize($input, '-', $capitalizeFirst);
+        return self::toCamelCase($input, '-', $capitalizeFirst);
     }
 
     /**
@@ -48,10 +48,14 @@ class StringUtils
      *
      * @return string
      */
-    private static function camelize(string $input, string $separator, bool $capitalizeFirst): string
+    private static function toCamelCase(string $input, string $separator, bool $capitalizeFirst): string
     {
         $string = str_replace($separator, '', ucwords($input, $separator));
 
         return $capitalizeFirst ? $string : lcfirst($string);
+    }
+    
+    private function toSnakeCase()
+    {
     }
 }

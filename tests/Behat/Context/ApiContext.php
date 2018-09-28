@@ -17,12 +17,13 @@ class ApiContext extends AbstractBaseContext
     /**
      * @param string $method
      * @param string $apiName
-     * @param array  $parameters
+     * @param array  $requestParameters
+     * @param array  $queryParameters
      *
      * @return object
      * @throws UnsupportedDriverActionException
      */
-    protected function request(string $method, string $apiName, array $parameters = [])
+    protected function request(string $method, string $apiName, array $requestParameters = [], array $queryParameters = [])
     {
         $driver = $this->getSession()->getDriver();
         if (!$driver instanceof BrowserKitDriver) {
@@ -32,8 +33,8 @@ class ApiContext extends AbstractBaseContext
         $client = $driver->getClient();
         $client->request(
             $method,
-            "/api/$apiName?groups=test",
-            $parameters
+            "/api/$apiName?groups=test&" . http_build_query($queryParameters),
+            $requestParameters
         );
 
         return $client->getResponse();

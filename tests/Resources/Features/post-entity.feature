@@ -1,5 +1,5 @@
 Feature:
-  Register a new {entity}
+  Add a new {entity}
 
   @api @visitor {tag}
   Scenario: As an anonymous User I cannot add a new {entity}

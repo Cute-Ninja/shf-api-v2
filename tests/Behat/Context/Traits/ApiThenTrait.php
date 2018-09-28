@@ -63,6 +63,14 @@ trait ApiThenTrait
     }
 
     /**
+     * @Then an error should be returned
+     */
+    public function anErrorShouldBeReturned(): void
+    {
+        $this->assertResponseStatus(501);
+    }
+
+    /**
      * @param string $filename
      *
      * @return array

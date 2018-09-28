@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 trait ApiGivenTrait
 {
     abstract public function getSession($name = null);
-    abstract public function request(string $method, string $apiName, array $parameters = []);
+    abstract public function request(string $method, string $apiName, array $requestParameters = [], array $queryParameters = []);
 
     /**
      * @Given I am an anonymous User

@@ -36,7 +36,13 @@ class BehatScenarioGeneratorCommand extends Command
 
         $folderPath = "tests/Behat/Features/Api/$entityName";
         if (true === $this->generateFolder($output, $folderPath)) {
-            $this->generateScenarioFiles($entityName, $folderPath);
+            $this->generateScenarioFile('getOne', $entityName, $apiUrl, $folderPath);
+            $this->generateScenarioFile('getMany', $entityName, $apiUrl, $folderPath);
+            $this->generateScenarioFile('post', $entityName, $apiUrl, $folderPath);
+            $this->generateScenarioFile('put', $entityName, $apiUrl, $folderPath);
+            $this->generateScenarioFile('delete', $entityName, $apiUrl, $folderPath);
+
+            $output->writeln("<info>Scenario successfully generated in $folderPath</info>");
         }
     }
 
@@ -57,25 +63,25 @@ class BehatScenarioGeneratorCommand extends Command
 
         $fileSystem->mkdir($folderPath);
 
-        $output->writeln("<info>Scenario successfully generated in $folderPath</info>");
-
         return true;
     }
 
     /**
+     * @param string $action
      * @param string $entityName
+     * @param string $apiUrl
      * @param string $folderPath
      */
-    private function generateScenarioFiles(string $entityName, string $folderPath): void
+    private function generateScenarioFile(string $action, string $entityName, string $apiUrl, string $folderPath): void
     {
-        $entityName = lcfirst($entityName);
+        $templateFolder = 'tests/Resources/Features/';
+        $lcEntityName   = lcfirst($entityName);
+
+        $content = file_get_contents("$templateFolder/$action-entity.feature");
+        $content = str_replace(['{entity}', '{apiUrl}', '{tag}'], [$entityName, $apiUrl, "@$lcEntityName"], $content);
 
         $fileSystem = new Filesystem();
-        $fileSystem->touch("$folderPath/getOne-$entityName.feature");
-        $fileSystem->touch("$folderPath/getMany-$entityName.feature");
-        $fileSystem->touch("$folderPath/post-$entityName.feature");
-        $fileSystem->touch("$folderPath/put-$entityName.feature");
-        $fileSystem->touch("$folderPath/delete-$entityName.feature");
+        $fileSystem->dumpFile("$folderPath/$action-$lcEntityName.feature", $content);
     }
 
     /**
