@@ -108,7 +108,6 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
         $this->assertNotEmpty($response->getContent());
     }
 
-
     public function testPostWithTypeAuthorizedWithoutFormError(): void
     {
         $client = $this->buildAuthenticatedUser();
@@ -125,6 +124,8 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
 
         $this->assertEquals(Response::HTTP_CREATED, $response->getStatusCode());
         $this->assertNotEmpty($response->getContent());
+
+        $this->resetDB();
     }
 
     public function testPutUnauthorized(): void
@@ -210,6 +211,8 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
             $this->loadDataFromJsonFile('json/workouts_half_preparation_1_complete'),
             json_decode($response->getContent(), true)
         );
+
+        $this->resetDB();
     }
 
     public function testPatchUndoCompleteUnauthorized(): void
@@ -234,5 +237,7 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
             $this->loadDataFromJsonFile('json/workouts_half_preparation_1_undo_complete'),
             json_decode($response->getContent(), true)
         );
+
+        $this->resetDB();
     }
 }

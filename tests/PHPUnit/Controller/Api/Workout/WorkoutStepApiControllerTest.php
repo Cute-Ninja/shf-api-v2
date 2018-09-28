@@ -122,6 +122,8 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
 
         $this->assertEquals(Response::HTTP_CREATED, $response->getStatusCode());
         $this->assertNotEmpty($response->getContent());
+
+        $this->resetDB();
     }
 
     public function testPutUnauthorized(): void
@@ -173,6 +175,8 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
         $response = $client->getResponse();
 
         $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+
+        $this->resetDB();
     }
 
     public function testPatchUnknownActionUnauthorized(): void
@@ -213,6 +217,8 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
         $response = $client->getResponse();
 
         $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+
+        $this->resetDB();
     }
 
     public function testPatchUndoCompleteUnauthorized(): void
@@ -233,5 +239,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
         $response = $client->getResponse();
 
         $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+
+        $this->resetDB();
     }
 }

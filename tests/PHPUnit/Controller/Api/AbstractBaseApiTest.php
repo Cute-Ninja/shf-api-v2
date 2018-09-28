@@ -20,7 +20,7 @@ abstract class AbstractBaseApiTest extends WebTestCase implements ShfTestInterfa
      */
     public $user;
 
-    protected function setUp()
+    protected function resetDB()
     {
         $process = new Process('make test_reset_db');
         $process->setTimeout(3600);

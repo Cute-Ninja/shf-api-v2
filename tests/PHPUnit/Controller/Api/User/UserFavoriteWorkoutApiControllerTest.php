@@ -102,6 +102,8 @@ class UserFavoriteWorkoutApiControllerTest extends AbstractBaseApiTest
 
         $this->assertEquals(Response::HTTP_CREATED, $response->getStatusCode());
         $this->assertNotEmpty($response->getContent());
+
+        $this->resetDB();
     }
 
     public function testPutUnauthorized(): void

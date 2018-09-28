@@ -127,6 +127,8 @@ class UserBodyMeasurementApiControllerTest extends AbstractBaseApiTest
 
         $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
         $this->assertNotEmpty($response->getContent());
+
+        $this->resetDB();
     }
 
     public function testDeleteUnauthorized(): void
