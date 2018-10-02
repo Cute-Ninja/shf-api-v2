@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Controller\Api;
+namespace App\Tests\PHPUnit\Controller\Api;
 
 use Symfony\Component\HttpFoundation\Response;
 

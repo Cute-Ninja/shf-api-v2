@@ -3,7 +3,7 @@
 namespace App\Tests\PHPUnit\Controller\Api\Workout;
 
 use App\Entity\Workout\ReferenceWorkout;
-use App\Tests\Controller\Api\AbstractBaseApiTest;
+use App\Tests\PHPUnit\Controller\Api\AbstractBaseApiTest;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -108,6 +108,9 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
         $this->assertNotEmpty($response->getContent());
     }
 
+    /**
+     * @group alterDB
+     */
     public function testPostWithTypeAuthorizedWithoutFormError(): void
     {
         $client = $this->buildAuthenticatedUser();
@@ -199,6 +202,9 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
         $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
+    /**
+     * @group alterDB
+     */
     public function testPatchCompleteAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
@@ -225,6 +231,9 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
         $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
+    /**
+     * @group alterDB
+     */
     public function testPatchUndoCompleteAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();

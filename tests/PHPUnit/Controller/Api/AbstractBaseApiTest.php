@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Controller\Api;
+namespace App\Tests\PHPUnit\Controller\Api;
 
 use App\Entity\User\User;
 use App\Repository\AbstractBaseRepository;

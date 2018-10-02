@@ -2,7 +2,7 @@
 
 namespace App\Tests\PHPUnit\Controller\Api\WaterTracker;
 
-use App\Tests\Controller\Api\AbstractBaseApiTest;
+use App\Tests\PHPUnit\Controller\Api\AbstractBaseApiTest;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

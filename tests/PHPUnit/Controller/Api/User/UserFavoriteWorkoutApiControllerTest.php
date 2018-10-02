@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Tests\PHPUnit\Controller\Api\User;
+namespace App\Tests\PHPUnit\PHPUnit\Controller\Api\User;
 
-use App\Tests\Controller\Api\AbstractBaseApiTest;
+use App\Tests\PHPUnit\Controller\Api\AbstractBaseApiTest;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -86,6 +86,9 @@ class UserFavoriteWorkoutApiControllerTest extends AbstractBaseApiTest
         $this->assertNotEmpty($response->getContent());
     }
 
+    /**
+     * @group alterDB
+     */
     public function testPostAuthorizedWithoutFormError(): void
     {
         $client = $this->buildAuthenticatedUser(true);
@@ -137,6 +140,9 @@ class UserFavoriteWorkoutApiControllerTest extends AbstractBaseApiTest
         $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
+    /**
+     * @group alterDB
+     */
     public function testDeleteAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
@@ -147,6 +153,8 @@ class UserFavoriteWorkoutApiControllerTest extends AbstractBaseApiTest
 
         $this->assertEquals(Response::HTTP_NO_CONTENT, $response->getStatusCode());
         $this->assertEmpty($response->getContent());
+
+        $this->resetDB();
     }
 
     public function testDeleteNotFound(): void

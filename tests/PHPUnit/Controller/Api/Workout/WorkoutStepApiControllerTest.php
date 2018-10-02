@@ -2,7 +2,7 @@
 
 namespace App\Tests\PHPUnit\Controller\Api\Workout;
 
-use App\Tests\Controller\Api\AbstractBaseApiTest;
+use App\Tests\PHPUnit\Controller\Api\AbstractBaseApiTest;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -104,7 +104,9 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
         $this->assertNotEmpty($response->getContent());
     }
 
-
+    /**
+     * @group alterDB
+     */
     public function testPostWithTypeAuthorizedWithoutFormError(): void
     {
         $client = $this->buildAuthenticatedUser();
@@ -167,6 +169,9 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
         $this->assertEquals(Response::HTTP_NOT_FOUND, $response->getStatusCode());
     }
 
+    /**
+     * @group alterDB
+     */
     public function testDeleteAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
@@ -209,6 +214,9 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
         $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
+    /**
+     * @group alterDB
+     */
     public function testPatchCompleteAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
@@ -231,6 +239,9 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
         $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
+    /**
+     * @group alterDB
+     */
     public function testPatchUndoCompleteAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();

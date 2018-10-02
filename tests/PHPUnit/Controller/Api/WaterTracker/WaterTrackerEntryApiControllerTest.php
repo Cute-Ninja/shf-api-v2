@@ -3,7 +3,7 @@
 namespace App\Tests\PHPUnit\Controller\Api\WaterTracker;
 
 use App\Entity\WaterTracker\WaterTracker;
-use App\Tests\Controller\Api\AbstractBaseApiTest;
+use App\Tests\PHPUnit\Controller\Api\AbstractBaseApiTest;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -102,6 +102,9 @@ class WaterTrackerEntryApiControllerTest extends AbstractBaseApiTest
         $this->assertNotEmpty($response->getContent());
     }
 
+    /**
+     * @group alterDB
+     */
     public function testPostAuthorizedWithoutFormError(): void
     {
         $client = $this->buildAuthenticatedUser(true);
@@ -155,6 +158,9 @@ class WaterTrackerEntryApiControllerTest extends AbstractBaseApiTest
         $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
+    /**
+     * @group alterDB
+     */
     public function testDeleteAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser( true);
