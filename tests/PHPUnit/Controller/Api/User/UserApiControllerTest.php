@@ -66,6 +66,9 @@ class UserApiControllerTest extends AbstractBaseApiTest
         $this->assertEmpty($response->getContent());
     }
 
+    /**
+     * @group alterDB
+     */
     public function testPostAnonymousWithoutFormError(): void
     {
         $client = static::createClient();
@@ -83,6 +86,8 @@ class UserApiControllerTest extends AbstractBaseApiTest
 
         $this->assertEquals(Response::HTTP_CREATED, $response->getStatusCode());
         $this->assertNotEmpty($response->getContent());
+
+        $this->resetDB();
     }
 
     public function testPostAnonymousWithFormError(): void
