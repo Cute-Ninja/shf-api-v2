@@ -22,8 +22,8 @@ dev_reset_db:
 	$(MAKE) dev_clear_cache
 
 test_reset_db:
-	$(APP_CONSOLE) doctrine:database:drop --if-exists --force --env=test
+	rm -rf var/shf_test.sqlite
 	$(APP_CONSOLE) doctrine:database:create --env=test
 	$(APP_CONSOLE) doctrine:schema:update --force --env=test
-	$(APP_CONSOLE) hautelook:fixtures:load --no-interaction  --env=test
-	$(MAKE) test_clear_custom_cache
+	$(APP_CONSOLE) hautelook:fixtures:load --no-interaction --env=test
+	$(APP_CONSOLE) shf_api:cache:clear --env=test

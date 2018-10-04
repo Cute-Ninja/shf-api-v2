@@ -1,12 +1,10 @@
 doctrine:
     dbal:
-        driver: 'pdo_mysql'
-        server_version: '5.7'
-        charset: utf8
-        default_table_options:
-            charset: utf8
-            collate: utf8_general_ci
-        url: '%env(resolve:DATABASE_TEST_URL)%'
+        driver:  pdo_sqlite
+        dbname:  shf
+        path:    '%kernel.project_dir%/var/shf_test.sqlite'
+        memory:  true
+        charset: UTF8
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
