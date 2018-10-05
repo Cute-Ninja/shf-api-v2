@@ -21,6 +21,10 @@ a:hover {
     border-bottom: none !important;
 }
 
+.shf-margin-small {
+    margin: 1em;
+}
+
 .shf-padding-left-small {
     padding-left: 1em;
 }

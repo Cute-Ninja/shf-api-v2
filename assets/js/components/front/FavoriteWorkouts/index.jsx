@@ -14,7 +14,7 @@ export default class FavoriteWorkouts extends React.Component {
     }
 
     componentDidMount() {
-        Client.getMany("favorite-workouts")
+        Client.getMany("front/api/favorite-workouts")
             .then(
                 (result) => {
                     this.setState({
@@ -29,7 +29,7 @@ export default class FavoriteWorkouts extends React.Component {
         UIkit.modal.confirm('Are you sure you want to remove ' + favorite.workout.name.toUpperCase() + ' from your favorite workouts ?')
             .then(() => {
                 Client.deleteOne(
-                    "favorite-workouts",
+                    "front/api/favorite-workouts",
                     favorite.id
                 )
                 .then((result) => {

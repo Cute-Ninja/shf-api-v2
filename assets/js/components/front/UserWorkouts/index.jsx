@@ -14,7 +14,7 @@ export default class UserWorkouts extends React.Component {
 
     componentDidMount() {
         Client.getMany(
-            "personal/workouts",
+            "front/api/personal/workouts",
             {status: 'scheduled'}
         )
             .then(

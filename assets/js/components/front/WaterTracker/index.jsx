@@ -14,7 +14,7 @@ export default class WaterTracker extends React.Component {
     }
 
     componentDidMount() {
-        Client.getMany("water-trackers/today")
+        Client.getMany("front/api/water-trackers/today")
             .then(
                 (result) => {
                     this.setState({
@@ -29,7 +29,7 @@ export default class WaterTracker extends React.Component {
         UIkit.modal.prompt('Quantity :', '')
             .then((quantity) => {
                 Client.post(
-                    "water-trackers/" + trackerId + "/entries",
+                    "front/api/water-trackers/" + trackerId + "/entries",
                     {quantity: quantity}
                 )
                 .then(result => {
@@ -46,7 +46,7 @@ export default class WaterTracker extends React.Component {
         UIkit.modal.confirm('Are you sure you want to delete this entry ?')
             .then(() => {
                 Client.deleteOne(
-                    "water-trackers/" + trackerId + "/entries",
+                    "front/api/water-trackers/" + trackerId + "/entries",
                     entryId
                 )
                 .then((result) => {

@@ -8,6 +8,9 @@ App\Entity\User\User:
     properties:
         username:
             - NotBlank: ~
+            - Length:
+                min: 5
+                max: 15
         email:
             - NotBlank: ~
             - Email:

@@ -4,7 +4,7 @@ import NotificationsCount from '../../NotificationsCount';
 function getMany(url, parameters = null) {
     let urlParameters = parameters ? "?" + urlEncodeParameters(parameters) : "";
     return fetch(
-            getFrontUrl() + url + urlParameters,
+            getRootUrl() + url + urlParameters,
             {credentials: 'same-origin'}
         )
         .then(response => {
@@ -25,7 +25,7 @@ function getMany(url, parameters = null) {
 function getOne(url, id, parameters = null) {
     let urlParameters = parameters ? "?" + urlEncodeParameters(parameters) : "";
     return fetch(
-        getFrontUrl() + url + "/" + id + urlParameters,
+        getRootUrl() + url + "/" + id + urlParameters,
         {credentials: 'same-origin'}
     )
         .then(response => {
@@ -44,7 +44,7 @@ function getOne(url, id, parameters = null) {
 }
 
 function post(url, parameters) {
-    return fetch(getFrontUrl() + url, {
+    return fetch(getRootUrl() + url, {
             method: 'POST',
             credentials: 'same-origin',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -52,15 +52,14 @@ function post(url, parameters) {
         })
         .then(response => {
             NotificationsCount.refreshDisplay(response);
-
             return new Promise((success, error) => {
-                true === response.ok ? success(response.json()) : error(response.status, response.json());
+                true === response.ok ? success(response.json()) : error(response.json());
             });
         });
 }
 
 function deleteOne (url, id) {
-    return fetch(getFrontUrl() + url + "/" + id, {
+    return fetch(getRootUrl() + url + "/" + id, {
             method: 'DELETE',
             credentials: 'same-origin'
         })
@@ -81,7 +80,7 @@ function deleteOne (url, id) {
 
 function patch(url, action,parameters) {
     let urlParameters = parameters ? "?" + urlEncodeParameters(parameters) : "";
-    return fetch(getFrontUrl() + url + "/" + action + urlParameters, {
+    return fetch(getRootUrl() + url + "/" + action + urlParameters, {
                 method: 'PATCH',
                 credentials: 'same-origin',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -121,17 +120,9 @@ function urlEncodeParameters(parametersBag) {
     return parameters.join('&')
 }
 
-function getFrontUrl() {
-    return getRootUrl() + '/front/api/';
-}
-
-function getAdminUrl() {
-    return getRootUrl() + '/admin/api/';
-}
-
 function getRootUrl() {
     if (typeof window !== 'undefined') {
-        return location.protocol + '//' + location.host;
+        return location.protocol + '//' + location.host + '/';
     }
 
     UIkit.notification('Could not determine server address', 'danger');

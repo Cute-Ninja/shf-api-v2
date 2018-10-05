@@ -13,7 +13,7 @@ export default class Workout extends React.Component {
 
     componentDidMount() {
         Client.getOne(
-            "workouts",
+            "front/api/workouts",
             this.props.workoutId,
         )
             .then(

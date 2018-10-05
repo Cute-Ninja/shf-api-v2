@@ -18,7 +18,7 @@ export default class Workouts extends React.Component {
 
     addToFavorite(workoutId, index) {
         Client.post(
-                "favorite-workouts",
+                "front/api/favorite-workouts",
                 {workout: workoutId}
             )
             .then(result => {
@@ -35,7 +35,7 @@ export default class Workouts extends React.Component {
         UIkit.modal.confirm('Are you sure you want to remove ' + workoutName.toUpperCase() + ' from your favorite workouts ?')
             .then(() => {
                 Client.deleteOne(
-                    "favorite-workouts",
+                    "front/api/favorite-workouts",
                     favoriteId
                 )
                 .then((result) => {
@@ -56,7 +56,7 @@ export default class Workouts extends React.Component {
     
     loadWorkouts(source) {
         Client.getMany(
-            "reference/workouts",
+            "front/api/reference/workouts",
             {source : source}
         )
             .then(

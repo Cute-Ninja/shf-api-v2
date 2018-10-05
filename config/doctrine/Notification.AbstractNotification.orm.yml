@@ -1,6 +1,9 @@
 App\Entity\Notification\AbstractNotification:
     type: entity
     table: "`notification`"
+    indexes:
+        user_index:
+          columns: [ user_id ]
     repositoryClass: App\Repository\Notification\NotificationRepository
     inheritanceType: SINGLE_TABLE
     discriminatorColumn:

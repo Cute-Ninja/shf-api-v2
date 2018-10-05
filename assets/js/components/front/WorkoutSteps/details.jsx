@@ -13,7 +13,7 @@ export default class WorkoutStep extends React.Component {
 
     markWorkoutStepAs(workoutStepId, action) {
         Client.patch(
-            "workouts/" + this.props.workoutId + "/steps",
+            "front/api/workouts/" + this.props.workoutId + "/steps",
             action,
             {id: workoutStepId}
         ).then((result) => {

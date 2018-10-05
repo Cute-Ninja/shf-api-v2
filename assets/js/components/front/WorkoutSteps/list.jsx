@@ -15,7 +15,7 @@ export default class WorkoutSteps extends React.Component {
 
     componentDidMount() {
         Client.getMany(
-            "workouts/" + this.props.workoutId + "/steps",
+            "front/api/workouts/" + this.props.workoutId + "/steps",
         )
             .then(
                 (result) => {

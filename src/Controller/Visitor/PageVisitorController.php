@@ -37,8 +37,6 @@ class PageVisitorController extends AbstractBaseController
      */
     public function register(): Response
     {
-        return $this->render('visitor/visitor-register.html.twig', [
-            'error' => null
-        ]);
+        return $this->render('visitor/visitor-register.html.twig');
     }
 }

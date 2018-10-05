@@ -2,6 +2,11 @@
 
 {% extends 'visitor/visitor-base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/js/visitor-registration.js') }}"></script>
+{% endblock %}
+
 {% block title %}SHF - Register{% endblock %}
 
 {% block body %}
@@ -11,9 +16,10 @@
                 <h3 class="uk-card-title">Inscription</h3>
             </div>
             <div class="uk-card-body uk-margin-remove-top uk-text-center">
-                {% if error %}
-                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                {% endif %}
+                <div id="registration-form"></div>
+            </div>
+            <div class="uk-card-footer">
+                <a href="{{ path('login') }}" title="Formulaire de connexion">Déjà inscrit ? c'est pas ici !</a>
             </div>
         </div>
     </div>

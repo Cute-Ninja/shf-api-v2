@@ -5,6 +5,7 @@ namespace App\Form\Type\User;
 use App\Entity\User\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,7 +25,7 @@ class UserType extends AbstractType
                 ->add('email', EmailType::class);
 
         if ($options['context'] === self::CONTEXT_CREATE) {
-            $builder->add('password', TextType::class);
+            $builder->add('password', PasswordType::class);
         }
     }
 
