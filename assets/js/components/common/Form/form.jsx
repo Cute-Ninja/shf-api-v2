@@ -8,6 +8,10 @@ export default class FormComponent extends React.Component {
         this.resolveErrors = this.resolveErrors.bind(this);
     }
 
+    handleSubmit(event) {
+        throw new TypeError('Method "handleSubmit" should be override in the specific form component');
+    }
+
     resolveErrors(errors) {
         Object.assign(this.state.errors, errors);
 

@@ -25,7 +25,6 @@ export default class RegistrationForm extends FormComponent {
             alert(result);
         })
         .catch(errors => {
-            console.log(errors);
             errors.then(errorResolved => {
                 this.resolveErrors(errorResolved);
             });
