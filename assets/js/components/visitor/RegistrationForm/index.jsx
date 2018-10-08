@@ -1,6 +1,7 @@
 import React from 'react';
 import Client from "../../common/Api/Client/index";
-import FormComponent from "../../common/Form/index";
+import FormComponent from "../../common/Form/form";
+import FormFieldComponent from "../../common/Form/field";
 
 export default class RegistrationForm extends FormComponent {
     constructor(props) {
@@ -19,51 +20,33 @@ export default class RegistrationForm extends FormComponent {
         event.preventDefault();
         Client.post(
             "api/users/registration",
-            {
-                username: this.state.data.username,
-                email: this.state.data.email,
-                password: this.state.data.password
-            }
+            this.state.data
         ).then(result => {
             alert(result);
         })
-        .catch(error => {
-            error.then(errorResolved => {
-                console.log(errorResolved);
-                this.setState({
-                    errors: {
-                        username: errorResolved.username
-                    }
-                });
+        .catch(errors => {
+            console.log(errors);
+            errors.then(errorResolved => {
+                this.resolveErrors(errorResolved);
             });
         });
     }
 
     render() {
-        const {errors, isLoaded} = this.state;
-        if (!isLoaded) {
+        if (!this.state.isLoaded) {
             return <div>Loading...</div>;
         }
 
         return (
             <form method="POST"  onSubmit={this.handleSubmit}>
-                <div className="uk-margin">
-                    <input id="username" name="username" value={this.state.data.username} onChange={this.handleInputChange}
-                        className="uk-input" type="text" placeholder="Username" />
-                    <div id="username-error"></div>
-                </div>
+                <FormFieldComponent type={'text'} name={'username'} placeholder="Username"
+                                    data={this.state.data} errors={this.state.errors.username} />
 
-                <div className="uk-margin">
-                    <input id="email" name="email" value={this.state.data.email} onChange={this.handleInputChange}
-                        className="uk-input" type="email" placeholder="Email" />
-                    <div id="email-error"></div>
-                </div>
+                <FormFieldComponent type={'email'} name={'email'} placeholder="Email"
+                                    data={this.state.data} errors={this.state.errors.email} />
 
-                <div className="uk-margin">
-                    <input id="password" name="password" value={this.state.data.password} onChange={this.handleInputChange}
-                        className="uk-input" type="password" placeholder="Password" />
-                    <div id="password-error"></div>
-                </div>
+                <FormFieldComponent type={'password'} name={'password'} placeholder="Mot de passe"
+                                    data={this.state.data} errors={this.state.errors.password} />
 
                 <div>
                     <button className="uk-button uk-button-primary shf-margin-small" type="submit">S'inscrire</button>

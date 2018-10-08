@@ -4,16 +4,12 @@ export default class FormComponent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.resolveErrors = this.resolveErrors.bind(this);
     }
 
-    handleInputChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-
-        this.state.data[name] = value;
+    resolveErrors(errors) {
+        Object.assign(this.state.errors, errors);
 
         this.forceUpdate();
     }
@@ -23,7 +19,7 @@ export default class FormComponent extends React.Component {
         let data   = {};
         formFields.map(formField => {
             data[formField]   = '';
-            errors[formField] = '';
+            errors[formField] = [];
         });
 
         this.state = {
