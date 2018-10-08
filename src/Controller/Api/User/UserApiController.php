@@ -5,6 +5,8 @@ namespace App\Controller\Api\User;
 use App\Controller\Api\AbstractApiController;
 use App\Entity\User\User;
 use App\Form\Type\User\UserType;
+use App\Utils\SecurityUtils;
+use App\Utils\StringUtils;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;
@@ -126,6 +128,7 @@ class UserApiController extends AbstractApiController
         }
 
         $user->setPassword($passwordEncoder->encodePassword($user, $user->getPassword()));
+        $user->setConfirmationKey(SecurityUtils::randomString(15));
 
         $this->getEntityManager()->persist($user);
         $this->getEntityManager()->flush();

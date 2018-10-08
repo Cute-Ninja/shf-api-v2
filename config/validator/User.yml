@@ -10,7 +10,7 @@ App\Entity\User\User:
             - NotBlank: ~
             - Type: alnum
             - Length:
-                min: 5
+                min: 4
                 max: 15
         email:
             - NotBlank: ~

@@ -39,6 +39,16 @@ App\Entity\User\User:
                 type: boolean
                 unique: false
                 nullable: false
+            confirmationKey:
+                column: confirmation_key
+                type: string
+                unique: true
+                nullable: true
+            confirmationKeyExpiration:
+                column: confirmation_key_expiration
+                type: datetime
+                unique: false
+                nullable: true
             roles:
                 column: roles
                 type: array

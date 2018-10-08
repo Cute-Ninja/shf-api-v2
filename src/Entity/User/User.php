@@ -8,6 +8,8 @@ use Symfony\Component\Serializer\Annotation as Serializer;
 
 class User extends AbstractBaseEntity implements UserInterface
 {
+    public const STATUS_PENDING = 'pending';
+
     /**
      * @var int
      *
@@ -47,6 +49,18 @@ class User extends AbstractBaseEntity implements UserInterface
     protected $lastLogin;
 
     /**
+     * @var string
+     *
+     * @Serializer\Groups({"admin"})
+     */
+    protected $confirmationKey;
+
+    /**
+     * @var \DateTime
+     */
+    protected $confirmationKeyExpiration;
+
+    /**
      * @var string[]
      *
      * @Serializer\Groups({"admin", "test"})
@@ -59,6 +73,12 @@ class User extends AbstractBaseEntity implements UserInterface
      * @Serializer\Groups({"user-body-measurement", "admin", "test"})
      */
     protected $bodyMeasurement;
+
+    public function __construct()
+    {
+        $this->setStatus(self::STATUS_PENDING);
+        $this->setRoles(['ROLES_USER']);
+    }
 
     /**
      * @return int|null
@@ -135,6 +155,10 @@ class User extends AbstractBaseEntity implements UserInterface
     public function setIsAdmin(bool $isAdmin): void
     {
         $this->isAdmin = $isAdmin;
+
+        if (true === $isAdmin) {
+            $this->setStatus(self::STATUS_ACTIVE);
+        }
     }
 
     /**
@@ -154,11 +178,46 @@ class User extends AbstractBaseEntity implements UserInterface
     }
 
     /**
+     * @return string|null
+     */
+    public function getConfirmationKey(): ?string
+    {
+        return $this->confirmationKey;
+    }
+
+    /**
+     * @param string|null $confirmationKey
+     */
+    public function setConfirmationKey(?string $confirmationKey): void
+    {
+        $this->confirmationKey = $confirmationKey;
+        if (null !== $confirmationKey) {
+            $this->setConfirmationKeyExpiration(new \DateTime('+1 day'));
+        }
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getConfirmationKeyExpiration(): \DateTime
+    {
+        return $this->confirmationKeyExpiration;
+    }
+
+    /**
+     * @param \DateTime $confirmationKeyExpiration
+     */
+    public function setConfirmationKeyExpiration(\DateTime $confirmationKeyExpiration): void
+    {
+        $this->confirmationKeyExpiration = $confirmationKeyExpiration;
+    }
+
+    /**
      * @return array
      */
     public function getRoles(): array
     {
-        return $this->roles ? : ['ROLES_USER'];
+        return $this->roles;
     }
 
     /**

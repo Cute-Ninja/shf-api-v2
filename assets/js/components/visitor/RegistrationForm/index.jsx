@@ -22,7 +22,8 @@ export default class RegistrationForm extends FormComponent {
             "api/users/registration",
             this.state.data
         ).then(result => {
-            alert(result);
+            let form = document.getElementById('registration-form');
+            form.innerHTML = "<"
         })
         .catch(errors => {
             errors.then(errorResolved => {
@@ -37,7 +38,7 @@ export default class RegistrationForm extends FormComponent {
         }
 
         return (
-            <form method="POST"  onSubmit={this.handleSubmit}>
+            <form id="registration-form" method="POST"  onSubmit={this.handleSubmit}>
                 <FormFieldComponent type={'text'} name={'username'} placeholder="Nom d'utilisateur"
                                     data={this.state.data} errors={this.state.errors.username} />
 
