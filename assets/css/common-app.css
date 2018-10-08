@@ -37,3 +37,12 @@ a:hover {
     cursor: pointer;
     color: #1e87f0;
 }
+
+.shf-form-field {
+    text-align: left;
+}
+
+.shf-form-field .info {
+    color: #9c9898;
+    font-size: 0.85em;
+}

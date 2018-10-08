@@ -38,13 +38,14 @@ export default class RegistrationForm extends FormComponent {
 
         return (
             <form method="POST"  onSubmit={this.handleSubmit}>
-                <FormFieldComponent type={'text'} name={'username'} placeholder="Username"
+                <FormFieldComponent type={'text'} name={'username'} placeholder="Nom d'utilisateur"
                                     data={this.state.data} errors={this.state.errors.username} />
 
                 <FormFieldComponent type={'email'} name={'email'} placeholder="Email"
                                     data={this.state.data} errors={this.state.errors.email} />
 
                 <FormFieldComponent type={'password'} name={'password'} placeholder="Mot de passe"
+                                    info={'8 caractères minimum, au moins une majuscule, une minuscule et un chiffre.'}
                                     data={this.state.data} errors={this.state.errors.password} />
 
                 <div>

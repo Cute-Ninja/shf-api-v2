@@ -2,6 +2,7 @@ App\Entity\Workout\AbstractWorkout:
     properties:
         name:
             - NotBlank: ~
+            - Type: alnum
             - Length:
                 max: 150
         source:
