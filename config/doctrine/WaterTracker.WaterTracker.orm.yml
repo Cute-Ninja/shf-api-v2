@@ -2,7 +2,7 @@ App\Entity\WaterTracker\WaterTracker:
     type: entity
     table: "`water_tracker`"
     indexes:
-        user_index:
+        water_tracker_user_index:
           columns: [ user_id ]
     repositoryClass: App\Repository\WaterTracker\WaterTrackerRepository
     id:

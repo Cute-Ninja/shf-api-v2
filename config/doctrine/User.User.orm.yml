@@ -2,7 +2,7 @@ App\Entity\User\User:
     type: entity
     table: "`user`"
     indexes:
-        username_index:
+        user_username_index:
           columns: [ username ]
     repositoryClass: App\Repository\User\UserRepository
     id:

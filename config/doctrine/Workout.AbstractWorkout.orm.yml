@@ -2,7 +2,7 @@ App\Entity\Workout\AbstractWorkout:
     type: entity
     table: "`workout`"
     indexes:
-        source_index:
+        workout_source_index:
           columns: [ source ]
     repositoryClass: App\Repository\Workout\WorkoutRepository
     inheritanceType: SINGLE_TABLE
