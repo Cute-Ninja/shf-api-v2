@@ -56,7 +56,7 @@ class JWTCreatedListenerTest extends TestCase
         return [
             ['username1', ['ROLES_A'],'username1', ' roles' => ['ROLES_A'], '127.0.0.1'],
             ['username2', ['ROLES_A', 'ROLES_B'], 'username2', ['ROLES_A', 'ROLES_B'], '127.0.0.1'],
-            ['username3', [], 'username3', ['ROLES_USER'], '127.0.0.1'],
+            ['username3', ['ROLES_USER'], 'username3', ['ROLES_USER'], '127.0.0.1'],
         ];
     }
 }
