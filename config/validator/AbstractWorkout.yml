@@ -2,7 +2,9 @@ App\Entity\Workout\AbstractWorkout:
     properties:
         name:
             - NotBlank: ~
-            - Type: alnum
+            - Regex:
+                pattern: '/^[a-zA-Z0-9_ ]*$/'
+                message: Ne peux pas contenir de caractères spéciaux
             - Length:
                 max: 150
         source:

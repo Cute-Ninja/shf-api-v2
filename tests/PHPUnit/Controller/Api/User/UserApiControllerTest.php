@@ -84,7 +84,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
 
         $response = $client->getResponse();
 
-        $this->assertEquals(Response::HTTP_CREATED, $response->getStatusCode());
+        $this->assertEquals(Response::HTTP_CREATED, $response->getStatusCode(), $response->getContent());
         $this->assertNotEmpty($response->getContent());
 
         $this->resetDB();
@@ -175,7 +175,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
 
         $response = $client->getResponse();
 
-        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode(), $response->getContent());
         $this->assertNotEmpty($response->getContent());
 
         $this->resetDB();
