@@ -119,7 +119,7 @@ class UserApiController extends AbstractApiController
         $form = $this->createForm(
             UserType::class,
             $user,
-            ['method' => 'POST', 'context' => UserType::CONTEXT_CREATE]
+            ['method' => 'POST', 'context' => UserType::CONTEXT_CREATE, 'validation_groups' => 'registration']
         );
 
         $form->handleRequest($request);

@@ -76,9 +76,9 @@ class UserApiControllerTest extends AbstractBaseApiTest
             $client,
             'users/registration',
             [
-                'username' => 'user_test',
+                'username' => 'UserTest',
                 'email'    => 'user_test@fake.com',
-                'password' => 'test123'
+                'password' => 'Test1234'
             ]
         );
 
@@ -97,7 +97,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
             $client,
             'users/registration',
             [
-                'username' => 'user_test',
+                'username' => 'UserTest',
                 'email'    => 'user_test@fake.com',
             ]
         );
