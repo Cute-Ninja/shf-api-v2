@@ -1,0 +1,17 @@
+email:
+    common:
+        content:
+            greetings: 'Salutations %username% !'
+            signature: 'A très bientôt'
+    registration:
+        subject: 'Bienvenue à Super Hero Factory'
+        content:
+            part1: |
+                Félicitations ! Il ne te reste qu'une petite étape avant de commencer ta formation pour devenir un véritable
+                Super Héro : <strong>activer ton compte</strong>. <br />
+                Pour cela rien de plus simple, il te suffit de clicker sur le lien ci-dessous (ou de le copier dans ton navigateur).
+            part2: |
+                Une fois ton compte activer tu pourras accéder à l'ensemble des services de la "Super Hero Factory" gratuitement.
+                N'oublie pas cependant, comme le disait oncle Ben, "Un grand pouvoir implique de grandes responsabilités".
+            part3: |
+                Si tu rencontre le moindre problème n'hésite pas à nous contacter sur l'un de nos réseaux sociaux.

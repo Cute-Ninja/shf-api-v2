@@ -1,0 +1,27 @@
+{% trans_default_domain 'email' %}
+
+{% set activationLink = base_page_url ~"registration/confirmation?key="~confirmationKey %}
+
+<div>
+    <h3>{{ 'email.common.content.greetings'|trans({'%username%': username}) }}</h3>
+
+    <p>
+        {{ 'email.registration.content.part1'|trans }}
+    </p>
+
+    <p>
+        <a href="{{ activationLink }}" title="Lien d'activation de compte">{{ activationLink }}</a>
+    </p>
+
+    <p>
+        {{ 'email.registration.content.part2'|trans }}
+    </p>
+
+    <p>
+        {{ 'email.registration.content.part3'|trans }}
+    </p>
+
+    <p>
+        {{ 'email.common.content.signature'|trans }}
+    </p>
+</div>

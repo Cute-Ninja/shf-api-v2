@@ -2,3 +2,7 @@ services:
     shf_api.manager.notification:
         class: App\Domain\Manager\NotificationManager
         autowire: true
+
+    shf_api.manager.email:
+        class: App\Domain\Manager\EmailManager
+        autowire: true

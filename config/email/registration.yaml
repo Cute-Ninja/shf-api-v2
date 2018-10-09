@@ -1,0 +1,7 @@
+configuration:
+    subject: 'email.registration.subject'
+    sender:
+        name: 'Super Hero Factory'
+        email: 'notification@superherofactory.com'
+    optin: ~
+    template: 'email/registration.html.twig'

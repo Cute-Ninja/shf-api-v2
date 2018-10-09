@@ -2,22 +2,26 @@ App\Entity\User\User:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [username]
+            groups: [registration, update]
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [email]
+            groups: [registration, update]
 
     properties:
         username:
-            - NotBlank: ~
-            - Type: alnum
+            - NotBlank: { groups: [registration, update] }
+            - Type:
+                type: alnum
+                groups: [registration, update]
             - Length:
                 min: 4
                 max: 15
+                groups: [registration, update]
         email:
-            - NotBlank: ~
-            - Email:
+            - NotBlank: { groups: [registration, update] }
+            - Email: { groups: [registration, update] }
         password:
-            - NotBlank:
-                groups: [registration]
+            - NotBlank: { groups: [registration] }
             - Regex:
                 pattern: '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/'
                 message: Doit contenir 8 caractères avec au moins une majuscule, une minuscule et un chiffre

@@ -5,14 +5,11 @@ namespace App\Controller\Api\User;
 use App\Controller\Api\AbstractApiController;
 use App\Entity\User\User;
 use App\Form\Type\User\UserType;
-use App\Utils\SecurityUtils;
-use App\Utils\StringUtils;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserApiController extends AbstractApiController
 {
@@ -88,7 +85,6 @@ class UserApiController extends AbstractApiController
 
     /**
      * @param Request                      $request
-     * @param UserPasswordEncoderInterface $passwordEncoder
      *
      * @return Response
      *
@@ -109,7 +105,7 @@ class UserApiController extends AbstractApiController
      * )
      * @SWG\Tag(name="User")
      */
-    public function post(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function post(Request $request): Response
     {
         if (null !== $request->headers->get('Authorization')) {
             return $this->getClientErrorResponseBuilder()->forbidden();
@@ -127,11 +123,7 @@ class UserApiController extends AbstractApiController
             return $this->getClientErrorResponseBuilder()->jsonResponseFormError($form);
         }
 
-        $user->setPassword($passwordEncoder->encodePassword($user, $user->getPassword()));
-        $user->setConfirmationKey(SecurityUtils::randomString(15));
-
-        $this->getEntityManager()->persist($user);
-        $this->getEntityManager()->flush();
+        $this->get('shf_api.action_helper.user.post')->doPostAction($user);
 
         return $this->getSuccessResponseBuilder()->created($user, $this->getSerializationGroup($request));
     }
@@ -179,7 +171,7 @@ class UserApiController extends AbstractApiController
         $form = $this->createForm(
             UserType::class,
             $user,
-            ['method' => 'PUT', 'context' => UserType::CONTEXT_EDIT]
+            ['method' => 'PUT', 'context' => UserType::CONTEXT_EDIT, 'validation_groups' => 'update']
         );
 
         $form->handleRequest($request);
