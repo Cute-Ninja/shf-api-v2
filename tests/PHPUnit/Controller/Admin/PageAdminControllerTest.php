@@ -2,7 +2,7 @@
 
 namespace App\Tests\PHPunit\Controller\Admin;
 
-use App\Tests\PHPunit\Controller\AbstractPageControllerTest;
+use App\Tests\PHPUnit\Controller\AbstractPageControllerTest;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
