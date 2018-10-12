@@ -31,8 +31,8 @@ security:
                 require_previous_session: false
 
         api_register:
-            pattern: /api/users/registration
-            methods: [POST]
+            pattern: ^/api/users/registration
+            methods: [POST, PATCH]
             anonymous: true
             stateless: true
 
@@ -56,7 +56,7 @@ security:
 
     access_control:
         - { path: /api/login,              roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: /api/users/registration, roles: IS_AUTHENTICATED_ANONYMOUSLY, methods: [POST] }
+        - { path: /api/users/registration, roles: IS_AUTHENTICATED_ANONYMOUSLY, methods: [POST, PATCH] }
         - { path: ^/api,                   roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin,                 roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/front,                 roles: IS_AUTHENTICATED_FULLY }

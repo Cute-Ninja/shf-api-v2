@@ -36,6 +36,17 @@ class UserRepository extends AbstractBaseRepository
 
     /**
      * @param QueryBuilder $queryBuilder
+     * @param string       $confirmationKey
+     *
+     * @return bool
+     */
+    public function addCriterionConfirmationKey(QueryBuilder $queryBuilder, string $confirmationKey): bool
+    {
+        return $this->addCriterion($queryBuilder, $this->getAlias(), 'confirmationKey', $confirmationKey);
+    }
+
+    /**
+     * @param QueryBuilder $queryBuilder
      */
     public function addSelectUserBodyMeasurement(QueryBuilder $queryBuilder): void
     {

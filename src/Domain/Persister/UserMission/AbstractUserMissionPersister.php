@@ -3,6 +3,7 @@
 namespace App\Domain\Persister\UserMission;
 
 use App\Domain\Manager\NotificationManager;
+use App\Domain\Persister\AbstractPersister;
 use App\Entity\Mission\Mission;
 use App\Entity\User\User;
 use App\Entity\User\UserMission;
@@ -10,13 +11,8 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-abstract class AbstractUserMissionPersister
+abstract class AbstractUserMissionPersister extends AbstractPersister
 {
-    /**
-     * @var ObjectManager
-     */
-    protected $entityManager;
-
     /**
      * @var NotificationManager
      */
@@ -30,7 +26,8 @@ abstract class AbstractUserMissionPersister
      */
     public function __construct(ObjectManager $entityManager, NotificationManager $notificationManager)
     {
-        $this->entityManager = $entityManager;
+        parent::__construct($entityManager);
+
         $this->notificationManager = $notificationManager;
     }
 

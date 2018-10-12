@@ -1,4 +1,8 @@
 services:
+    shf_api.persister.user:
+        class: App\Domain\Persister\User\UserPersister
+        autowire: true
+
     shf_api.persister.user_daily_mission:
         class: App\Domain\Persister\UserMission\UserDailyMissionPersister
         autowire: true

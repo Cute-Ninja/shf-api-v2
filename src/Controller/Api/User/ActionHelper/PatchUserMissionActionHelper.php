@@ -37,7 +37,7 @@ class PatchUserMissionActionHelper
      *
      * @return UserMission
      *
-     * @throws NotImplementedHttpException|AccessDeniedHttpException
+     * @throws NotFoundHttpException|AccessDeniedHttpException
      */
     public function doPatchAction(string $action, User $user, $missionId): UserMission
     {

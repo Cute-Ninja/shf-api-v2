@@ -6,6 +6,7 @@ use App\Controller\AbstractBaseController;
 use App\HttpResponse\ClientErrorResponseBuilder;
 use App\HttpResponse\ServerErrorResponseBuilder;
 use App\HttpResponse\SuccessResponseBuilder;
+use http\Env\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 abstract class AbstractApiController extends AbstractBaseController

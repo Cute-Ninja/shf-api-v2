@@ -12,3 +12,8 @@ visitor_registration:
     path: /registration
     methods: [GET|POST]
     controller: App\Controller\Visitor\PageVisitorController::registration
+
+visitor_registration_confirmation:
+    path: /registration/confirmation
+    methods: GET
+    controller: App\Controller\Visitor\PageVisitorController::registrationConfirmation

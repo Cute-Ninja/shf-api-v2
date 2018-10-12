@@ -17,6 +17,7 @@ Encore
     .addEntry('js/front-workout', './assets/js/pages/front/workout.jsx')
 
     .addEntry('js/visitor-registration', './assets/js/pages/visitor/registration.jsx')
+    .addEntry('js/visitor-registration-confirmation', './assets/js/pages/visitor/registrationConfirmation.jsx')
 
     .addEntry('images/login-background', './assets/img/login/login-background.jpg')
 

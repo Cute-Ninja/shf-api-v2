@@ -9,9 +9,19 @@ api_user_get:
     methods: GET
 
 api_user_post:
-    path: /api/users/registration
+    path: /api/users
     controller: App\Controller\Api\User\UserApiController::post
     methods: POST
+
+api_user_registration:
+    path: /api/users/registration
+    controller: App\Controller\Api\User\UserApiController::registration
+    methods: POST
+
+api_user_registration_confirmation:
+    path: /api/users/registration/confirmation
+    controller: App\Controller\Api\User\UserApiController::registrationConfirmation
+    methods: PATCH
 
 api_user_put:
     path: /api/users/{username}

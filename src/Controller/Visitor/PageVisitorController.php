@@ -39,4 +39,12 @@ class PageVisitorController extends AbstractBaseController
     {
         return $this->render('visitor/visitor-registration.html.twig');
     }
+
+    /**
+     * @return Response
+     */
+    public function registrationConfirmation(): Response
+    {
+        return $this->render('visitor/visitor-registration-confirmation.html.twig');
+    }
 }

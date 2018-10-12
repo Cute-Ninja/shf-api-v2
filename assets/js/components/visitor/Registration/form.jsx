@@ -25,8 +25,6 @@ export default class RegistrationForm extends FormComponent {
             this.setState({
                 successful: true
             });
-
-            console.log(this.state);
         })
         .catch(errors => {
             errors.then(errorResolved => {
@@ -46,7 +44,7 @@ export default class RegistrationForm extends FormComponent {
                     <h3>Félicitations !</h3>
 
                     <p>
-                        Vous êtes maintenant un membre de la <strong>Super Hero Factory</strong>.
+                        Tu es maintenant un(e) membre de la <strong>Super Hero Factory</strong>.
                     </p>
 
                     <p>

@@ -191,23 +191,22 @@ class User extends AbstractBaseEntity implements UserInterface
     public function setConfirmationKey(?string $confirmationKey): void
     {
         $this->confirmationKey = $confirmationKey;
-        if (null !== $confirmationKey) {
-            $this->setConfirmationKeyExpiration(new \DateTime('+1 day'));
-        }
+
+        $this->setConfirmationKeyExpiration($confirmationKey ? new \DateTime('+1 day') : null);
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
-    public function getConfirmationKeyExpiration(): \DateTime
+    public function getConfirmationKeyExpiration(): ?\DateTime
     {
         return $this->confirmationKeyExpiration;
     }
 
     /**
-     * @param \DateTime $confirmationKeyExpiration
+     * @param \DateTime|null $confirmationKeyExpiration
      */
-    public function setConfirmationKeyExpiration(\DateTime $confirmationKeyExpiration): void
+    public function setConfirmationKeyExpiration(?\DateTime $confirmationKeyExpiration): void
     {
         $this->confirmationKeyExpiration = $confirmationKeyExpiration;
     }
