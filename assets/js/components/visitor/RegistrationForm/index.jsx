@@ -22,8 +22,11 @@ export default class RegistrationForm extends FormComponent {
             "api/users/registration",
             this.state.data
         ).then(result => {
-            let form = document.getElementById('registration-form');
-            form.innerHTML = "<"
+            this.setState({
+                successful: true
+            });
+
+            console.log(this.state);
         })
         .catch(errors => {
             errors.then(errorResolved => {
@@ -35,6 +38,26 @@ export default class RegistrationForm extends FormComponent {
     render() {
         if (!this.state.isLoaded) {
             return <div>Loading...</div>;
+        }
+
+        if (true === this.state.successful) {
+            return (
+                <div>
+                    <h3>Félicitations !</h3>
+
+                    <p>
+                        Vous êtes maintenant un membre de la <strong>Super Hero Factory</strong>.
+                    </p>
+
+                    <p>
+                        Nous vennons de t'envoyer un email à l'adresse <strong>{this.state.data.email}</strong> contenant le lien d'activation pour ton compte.
+                    </p>
+
+                    <p>
+                        Si tu ne vois pas celui-ci dans les minutes à venir, vérifie le dossier spam de ta boîte mail.
+                    </p>
+                </div>
+            )
         }
 
         return (

@@ -28,6 +28,7 @@ export default class FormComponent extends React.Component {
 
         this.state = {
             isLoaded: false,
+            successful: false,
             errors: errors,
             data: data
         };

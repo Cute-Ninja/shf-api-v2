@@ -284,9 +284,6 @@
     "psr/simple-cache": {
         "version": "1.0.1"
     },
-    "roave/security-advisories": {
-        "version": "dev-master"
-    },
     "sebastian/code-unit-reverse-lookup": {
         "version": "1.0.1"
     },
@@ -430,9 +427,6 @@
     },
     "symfony/intl": {
         "version": "v4.1.3"
-    },
-    "symfony/lts": {
-        "version": "4-dev"
     },
     "symfony/maker-bundle": {
         "version": "1.0",

@@ -4,7 +4,6 @@ namespace App\Domain\Manager;
 
 use App\Entity\User\User;
 use Symfony\Component\Templating\EngineInterface;
-use Symfony\Component\Translation\Translator;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Yaml\Yaml;
 
@@ -56,14 +55,13 @@ class EmailManager
         $email->setFrom($config['sender']['email'], $config['sender']['name'])
               ->setTo($user->getEmail())
               ->setSubject($this->translator->trans($config['subject'], [], 'email'))
+              ->setContentType('text/html')
               ->setBody(
                   $this->templating->render(
                       $config['template'],
                       $this->addDefaultParameters($user, $parameters)
                   )
               );
-
-        echo $email->getBody(); die;
 
         return $this->swiftMailer->send($email) > 0;
     }

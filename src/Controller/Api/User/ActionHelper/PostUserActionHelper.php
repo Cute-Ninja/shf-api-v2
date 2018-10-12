@@ -49,8 +49,8 @@ class PostUserActionHelper
         $user->setPassword($this->passwordEncoder->encodePassword($user, $user->getPassword()));
         $user->setConfirmationKey(SecurityUtils::randomString(15));
 
-        //$this->entityManager->persist($user);
-        //$this->entityManager->flush();
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
 
         $this->emailManager->sendEmailToUser(
             $user,
