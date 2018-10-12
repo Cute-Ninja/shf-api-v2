@@ -8,7 +8,7 @@ visitor_index:
     methods: [GET]
     controller: App\Controller\Visitor\PageVisitorController::index
 
-visitor_register:
-    path: /register
+visitor_registration:
+    path: /registration
     methods: [GET|POST]
-    controller: App\Controller\Visitor\PageVisitorController::register
+    controller: App\Controller\Visitor\PageVisitorController::registration

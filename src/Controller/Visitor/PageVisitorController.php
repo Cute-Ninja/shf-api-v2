@@ -35,8 +35,8 @@ class PageVisitorController extends AbstractBaseController
     /**
      * @return Response
      */
-    public function register(): Response
+    public function registration(): Response
     {
-        return $this->render('visitor/visitor-register.html.twig');
+        return $this->render('visitor/visitor-registration.html.twig');
     }
 }
