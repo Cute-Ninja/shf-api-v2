@@ -34,6 +34,8 @@
     "id": 14,
     "name": "Run (objective duration)",
     "type": "duration",
+    "cover": "http:\/\/via.placeholder.com\/200x150",
+    "videoLink": null,
     "status": "active"
   },
   "status": "active",
@@ -74,6 +76,8 @@
     "id": 2,
     "name": "Walking rest",
     "type": "rest",
+    "cover": "http:\/\/via.placeholder.com\/200x150",
+    "videoLink": null,
     "status": "active"
   },
   "status": "active",
@@ -114,6 +118,8 @@
     "id": 14,
     "name": "Run (objective duration)",
     "type": "duration",
+    "cover": "http:\/\/via.placeholder.com\/200x150",
+    "videoLink": null,
     "status": "active"
   },
   "status": "active",
