@@ -9,7 +9,7 @@ App\Entity\Workout\WorkoutRestStep:
         position: 8
         workout: "@ares_lvl_2"
         exercise: "@rest"
-        estimatedDuration: 45
+        estimatedDuration: 90
 
     hermes_position_2:
         position: 2

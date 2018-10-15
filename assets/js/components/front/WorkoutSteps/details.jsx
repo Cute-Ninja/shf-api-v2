@@ -1,6 +1,7 @@
 import React from 'react';
 import UIkit from 'uikit';
 import Client from "../../common/Api/Client";
+import DurationFormatter from "../../common/DisplayFormatter/duration";
 
 export default class WorkoutStep extends React.Component {
     constructor(props) {
@@ -34,7 +35,7 @@ export default class WorkoutStep extends React.Component {
 
         let details = null;
         if (workoutStep.type === 'amrap' || workoutStep.type === 'duration' || workoutStep.type === 'rest') {
-            details = (<span><i className="material-icons">timer</i>{workoutStep.duration / 60}min</span>);
+            details = (<span><i className="material-icons">timer</i>{DurationFormatter.formatAsString(workoutStep.estimatedDuration)}</span>);
         } else if(workoutStep.type === 'distance') {
             details = (<span><i className="material-icons">directions_run</i>{workoutStep.distance / 1000}km</span>);
         } else if (workoutStep.type === 'reps') {
