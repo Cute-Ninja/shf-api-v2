@@ -13,6 +13,8 @@ Encore
     .addEntry('js/admin-user', './assets/js/pages/admin/user.jsx')
 
     .addEntry('js/front-dashboard', './assets/js/pages/front/dashboard.jsx')
+    .addEntry('js/front-profile', './assets/js/pages/front/profile.jsx')
+    .addEntry('js/front-settings', './assets/js/pages/front/settings.jsx')
     .addEntry('js/front-workouts', './assets/js/pages/front/workouts.jsx')
     .addEntry('js/front-workout', './assets/js/pages/front/workout.jsx')
 

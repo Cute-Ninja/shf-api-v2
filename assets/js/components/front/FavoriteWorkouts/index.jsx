@@ -47,7 +47,9 @@ export default class FavoriteWorkouts extends React.Component {
         const {isLoaded, favorites} = this.state;
         if (!isLoaded) {
             return <div>Loading...</div>;
-        } else if (favorites.length === 0) {
+        }
+
+        if (favorites.length === 0) {
             return (
                 <div>
                     No workout favorites yet ? <a href="/front/workouts" title="">Let's find one !</a>

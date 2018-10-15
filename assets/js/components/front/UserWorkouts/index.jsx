@@ -17,14 +17,14 @@ export default class UserWorkouts extends React.Component {
             "front/api/personal/workouts",
             {status: 'scheduled'}
         )
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        workouts: result
-                    });
-                }
-            );
+        .then(
+            (result) => {
+                this.setState({
+                    isLoaded: true,
+                    workouts: result
+                });
+            }
+        );
     }
 
     render() {
@@ -33,9 +33,17 @@ export default class UserWorkouts extends React.Component {
             return <div>Loading...</div>;
         }
 
+        if (0 === workouts.length) {
+            return (
+                <div>
+                    No workout planned yet ? <a href="/front/workouts" title="">Let's find one !</a>
+                </div>
+            );
+        }
+
         return (
             <div>
-                {workouts.map((workout, index) => (
+                {workouts.map((workout) => (
                     <div key={workout.id} className="uk-card uk-card-default uk-margin-bottom">
                         <div className="uk-clearfix">
                             <div className="uk-float-left">

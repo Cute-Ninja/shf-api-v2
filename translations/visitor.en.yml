@@ -2,5 +2,5 @@ visitor:
     login:
         title: Connection
         form:
-            username: Username
+            username: Email or username
             password: Password

@@ -21,7 +21,7 @@ class WorkoutProxyController extends AbstractProxyController
         return $this->forwardToApi(
             $request,
             'App\Controller\Api\Workout\WorkoutApiController:getMany',
-            [],
+            ['owner' => $request->query->get('owner') ?? $this->getUser()->getId()],
             ['type' => PersonalWorkout::TYPE_PERSONAL]
         );
     }

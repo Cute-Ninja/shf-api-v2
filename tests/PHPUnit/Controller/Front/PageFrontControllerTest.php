@@ -44,7 +44,9 @@ class PageFrontControllerTest extends AbstractPageControllerTest
         return [
             ['/front/dashboard'],
             ['/front/profile'],
+            ['/front/settings'],
             ['/front/workouts'],
+            ['/front/workouts/1'],
         ];
     }
 }

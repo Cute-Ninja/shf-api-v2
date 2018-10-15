@@ -40,4 +40,12 @@ class PageFrontController extends AbstractBaseController
     {
         return $this->render('front/front-workout.html.twig', ['workoutId' => $id]);
     }
+
+    /**
+     * @return Response
+     */
+    public function settings(): Response
+    {
+        return $this->render('front/front-settings.html.twig');
+    }
 }

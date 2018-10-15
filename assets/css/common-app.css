@@ -21,6 +21,10 @@ a:hover {
     border-bottom: none !important;
 }
 
+.shf-margin-x-small {
+    margin: 10px !important;
+}
+
 .shf-margin-small {
     margin: 1em;
 }
@@ -45,4 +49,9 @@ a:hover {
 .shf-form-field .info {
     color: #9c9898;
     font-size: 0.85em;
+}
+
+.shf-icon-x-large {
+    font-size: 5em;
+    line-height: 5em;
 }

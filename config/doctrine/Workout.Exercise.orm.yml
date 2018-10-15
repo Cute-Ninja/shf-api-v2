@@ -28,6 +28,16 @@ App\Entity\Workout\Exercise:
             length: 25
             unique: false
             nullable: false
+        cover:
+            column: cover
+            type: string
+            unique: false
+            nullable: true
+        videoLink:
+            column: video_link
+            type: string
+            unique: true
+            nullable: true
 
     manyToMany:
         equipments:

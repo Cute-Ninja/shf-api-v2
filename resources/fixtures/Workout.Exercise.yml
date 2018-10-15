@@ -10,6 +10,7 @@ App\Entity\Workout\Exercise:
     push_up:
         name: Push up
         type: repetition
+        videoLink: "https://www.youtube.com/embed/IODxDxX7oi4"
 
     crunch:
         name: Crunch

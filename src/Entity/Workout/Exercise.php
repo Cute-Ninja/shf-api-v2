@@ -13,6 +13,8 @@ class Exercise extends AbstractBaseEntity
     public const TYPE_DURATION   = 'duration';
     public const TYPE_HOLD       = 'hold';
 
+    private const COVER_DEFAULT = 'http://via.placeholder.com/200x150';
+
     /**
      * @var int
      *
@@ -33,6 +35,20 @@ class Exercise extends AbstractBaseEntity
      * @Serializer\Groups({"default", "test"})
      */
     protected $type;
+
+    /**
+     * @var string
+     *
+     * @Serializer\Groups({"default", "test"})
+     */
+    protected $cover = self::COVER_DEFAULT;
+
+    /**
+     * @var string
+     *
+     * @Serializer\Groups({"default", "test"})
+     */
+    protected $videoLink;
 
     /**
      * @var Equipment[]
@@ -77,6 +93,38 @@ class Exercise extends AbstractBaseEntity
     public function setType(string $type): void
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCover(): string
+    {
+        return $this->cover;
+    }
+
+    /**
+     * @param string $cover
+     */
+    public function setCover(string $cover): void
+    {
+        $this->cover = $cover;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getVideoLink(): ?string
+    {
+        return $this->videoLink;
+    }
+
+    /**
+     * @param  string|null
+     */
+    public function setVideoLink(?string $videoLink): void
+    {
+        $this->videoLink = $videoLink;
     }
 
     /**

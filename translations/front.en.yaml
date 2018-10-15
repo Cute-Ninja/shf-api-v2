@@ -3,5 +3,7 @@ front:
         title: Dashboard
     profile:
         title: My profile
+    settings:
+        title: Settings
     workouts:
         title: Workouts

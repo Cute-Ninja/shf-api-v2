@@ -27,8 +27,8 @@ App\Entity\Workout\AbstractWorkoutStep:
         position:
             column: position
             type: integer
-            nullable: false
             unique: false
+            nullable: false
         estimatedDuration:
             column: estimated_duration
             type: integer

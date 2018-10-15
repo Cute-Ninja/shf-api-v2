@@ -44,9 +44,16 @@
                                 <img src="https://via.placeholder.com/50x50" title="avatar" class="uk-border-circle" />
                                 <div uk-dropdown="mode: click">
                                     <ul class="uk-nav uk-dropdown-nav">
-                                        <a href="{{ path('logout') }}" title="Logout">
-                                            <i class="material-icons">lock</i>
-                                        </a>
+                                        <li>
+                                            <a href="{{ path('front_page_settings') }}" title="Réglages">
+                                                <i class="material-icons">settings</i> Réglages
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('logout') }}" title="Déconnexion">
+                                                <i class="material-icons">lock</i> Déconnexion
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>

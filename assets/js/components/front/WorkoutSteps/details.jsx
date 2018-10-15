@@ -1,4 +1,5 @@
 import React from 'react';
+import UIkit from 'uikit';
 import Client from "../../common/Api/Client";
 
 export default class WorkoutStep extends React.Component {
@@ -9,6 +10,7 @@ export default class WorkoutStep extends React.Component {
         };
 
         this.markWorkoutStepAs = this.markWorkoutStepAs.bind(this);
+        this.openVideo = this.openVideo.bind(this);
     }
 
     markWorkoutStepAs(workoutStepId, action) {
@@ -21,6 +23,12 @@ export default class WorkoutStep extends React.Component {
         });
     }
 
+    openVideo(videoLink) {
+        UIkit.modal.dialog(
+            '<iframe id="ytplayer" type="text/html" width="640" height="360" frameborder="0" allowFullScreen src="' + videoLink + '?autoplay=1" />'
+        );
+    }
+
     render() {
         const {workoutStep} = this.state;
 
@@ -30,7 +38,7 @@ export default class WorkoutStep extends React.Component {
         } else if(workoutStep.type === 'distance') {
             details = (<span><i className="material-icons">directions_run</i>{workoutStep.distance / 1000}km</span>);
         } else if (workoutStep.type === 'reps') {
-            details = (<span><i className="material-icons">fitness_center</i>{workoutStep.numberOfRepetition} reps</span>);
+            details = (<span><i className="material-icons">fitness_center</i>{workoutStep.repsPlanned} reps</span>);
         }
 
         let action = null;
@@ -46,18 +54,40 @@ export default class WorkoutStep extends React.Component {
             }
         }
 
+        let cover = null;
+        if (null !== workoutStep.exercise.videoLink) {
+            cover = (
+                <div className="uk-inline uk-light">
+                    <a onClick={() => this.openVideo(workoutStep.exercise.videoLink)} title="Voir la vidéo">
+                        <img src={workoutStep.exercise.cover} alt="" className="shf-margin-x-small" />
+                        <div className="uk-position-center">
+                            <i className="material-icons shf-icon-x-large">play_circle_outline</i>
+                        </div>
+                    </a>
+                </div>
+            )
+        } else {
+            cover = (<img src={workoutStep.exercise.cover} alt="" className="shf-margin-x-small" />);
+        }
+
         return (
-            <div key={workoutStep.id} className="uk-card uk-card-default uk-margin-bottom">
-                <div className="uk-card-body uk-clearfix">
-                    <div className="uk-float-left">
-                        {workoutStep.position}. {workoutStep.exercise.name}
-                        {details}
-                    </div>
-                    <div className="uk-float-right">
-                        {action}
+            <div key={workoutStep.id} uk-grid
+                 className="uk-grid uk-card uk-card-default uk-grid-collapse uk-margin">
+                <div className="uk-width-auto@m">
+                    {cover}
+                </div>
+
+                <div className="uk-width-expand@m">
+                    <div className="uk-card-body">
+                        <h3 className="uk-card-title">{workoutStep.position}. {workoutStep.exercise.name}</h3>
+                        <p>{details}</p>
                     </div>
                 </div>
+
+                <div className="uk-width-auto@m">
+                    {action}
+                </div>
             </div>
-        );
+        )
     }
 }
