@@ -17,6 +17,9 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class WorkoutApiController extends AbstractApiController implements StandardApiInterface
 {
+    private const PATCH_ACTION_COMPLETE = 'complete';
+    private const PATCH_ACTION_UNDO = 'undo-complete';
+    private const PATCH_ACTION_SCHEDULE = 'schedule';
 
     /**
      * @var Request $request
@@ -211,22 +214,35 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      */
     public function patch(Request $request, string $action): Response
     {
-        $helper = $this->get('shf_api.action_helper.workout.patch');
+        $helper    = $this->get('shf_api.action_helper.workout.patch');
+        $workoutId = $request->query->get('id');
+
         try {
-            $step = $helper->doPatchAction($action, $request->query->get('id'));
+            if (self::PATCH_ACTION_COMPLETE === $action) {
+                $workout = $helper->completeWorkout($workoutId);
+            } elseif (self::PATCH_ACTION_UNDO === $action) {
+                $workout = $helper->undoCompleteWorkout($workoutId);
+            } elseif (self::PATCH_ACTION_SCHEDULE === $action) {
+                $dateAsString = $request->query->get('scheduledDate');
+                $workout = $helper->scheduleWorkout(
+                    $this->getUser(),
+                    $workoutId,
+                    $dateAsString ? new \DateTime($dateAsString) : null
+                );
+            } else {
+                return $this->getServerErrorResponseBuilder()->notImplemented();
+            }
+
+            $this->getEntityManager()->flush();
 
             return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
-                $step,
+                $workout,
                 $this->getSerializationGroup($request)
             );
         }  catch (NotFoundHttpException $exception) {
-            $errorResponse = $this->getClientErrorResponseBuilder()->notFound();
+            return $this->getClientErrorResponseBuilder()->notFound();
         } catch (AccessDeniedHttpException $exception) {
-            $errorResponse = $this->getClientErrorResponseBuilder()->forbidden();
-        } catch (NotImplementedHttpException $exception) {
-            $errorResponse = $this->getServerErrorResponseBuilder()->notImplemented();
+            return $this->getClientErrorResponseBuilder()->forbidden();
         }
-
-        return $errorResponse;
     }
 }

@@ -2,11 +2,16 @@
 
 namespace App\Repository\Workout;
 
+use App\Entity\Workout\AbstractWorkout;
 use App\Entity\Workout\PersonalWorkout;
 use App\Entity\Workout\ReferenceWorkout;
 use App\Repository\AbstractBaseRepository;
 use Doctrine\ORM\QueryBuilder;
 
+/**
+ * @method AbstractWorkout findOneByCriteria(array $criteria = [], array $selects = [])
+ * @method AbstractWorkout[] findManyByCriteria(array $criteria = [], array $selects = [], array $orders = [], $limit = null): array
+ */
 class WorkoutRepository extends AbstractBaseRepository
 {
     /**

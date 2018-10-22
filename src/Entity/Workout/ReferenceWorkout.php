@@ -2,8 +2,6 @@
 
 namespace App\Entity\Workout;
 
-use Symfony\Component\Serializer\Annotation as Serializer;
-
 class ReferenceWorkout extends AbstractWorkout
 {
     /**

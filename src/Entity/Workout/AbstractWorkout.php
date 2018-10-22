@@ -90,9 +90,9 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     abstract public function getType(): string;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -156,7 +156,7 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     /**
      * @param int $calories
      */
-    public function setCalories(int $calories): void
+    public function setCalories(?int $calories): void
     {
         $this->calories = $calories;
     }
@@ -188,7 +188,7 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     /**
      * @param int $experience
      */
-    public function setExperience(int $experience): void
+    public function setExperience(?int $experience): void
     {
         $this->experience = $experience;
     }
