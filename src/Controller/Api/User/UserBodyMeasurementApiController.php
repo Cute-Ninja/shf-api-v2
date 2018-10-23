@@ -5,6 +5,7 @@ namespace App\Controller\Api\User;
 use App\Controller\Api\AbstractApiController;
 use App\Controller\Api\StandardApiInterface;
 use App\Entity\User\User;
+use App\Entity\User\UserBodyMeasurementHistory;
 use App\Form\Type\User\UserBodyMeasurementType;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
@@ -110,6 +111,7 @@ class UserBodyMeasurementApiController extends AbstractApiController
             return $this->getClientErrorResponseBuilder()->forbidden();
         }
 
+        $history = new UserBodyMeasurementHistory($user->getBodyMeasurement());
         $form = $this->createForm(
             UserBodyMeasurementType::class,
             $user->getBodyMeasurement(),
@@ -117,11 +119,11 @@ class UserBodyMeasurementApiController extends AbstractApiController
         );
 
         $form->handleRequest($request);
-
         if (false === $form->isSubmitted() || false === $form->isValid()) {
             return $this->getClientErrorResponseBuilder()->jsonResponseFormError($form);
         }
 
+        $this->getEntityManager()->persist($history);
         $this->getEntityManager()->flush();
 
         return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(

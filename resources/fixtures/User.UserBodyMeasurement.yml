@@ -2,11 +2,11 @@ App\Entity\User\UserBodyMeasurement:
     ghriim_measurement:
         user: '@ghriim'
         height: 183
-        weight: 77
+        weight: 77000
         restingHeartRate: 70
 
     user_{1..10}_measurement:
         user: '@user_<current()>'
         height: 175
-        weight: 75
+        weight: 75000
         restingHeartRate: 85
