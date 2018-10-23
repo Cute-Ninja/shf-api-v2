@@ -48,7 +48,7 @@ api_workout_step_patch:
     methods: PATCH
     requirements:
         workoutId: \d+
-        action: complete|undo-complete
+        action: complete|undo-complete|start|undo-start
 
 
 front_api_workout_step_get_many:
@@ -72,4 +72,4 @@ front_api_workout_step_patch:
     methods: PATCH
     requirements:
         workoutId: \d+
-        action: complete|undo-complete
+        action: complete|undo-complete|start|undo-start

@@ -36,7 +36,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testGetOneUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildGetRequest($client, 'workouts/7/steps/12');
+        $this->buildGetRequest($client, 'workouts/7/steps/19');
 
         $response = $client->getResponse();
 
@@ -46,7 +46,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testGetOneAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildGetRequest($client, 'workouts/7/steps/12');
+        $this->buildGetRequest($client, 'workouts/7/steps/19');
 
         $response = $client->getResponse();
 
@@ -131,7 +131,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testPutUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildPutRequest($client, 'workouts/7/steps/12');
+        $this->buildPutRequest($client, 'workouts/7/steps/19');
 
         $response = $client->getResponse();
 
@@ -141,7 +141,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testPutAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildPutRequest($client,'workouts/7/steps/12');
+        $this->buildPutRequest($client,'workouts/7/steps/19');
 
         $response = $client->getResponse();
 
@@ -152,7 +152,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testDeleteUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildDeleteRequest($client, 'workouts/7/steps/12');
+        $this->buildDeleteRequest($client, 'workouts/7/steps/19');
 
         $response = $client->getResponse();
 
@@ -175,7 +175,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testDeleteAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildDeleteRequest($client, 'workouts/7/steps/12');
+        $this->buildDeleteRequest($client, 'workouts/7/steps/19');
 
         $response = $client->getResponse();
 
@@ -187,7 +187,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testPatchUnknownActionUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildPatchRequest($client, 'workouts/7/steps/unknown', ['id' => 12]);
+        $this->buildPatchRequest($client, 'workouts/7/steps/unknown', ['id' => 19]);
 
         $response = $client->getResponse();
 
@@ -197,7 +197,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testPatchUnknownActionAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildPatchRequest($client, 'workouts/7/steps/unknown', ['id' => 12]);
+        $this->buildPatchRequest($client, 'workouts/7/steps/unknown', ['id' => 19]);
 
         $response = $client->getResponse();
 
@@ -207,7 +207,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testPatchCompleteUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildPatchRequest($client, 'workouts/11/steps/complete', ['id' => 12]);
+        $this->buildPatchRequest($client, 'workouts/11/steps/complete', ['id' => 19]);
 
         $response = $client->getResponse();
 
@@ -220,7 +220,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testPatchCompleteAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildPatchRequest($client, 'workouts/7/steps/complete', ['id' => 12]);
+        $this->buildPatchRequest($client, 'workouts/7/steps/complete', ['id' => 19]);
 
         $response = $client->getResponse();
 
@@ -232,7 +232,7 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testPatchUndoCompleteUnauthorized(): void
     {
         $client = static::createClient();
-        $this->buildPatchRequest($client, 'workouts/7/steps/undo-complete', ['id' => 12]);
+        $this->buildPatchRequest($client, 'workouts/7/steps/undo-complete', ['id' => 19]);
 
         $response = $client->getResponse();
 
@@ -245,7 +245,57 @@ class WorkoutStepApiControllerTest extends AbstractBaseApiTest
     public function testPatchUndoCompleteAuthorized(): void
     {
         $client = $this->buildAuthenticatedUser();
-        $this->buildPatchRequest($client, 'workouts/7/steps/undo-complete', ['id' => 12]);
+        $this->buildPatchRequest($client, 'workouts/7/steps/undo-complete', ['id' => 15]);
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+
+        $this->resetDB();
+    }
+
+    public function testPatchStartUnauthorized(): void
+    {
+        $client = static::createClient();
+        $this->buildPatchRequest($client, 'workouts/7/steps/start', ['id' => 19]);
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
+    }
+
+    /**
+     * @group alterDB
+     */
+    public function testPatchStartAuthorized(): void
+    {
+        $client = $this->buildAuthenticatedUser();
+        $this->buildPatchRequest($client, 'workouts/7/steps/start', ['id' => 19]);
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+
+        $this->resetDB();
+    }
+
+    public function testPatchUndoStartUnauthorized(): void
+    {
+        $client = static::createClient();
+        $this->buildPatchRequest($client, 'workouts/7/steps/undo-start', ['id' => 19]);
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
+    }
+
+    /**
+     * @group alterDB
+     */
+    public function testPatchUndoStartAuthorized(): void
+    {
+        $client = $this->buildAuthenticatedUser();
+        $this->buildPatchRequest($client, 'workouts/7/steps/undo-start', ['id' => 20]);
 
         $response = $client->getResponse();
 

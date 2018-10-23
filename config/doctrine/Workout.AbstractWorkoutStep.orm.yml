@@ -34,6 +34,16 @@ App\Entity\Workout\AbstractWorkoutStep:
             type: integer
             unique: false
             nullable: true
+        startingDate:
+            column: starting_date
+            type: datetime
+            unique: false
+            nullable: true
+        completionDate:
+            column: completion_date
+            type: datetime
+            unique: false
+            nullable: true
 
     manyToOne:
             workout:

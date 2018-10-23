@@ -11,8 +11,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PatchWorkoutStepActionHelper
 {
-    private const PATCH_ACTION_COMPLETE = 'complete';
-    private const PATCH_ACTION_UNDO = 'undo-complete';
+    private const PATCH_ACTION_COMPLETE      = 'complete';
+    private const PATCH_ACTION_UNDO_COMPLETE = 'undo-complete';
+    private const PATCH_ACTION_START         = 'start';
+    private const PATCH_ACTION_UNDO_START    = 'undo-start';
 
     /**
      * @var ObjectManager
@@ -35,11 +37,19 @@ class PatchWorkoutStepActionHelper
      */
     public function doPatchAction(string $action, int $workoutId, int $workoutStepId): AbstractWorkoutStep
     {
+        if (self::PATCH_ACTION_START === $action) {
+            return $this->startStep($workoutId, $workoutStepId);
+        }
+
+        if (self::PATCH_ACTION_UNDO_START === $action) {
+            return $this->undoStartStep($workoutId, $workoutStepId);
+        }
+
         if (self::PATCH_ACTION_COMPLETE === $action) {
             return $this->completeStep($workoutId, $workoutStepId);
         }
 
-        if (self::PATCH_ACTION_UNDO === $action) {
+        if (self::PATCH_ACTION_UNDO_COMPLETE === $action) {
             return $this->undoCompleteStep($workoutId, $workoutStepId);
         }
 
@@ -54,49 +64,16 @@ class PatchWorkoutStepActionHelper
      *
      * @throws NotFoundHttpException|AccessDeniedHttpException
      */
-    public function completeStep(int $workoutId, int $workoutStepId): AbstractWorkoutStep
+    protected function completeStep(int $workoutId, int $workoutStepId): AbstractWorkoutStep
     {
-        return $this->doStepStatusUpdate(
-            $this->getWorkoutStep($workoutId, $workoutStepId),
-            AbstractWorkoutStep::STATUS_DONE
-        );
-    }
-
-    /**
-     * @param int $workoutId
-     * @param int $workoutStepId
-     *
-     * @return AbstractWorkoutStep
-     *
-     * @throws NotFoundHttpException|AccessDeniedHttpException
-     */
-    public function undoCompleteStep(int $workoutId, int $workoutStepId): AbstractWorkoutStep
-    {
-        return $this->doStepStatusUpdate(
-            $this->getWorkoutStep($workoutId, $workoutStepId),
-            AbstractWorkoutStep::STATUS_ACTIVE
-        );
-    }
-
-    /**
-     * @param AbstractWorkoutStep|null $step
-     * @param                          $status
-     *
-     * @return AbstractWorkoutStep
-     *
-     * @throws NotFoundHttpException|AccessDeniedHttpException
-     */
-    private function doStepStatusUpdate(?AbstractWorkoutStep $step, $status): AbstractWorkoutStep
-    {
-        if (null === $step) {
-            throw new NotFoundHttpException();
-        }
-
-        if (AbstractWorkout::TYPE_REFERENCE === $step->getWorkout()->getType()) {
+        $step = $this->getWorkoutStep($workoutId, $workoutStepId);
+        if (AbstractWorkoutStep::STATUS_DONE === $step->getStatus()
+            || AbstractWorkout::TYPE_REFERENCE === $step->getWorkout()->getType()) {
             throw new AccessDeniedHttpException();
         }
 
-        $step->setStatus($status);
+        $step->setCompletionDate(new \DateTime());
+
         $this->entityManager->flush();
 
         return $step;
@@ -107,14 +84,90 @@ class PatchWorkoutStepActionHelper
      * @param int $workoutStepId
      *
      * @return AbstractWorkoutStep
+     *
+     * @throws NotFoundHttpException|AccessDeniedHttpException
+     */
+    protected function undoCompleteStep(int $workoutId, int $workoutStepId): AbstractWorkoutStep
+    {
+        $step = $this->getWorkoutStep($workoutId, $workoutStepId);
+        if (AbstractWorkoutStep::STATUS_DONE !== $step->getStatus()
+            || AbstractWorkout::TYPE_REFERENCE === $step->getWorkout()->getType()) {
+            throw new AccessDeniedHttpException();
+        }
+
+        $step->setCompletionDate(null);
+
+        $this->entityManager->flush();
+
+        return $step;
+    }
+
+    /**
+     * @param int $workoutId
+     * @param int $workoutStepId
+     *
+     * @return AbstractWorkoutStep
+     *
+     * @throws NotFoundHttpException|AccessDeniedHttpException
+     */
+    protected function startStep(int $workoutId, int $workoutStepId): AbstractWorkoutStep
+    {
+        $step = $this->getWorkoutStep($workoutId, $workoutStepId);
+        if (AbstractWorkoutStep::STATUS_STARTED === $step->getStatus()
+            || AbstractWorkout::TYPE_REFERENCE === $step->getWorkout()->getType()) {
+            throw new AccessDeniedHttpException();
+        }
+
+        $step->setStartingDate(new \DateTime());
+
+        $this->entityManager->flush();
+
+        return $step;
+    }
+
+    /**
+     * @param int $workoutId
+     * @param int $workoutStepId
+     *
+     * @return AbstractWorkoutStep
+     *
+     * @throws NotFoundHttpException|AccessDeniedHttpException
+     */
+    protected function undoStartStep(int $workoutId, int $workoutStepId): AbstractWorkoutStep
+    {
+        $step = $this->getWorkoutStep($workoutId, $workoutStepId);
+        if (AbstractWorkoutStep::STATUS_STARTED !== $step->getStatus()
+            || AbstractWorkout::TYPE_REFERENCE === $step->getWorkout()->getType()) {
+            throw new AccessDeniedHttpException();
+        }
+
+        $step->setStartingDate(null);
+
+        $this->entityManager->flush();
+
+        return $step;
+    }
+
+    /**
+     * @param int $workoutId
+     * @param int $workoutStepId
+     *
+     * @return AbstractWorkoutStep
+     *
+     * @throws NotFoundHttpException
      */
     private function getWorkoutStep(int $workoutId, int $workoutStepId): AbstractWorkoutStep
     {
         $repository = $this->entityManager->getRepository(AbstractWorkoutStep::class);
-
-        return $repository->findOneByCriteria(
+        $step       = $repository->findOneByCriteria(
                         ['workout' => $workoutId, 'id' => $workoutStepId],
                         ['workout', 'exercise']
                     );
+
+        if (null === $step) {
+            throw new NotFoundHttpException();
+        }
+
+        return $step;
     }
 }

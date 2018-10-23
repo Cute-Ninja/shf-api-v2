@@ -23,11 +23,19 @@ App\Entity\Workout\WorkoutDurationStep:
         exercise: "@run_duration"
         estimatedDuration: 1800
 
+    ghriim_workout_1_position_2:
+        position: 2
+        workout: "@ghriim_workout_1"
+        exercise: "@run_duration"
+        estimatedDuration: 1800
+        status: done
+
     ghriim_workout_1_position_3:
         position: 3
         workout: "@ghriim_workout_1"
         exercise: "@run_duration"
         estimatedDuration: 1800
+        status: started
 
     ghriim_workout_2_position_1:
         position: 1

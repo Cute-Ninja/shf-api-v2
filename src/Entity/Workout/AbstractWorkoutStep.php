@@ -7,7 +7,8 @@ use Symfony\Component\Serializer\Annotation as Serializer;
 
 abstract class AbstractWorkoutStep extends AbstractBaseEntity
 {
-    public const STATUS_DONE = 'done';
+    public const STATUS_STARTED = 'started';
+    public const STATUS_DONE    = 'done';
 
     public const TYPE_REST     = 'rest';
     public const TYPE_DISTANCE = 'distance';
@@ -35,6 +36,20 @@ abstract class AbstractWorkoutStep extends AbstractBaseEntity
      * @Serializer\Groups({"default", "test"})
      */
     protected $estimatedDuration;
+
+    /**
+     * @var \DateTime $startingDate
+     *
+     * @Serializer\Groups({"default", "test"})
+     */
+    protected $startingDate;
+
+    /**
+     * @var \DateTime $startingDate
+     *
+     * @Serializer\Groups({"default", "test"})
+     */
+    protected $completionDate;
 
     /**
      * @var AbstractWorkout $workout
@@ -94,14 +109,56 @@ abstract class AbstractWorkoutStep extends AbstractBaseEntity
      */
     public function setEstimatedDuration(int $estimatedDuration): void
     {
-        try {
         $workoutDuration = $this->getWorkout()->getEstimatedDuration();
         $this->getWorkout()->setEstimatedDuration($workoutDuration - $this->estimatedDuration + $estimatedDuration);
-        } catch (\Exception $e) {
-            var_dump([$this->getId(), $this->getType()]); die;
-        }
 
         $this->estimatedDuration = $estimatedDuration;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getStartingDate(): ?\DateTime
+    {
+        return $this->startingDate;
+    }
+
+    /**
+     * @param \DateTime|null $startingDate
+     */
+    public function setStartingDate(?\DateTime $startingDate): void
+    {
+        if (null !== $startingDate) {
+            $this->setStatus(self::STATUS_STARTED);
+        } else {
+            $this->setStatus(self::STATUS_ACTIVE);
+        }
+
+        $this->startingDate = $startingDate;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getCompletionDate(): ?\DateTime
+    {
+        return $this->completionDate;
+    }
+
+    /**
+     * @param \DateTime|null $completionDate
+     */
+    public function setCompletionDate(?\DateTime $completionDate): void
+    {
+        if (null !== $completionDate) {
+            $this->setStatus(self::STATUS_DONE);
+        } elseif (null !== $this->getStartingDate()) {
+            $this->setStatus(self::STATUS_STARTED);
+        } else {
+            $this->setStatus(self::STATUS_ACTIVE);
+        }
+
+        $this->completionDate = $completionDate;
     }
 
     /**

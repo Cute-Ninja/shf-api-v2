@@ -1,8 +1,10 @@
 [{
   "duration": 0,
-  "id": 12,
+  "id": 19,
   "position": 1,
   "estimatedDuration": 1800,
+  "startingDate": null,
+  "completionDate": null,
   "workout": {
     "scheduledDate": "2099-01-01T00:00:00+00:00",
     "owner": {
@@ -22,7 +24,7 @@
     "id": 7,
     "name": "Half marathon preparation (1)",
     "difficulty": 3,
-    "estimatedDuration": 3645,
+    "estimatedDuration": 5400,
     "calories": null,
     "experience": null,
     "source": "community",
@@ -42,51 +44,11 @@
   "type": "duration"
 }, {
   "duration": 0,
-  "id": 27,
+  "id": 15,
   "position": 2,
-  "estimatedDuration": 45,
-  "workout": {
-    "scheduledDate": "2099-01-01T00:00:00+00:00",
-    "owner": {
-      "id": 1,
-      "username": "ghriim",
-      "email": "ghriim@fakemail.com",
-      "roles": ["USER"],
-      "bodyMeasurement": {
-        "id": 1,
-        "height": 183,
-        "weight": 77,
-        "restingHeartRate": 70,
-        "status": "active"
-      },
-      "status": "active"
-    },
-    "id": 7,
-    "name": "Half marathon preparation (1)",
-    "difficulty": 3,
-    "estimatedDuration": 3645,
-    "calories": null,
-    "experience": null,
-    "source": "community",
-    "favoriteId": null,
-    "status": "scheduled",
-    "type": "personal"
-  },
-  "exercise": {
-    "id": 2,
-    "name": "Walking rest",
-    "type": "rest",
-    "cover": "http:\/\/via.placeholder.com\/200x150",
-    "videoLink": null,
-    "status": "active"
-  },
-  "status": "active",
-  "type": "rest"
-}, {
-  "duration": 0,
-  "id": 13,
-  "position": 3,
   "estimatedDuration": 1800,
+  "startingDate": null,
+  "completionDate": null,
   "workout": {
     "scheduledDate": "2099-01-01T00:00:00+00:00",
     "owner": {
@@ -106,7 +68,7 @@
     "id": 7,
     "name": "Half marathon preparation (1)",
     "difficulty": 3,
-    "estimatedDuration": 3645,
+    "estimatedDuration": 5400,
     "calories": null,
     "experience": null,
     "source": "community",
@@ -122,6 +84,50 @@
     "videoLink": null,
     "status": "active"
   },
-  "status": "active",
+  "status": "done",
+  "type": "duration"
+}, {
+  "duration": 0,
+  "id": 20,
+  "position": 3,
+  "estimatedDuration": 1800,
+  "startingDate": null,
+  "completionDate": null,
+  "workout": {
+    "scheduledDate": "2099-01-01T00:00:00+00:00",
+    "owner": {
+      "id": 1,
+      "username": "ghriim",
+      "email": "ghriim@fakemail.com",
+      "roles": ["USER"],
+      "bodyMeasurement": {
+        "id": 1,
+        "height": 183,
+        "weight": 77,
+        "restingHeartRate": 70,
+        "status": "active"
+      },
+      "status": "active"
+    },
+    "id": 7,
+    "name": "Half marathon preparation (1)",
+    "difficulty": 3,
+    "estimatedDuration": 5400,
+    "calories": null,
+    "experience": null,
+    "source": "community",
+    "favoriteId": null,
+    "status": "scheduled",
+    "type": "personal"
+  },
+  "exercise": {
+    "id": 14,
+    "name": "Run (objective duration)",
+    "type": "duration",
+    "cover": "http:\/\/via.placeholder.com\/200x150",
+    "videoLink": null,
+    "status": "active"
+  },
+  "status": "started",
   "type": "duration"
 }]
