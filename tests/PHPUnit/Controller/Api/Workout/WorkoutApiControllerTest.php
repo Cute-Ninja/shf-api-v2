@@ -2,6 +2,7 @@
 
 namespace App\Tests\PHPUnit\Controller\Api\Workout;
 
+use App\Entity\Workout\PersonalWorkout;
 use App\Entity\Workout\ReferenceWorkout;
 use App\Tests\PHPUnit\Controller\Api\AbstractBaseApiTest;
 use Symfony\Component\HttpFoundation\Response;
@@ -246,6 +247,54 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
             $this->loadDataFromJsonFile('json/workouts_half_preparation_1_undo_complete'),
             json_decode($response->getContent(), true)
         );
+
+        $this->resetDB();
+    }
+
+    /**
+     * @group alterDB
+     */
+    public function testPatchScheduleUnauthorized(): void
+    {
+        $client = static::createClient();
+        $this->buildPatchRequest($client, 'workouts/schedule', ['id' => 1]);
+
+        $response = $client->getResponse();
+
+        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
+    }
+
+    /**
+     * @group alterDB
+     */
+    public function testPatchScheduleAuthorizedWithoutDate(): void
+    {
+        $client = $this->buildAuthenticatedUser();
+        $this->buildPatchRequest($client, 'workouts/schedule', ['id' => 7]); // Personal workout
+
+        $response = $client->getResponse();
+        $responseContent = json_decode($response->getContent(), true);
+
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertEquals($responseContent['status'], PersonalWorkout::STATUS_SCHEDULED);
+
+        $this->resetDB();
+    }
+
+    /**
+     * @group alterDB
+     */
+    public function testPatchScheduleAuthorizedWithDate(): void
+    {
+        $client = $this->buildAuthenticatedUser();
+        $this->buildPatchRequest($client, 'workouts/schedule', ['id' => 1, 'scheduledDate' => '2099-01-01 00:00:00']); // Reference Workout
+
+        $response = $client->getResponse();
+        $responseContent = json_decode($response->getContent(), true);
+
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertEquals($responseContent['status'], PersonalWorkout::STATUS_SCHEDULED);
+        $this->assertEquals($responseContent['scheduledDate'], '2099-01-01T00:00:00+00:00');
 
         $this->resetDB();
     }
