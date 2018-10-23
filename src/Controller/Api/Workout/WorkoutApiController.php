@@ -7,6 +7,7 @@ use App\Controller\Api\StandardApiInterface;
 use App\Entity\Workout\AbstractWorkout;
 use App\Entity\Workout\ReferenceWorkout;
 use App\Exception\Http\NotImplementedHttpException;
+use App\Utils\StringUtils;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;
@@ -17,10 +18,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class WorkoutApiController extends AbstractApiController implements StandardApiInterface
 {
-    private const PATCH_ACTION_COMPLETE = 'complete';
-    private const PATCH_ACTION_UNDO = 'undo-complete';
-    private const PATCH_ACTION_SCHEDULE = 'schedule';
-
     /**
      * @var Request $request
      *
@@ -214,24 +211,16 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      */
     public function patch(Request $request, string $action): Response
     {
-        $helper    = $this->get('shf_api.action_helper.workout.patch');
-        $workoutId = $request->query->get('id');
-
+        $helper = $this->get('shf_api.action_helper.workout.patch');
         try {
-            if (self::PATCH_ACTION_COMPLETE === $action) {
-                $workout = $helper->completeWorkout($workoutId);
-            } elseif (self::PATCH_ACTION_UNDO === $action) {
-                $workout = $helper->undoCompleteWorkout($workoutId);
-            } elseif (self::PATCH_ACTION_SCHEDULE === $action) {
-                $dateAsString = $request->query->get('scheduledDate');
-                $workout = $helper->scheduleWorkout(
-                    $this->getUser(),
-                    $workoutId,
-                    $dateAsString ? new \DateTime($dateAsString) : null
-                );
-            } else {
-                return $this->getServerErrorResponseBuilder()->notImplemented();
-            }
+            $workoutId    = $request->query->get('id');
+            $dateAsString = $request->query->get('scheduledDate');
+            $extraParams  = [
+                'user' => $this->getUser(),
+                'scheduledDate' => $dateAsString ? new \DateTime($dateAsString) : null
+            ];
+
+            $workout = $helper->doPatchAction($action, $workoutId, $extraParams);
 
             $this->getEntityManager()->flush();
 
@@ -240,9 +229,13 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
                 $this->getSerializationGroup($request)
             );
         }  catch (NotFoundHttpException $exception) {
-            return $this->getClientErrorResponseBuilder()->notFound();
+            $errorResponse = $this->getClientErrorResponseBuilder()->notFound();
         } catch (AccessDeniedHttpException $exception) {
-            return $this->getClientErrorResponseBuilder()->forbidden();
+            $errorResponse = $this->getClientErrorResponseBuilder()->forbidden();
+        } catch (NotImplementedHttpException $exception) {
+            $errorResponse = $this->getServerErrorResponseBuilder()->notImplemented();
         }
+
+        return $errorResponse;
     }
 }

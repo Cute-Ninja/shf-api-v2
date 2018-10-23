@@ -5,16 +5,6 @@ namespace App\Utils;
 class StringUtils
 {
     /**
-     * @var int $length
-     *
-     * @return string
-     */
-    public function toSnakeCase(int $length = 10): string
-    {
-        return substr(str_shuffle(str_repeat($x = self::ALLOWED_CHARACTER, ceil($length / strlen($x)))),1, $length);
-    }
-
-    /**
      * @param string $input
      *
      * @return string
