@@ -6,7 +6,7 @@
   "bodyMeasurement": {
     "id": 1,
     "height": 183,
-    "weight": 77,
+    "weight": 77000,
     "restingHeartRate": 70,
     "status": "active"
   },
@@ -19,7 +19,7 @@
   "bodyMeasurement": {
     "id": 2,
     "height": 175,
-    "weight": 75,
+    "weight": 75000,
     "restingHeartRate": 85,
     "status": "active"
   },
@@ -32,7 +32,7 @@
   "bodyMeasurement": {
     "id": 3,
     "height": 175,
-    "weight": 75,
+    "weight": 75000,
     "restingHeartRate": 85,
     "status": "active"
   },
@@ -45,7 +45,7 @@
   "bodyMeasurement": {
     "id": 4,
     "height": 175,
-    "weight": 75,
+    "weight": 75000,
     "restingHeartRate": 85,
     "status": "active"
   },
@@ -58,7 +58,7 @@
   "bodyMeasurement": {
     "id": 5,
     "height": 175,
-    "weight": 75,
+    "weight": 75000,
     "restingHeartRate": 85,
     "status": "active"
   },
@@ -71,7 +71,7 @@
   "bodyMeasurement": {
     "id": 6,
     "height": 175,
-    "weight": 75,
+    "weight": 75000,
     "restingHeartRate": 85,
     "status": "active"
   },
@@ -84,7 +84,7 @@
   "bodyMeasurement": {
     "id": 7,
     "height": 175,
-    "weight": 75,
+    "weight": 75000,
     "restingHeartRate": 85,
     "status": "active"
   },
@@ -97,7 +97,7 @@
   "bodyMeasurement": {
     "id": 8,
     "height": 175,
-    "weight": 75,
+    "weight": 75000,
     "restingHeartRate": 85,
     "status": "active"
   },
@@ -110,7 +110,7 @@
   "bodyMeasurement": {
     "id": 9,
     "height": 175,
-    "weight": 75,
+    "weight": 75000,
     "restingHeartRate": 85,
     "status": "active"
   },
@@ -123,7 +123,7 @@
   "bodyMeasurement": {
     "id": 10,
     "height": 175,
-    "weight": 75,
+    "weight": 75000,
     "restingHeartRate": 85,
     "status": "active"
   },
@@ -136,7 +136,7 @@
   "bodyMeasurement": {
     "id": 11,
     "height": 175,
-    "weight": 75,
+    "weight": 75000,
     "restingHeartRate": 85,
     "status": "active"
   },
