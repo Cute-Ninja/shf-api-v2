@@ -20,6 +20,11 @@ api_body_measurement:
     prefix: /api
     type: rest
 
+api_body_measurement_history:
+    resource: "routes/api/body_measurement_history_api.yaml"
+    prefix: /api
+    type: rest
+
 api_user:
     resource: "routes/api/user_api.yaml"
     type: rest

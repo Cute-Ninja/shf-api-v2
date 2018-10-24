@@ -5,7 +5,7 @@ namespace App\Repository\User;
 use App\Repository\AbstractBaseRepository;
 use Doctrine\ORM\QueryBuilder;
 
-class UserBodyMeasurementRepository extends AbstractBaseRepository
+class UserBodyMeasurementHistoryRepository extends AbstractBaseRepository
 {
     /**
      * @param QueryBuilder    $queryBuilder
@@ -15,10 +15,10 @@ class UserBodyMeasurementRepository extends AbstractBaseRepository
      */
     public function addCriterionUsername(QueryBuilder $queryBuilder, $username): bool
     {
-        $queryBuilder->leftJoin($this->getAlias() . '.user', 'body_measurement_user');
-        $queryBuilder->addSelect('body_measurement_user');
+        $queryBuilder->leftJoin($this->getAlias() . '.user', 'body_measurement_history_user');
+        $queryBuilder->addSelect('body_measurement_history_user');
 
-        return $this->addCriterion($queryBuilder, 'body_measurement_user', 'username', $username);
+        return $this->addCriterion($queryBuilder, 'body_measurement_history_user', 'username', $username);
     }
 
     /**
@@ -26,6 +26,6 @@ class UserBodyMeasurementRepository extends AbstractBaseRepository
      */
     public function getAlias(): string
     {
-        return 'body_measurement';
+        return 'body_measurement_history';
     }
 }

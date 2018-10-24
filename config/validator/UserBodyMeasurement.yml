@@ -10,8 +10,10 @@ App\Entity\User\UserBodyMeasurement:
                 max: 270
         weight:
             - Range:
-                min: 40
-                max: 500
+                min: 40000
+                max: 500000
+                minMessage: Value must be between 40kg and 500kg
+                maxMessage: Value must be between 40kg and 500kg
         restingHeartRate:
             - Range:
                 min: 20

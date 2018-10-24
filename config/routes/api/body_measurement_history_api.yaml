@@ -1,0 +1,30 @@
+api_body_measurement_history_list:
+    path: /users/{username}/body-measurements/history
+    controller: App\Controller\Api\User\UserBodyMeasurementHistoryApiController::getMany
+    methods: GET
+
+api_body_measurement_history_get:
+    path: /users/{username}/body-measurements/history/{id}
+    controller: App\Controller\Api\User\UserBodyMeasurementHistoryApiController::getOne
+    methods: GET
+    requirements:
+        id: \d+
+
+api_body_measurement_history_post:
+    path: /users/{username}/body-measurements/history
+    controller: App\Controller\Api\User\UserBodyMeasurementHistoryApiController::post
+    methods: POST
+
+api_body_measurement_history_put:
+    path: /users/{username}/body-measurements/history/{id}
+    controller: App\Controller\Api\User\UserBodyMeasurementHistoryApiController::put
+    methods: PUT
+    requirements:
+        id: \d+
+
+api_body_measurement_history_delete:
+    path: /users/{username}/body-measurements/history/{id}
+    controller: App\Controller\Api\User\UserBodyMeasurementHistoryApiController::delete
+    methods: DELETE
+    requirements:
+        id: \d+
