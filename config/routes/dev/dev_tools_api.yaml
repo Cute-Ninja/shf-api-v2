@@ -1,4 +1,4 @@
 dev_tools_get_token:
-    path: /token
+    path: /dev/api/token
     controller: App\Controller\Dev\AuthenticationController::getToken
     methods: GET
