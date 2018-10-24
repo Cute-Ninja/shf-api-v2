@@ -1,0 +1,15 @@
+App\Entity\User\UserBodyMeasurementHistory:
+    ghriim_measurement_history_1:
+        __construct: ['@ghriim_measurement']
+        weight: 79000
+        restingHeartRate: 80
+
+    ghriim_measurement_history_2:
+        __construct: ['@ghriim_measurement']
+        weight: 78500
+        restingHeartRate: 78
+
+    ghriim_measurement_history_3:
+        __construct: ['@ghriim_measurement']
+        weight: 77850
+        restingHeartRate: 75

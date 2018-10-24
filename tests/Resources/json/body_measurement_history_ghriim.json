@@ -1,0 +1,19 @@
+[{
+  "id": 1,
+  "height": 183,
+  "weight": 79000,
+  "restingHeartRate": 80,
+  "status": "active"
+}, {
+  "id": 2,
+  "height": 183,
+  "weight": 78500,
+  "restingHeartRate": 78,
+  "status": "active"
+}, {
+  "id": 3,
+  "height": 183,
+  "weight": 77850,
+  "restingHeartRate": 75,
+  "status": "active"
+}]
