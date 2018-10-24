@@ -1,0 +1,70 @@
+App\Entity\Character\CharacterStats:
+    type: entity
+    table: "`character_stats`"
+    indexes:
+        character_stats_character_index:
+          columns: [ character_id ]
+    repositoryClass: App\Repository\Character\CharacterStatsRepository
+    id:
+        id:
+            type: integer
+            length: null
+            unique: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+
+    fields:
+        strength:
+            column: strength
+            type: string
+            unique: false
+            nullable: false
+        constitution:
+            column: constitution
+            type: integer
+            unique: false
+            nullable: false
+        agility:
+            column: agility
+            type: integer
+            unique: false
+            nullable: false
+        intelligence:
+            column: intelligence
+            type: integer
+            unique: false
+            nullable: false
+        wisdom:
+            column: wisdom
+            type: integer
+            unique: false
+            nullable: false
+        currentHP:
+            column: current_hp
+            type: integer
+            unique: false
+            nullable: false
+        maxHP:
+            column: max_hp
+            type: integer
+            unique: false
+            nullable: false
+        currentMP:
+            column: current_mp
+            type: integer
+            unique: false
+            nullable: false
+        maxMP:
+            column: max_mp
+            type: integer
+            unique: false
+            nullable: false
+
+    oneToOne:
+        character:
+            column: character_id
+            targetEntity: App\Entity\Character\Character
+            nullable: false
+            unique: true

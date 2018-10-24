@@ -35,7 +35,7 @@ App\Entity\Workout\AbstractWorkout:
             column: difficulty
             type: integer
             unique: false
-            nullable: true
+            nullable: false
         estimatedDuration:
             column: estimated_duration
             type: integer
@@ -50,7 +50,7 @@ App\Entity\Workout\AbstractWorkout:
             column: experience
             type: integer
             unique: false
-            nullable: true
+            nullable: false
         source:
             column: source
             unique: false

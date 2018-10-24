@@ -4,21 +4,25 @@ App\Entity\Workout\TrainingPlanWorkout:
         source: shf
         creator: "@ghost"
         trainingPlan: "@half_marathon_preparation"
+        difficulty: 1
 
     half_marathon_run_2:
         name: Second run
         source: shf
         creator: "@ghost"
         trainingPlan: "@half_marathon_preparation"
+        difficulty: 1
 
     half_marathon_run_3:
         name: Third run
         source: shf
         creator: "@ghost"
         trainingPlan: "@half_marathon_preparation"
+        difficulty: 2
 
     half_marathon_run_4:
         name: Forth run
         source: shf
         creator: "@ghost"
         trainingPlan: "@half_marathon_preparation"
+        difficulty: 2

@@ -3,11 +3,14 @@
   "username": "ghriim",
   "email": "ghriim@fakemail.com",
   "roles": ["USER"],
-  "bodyMeasurement": {
+  "character": {
     "id": 1,
-    "height": 183,
-    "weight": 77000,
-    "restingHeartRate": 70,
+    "class": "gunslinger",
+    "level": 1,
+    "currentExperience": 0,
+    "nextLevelExperience": 1000,
+    "currentActionPoint": 5,
+    "maxActionPoint": 5,
     "status": "active"
   },
   "status": "active"
@@ -16,11 +19,14 @@
   "username": "user_1",
   "email": "user_1@fakemail.com",
   "roles": ["USER"],
-  "bodyMeasurement": {
+  "character": {
     "id": 2,
-    "height": 175,
-    "weight": 75000,
-    "restingHeartRate": 85,
+    "class": "warrior",
+    "level": 1,
+    "currentExperience": 0,
+    "nextLevelExperience": 1000,
+    "currentActionPoint": 5,
+    "maxActionPoint": 5,
     "status": "active"
   },
   "status": "active"
@@ -29,11 +35,14 @@
   "username": "user_2",
   "email": "user_2@fakemail.com",
   "roles": ["USER"],
-  "bodyMeasurement": {
+  "character": {
     "id": 3,
-    "height": 175,
-    "weight": 75000,
-    "restingHeartRate": 85,
+    "class": "warrior",
+    "level": 1,
+    "currentExperience": 0,
+    "nextLevelExperience": 1000,
+    "currentActionPoint": 5,
+    "maxActionPoint": 5,
     "status": "active"
   },
   "status": "active"
@@ -42,11 +51,14 @@
   "username": "user_3",
   "email": "user_3@fakemail.com",
   "roles": ["USER"],
-  "bodyMeasurement": {
+  "character": {
     "id": 4,
-    "height": 175,
-    "weight": 75000,
-    "restingHeartRate": 85,
+    "class": "warrior",
+    "level": 1,
+    "currentExperience": 0,
+    "nextLevelExperience": 1000,
+    "currentActionPoint": 5,
+    "maxActionPoint": 5,
     "status": "active"
   },
   "status": "active"
@@ -55,11 +67,14 @@
   "username": "user_4",
   "email": "user_4@fakemail.com",
   "roles": ["USER"],
-  "bodyMeasurement": {
+  "character": {
     "id": 5,
-    "height": 175,
-    "weight": 75000,
-    "restingHeartRate": 85,
+    "class": "priest",
+    "level": 1,
+    "currentExperience": 0,
+    "nextLevelExperience": 1000,
+    "currentActionPoint": 5,
+    "maxActionPoint": 5,
     "status": "active"
   },
   "status": "active"
@@ -68,11 +83,14 @@
   "username": "user_5",
   "email": "user_5@fakemail.com",
   "roles": ["USER"],
-  "bodyMeasurement": {
+  "character": {
     "id": 6,
-    "height": 175,
-    "weight": 75000,
-    "restingHeartRate": 85,
+    "class": "priest",
+    "level": 1,
+    "currentExperience": 0,
+    "nextLevelExperience": 1000,
+    "currentActionPoint": 5,
+    "maxActionPoint": 5,
     "status": "active"
   },
   "status": "active"
@@ -81,11 +99,14 @@
   "username": "user_6",
   "email": "user_6@fakemail.com",
   "roles": ["USER"],
-  "bodyMeasurement": {
+  "character": {
     "id": 7,
-    "height": 175,
-    "weight": 75000,
-    "restingHeartRate": 85,
+    "class": "priest",
+    "level": 1,
+    "currentExperience": 0,
+    "nextLevelExperience": 1000,
+    "currentActionPoint": 5,
+    "maxActionPoint": 5,
     "status": "active"
   },
   "status": "active"
@@ -94,11 +115,14 @@
   "username": "user_7",
   "email": "user_7@fakemail.com",
   "roles": ["USER"],
-  "bodyMeasurement": {
+  "character": {
     "id": 8,
-    "height": 175,
-    "weight": 75000,
-    "restingHeartRate": 85,
+    "class": "mage",
+    "level": 1,
+    "currentExperience": 0,
+    "nextLevelExperience": 1000,
+    "currentActionPoint": 5,
+    "maxActionPoint": 5,
     "status": "active"
   },
   "status": "active"
@@ -107,11 +131,14 @@
   "username": "user_8",
   "email": "user_8@fakemail.com",
   "roles": ["USER"],
-  "bodyMeasurement": {
+  "character": {
     "id": 9,
-    "height": 175,
-    "weight": 75000,
-    "restingHeartRate": 85,
+    "class": "mage",
+    "level": 1,
+    "currentExperience": 0,
+    "nextLevelExperience": 1000,
+    "currentActionPoint": 5,
+    "maxActionPoint": 5,
     "status": "active"
   },
   "status": "active"
@@ -120,11 +147,14 @@
   "username": "user_9",
   "email": "user_9@fakemail.com",
   "roles": ["USER"],
-  "bodyMeasurement": {
+  "character": {
     "id": 10,
-    "height": 175,
-    "weight": 75000,
-    "restingHeartRate": 85,
+    "class": "mage",
+    "level": 1,
+    "currentExperience": 0,
+    "nextLevelExperience": 1000,
+    "currentActionPoint": 5,
+    "maxActionPoint": 5,
     "status": "active"
   },
   "status": "active"
@@ -133,11 +163,14 @@
   "username": "user_10",
   "email": "user_10@fakemail.com",
   "roles": ["USER"],
-  "bodyMeasurement": {
+  "character": {
     "id": 11,
-    "height": 175,
-    "weight": 75000,
-    "restingHeartRate": 85,
+    "class": "assassin",
+    "level": 1,
+    "currentExperience": 0,
+    "nextLevelExperience": 1000,
+    "currentActionPoint": 5,
+    "maxActionPoint": 5,
     "status": "active"
   },
   "status": "active"

@@ -3,6 +3,7 @@
 namespace App\Entity\User;
 
 use App\Entity\AbstractBaseEntity;
+use App\Entity\Character\Character;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation as Serializer;
 
@@ -68,11 +69,11 @@ class User extends AbstractBaseEntity implements UserInterface
     protected $roles;
 
     /**
-     * @var UserBodyMeasurement
+     * @var Character
      *
-     * @Serializer\Groups({"user-body-measurement", "admin", "test"})
+     * @Serializer\Groups({"character", "admin", "test"})
      */
-    protected $bodyMeasurement;
+    protected $character;
 
     public function __construct()
     {
@@ -254,18 +255,18 @@ class User extends AbstractBaseEntity implements UserInterface
     }
 
     /**
-     * @return UserBodyMeasurement|null
+     * @return Character
      */
-    public function getBodyMeasurement(): ?UserBodyMeasurement
+    public function getCharacter(): ?Character
     {
-        return $this->bodyMeasurement;
+        return $this->character;
     }
 
     /**
-     * @param UserBodyMeasurement $bodyMeasurement
+     * @param Character $character
      */
-    public function setBodyMeasurement(UserBodyMeasurement $bodyMeasurement): void
+    public function setCharacter(Character $character): void
     {
-        $this->bodyMeasurement = $bodyMeasurement;
+        $this->character = $character;
     }
 }

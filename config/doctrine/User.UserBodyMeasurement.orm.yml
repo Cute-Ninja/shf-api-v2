@@ -15,7 +15,6 @@ App\Entity\User\UserBodyMeasurement:
     oneToOne:
         user:
             targetEntity: App\Entity\User\User
-            inversedBy: bodyMeasurement
             nullable: false
             unique: true
             joinColumn:

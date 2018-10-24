@@ -344,7 +344,7 @@ abstract class AbstractBaseRepository extends EntityRepository implements Reposi
     /**
      * @return array
      */
-    protected function getDefaultSelects(): array
+    public function getDefaultSelects(): array
     {
         return [];
     }

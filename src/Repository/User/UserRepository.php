@@ -60,6 +60,15 @@ class UserRepository extends AbstractBaseRepository implements UserProviderInter
     }
 
     /**
+     * @param QueryBuilder $queryBuilder
+     */
+    public function addSelectCharacter(QueryBuilder $queryBuilder): void
+    {
+        $queryBuilder->leftJoin($this->getAlias() . '.character', 'user_character');
+        $queryBuilder->addSelect('user_character');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getAlias(): string

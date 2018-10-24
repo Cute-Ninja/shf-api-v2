@@ -1,0 +1,55 @@
+App\Entity\Character\Character:
+    type: entity
+    table: "`character`"
+    repositoryClass: App\Repository\Character\CharacterRepository
+    id:
+        id:
+            type: integer
+            length: null
+            unique: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+
+    fields:
+        class:
+            column: class
+            type: string
+            unique: false
+            nullable: false
+        level:
+            column: level
+            type: integer
+            unique: false
+            nullable: false
+        currentExperience:
+            column: current_experience
+            type: integer
+            unique: false
+            nullable: false
+        nextLevelExperience:
+            column: next_level_experience
+            type: integer
+            unique: false
+            nullable: false
+        currentActionPoint:
+            column: current_action_point
+            type: integer
+            unique: false
+            nullable: false
+        maxActionPoint:
+            column: max_action_point
+            type: integer
+            unique: false
+            nullable: false
+
+    oneToOne:
+        user:
+            targetEntity: App\Entity\User\User
+            inversedBy: character
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+            nullable: false
+            unique: true
