@@ -26,6 +26,17 @@ class UserFavoriteWorkoutRepository extends AbstractBaseRepository
 
     /**
      * @param QueryBuilder $queryBuilder
+     * @param int|int[]    $workoutId
+     *
+     * @return bool
+     */
+    public function addCriterionWorkout(QueryBuilder $queryBuilder, $workoutId): bool
+    {
+        return $this->addCriterion($queryBuilder, $this->getAlias(), 'workout', $workoutId);
+    }
+
+    /**
+     * @param QueryBuilder $queryBuilder
      */
     public function addSelectUser(QueryBuilder $queryBuilder): void
     {

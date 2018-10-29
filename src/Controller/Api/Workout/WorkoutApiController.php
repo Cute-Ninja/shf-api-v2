@@ -5,6 +5,7 @@ namespace App\Controller\Api\Workout;
 use App\Controller\Api\AbstractApiController;
 use App\Controller\Api\StandardApiInterface;
 use App\Entity\Workout\AbstractWorkout;
+use App\Entity\Workout\PersonalWorkout;
 use App\Entity\Workout\ReferenceWorkout;
 use App\Exception\Http\NotImplementedHttpException;
 use App\Utils\StringUtils;
@@ -70,6 +71,18 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
     {
         $workout = $this->getWorkoutRepository()
                         ->findOneByCriteria(['id' => $id]);
+
+        if (null !== $workout) {
+            $favorite = $this->getUserFavoriteWorkoutRepository()
+                             ->findOneByCriteria(
+                                 [
+                                     'workout' => $workout->getId(),
+                                     'user'    => $request->get('user')
+                                 ]
+                             );
+
+            $workout->setFavoriteId($favorite ? $favorite->getId() : null);
+        }
 
         return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
             $workout,

@@ -72,7 +72,7 @@ export default class WorkoutStep extends React.Component {
         }
 
         return (
-            <div key={workoutStep.id} uk-grid
+            <div key={workoutStep.id} uk-grid="true"
                  className="uk-grid uk-card uk-card-default uk-grid-collapse uk-margin">
                 <div className="uk-width-auto@m">
                     {cover}

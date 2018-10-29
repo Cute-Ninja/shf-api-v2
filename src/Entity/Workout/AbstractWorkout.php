@@ -72,6 +72,17 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     protected $creator;
 
     /**
+     * @deprecated since 17/08/2018
+     *
+     * Used for serialization only
+     *
+     * @var int
+     *
+     * @Serializer\Groups({"default", "test"})
+     */
+    protected $favoriteId;
+
+    /**
      * @return string
      *
      * @Serializer\Groups({"default", "test"})
@@ -197,5 +208,25 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     public function setCreator(User $creator): void
     {
         $this->creator = $creator;
+    }
+
+    /**
+     * @deprecated since 17/08/2018
+     *
+     * @return int|null
+     */
+    public function getFavoriteId(): ?int
+    {
+        return $this->favoriteId;
+    }
+
+    /**
+     * @deprecated since 17/08/2018
+     *
+     * @param int|null $favoriteId
+     */
+    public function setFavoriteId(?int $favoriteId): void
+    {
+        $this->favoriteId = $favoriteId;
     }
 }

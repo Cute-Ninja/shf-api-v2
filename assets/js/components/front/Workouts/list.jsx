@@ -11,47 +11,7 @@ export default class Workouts extends React.Component {
             workouts: null
         };
 
-        this.addToFavorite = this.addToFavorite.bind(this);
-        this.removeFromFavorite = this.removeFromFavorite.bind(this);
         this.loadWorkouts = this.loadWorkouts.bind(this)
-    }
-
-    addToFavorite(workoutId, index) {
-        Client.post(
-                "front/api/favorite-workouts",
-                {workout: workoutId}
-            )
-            .then(result => {
-                this.updateIsFavoriteField(index, result.id);
-                UIkit.notification('Workout successfully added !', 'success');
-
-            })
-            .catch(error => {
-                UIkit.notification('An error has occurred ! (Code: ' + error + ')', 'danger');
-            });
-    }
-
-    removeFromFavorite(workoutName, favoriteId, index) {
-        UIkit.modal.confirm('Are you sure you want to remove ' + workoutName.toUpperCase() + ' from your favorite workouts ?')
-            .then(() => {
-                Client.deleteOne(
-                    "front/api/favorite-workouts",
-                    favoriteId
-                )
-                .then((result) => {
-                    this.updateIsFavoriteField(index, null);
-                    UIkit.notification(workoutName.toUpperCase() + ' was successfully removed!', 'success');
-                });
-            });
-    }
-
-    updateIsFavoriteField(index, favoriteId) {
-        let workouts = this.state.workouts;
-        workouts[index].favoriteId = favoriteId;
-
-        this.setState({
-            workouts: workouts
-        });
     }
     
     loadWorkouts(source) {
@@ -100,26 +60,12 @@ export default class Workouts extends React.Component {
                         </div>
                     </div>
                 </div>
-                {workouts.map((workout, index) => (
+                {workouts.map((workout) => (
                     <div key={workout.id} className="uk-card uk-card-default uk-margin-bottom">
                         <div className="uk-card-header shf-remove-border-bottom">
                             <div className="uk-grid" uk-grid="true">
-                                <div className="uk-width-expand">
-                                    <h3 className="uk-text-uppercase shf-clickable-neutral">
-                                        <a href={"/front/workouts/" + workout.id}>{workout.name}</a></h3>
-                                </div>
-                                <div className="uk-text-right uk-padding-remove-left shf-clickable">
-                                    {workout.favoriteId ? (
-                                            <i onClick={() => this.removeFromFavorite(workout.name, workout.favoriteId, index)}
-                                                className="shf-padding-left-small material-icons"
-                                                title="Remove from favorite">favorite_border</i>
-                                        ) : (
-                                            <i onClick={() => this.addToFavorite(workout.id, index)}
-                                                className="shf-padding-left-small material-icons"
-                                                title="Add to favorite">favorite</i>
-                                        )
-                                    }
-                                </div>
+                                <h3 className="uk-text-uppercase shf-clickable-neutral">
+                                    <a href={"/front/workouts/" + workout.id}>{workout.name}</a></h3>
                             </div>
                         </div>
                         <div className="uk-card-footer">

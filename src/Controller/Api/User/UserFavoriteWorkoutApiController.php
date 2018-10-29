@@ -40,6 +40,7 @@ class UserFavoriteWorkoutApiController extends AbstractApiController implements 
                         ->findManyByCriteriaBuilder(
                             [
                                 'user'     => $request->get('user'),
+                                'workout' => $request->get('workout')
                             ],
                             ['user', 'workout']
                         );

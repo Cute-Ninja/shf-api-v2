@@ -1,5 +1,6 @@
 import React from 'react';
 import Client from '../../common/Api/Client/index';
+import ToggleFavoriteWorkout from "../FavoriteWorkouts/toggle";
 
 export default class Workout extends React.Component {
     constructor(props) {
@@ -37,7 +38,14 @@ export default class Workout extends React.Component {
         return (
             <div key={workout.id} className="uk-card uk-card-default uk-margin-bottom">
                 <div className="uk-card-header shf-remove-border-bottom">
-                    <h3 className="uk-text-uppercase">{workout.name}</h3>
+                    <div className="uk-grid" uk-grid="true">
+                        <div className="uk-width-expand">
+                            <h3 className="uk-text-uppercase">{workout.name}</h3>
+                        </div>
+                        <div className="uk-text-right uk-padding-remove-left shf-clickable">
+                            <ToggleFavoriteWorkout workout={workout} />
+                        </div>
+                    </div>
                 </div>
                 <div className="uk-card-body">
                     BODY
