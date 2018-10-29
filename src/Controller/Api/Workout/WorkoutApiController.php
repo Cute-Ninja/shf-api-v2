@@ -41,14 +41,8 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
      */
     public function getMany(Request $request): Response
     {
-        $type = $request->get('type');
-
         $actionHelper = $this->get('shf_api.action_helper.workout.get_many');
         $builder      = $actionHelper->getWorkoutBuilder($request);
-
-        if (ReferenceWorkout::TYPE_REFERENCE === $type && $userId = $request->get('user')) {
-            $actionHelper->loadFavoriteWorkoutIds($userId);
-        }
 
         return $this->getSuccessResponseBuilder()->buildMultiObjectResponse(
             $this->paginate($builder, $request),

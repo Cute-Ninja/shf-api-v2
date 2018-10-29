@@ -31,7 +31,6 @@
     "calories": null,
     "experience": 3000,
     "source": "community",
-    "favoriteId": null,
     "status": "scheduled",
     "type": "personal"
   },
@@ -78,7 +77,6 @@
     "calories": null,
     "experience": 3000,
     "source": "community",
-    "favoriteId": null,
     "status": "scheduled",
     "type": "personal"
   },
@@ -125,7 +123,6 @@
     "calories": null,
     "experience": 3000,
     "source": "community",
-    "favoriteId": null,
     "status": "scheduled",
     "type": "personal"
   },

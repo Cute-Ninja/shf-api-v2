@@ -54,19 +54,4 @@ class GetManyWorkoutActionHelper
 
         return $repository->findManyByCriteriaBuilder($params);
     }
-
-    /**
-     * @param int $userId
-     */
-    public function loadFavoriteWorkoutIds(int $userId): void
-    {
-        $repository = $this->entityManager->getRepository(UserFavoriteWorkout::class);
-        $favorites  = $repository->findManyByCriteria(['user' => $userId]);
-
-        if (false === empty($favorites)) {
-            foreach ($favorites as $favorite) {
-                $favorite->getWorkout()->setFavoriteId($favorite->getId());
-            }
-        }
-    }
 }

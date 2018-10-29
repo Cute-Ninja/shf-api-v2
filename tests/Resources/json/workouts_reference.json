@@ -6,7 +6,6 @@
   "calories": null,
   "experience": 4000,
   "source": "shf",
-  "favoriteId": null,
   "status": "active",
   "type": "reference"
 }, {
@@ -17,7 +16,6 @@
   "calories": null,
   "experience": 6000,
   "source": "shf",
-  "favoriteId": null,
   "status": "active",
   "type": "reference"
 }, {
@@ -28,7 +26,6 @@
   "calories": null,
   "experience": 3000,
   "source": "shf",
-  "favoriteId": null,
   "status": "active",
   "type": "reference"
 }, {
@@ -39,7 +36,6 @@
   "calories": null,
   "experience": 5000,
   "source": "shf",
-  "favoriteId": null,
   "status": "active",
   "type": "reference"
 }, {
@@ -50,7 +46,6 @@
   "calories": null,
   "experience": 3000,
   "source": "shf",
-  "favoriteId": null,
   "status": "active",
   "type": "reference"
 }, {
@@ -61,7 +56,6 @@
   "calories": null,
   "experience": 3000,
   "source": "community",
-  "favoriteId": null,
   "status": "active",
   "type": "reference"
 }]
