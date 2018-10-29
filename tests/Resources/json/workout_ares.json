@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "name": "Ares",
+  "difficulty": 4,
+  "estimatedDuration": 390,
+  "calories": null,
+  "experience": 4000,
+  "source": "shf",
+  "favoriteId": 1,
+  "status": "active",
+  "type": "reference"
+}

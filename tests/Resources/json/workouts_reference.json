@@ -7,7 +7,8 @@
   "experience": 4000,
   "source": "shf",
   "status": "active",
-  "type": "reference"
+  "type": "reference",
+  "favoriteId": null
 }, {
   "id": 2,
   "name": "Ares Lvl 2",
@@ -17,7 +18,8 @@
   "experience": 6000,
   "source": "shf",
   "status": "active",
-  "type": "reference"
+  "type": "reference",
+  "favoriteId": null
 }, {
   "id": 3,
   "name": "Hermes",
@@ -27,7 +29,8 @@
   "experience": 3000,
   "source": "shf",
   "status": "active",
-  "type": "reference"
+  "type": "reference",
+  "favoriteId": null
 }, {
   "id": 4,
   "name": "Hermes Lvl 2",
@@ -37,7 +40,8 @@
   "experience": 5000,
   "source": "shf",
   "status": "active",
-  "type": "reference"
+  "type": "reference",
+  "favoriteId": null
 }, {
   "id": 5,
   "name": "Helios",
@@ -47,7 +51,8 @@
   "experience": 3000,
   "source": "shf",
   "status": "active",
-  "type": "reference"
+  "type": "reference",
+  "favoriteId": null
 }, {
   "id": 6,
   "name": "Helios by Ghriim",
@@ -57,5 +62,6 @@
   "experience": 3000,
   "source": "community",
   "status": "active",
-  "type": "reference"
+  "type": "reference",
+  "favoriteId": null
 }]

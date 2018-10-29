@@ -77,7 +77,7 @@ class WorkoutApiController extends AbstractApiController implements StandardApiI
                              ->findOneByCriteria(
                                  [
                                      'workout' => $workout->getId(),
-                                     'user'    => $request->get('user')
+                                     'user'    => $request->get('user'),
                                  ]
                              );
 

@@ -35,11 +35,16 @@ class GetManyWorkoutActionHelper
         $params = [
             'source'     => $request->get('source'),
             'creator'    => $request->get('creator'),
-            'status'     => $request->get('status')
+            'status'     => $request->get('status'),
+
         ];
 
         if (PersonalWorkout::TYPE_PERSONAL === $type) {
             $params['owner'] = $request->get('owner');
+            $params['scheduledBetween'] = [
+                'start' => $request->get('scheduledStart'),
+                'end' => $request->get('scheduledEnd')
+            ];
             $entityClass     = PersonalWorkout::class;
         } elseif (ReferenceWorkout::TYPE_REFERENCE === $type) {
             $entityClass     = ReferenceWorkout::class;

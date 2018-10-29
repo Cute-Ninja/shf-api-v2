@@ -5,7 +5,7 @@ App\Entity\Workout\PersonalWorkout:
         source: community
         creator: "@ghriim"
         owner: "@ghriim"
-        scheduledDate: <(new \DateTime('2099-01-01'))>
+        scheduledDate: <(new \DateTime('2018-10-01'))>
 
 
     ghriim_workout_2:
@@ -14,4 +14,4 @@ App\Entity\Workout\PersonalWorkout:
         source: community
         creator: "@ghriim"
         owner: "@ghriim"
-        scheduledDate: <(new \DateTime('2099-01-08'))>
+        scheduledDate: <(new \DateTime('2018-10-30'))>

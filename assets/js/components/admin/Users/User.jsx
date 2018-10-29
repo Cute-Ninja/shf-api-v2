@@ -42,7 +42,7 @@ export default class User extends React.Component{
             return (
                 <div className="uk-card uk-card-default">
                     <div className="uk-card-header shf-remove-border-bottom">
-                        <div className="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
+                        <div className="uk-grid-small uk-flex-middle uk-grid" uk-grid="true">
                             <div className="uk-width-auto uk-first-column">
                                 <img className="uk-border-circle" src="http://via.placeholder.com/50x50" width="75" height="75" />
                             </div>

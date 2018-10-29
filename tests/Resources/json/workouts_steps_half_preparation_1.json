@@ -32,7 +32,8 @@
     "experience": 3000,
     "source": "community",
     "status": "scheduled",
-    "type": "personal"
+    "type": "personal",
+    "favoriteId": null
   },
   "exercise": {
     "id": 14,
@@ -78,7 +79,8 @@
     "experience": 3000,
     "source": "community",
     "status": "scheduled",
-    "type": "personal"
+    "type": "personal",
+    "favoriteId": null
   },
   "exercise": {
     "id": 14,
@@ -124,7 +126,8 @@
     "experience": 3000,
     "source": "community",
     "status": "scheduled",
-    "type": "personal"
+    "type": "personal",
+    "favoriteId": null
   },
   "exercise": {
     "id": 14,

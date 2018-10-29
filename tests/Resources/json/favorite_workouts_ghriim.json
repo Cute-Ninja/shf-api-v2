@@ -9,7 +9,8 @@
     "experience": 4000,
     "source": "shf",
     "status": "active",
-    "type": "reference"
+    "type": "reference",
+    "favoriteId": null
   },
   "status": "active"
 }, {
@@ -23,7 +24,8 @@
     "experience": 3000,
     "source": "shf",
     "status": "active",
-    "type": "reference"
+    "type": "reference",
+    "favoriteId": null
   },
   "status": "active"
 }]

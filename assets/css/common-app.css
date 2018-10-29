@@ -14,7 +14,7 @@ a:hover {
 }
 
 .shf-border-top {
-    border-top: 1px solid #f6f6f6;
+    border-top: 1px solid #888888;
 }
 
 .shf-remove-border-bottom {
@@ -54,4 +54,8 @@ a:hover {
 .shf-icon-x-large {
     font-size: 5em;
     line-height: 5em;
+}
+
+.shf-ucfirst {
+    text-transform: capitalize;
 }
