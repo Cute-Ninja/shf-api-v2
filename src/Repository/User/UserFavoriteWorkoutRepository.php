@@ -2,6 +2,7 @@
 
 namespace App\Repository\User;
 
+use App\Entity\User\User;
 use App\Entity\User\UserFavoriteWorkout;
 use App\Repository\AbstractBaseRepository;
 use Doctrine\ORM\QueryBuilder;
@@ -28,8 +29,12 @@ class UserFavoriteWorkoutRepository extends AbstractBaseRepository
      */
     public function addSelectUser(QueryBuilder $queryBuilder): void
     {
+        $userAlias = 'favorite_user';
+
         $queryBuilder->leftJoin($this->getAlias() . '.user', 'favorite_user');
         $queryBuilder->addSelect('favorite_user');
+
+        $this->getEntityManager()->getRepository(User::class)->addSelectCharacter($queryBuilder, $userAlias);
     }
 
     /**

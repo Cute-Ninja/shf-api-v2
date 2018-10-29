@@ -111,10 +111,11 @@ class UserBodyMeasurementApiController extends AbstractApiController
             return $this->getClientErrorResponseBuilder()->forbidden();
         }
 
-        $history = new UserBodyMeasurementHistory($user->getBodyMeasurement());
+        $measurement = $this->getUserBodyMeasurementRepository()->findOneByCriteria(['username' => $username]);
+        $history = new UserBodyMeasurementHistory($measurement);
         $form = $this->createForm(
             UserBodyMeasurementType::class,
-            $user->getBodyMeasurement(),
+            $measurement,
             ['method' => 'PUT']
         );
 
@@ -127,7 +128,7 @@ class UserBodyMeasurementApiController extends AbstractApiController
         $this->getEntityManager()->flush();
 
         return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
-            $user->getBodyMeasurement(),
+            $measurement,
             $this->getSerializationGroup($request)
         );
     }

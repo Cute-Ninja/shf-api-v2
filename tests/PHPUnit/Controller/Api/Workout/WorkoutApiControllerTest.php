@@ -120,7 +120,8 @@ class WorkoutApiControllerTest extends AbstractBaseApiTest
             'workouts/personal',
             [
                 'name' => 'test workout',
-                'source' => 'shf'
+                'source' => 'shf',
+                'difficulty' => 3
             ]
         );
 

@@ -15,9 +15,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
         $client = static::createClient();
         $this->buildGetRequest($client, 'users');
 
-        $response = $client->getResponse();
-
-        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
+        $this->assertStatusCodeEquals(Response::HTTP_UNAUTHORIZED, $client->getResponse());
     }
 
     public function testGetManyAuthorized(): void
@@ -27,7 +25,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
 
         $response = $client->getResponse();
 
-        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertStatusCodeEquals(Response::HTTP_OK, $response);
         $this->assertEquals(
             $this->loadDataFromJsonFile('json/users'),
             json_decode($response->getContent(), true)
@@ -39,9 +37,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
         $client = static::createClient();
         $this->buildGetRequest($client, 'users/ghriim');
 
-        $response = $client->getResponse();
-
-        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
+        $this->assertStatusCodeEquals(Response::HTTP_UNAUTHORIZED, $client->getResponse());
     }
 
     public function testGetOneAuthorized(): void
@@ -51,7 +47,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
 
         $response = $client->getResponse();
 
-        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertStatusCodeEquals(Response::HTTP_OK, $response);
         $this->assertEquals($this->loadDataFromJsonFile('json/user_ghriim'), json_decode($response->getContent(), true));
     }
 
@@ -62,7 +58,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
 
         $response = $client->getResponse();
 
-        $this->assertEquals(Response::HTTP_NOT_FOUND, $response->getStatusCode());
+        $this->assertStatusCodeEquals(Response::HTTP_NOT_FOUND, $response);
         $this->assertEmpty($response->getContent());
     }
 
@@ -84,7 +80,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
 
         $response = $client->getResponse();
 
-        $this->assertEquals(Response::HTTP_CREATED, $response->getStatusCode(), $response->getContent());
+        $this->assertStatusCodeEquals(Response::HTTP_CREATED, $response);
         $this->assertNotEmpty($response->getContent());
 
         $this->resetDB();
@@ -104,7 +100,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
 
         $response = $client->getResponse();
 
-        $this->assertEquals(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
+        $this->assertStatusCodeEquals(Response::HTTP_UNPROCESSABLE_ENTITY, $response);
         $this->assertNotEmpty($response->getContent());
     }
 
@@ -119,9 +115,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
             ]
         );
 
-        $response = $client->getResponse();
-
-        $this->assertEquals(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
+        $this->assertStatusCodeEquals(Response::HTTP_UNAUTHORIZED, $client->getResponse());
     }
 
     public function testPutForbidden(): void
@@ -137,7 +131,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
 
         $response = $client->getResponse();
 
-        $this->assertEquals(Response::HTTP_FORBIDDEN, $response->getStatusCode());
+        $this->assertStatusCodeEquals(Response::HTTP_FORBIDDEN, $response);
         $this->assertEmpty($response->getContent());
     }
 
@@ -154,7 +148,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
 
         $response = $client->getResponse();
 
-        $this->assertEquals(Response::HTTP_NOT_FOUND, $response->getStatusCode());
+        $this->assertStatusCodeEquals(Response::HTTP_NOT_FOUND, $response);
         $this->assertEmpty($response->getContent());
     }
 
@@ -175,7 +169,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
 
         $response = $client->getResponse();
 
-        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode(), $response->getContent());
+        $this->assertStatusCodeEquals(Response::HTTP_OK, $response);
         $this->assertNotEmpty($response->getContent());
 
         $this->resetDB();
@@ -195,7 +189,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
         $response = $client->getResponse();
         $errors   = json_decode($response->getContent(), true);
 
-        $this->assertEquals(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
+        $this->assertStatusCodeEquals(Response::HTTP_UNPROCESSABLE_ENTITY, $response);
         $this->assertTrue(array_key_exists('username', $errors));
     }
 
@@ -219,7 +213,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
 
         $response = $client->getResponse();
 
-        $this->assertEquals(Response::HTTP_NO_CONTENT, $response->getStatusCode());
+        $this->assertStatusCodeEquals(Response::HTTP_NO_CONTENT, $response);
         $this->assertEmpty($response->getContent());
 
         $this->resetDB();
@@ -232,7 +226,7 @@ class UserApiControllerTest extends AbstractBaseApiTest
 
         $response = $client->getResponse();
 
-        $this->assertEquals(Response::HTTP_NOT_FOUND, $response->getStatusCode());
+        $this->assertStatusCodeEquals(Response::HTTP_NOT_FOUND, $response);
         $this->assertEmpty($response->getContent());
     }
 }

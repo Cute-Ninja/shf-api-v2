@@ -76,8 +76,7 @@ class UserApiController extends AbstractApiController
     {
         $user = $this->getUserRepository()
                      ->findOneByCriteria(
-                         ['username' => $username],
-                         ['userBodyMeasurement']
+                         ['username' => $username]
                      );
 
         return $this->getSuccessResponseBuilder()->buildSingleObjectResponse(
@@ -104,7 +103,8 @@ class UserApiController extends AbstractApiController
     }
 
     /**
-     * @param Request $request
+     * @param Request       $request
+     * @param UserPersister $persister
      *
      * @return Response
      *
@@ -125,7 +125,7 @@ class UserApiController extends AbstractApiController
      * )
      * @SWG\Tag(name="User")
      */
-    public function registration(Request $request): Response
+    public function registration(Request $request, UserPersister $persister): Response
     {
         if (null !== $request->headers->get('Authorization')) {
             return $this->getClientErrorResponseBuilder()->forbidden();
@@ -143,7 +143,7 @@ class UserApiController extends AbstractApiController
             return $this->getClientErrorResponseBuilder()->jsonResponseFormError($form);
         }
 
-        $this->get('shf_api.action_helper.user.post')->doPostAction($user);
+        $persister->create($user, true);
 
         return $this->getSuccessResponseBuilder()->created($user, $this->getSerializationGroup($request));
     }

@@ -2,9 +2,14 @@
 
 namespace App\Repository\User;
 
+use App\Entity\User\UserBodyMeasurement;
 use App\Repository\AbstractBaseRepository;
 use Doctrine\ORM\QueryBuilder;
 
+/**
+ * @method UserBodyMeasurement findOneByCriteria(array $criteria = [], array $selects = [])
+ * @method UserBodyMeasurement[] findManyByCriteria(array $criteria = [], array $selects = [], array $orders = [], $limit = null): array
+ */
 class UserBodyMeasurementRepository extends AbstractBaseRepository
 {
     /**

@@ -114,9 +114,9 @@ abstract class AbstractWorkout extends AbstractBaseEntity
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getDifficulty(): int
+    public function getDifficulty(): ?int
     {
         return $this->difficulty;
     }

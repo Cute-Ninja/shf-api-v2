@@ -1,0 +1,4 @@
+api_dev_tools:
+    resource: "dev_tools_api.yaml"
+    prefix: /dev/api
+    type: rest

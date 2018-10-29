@@ -52,19 +52,13 @@ class UserRepository extends AbstractBaseRepository implements UserProviderInter
 
     /**
      * @param QueryBuilder $queryBuilder
+     * @param string|null  $alias
      */
-    public function addSelectUserBodyMeasurement(QueryBuilder $queryBuilder): void
+    public function addSelectCharacter(QueryBuilder $queryBuilder, string $alias = null): void
     {
-        $queryBuilder->leftJoin($this->getAlias() . '.bodyMeasurement', 'body_measurement');
-        $queryBuilder->addSelect('body_measurement');
-    }
+        $alias = $alias ?? $this->getAlias();
 
-    /**
-     * @param QueryBuilder $queryBuilder
-     */
-    public function addSelectCharacter(QueryBuilder $queryBuilder): void
-    {
-        $queryBuilder->leftJoin($this->getAlias() . '.character', 'user_character');
+        $queryBuilder->leftJoin($alias . '.character', 'user_character');
         $queryBuilder->addSelect('user_character');
     }
 
@@ -74,6 +68,11 @@ class UserRepository extends AbstractBaseRepository implements UserProviderInter
     public function getAlias(): string
     {
         return 'user';
+    }
+
+    public function getDefaultSelects(): array
+    {
+        return array_merge(['character'], parent::getDefaultSelects());
     }
 
 

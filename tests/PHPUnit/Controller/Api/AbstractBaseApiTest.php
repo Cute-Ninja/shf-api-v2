@@ -28,6 +28,15 @@ abstract class AbstractBaseApiTest extends WebTestCase implements ShfTestInterfa
     }
 
     /**
+     * @param int      $statusCode
+     * @param Response $response
+     */
+    public function assertStatusCodeEquals(int $statusCode, Response $response)
+    {
+        $this->assertEquals($statusCode, $response->getStatusCode(), $response->getContent());
+    }
+
+    /**
      * @param bool $saveUser
      *
      * @return Client

@@ -1,9 +1,4 @@
 services:
-    shf_api.action_helper.user.post:
-        class: App\Controller\Api\User\ActionHelper\PostUserActionHelper
-        autowire: true
-        public: true
-
     shf_api.action_helper.water_tracker_entry.post:
         class: App\Controller\Api\WaterTracker\ActionHelper\PostWaterTrackerEntryActionHelper
         autowire: true

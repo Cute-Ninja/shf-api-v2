@@ -12,11 +12,14 @@
       "username": "ghriim",
       "email": "ghriim@fakemail.com",
       "roles": ["USER"],
-      "bodyMeasurement": {
+      "character": {
         "id": 1,
-        "height": 183,
-        "weight": 77000,
-        "restingHeartRate": 70,
+        "class": "gunslinger",
+        "level": 1,
+        "currentExperience": 0,
+        "nextLevelExperience": 1000,
+        "currentActionPoint": 5,
+        "maxActionPoint": 5,
         "status": "active"
       },
       "status": "active"
@@ -26,7 +29,7 @@
     "difficulty": 3,
     "estimatedDuration": 5400,
     "calories": null,
-    "experience": null,
+    "experience": 3000,
     "source": "community",
     "favoriteId": null,
     "status": "scheduled",
@@ -56,11 +59,14 @@
       "username": "ghriim",
       "email": "ghriim@fakemail.com",
       "roles": ["USER"],
-      "bodyMeasurement": {
+      "character": {
         "id": 1,
-        "height": 183,
-        "weight": 77000,
-        "restingHeartRate": 70,
+        "class": "gunslinger",
+        "level": 1,
+        "currentExperience": 0,
+        "nextLevelExperience": 1000,
+        "currentActionPoint": 5,
+        "maxActionPoint": 5,
         "status": "active"
       },
       "status": "active"
@@ -70,7 +76,7 @@
     "difficulty": 3,
     "estimatedDuration": 5400,
     "calories": null,
-    "experience": null,
+    "experience": 3000,
     "source": "community",
     "favoriteId": null,
     "status": "scheduled",
@@ -100,11 +106,14 @@
       "username": "ghriim",
       "email": "ghriim@fakemail.com",
       "roles": ["USER"],
-      "bodyMeasurement": {
+      "character": {
         "id": 1,
-        "height": 183,
-        "weight": 77000,
-        "restingHeartRate": 70,
+        "class": "gunslinger",
+        "level": 1,
+        "currentExperience": 0,
+        "nextLevelExperience": 1000,
+        "currentActionPoint": 5,
+        "maxActionPoint": 5,
         "status": "active"
       },
       "status": "active"
@@ -114,7 +123,7 @@
     "difficulty": 3,
     "estimatedDuration": 5400,
     "calories": null,
-    "experience": null,
+    "experience": 3000,
     "source": "community",
     "favoriteId": null,
     "status": "scheduled",

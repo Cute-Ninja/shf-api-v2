@@ -101,7 +101,7 @@ class UserBodyMeasurementApiControllerTest extends AbstractBaseApiTest
             'users/ghriim/body-measurements',
             [
                 'height' => 12,
-                'weight' => 85,
+                'weight' => 85000,
             ]
         );
 
@@ -122,7 +122,7 @@ class UserBodyMeasurementApiControllerTest extends AbstractBaseApiTest
             'users/ghriim/body-measurements',
             [
                 'height' => 175,
-                'weight' => 85,
+                'weight' => 85000,
             ]
         );
 
