@@ -67,7 +67,7 @@ export default class WaterTracker extends React.Component {
                 <div className="uk-card-header shf-remove-border-bottom">
                     <div className="uk-card-title uk-clearfix">
                         <div className="uk-float-left">
-                            <h3>Water Tracker</h3>
+                            <h3>WaterTracker</h3>
                         </div>
                         <div className="uk-float-right water-tracker-score">
                             <span id="sum-drank">{waterTracker.sumDrank}</span> / {waterTracker.target}

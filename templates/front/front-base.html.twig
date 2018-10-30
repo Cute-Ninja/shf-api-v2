@@ -17,16 +17,11 @@
                     <ul class="uk-navbar-nav uk-visible@m">
                         {% if app.user %}
                             <li class="uk-navbar-item">
-                                <a href="{{ path('front_page_dashboard') }}" title="Home page">
-                                    <i class="material-icons">home</i>
-                                </a>
-                            </li>
-                            <li class="uk-navbar-item">
                                 <a href="{{ path('front_page_workouts') }}" title="Workouts">
                                     <i class="material-icons">fitness_center</i>
                                 </a>
                             </li>
-                            <li class="uk-navbar-item">
+                            <li class="shf-user-menu uk-navbar-item">
                                 <div class="shf-user-sticker shf-clickable-neutral uk-grid uk-grid-small">
                                     <div className="uk-width-auto uk-first-column">
                                         <img src="https://via.placeholder.com/50x50" title="avatar" class="uk-border-circle" />
@@ -35,9 +30,17 @@
                                         <span class="shf-username">{{ app.user.username }}</span>
                                         <span class="shf-character-summary">{{ app.user.character.class }} - LVL {{ app.user.character.level }}</span>
                                     </div>
+                                    <div class="uk-width-auto" style="padding: 15px 0 0 5px;">
+                                        <i class="material-icons">keyboard_arrow_down</i>
+                                    </div>
                                 </div>
-                                <div uk-dropdown="mode: click">
+                                <div uk-dropdown="mode: click; pos: bottom-right">
                                     <ul class="uk-nav uk-dropdown-nav">
+                                        <li>
+                                            <a href="{{ path('front_page_dashboard') }}" title="Home page">
+                                                <i class="material-icons">home</i> Dashboard
+                                            </a>
+                                        </li>
                                         <li>
                                             <a href="{{ path('front_page_profile') }}" title="Profile">
                                                 <i class="material-icons">person</i> Profil
@@ -53,6 +56,7 @@
                                                 <i class="material-icons">settings</i> Réglages
                                             </a>
                                         </li>
+                                        <li class="uk-nav-divider"></li>
                                         <li>
                                             <a href="{{ path('logout') }}" title="Déconnexion">
                                                 <i class="material-icons">lock</i> Déconnexion
