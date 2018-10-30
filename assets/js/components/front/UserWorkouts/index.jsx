@@ -10,29 +10,29 @@ export default class UserWorkouts extends React.Component {
         super(props);
         this.state = {
             isLoaded: false,
-            daysOfTheMonth: [],
+            daysOfTheWeek: [],
             currentDate: null
         };
 
-        this.getPreviousMonth = this.getPreviousMonth.bind(this);
-        this.getNextMonth     = this.getNextMonth.bind(this);
+        this.getPreviousWeek = this.getPreviousWeek.bind(this);
+        this.getNextWeek     = this.getNextWeek.bind(this);
     }
 
     componentDidMount() {
         this.getScheduledWorkoutPerMonth(new Date());
     }
 
-    getPreviousMonth() {
-        this.getScheduledWorkoutPerMonth(moment(this.state.currentDate).subtract(1, 'month').toDate());
+    getPreviousWeek() {
+        this.getScheduledWorkoutPerMonth(moment(this.state.currentDate).subtract(1, 'week').toDate());
     }
 
-    getNextMonth() {
-        this.getScheduledWorkoutPerMonth(moment(this.state.currentDate).add(1, 'month').toDate());
+    getNextWeek() {
+        this.getScheduledWorkoutPerMonth(moment(this.state.currentDate).add(1, 'week').toDate());
 
     }
 
     getScheduledWorkoutPerMonth(date) {
-        let days = DateUtils.getDaysInMonth(date.getMonth(), date.getFullYear());
+        let days = DateUtils.getDaysInWeek(date);
         Client.getMany(
             "front/api/personal/workouts",
             {
@@ -43,7 +43,7 @@ export default class UserWorkouts extends React.Component {
         )
             .then(
                 (results) => {
-                    let daysOfTheMonth = [];
+                    let daysOfTheWeek = [];
                     days.map(day => {
                         let workout = null;
                         results.map((result, index) => {
@@ -55,15 +55,16 @@ export default class UserWorkouts extends React.Component {
                             }
                         });
 
-                        daysOfTheMonth.push({
+                        daysOfTheWeek.push({
                             date: day,
-                            workout: workout
-                        })
+                            workout: workout,
+                            isCurrent: day.getDate() === (new Date()).getDate()
+                        });
                     });
 
                     this.setState({
                         isLoaded: true,
-                        daysOfTheMonth: daysOfTheMonth,
+                        daysOfTheWeek: daysOfTheWeek,
                         currentDate: date
                     });
                 }
@@ -71,7 +72,7 @@ export default class UserWorkouts extends React.Component {
     }
 
     render() {
-        const {isLoaded, daysOfTheMonth, currentDate} = this.state;
+        const {isLoaded, daysOfTheWeek} = this.state;
         if (!isLoaded) {
             return <div>Loading...</div>;
         }
@@ -80,22 +81,24 @@ export default class UserWorkouts extends React.Component {
             <div>
                 <div className="uk-grid-small uk-flex-middle uk-grid" uk-grid="true">
                     <div className="uk-width-auto">
-                        <a href="#" onClick={() => this.getPreviousMonth()} title="Display previous month planning"
+                        <a href="#" onClick={() => this.getPreviousWeek()} title="Display previous month planning"
                            uk-icon="icon: arrow-left; ratio: 1.2">
                         </a>
                     </div>
                     <div className="uk-width-expand">
-                        <h4 className="shf-ucfirst uk-text-center">{moment(currentDate).format('MMMM')}</h4>
+                        <h4 className="shf-ucfirst uk-text-center">
+                            {moment(daysOfTheWeek[0].date).format('DD MMMM')} - {moment(daysOfTheWeek[daysOfTheWeek.length - 1].date).format(' DD MMMM')}
+                        </h4>
                     </div>
                     <div className="uk-width-auto">
-                        <a href="#" onClick={() => this.getNextMonth()} title="Display next month planning"
+                        <a href="#" onClick={() => this.getNextWeek()} title="Display next month planning"
                            uk-icon="icon: arrow-right; ratio: 1.2">
                         </a>
                     </div>
                 </div>
                 <div>
-                    {daysOfTheMonth.map((dayOfTheMonth, index) => (
-                        <div key={index} className="day-of-the-month">
+                    {daysOfTheWeek.map((dayOfTheMonth, index) => (
+                        <div key={index} className={"day-of-the-month" + (dayOfTheMonth.isCurrent ? " current-day" : "")}>
                             <div><ReactMoment format="dddd DD">{dayOfTheMonth.date}</ReactMoment></div>
                             <div>
                                 {dayOfTheMonth.workout ? (

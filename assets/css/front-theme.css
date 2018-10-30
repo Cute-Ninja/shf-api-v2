@@ -6,3 +6,7 @@ header a.uk-logo, .uk-navbar-nav > li > a, header a.uk-logo:hover, .uk-navbar-na
     border-top: dotted 1px #9c9898;
     padding: 0.5em;
 }
+
+.day-of-the-month.current-day {
+    background-color: #deebfc;
+}
