@@ -16,34 +16,38 @@
                 <div class="uk-navbar-right">
                     <ul class="uk-navbar-nav uk-visible@m">
                         {% if app.user %}
-                            <li>
+                            <li class="uk-navbar-item">
                                 <a href="{{ path('front_page_dashboard') }}" title="Home page">
                                     <i class="material-icons">home</i>
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ path('front_page_profile') }}" title="Profile">
-                                    <i class="material-icons">person</i>
-                                </a>
-                            </li>
-                            <li>
+                            <li class="uk-navbar-item">
                                 <a href="{{ path('front_page_workouts') }}" title="Workouts">
                                     <i class="material-icons">fitness_center</i>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#" title="Notifications">
-                                    <i class="material-icons">notifications</i>
-                                    <span id="notifications-count"></span>
-                                </a>
-                                <div uk-dropdown="mode: click">
-                                    <ul class="uk-nav uk-dropdown-nav"></ul>
+                            <li class="uk-navbar-item">
+                                <div class="shf-user-sticker shf-clickable-neutral uk-grid uk-grid-small">
+                                    <div className="uk-width-auto uk-first-column">
+                                        <img src="https://via.placeholder.com/50x50" title="avatar" class="uk-border-circle" />
+                                    </div>
+                                    <div class="uk-width-auto">
+                                        <span class="shf-username">{{ app.user.username }}</span>
+                                        <span class="shf-character-summary">{{ app.user.character.class }} - LVL {{ app.user.character.level }}</span>
+                                    </div>
                                 </div>
-                            </li>
-                            <li>
-                                <img src="https://via.placeholder.com/50x50" title="avatar" class="uk-border-circle" />
                                 <div uk-dropdown="mode: click">
                                     <ul class="uk-nav uk-dropdown-nav">
+                                        <li>
+                                            <a href="{{ path('front_page_profile') }}" title="Profile">
+                                                <i class="material-icons">person</i> Profil
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" title="Profile">
+                                                <i class="material-icons">local_drink</i> WaterTracker
+                                            </a>
+                                        </li>
                                         <li>
                                             <a href="{{ path('front_page_settings') }}" title="Réglages">
                                                 <i class="material-icons">settings</i> Réglages
@@ -57,8 +61,17 @@
                                     </ul>
                                 </div>
                             </li>
+                            <li class="uk-navbar-item">
+                                <a href="#" title="Notifications">
+                                    <i class="material-icons">notifications</i>
+                                    <span id="notifications-count"></span>
+                                </a>
+                                <div uk-dropdown="mode: click">
+                                    <ul class="uk-nav uk-dropdown-nav"></ul>
+                                </div>
+                            </li>
                         {% elseif app.request.pathinfo != path('login') %}
-                            <li>
+                            <li class="uk-navbar-item">
                                 <a href="{{ path('login') }}" title="Login">Login</a>
                             </li>
                         {% endif %}

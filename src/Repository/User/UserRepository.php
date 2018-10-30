@@ -79,17 +79,18 @@ class UserRepository extends AbstractBaseRepository implements UserProviderInter
     ####################################################################################################################
     #                                               AUTHENTICATION                                                     #
     ####################################################################################################################
-
     /**
      * {@inheritdoc}
      */
     public function loadUserByUsername($username)
     {
-        $queryBuilder = $this->getQueryBuilder();
-        $queryBuilder->andWhere('user.username = :username OR user.email = :username');
-        $queryBuilder->setParameter('username', $username);
+        $qb = $this->getQueryBuilder()
+                   ->leftJoin('user.character', 'user_character')
+                   ->addSelect('user_character')
+                   ->andWhere('user.username = :username OR user.email = :username')
+                   ->setParameter('username', $username);
 
-        $user = $queryBuilder->getQuery()->getOneOrNullResult();
+        $user = $qb->getQuery()->getOneOrNullResult();
         if (null === $user) {
             throw new UsernameNotFoundException(sprintf('User "%s" not found.', $username));
         }

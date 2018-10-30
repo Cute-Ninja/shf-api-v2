@@ -10,7 +10,8 @@ header.uk-navbar-container:not(.uk-navbar-transparent) {
     width: 335px;
 }
 
-.uk-navbar-nav > li > a.uk-button.uk-button-primary {
+.uk-navbar-nav > li > a.uk-button.uk-button-primary,
+.uk-navbar-nav .uk-navbar-item {
     color: #FFF;
 }
 
@@ -21,4 +22,21 @@ header.uk-navbar-container:not(.uk-navbar-transparent) {
 #notifications-count .uk-badge {
     background-color: #ef5350;
     margin: 75% 0 0 -55%;
+}
+
+.user-sticker {
+    font-size: 1.1em;
+}
+
+.shf-user-sticker .shf-username,
+.shf-user-sticker .shf-character-summary {
+    display: block;
+}
+
+.shf-user-sticker .shf-username {
+    font-weight: 700;
+}
+
+.shf-user-sticker .shf-character-summary {
+    text-transform: capitalize;
 }
