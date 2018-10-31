@@ -1,6 +1,8 @@
 import React from 'react';
 import UIkit from "uikit";
 import Client from '../../common/Api/Client/index';
+import Difficulty from "../../common/DisplayFormatter/difficulty";
+import Duration from "../../common/DisplayFormatter/duration";
 
 export default class Workouts extends React.Component {
     constructor(props) {
@@ -60,7 +62,7 @@ export default class Workouts extends React.Component {
                         </div>
                     </div>
                 </div>
-                {workouts.map((workout) => (
+                {workouts.map(workout => (
                     <div key={workout.id} className="uk-card uk-card-default uk-margin-bottom">
                         <div className="uk-card-header shf-remove-border-bottom">
                             <div className="uk-grid" uk-grid="true">
@@ -71,18 +73,17 @@ export default class Workouts extends React.Component {
                         <div className="uk-card-footer">
                             <div className="uk-child-width-expand@s" uk-grid="true">
                                 <div>
-                                    Difficulty: {workout.difficulty}
+                                    <Difficulty value={workout.difficulty} />
                                 </div>
                                 <div>
-                                    <i className="material-icons">timer</i>
-                                    {workout.duration / 60}min
+                                    <Duration value={workout.estimatedDuration} />
                                 </div>
                                 <div>
                                     <i className="material-icons">whatshot</i>
-                                    {workout.calories}
+                                    {workout.calories}kcal
                                 </div>
                                 <div>
-                                    Experience: {workout.experience}
+                                    {workout.experience}xp
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,8 @@
 import React from 'react';
 import Client from '../../common/Api/Client/index';
 import ToggleFavoriteWorkout from "../FavoriteWorkouts/toggle";
+import Difficulty from "../../common/DisplayFormatter/difficulty";
+import Duration from "../../common/DisplayFormatter/duration";
 
 export default class Workout extends React.Component {
     constructor(props) {
@@ -48,7 +50,14 @@ export default class Workout extends React.Component {
                     </div>
                 </div>
                 <div className="uk-card-body">
-                    BODY
+                    <ul>
+                        <li>
+                            <Difficulty value={workout.difficulty} />
+                        </li>
+                        <li>
+                            <Duration value={workout.estimatedDuration} />
+                        </li>
+                    </ul>
                 </div>
                 <div className="uk-card-footer">
                     FOOTER

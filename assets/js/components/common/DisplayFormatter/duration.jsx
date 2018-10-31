@@ -1,43 +1,44 @@
+import React from 'react';
+import DateUtils from "../../common/Utils/DateUtils";
 
-function formatAsArray(durationInSeconds) {
-    let hours = 0;
-    let minutes = 0;
-    let seconds = durationInSeconds;
-
-    if (durationInSeconds > 60) {
-        minutes = Math.floor(durationInSeconds / 60);
-        seconds = durationInSeconds - (minutes * 60);
+export default class Duration extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoaded: false,
+            formattedDuration: null
+        }
     }
 
-    if (minutes > 60) {
-        hours = Math.floor(minutes / 60);
-        minutes = minutes - (hours * 60);
+    componentDidMount() {
+        let [hours, minutes, seconds] = DateUtils.formatDurationAsArray(this.props.value);
+        let formatted = '';
+        if (hours > 0) {
+            formatted = hours + 'h ';
+        }
+
+        if (minutes > 0) {
+            formatted += minutes + 'min ';
+        }
+
+        if (seconds > 0 && minutes < 5) {
+            formatted += seconds + 'sec ';
+        }
+
+        this.setState({
+            isLoaded: true,
+            formattedDuration: formatted
+        })
     }
 
-    return [hours, minutes, seconds];
+    render() {
+        const {isLoaded, formattedDuration} = this.state;
+        if (!isLoaded) {
+            return <div>Loading...</div>;
+        }
+
+        return (
+            <span><i className="material-icons">timer</i> {formattedDuration}</span>
+        )
+    }
 }
-
-function formatAsString(durationInSeconds) {
-    let [hours, minutes, seconds] = formatAsArray(durationInSeconds);
-
-    let formatted = '';
-    if (hours > 0) {
-        formatted = hours + 'h ';
-    }
-
-    if (minutes > 0) {
-        formatted += minutes + 'min ';
-    }
-
-    if (seconds > 0) {
-        formatted += seconds + 'sec ';
-    }
-
-    return formatted;
-}
-
-const Duration = {
-    formatAsString
-};
-
-export default Duration;

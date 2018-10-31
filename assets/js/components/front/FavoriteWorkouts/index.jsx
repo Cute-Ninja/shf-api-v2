@@ -1,6 +1,8 @@
 import React from 'react';
 import UIkit from 'uikit';
 import Client from '../../common/Api/Client/index';
+import Difficulty from "../../common/DisplayFormatter/difficulty";
+import Duration from "../../common/DisplayFormatter/duration";
 
 export default class FavoriteWorkouts extends React.Component {
     constructor(props) {
@@ -74,8 +76,8 @@ export default class FavoriteWorkouts extends React.Component {
                                 <td>
                                     <a href={"/front/workouts/" + favorite.workout.id}>{favorite.workout.name}</a>
                                 </td>
-                                <td>{favorite.workout.difficulty}</td>
-                                <td>{favorite.workout.duration}</td>
+                                <td><Difficulty value={favorite.workout.difficulty} /></td>
+                                <td><Duration value={favorite.workout.estimatedDuration} /></td>
                                 <td>
                                     <i onClick={() => {this.removeFromFavorite(favorite, index)}}
                                        title={"Remove " + (favorite.workout.name).toUpperCase() + " from your favorite workout"}
