@@ -2,6 +2,8 @@
 
 namespace App\Domain\Persister\UserMission;
 
+use App\Utils\Clock;
+
 class UserWeeklyMissionPersister extends AbstractUserMissionPersister
 {
     /**
@@ -11,8 +13,8 @@ class UserWeeklyMissionPersister extends AbstractUserMissionPersister
     {
         return [
             'completedBetween' => [
-                'start' => new \DateTime('monday this week'),
-                'end' => new \DateTime('next monday')
+                'start' => Clock::relativeDate('monday this week'),
+                'end' => Clock::relativeDate('next monday')
             ]
         ];
     }

@@ -5,6 +5,7 @@ namespace App\Handlers\Authentication;
 use App\Entity\User\User;
 use App\Entity\WaterTracker\WaterTracker;
 use App\Repository\WaterTracker\WaterTrackerRepository;
+use App\Utils\Clock;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\RouterInterface;
@@ -64,7 +65,7 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
      */
     private function saveLastLogin(User $user): void
     {
-        $user->setLastLogin(new \DateTime());
+        $user->setLastLogin(Clock::now());
         $this->doctrine->getManager()->persist($user);
     }
 
@@ -78,8 +79,8 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
                                [
                                    'user' => $user->getId(),
                                    'createdBetween' => [
-                                       'start' => new \DateTime('today'),
-                                       'end'   => new \DateTime('tomorrow')
+                                       'start' => Clock::today(),
+                                       'end'   => Clock::tomorrow()
                                    ]
                                ]
                            );

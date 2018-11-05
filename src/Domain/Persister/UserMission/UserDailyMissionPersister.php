@@ -6,6 +6,7 @@ use App\Entity\Mission\Mission;
 use App\Entity\User\User;
 use App\Entity\User\UserMission;
 use App\Entity\WaterTracker\WaterTrackerEntry;
+use App\Utils\Clock;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -42,8 +43,8 @@ class UserDailyMissionPersister extends AbstractUserMissionPersister
     {
         return [
             'createdBetween' => [
-                'start' => new \DateTime('today'),
-                'end' => new \DateTime('tomorrow')
+                'start' => Clock::today(),
+                'end' => Clock::tomorrow()
             ]
         ];
     }

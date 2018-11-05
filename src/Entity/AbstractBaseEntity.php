@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Utils\Clock;
 use Symfony\Component\Serializer\Annotation as Serializer;
 
 abstract class AbstractBaseEntity
@@ -83,7 +84,7 @@ abstract class AbstractBaseEntity
     public function logCreate(): void
     {
         if (null === $this->createdAt) {
-            $date = new \DateTime();
+            $date = Clock::now();
             $this->setCreatedAt($date);
             $this->setUpdatedAt($date);
         }
@@ -91,6 +92,6 @@ abstract class AbstractBaseEntity
 
     public function logUpdate(): void
     {
-        $this->setUpdatedAt(new \DateTime());
+        $this->setUpdatedAt(Clock::now());
     }
 }

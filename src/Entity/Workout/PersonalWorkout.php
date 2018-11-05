@@ -3,6 +3,7 @@
 namespace App\Entity\Workout;
 
 use App\Entity\User\User;
+use App\Utils\Clock;
 use App\Utils\DateUtils;
 use Symfony\Component\Serializer\Annotation as Serializer;
 
@@ -63,7 +64,7 @@ class PersonalWorkout extends AbstractWorkout
         }
 
         if (self::STATUS_COMPLETED === $status && null !== $this->getOwner()) {
-            $this->setCompletionDate(new \DateTime());
+            $this->setCompletionDate(Clock::now());
             if (null !== $this->getOwner()->getCharacter()) {
                 $this->getOwner()->getCharacter()->earnExperience($this->getExperience());
             }
@@ -85,7 +86,7 @@ class PersonalWorkout extends AbstractWorkout
      */
     public function setScheduledDate(?\DateTime $scheduledDate): void
     {
-        if ($this->isSchedulableStatus() && new \DateTime() < $scheduledDate) {
+        if ($this->isSchedulableStatus() && Clock::now() < $scheduledDate) {
             $this->setStatus(self::STATUS_SCHEDULED);
         }
 

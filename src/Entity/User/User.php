@@ -4,6 +4,7 @@ namespace App\Entity\User;
 
 use App\Entity\AbstractBaseEntity;
 use App\Entity\Character\Character;
+use App\Utils\Clock;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation as Serializer;
 
@@ -193,7 +194,7 @@ class User extends AbstractBaseEntity implements UserInterface
     {
         $this->confirmationKey = $confirmationKey;
 
-        $this->setConfirmationKeyExpiration($confirmationKey ? new \DateTime('+1 day') : null);
+        $this->setConfirmationKeyExpiration($confirmationKey ? Clock::relativeDate('+1 day') : null);
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Controller\Api\WaterTracker;
 use App\Controller\Api\AbstractApiController;
 use App\Controller\Api\StandardApiInterface;
 use App\Entity\WaterTracker\WaterTracker;
+use App\Utils\Clock;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;
@@ -96,8 +97,8 @@ class WaterTrackerApiController extends AbstractApiController implements Standar
                                  [
                                      'user' => $request->query->get('user'),
                                      'createdBetween' => [
-                                         'start' => new \DateTime('today'),
-                                         'end'   => new \DateTime('tomorrow')
+                                         'start' => Clock::today(),
+                                         'end'   => Clock::tomorrow()
                                      ]
                                  ],
                                  ['waterTrackerEntry']

@@ -5,6 +5,7 @@ namespace App\Controller\Api\Workout\ActionHelper;
 use App\Entity\Workout\AbstractWorkout;
 use App\Entity\Workout\AbstractWorkoutStep;
 use App\Exception\Http\NotImplementedHttpException;
+use App\Utils\Clock;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -72,7 +73,7 @@ class PatchWorkoutStepActionHelper
             throw new AccessDeniedHttpException();
         }
 
-        $step->setCompletionDate(new \DateTime());
+        $step->setCompletionDate(Clock::now());
 
         $this->entityManager->flush();
 
@@ -118,7 +119,7 @@ class PatchWorkoutStepActionHelper
             throw new AccessDeniedHttpException();
         }
 
-        $step->setStartingDate(new \DateTime());
+        $step->setStartingDate(Clock::now());
 
         $this->entityManager->flush();
 

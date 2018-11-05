@@ -7,6 +7,7 @@ use App\Entity\Workout\AbstractWorkout;
 use App\Entity\Workout\AbstractWorkoutStep;
 use App\Entity\Workout\PersonalWorkout;
 use App\Entity\Workout\ReferenceWorkout;
+use App\Utils\Clock;
 
 class PersonalWorkoutPersister extends AbstractWorkoutPersister
 {
@@ -24,7 +25,7 @@ class PersonalWorkoutPersister extends AbstractWorkoutPersister
             $workout->setOwner($user);
         }
 
-        $workout->setScheduledDate($dateTime ?? new \DateTime());
+        $workout->setScheduledDate($dateTime ?? Clock::now());
 
         return $workout;
     }

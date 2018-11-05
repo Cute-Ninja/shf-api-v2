@@ -4,6 +4,7 @@ namespace App\Entity\User;
 
 use App\Entity\AbstractBaseEntity;
 use App\Entity\Mission\Mission;
+use App\Utils\Clock;
 use Symfony\Component\Serializer\Annotation as Serializer;
 
 class UserMission extends AbstractBaseEntity
@@ -177,7 +178,7 @@ class UserMission extends AbstractBaseEntity
     public function setStatus(string $status): void
     {
         if (self::STATUS_COMPLETED === $status && null === $this->getCompletionDate()) {
-            $this->setCompletionDate(new \DateTime());
+            $this->setCompletionDate(Clock::now());
         }
 
         parent::setStatus($status);

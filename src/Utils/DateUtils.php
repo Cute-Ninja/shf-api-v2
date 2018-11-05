@@ -11,6 +11,6 @@ class DateUtils
      */
     public static function isPassed(\DateTime $date): bool
     {
-        return $date < new \DateTime();
+        return $date < Clock::now();
     }
 }
