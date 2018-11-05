@@ -34,7 +34,7 @@ export default class Duration extends React.Component {
     render() {
         const {isLoaded, formattedDuration} = this.state;
         if (!isLoaded) {
-            return <div>Loading...</div>;
+            return <span>Loading...</span>;
         }
 
         return (

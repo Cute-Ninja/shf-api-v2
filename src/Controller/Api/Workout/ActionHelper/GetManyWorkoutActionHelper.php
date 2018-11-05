@@ -33,9 +33,10 @@ class GetManyWorkoutActionHelper
     {
         $type = $request->get('type');
         $params = [
-            'source'     => $request->get('source'),
-            'creator'    => $request->get('creator'),
-            'status'     => $request->get('status'),
+            'name'     => $request->get('name'),
+            'source'   => $request->get('source'),
+            'creator'  => $request->get('creator'),
+            'status'   => $request->get('status'),
 
         ];
 

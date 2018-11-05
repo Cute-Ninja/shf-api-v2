@@ -16,6 +16,17 @@ class WorkoutRepository extends AbstractBaseRepository
 {
     /**
      * @param QueryBuilder $queryBuilder
+     * @param string       $name
+     *
+     * @return bool
+     */
+    public function addCriterionName(QueryBuilder $queryBuilder, ?string $name): bool
+    {
+        return $this->addCriterionLike($queryBuilder, $this->getAlias(), 'name', $name);
+    }
+
+    /**
+     * @param QueryBuilder $queryBuilder
      * @param string       $type
      *
      * @return bool

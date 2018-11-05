@@ -17,16 +17,15 @@ export default class Workout extends React.Component {
     componentDidMount() {
         Client.getOne(
             "front/api/workouts",
-            this.props.workoutId,
-        )
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        workout: result
-                    });
-                }
-            );
+            this.props.workoutId
+        ).then(
+            (result) => {
+                this.setState({
+                    isLoaded: true,
+                    workout: result
+                });
+            }
+        );
     }
 
     render() {

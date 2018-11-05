@@ -130,7 +130,7 @@ abstract class AbstractBaseRepository extends EntityRepository implements Reposi
 
         $parameter = $alias . '_' . $fieldName;
         $value     = '%' . $value . '%';
-        $queryBuilder->andWhere('$alias.$fieldName LIKE :' . $parameter);
+        $queryBuilder->andWhere("$alias.$fieldName LIKE :" . $parameter);
         $queryBuilder->setParameter($parameter, $value);
         
         return true;

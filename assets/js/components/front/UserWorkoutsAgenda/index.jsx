@@ -5,7 +5,7 @@ import ReactMoment from 'react-moment';
 import moment from 'moment'
 import 'moment/locale/fr';
 
-export default class UserWorkouts extends React.Component {
+export default class UserWorkoutsAgenda extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -40,35 +40,34 @@ export default class UserWorkouts extends React.Component {
                 scheduledStart: moment(days[0]).format('YYYY-MM-DD'),
                 scheduledEnd: moment(days[days.length - 1]).format('YYYY-MM-DD')
             }
-        )
-            .then(
-                (results) => {
-                    let daysOfTheWeek = [];
-                    days.map(day => {
-                        let workout = null;
-                        results.map((result, index) => {
-                            let formattedDay      = moment(day).format('YYYY-MM-DD');
-                            let formattedSchedule = moment(result.scheduledDate).format('YYYY-MM-DD');
-                            if (formattedDay === formattedSchedule) {
-                                workout = result;
-                                results.splice(index, 1);
-                            }
-                        });
-
-                        daysOfTheWeek.push({
-                            date: day,
-                            workout: workout,
-                            isCurrent: day.getDate() === (new Date()).getDate()
-                        });
+        ).then(
+            (results) => {
+                let daysOfTheWeek = [];
+                days.map(day => {
+                    let workout = null;
+                    results.map((result, index) => {
+                        let formattedDay      = moment(day).format('YYYY-MM-DD');
+                        let formattedSchedule = moment(result.scheduledDate).format('YYYY-MM-DD');
+                        if (formattedDay === formattedSchedule) {
+                            workout = result;
+                            results.splice(index, 1);
+                        }
                     });
 
-                    this.setState({
-                        isLoaded: true,
-                        daysOfTheWeek: daysOfTheWeek,
-                        currentDate: date
+                    daysOfTheWeek.push({
+                        date: day,
+                        workout: workout,
+                        isCurrent: day.getDate() === (new Date()).getDate()
                     });
-                }
-            );
+                });
+
+                this.setState({
+                    isLoaded: true,
+                    daysOfTheWeek: daysOfTheWeek,
+                    currentDate: date
+                });
+            }
+        );
     }
 
     render() {

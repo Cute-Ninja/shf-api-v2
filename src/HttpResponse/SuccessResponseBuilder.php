@@ -56,6 +56,7 @@ class SuccessResponseBuilder extends AbstractResponseBuilder
                     'updatedAt' => $callback,
                     'scheduledDate' => $callback,
                     'completionDate' => $callback,
+                    'lastLogin' => $callback
                 ]
             );
 

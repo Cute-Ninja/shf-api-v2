@@ -1,5 +1,7 @@
 admin:
     dashboard:
         title: Admin Dashboard
-    user:
+    users:
         title: Utilisateurs
+    workouts:
+        title: Entraînements

@@ -54,6 +54,11 @@ App\Entity\User\User:
             type: array
             unique: false
             nullable: false
+        lastLogin:
+            column: last_login
+            type: datetime
+            unique: false
+            nullable: true
 
     oneToOne:
         character:

@@ -10,7 +10,7 @@ App\Entity\User\User:
     ghost (extends base_user):
         username: ghost
         email: "ghost\\@shf.com"
-        roles: ["ROLE_ADMIN_DASHBOARD_READ","ROLE_ADMIN_USER_READ","ROLE_ADMIN_USER_WRITE","ROLE_ADMIN_USER_DELETE"]
+        roles: ["ROLE_SUPER_ADMIN"]
         isAdmin: true
 
     ghriim (extends base_player):

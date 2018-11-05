@@ -20,18 +20,17 @@ export default class Workouts extends React.Component {
         Client.getMany(
             "front/api/reference/workouts",
             {source : source}
+        ).then(
+            (result) => {
+                this.setState({
+                    isLoaded: true,
+                    workouts: result
+                });
+            }
         )
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        workouts: result
-                    });
-                }
-            )
-            .catch((errorCode) => {
-                UIkit.notification('An error has occurred ! (Code: ' + errorCode + ')', 'danger');
-            });
+        .catch((errorCode) => {
+            UIkit.notification('An error has occurred ! (Code: ' + errorCode + ')', 'danger');
+        });
     }
 
     componentDidMount() {

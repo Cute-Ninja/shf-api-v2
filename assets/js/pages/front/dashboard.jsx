@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import WaterTrackerToday from '../../components/front/WaterTracker/index';
-import UserWorkouts from '../../components/front/UserWorkouts/index';
+import UserWorkoutsAgenda from '../../components/front/UserWorkoutsAgenda/index';
 import FavoriteWorkouts from '../../components/front/FavoriteWorkouts/index';
 
 ReactDOM.render(
@@ -10,7 +10,7 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-    <UserWorkouts />,
+    <UserWorkoutsAgenda />,
     document.getElementById('scheduled-workouts')
 );
 

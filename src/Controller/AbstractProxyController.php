@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,12 @@ abstract class AbstractProxyController extends Controller
 
         $params = array_merge($extraParams, $request->query->all());
         $params['groups'] = $groups;
-        $params['user']   = $this->getUser()->getId();
+
+        $user = $this->getUser();
+        if ($user instanceof User) {
+            $params = $this->addAdminParams($user, $params);
+            $params = $this->addUserParams($user, $params);
+        }
 
         return $this->forward(
             $controller,
@@ -46,5 +52,35 @@ abstract class AbstractProxyController extends Controller
         }
 
         return $queryGroups . ',' . $proxyGroupsAsString;
+    }
+
+    /**
+     * @param User  $user
+     * @param array $params
+     *
+     * @return array
+     */
+    private function addAdminParams(User $user, array $params): array
+    {
+        if (true === $user->isAdmin()) {
+            $params['groups'] = $params['groups'] . ',' . 'admin';
+        }
+
+        return $params;
+    }
+
+    /**
+     * @param User  $user
+     * @param array $params
+     *
+     * @return array
+     */
+    private function addUserParams(User $user, array $params): array
+    {
+        if (false === $user->isAdmin()) {
+            $params['user'] = $this->getUser()->getId();
+        }
+
+        return $params;
     }
 }

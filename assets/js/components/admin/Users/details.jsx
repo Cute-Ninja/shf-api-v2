@@ -1,4 +1,5 @@
 import React from "react";
+import Client from "../../common/Api/Client";
 
 export default class User extends React.Component{
     constructor(props) {
@@ -15,22 +16,20 @@ export default class User extends React.Component{
         if (this.props.username !== this.state.usernameToLoad) {
             this.setState({usernameToLoad: this.props.username});
 
-            fetch("http://127.0.0.1:8001/admin/api/users/" + this.props.username, {credentials: 'same-origin'})
-                .then(res => res.json())
-                .then(
-                    (result) => {
-                        this.setState({
-                            isLoaded: true,
-                            user: result
-                        });
-                    },
-                    (error) => {
-                        this.setState({
-                            isLoaded: true,
-                            error
-                        });
-                    }
-                );
+            Client.getOne(
+                "admin/api/users",
+                this.props.username,
+                {
+                    "groups": ["lifecycle"]
+                }
+            ).then(
+                (result) => {
+                    this.setState({
+                        isLoaded: true,
+                        user: result
+                    });
+                }
+            );
         }
     }
 
@@ -57,22 +56,23 @@ export default class User extends React.Component{
                     <div className="uk-card-body uk-padding-remove-top">
                         <ul uk-tab="" className="uk-tab">
                             <li aria-expanded="true" className="uk-active"><a href="#">General</a></li>
-                            <li aria-expanded="false" className=""><a href="#">Measurments</a></li>
+                            <li aria-expanded="false" className=""><a href="#">Character</a></li>
                         </ul>
 
                         <div className="uk-switcher">
                             <div>
                                 <ul>
                                     <li>{user.email}</li>
-                                    <li>{new Date(user.createdAt).toLocaleDateString()}</li>
-                                    <li>{new Date(user.updatedAt).toLocaleDateString()}</li>
+                                    <li>Registration: {new Date(user.createdAt).toLocaleDateString()}</li>
+                                    <li>Last update: {new Date(user.updatedAt).toLocaleString()}</li>
+                                    <li>Last login: {user.lastLogin ? new Date(user.lastLogin).toLocaleString() : null}</li>
                                 </ul>
                             </div>
                             <div>
                                 <ul>
-                                    <li>{user.bodyMeasurement.height} cm</li>
-                                    <li>{user.bodyMeasurement.weight} kg</li>
-                                    <li>{user.bodyMeasurement.restingHeartRate} bpm</li>
+                                    <li>{user.character.class} - Lvl {user.character.level}</li>
+                                    <li>{user.character.currentExperience}/{user.character.nextLevelExperience}XP</li>
+                                    <li>{user.character.currentActionPoint}/{user.character.maxActionPoint}PA</li>
                                 </ul>
                             </div>
                         </div>

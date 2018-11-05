@@ -1,5 +1,7 @@
 admin:
     dashboard:
         title: Admib Dashboard
-    user:
+    users:
         title: Users
+    workouts:
+        title: Workouts

@@ -10,7 +10,8 @@ Encore
 
     .addEntry('js/app', './assets/js/app.jsx')
     .addEntry('js/admin-dashboard', './assets/js/pages/admin/dashboard.jsx')
-    .addEntry('js/admin-user', './assets/js/pages/admin/user.jsx')
+    .addEntry('js/admin-users', './assets/js/pages/admin/users.jsx')
+    .addEntry('js/admin-workouts', './assets/js/pages/admin/workouts.jsx')
 
     .addEntry('js/front-dashboard', './assets/js/pages/front/dashboard.jsx')
     .addEntry('js/front-profile', './assets/js/pages/front/profile.jsx')

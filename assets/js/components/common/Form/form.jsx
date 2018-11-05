@@ -4,8 +4,9 @@ export default class FormComponent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit  = this.handleSubmit.bind(this);
         this.resolveErrors = this.resolveErrors.bind(this);
+        this.resetForm     = this.resetForm.bind(this);
     }
 
     handleSubmit(event) {
@@ -18,10 +19,20 @@ export default class FormComponent extends React.Component {
         this.forceUpdate();
     }
 
+    resetForm(event) {
+        event.preventDefault();
+        this.initializeState(this.state.formFields);
+    }
+
     initializeState(formFields) {
         let errors = {};
         let data   = {};
         formFields.map(formField => {
+            let field = document.getElementById(formField);
+            if (null !== field) {
+                field.value = "";
+            }
+
             data[formField]   = '';
             errors[formField] = [];
         });
@@ -30,7 +41,8 @@ export default class FormComponent extends React.Component {
             isLoaded: false,
             successful: false,
             errors: errors,
-            data: data
+            data: data,
+            formFields: formFields
         };
     }
 }

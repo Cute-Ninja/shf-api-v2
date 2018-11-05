@@ -7,10 +7,13 @@
     <script src="{{ asset('build/js/admin-user.js') }}"></script>
 {% endblock %}
 
-{% block title %}{{ parent() }}{{ 'admin.user.title'|trans }}{% endblock %}
+{% block title %}{{ parent() }}{{ 'admin.users.title'|trans }}{% endblock %}
 
 {% block body %}
     <main>
+        <h3>
+            {{ 'admin.users.title'|trans }}
+        </h3>
         <section id="users"></section>
     </main>
 {% endblock %}

@@ -16,11 +16,12 @@
                 <div class="uk-navbar-right">
                     <ul class="uk-navbar-nav uk-visible@m">
                         {% if app.user %}
-                            <li><a href="{{ path('admin_page_dashboard') }}" title="Home page"><span  uk-icon="home"></span></a></li>
-                            <li><a href="{{ path('admin_page_user') }}" title="Users"><span uk-icon="users"></span></a></li>
-                            <li><a href="{{ path('logout') }}" title="Logout"><span uk-icon="sign-out"></span></a></li>
+                            <li><a href="{{ path('admin_page_dashboard') }}" title="Home page"><i class="material-icons">home</i></a></li>
+                            <li><a href="{{ path('admin_page_users') }}" title="Users"><i class="material-icons">people</i></a></li>
+                            <li><a href="{{ path('admin_page_workouts') }}" title="Users"><i class="material-icons">fitness_center</i></a></li>
+                            <li><a href="{{ path('logout') }}" title="Logout"> <i class="material-icons">lock</i></a></li>
                         {% elseif app.request.pathinfo != path('login') %}
-                            <li><a href="{{ path('login') }}" title="Login">Login</a></li>
+                            <a href="{{ path('login') }}" title="Login">Login</a>
                         {% endif %}
                     </ul>
                 </div>

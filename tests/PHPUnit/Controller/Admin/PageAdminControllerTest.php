@@ -43,7 +43,8 @@ class PageAdminControllerTest extends AbstractPageControllerTest
     {
         return [
             ['/admin/dashboard'],
-            ['/admin/user'],
+            ['/admin/users'],
+            ['/admin/workouts'],
         ];
     }
 }

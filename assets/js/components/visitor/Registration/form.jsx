@@ -1,7 +1,7 @@
 import React from 'react';
 import Client from "../../common/Api/Client/index";
 import FormComponent from "../../common/Form/form";
-import FormFieldComponent from "../../common/Form/field";
+import FormInputComponent from "../../common/Form/input";
 
 export default class RegistrationForm extends FormComponent {
     constructor(props) {
@@ -60,13 +60,13 @@ export default class RegistrationForm extends FormComponent {
 
         return (
             <form id="registration-form" method="POST"  onSubmit={this.handleSubmit}>
-                <FormFieldComponent type={'text'} name={'username'} placeholder="Nom d'utilisateur"
+                <FormInputComponent type={'text'} name={'username'} placeholder="Nom d'utilisateur"
                                     data={this.state.data} errors={this.state.errors.username} />
 
-                <FormFieldComponent type={'email'} name={'email'} placeholder="Email"
+                <FormInputComponent type={'email'} name={'email'} placeholder="Email"
                                     data={this.state.data} errors={this.state.errors.email} />
 
-                <FormFieldComponent type={'password'} name={'password'} placeholder="Mot de passe"
+                <FormInputComponent type={'password'} name={'password'} placeholder="Mot de passe"
                                     info={'8 caractères minimum, au moins une majuscule, une minuscule et un chiffre.'}
                                     data={this.state.data} errors={this.state.errors.password} />
 

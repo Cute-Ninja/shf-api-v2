@@ -3,7 +3,12 @@ admin_page_dashboard:
     methods: GET
     controller: App\Controller\Admin\PageAdminController::dashboard
 
-admin_page_user:
-    path: /user
+admin_page_users:
+    path: /users
     methods: GET
-    controller: App\Controller\Admin\PageAdminController::user
+    controller: App\Controller\Admin\PageAdminController::users
+
+admin_page_workouts:
+    path: /workouts
+    methods: GET
+    controller: App\Controller\Admin\PageAdminController::workouts

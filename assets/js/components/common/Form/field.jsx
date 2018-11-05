@@ -19,26 +19,7 @@ export default class FormFieldComponent extends React.Component {
         this.state.data[name] = value;
 
         this.forceUpdate();
-    }
 
-    render() {
-        let info = this.props.info === undefined ? '' : this.props.info;
-
-        return (
-            <div className="uk-margin shf-form-field">
-                <input id={this.props.name} name={this.props.name} value={this.state.data[this.state.name]}
-                       type={this.props.type} placeholder={this.props.placeholder}
-                       onChange={this.handleInputChange}
-                       className="uk-input" />
-                <span className="info">{info}</span>
-                <div id={this.props.name + '-error'}>
-                    <ul>
-                        {this.props.errors.map((error, index) => (
-                            <li key={this.props.name + "-error-" + index}>{error}</li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-        );
+        console.log(this.state);
     }
 }

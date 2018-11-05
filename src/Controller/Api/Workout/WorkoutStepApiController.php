@@ -40,7 +40,14 @@ class WorkoutStepApiController extends AbstractApiController
     public function getMany(Request $request, int $workoutId): Response
     {
         $builder = $this->getWorkoutStepRepository()
-                        ->findManyByCriteriaBuilder(['workout' => $workoutId], ['workout', 'exercise'], ['position' => 'ASC']);
+                        ->findManyByCriteriaBuilder(
+                            [
+                                'workout' => $workoutId,
+                                'type'    => $request->get('type')
+                            ],
+                            ['workout', 'exercise'],
+                            ['position' => 'ASC']
+                        );
 
         return $this->getSuccessResponseBuilder()->buildMultiObjectResponse(
             $this->paginate($builder, $request),

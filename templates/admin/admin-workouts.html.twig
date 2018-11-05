@@ -1,0 +1,19 @@
+{% trans_default_domain 'admin' %}
+
+{% extends 'admin/admin-base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/js/admin-workouts.js') }}"></script>
+{% endblock %}
+
+{% block title %}{{ parent() }}{{ 'admin.workouts.title'|trans }}{% endblock %}
+
+{% block body %}
+    <main>
+        <h3>
+            {{ 'admin.workouts.title'|trans }}
+        </h3>
+        <section id="workouts"></section>
+    </main>
+{% endblock %}

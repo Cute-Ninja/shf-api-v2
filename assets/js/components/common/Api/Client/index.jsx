@@ -107,14 +107,18 @@ function urlEncodeParameters(parametersBag) {
 
     var parameters = [];
     Object.keys(parametersBag).map(function(key) {
-        var parameter = null;
+        let parameter = null;
+        let value     = parametersBag[key];
+
         if (Array.isArray(parametersBag[key])) {
-            parameter = parametersBag[key].join();
+            parameter = value.join();
         } else {
-            parameter = parametersBag[key];
+            parameter = value;
         }
 
-        parameters.push(key + "=" + parameter);
+        if (undefined !== value && '' !== value) {
+            parameters.push(key + "=" + parameter);
+        }
     });
 
     return parameters.join('&')

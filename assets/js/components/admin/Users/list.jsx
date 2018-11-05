@@ -1,5 +1,7 @@
 import React from "react";
-import User from './User';
+import Client from '../../common/Api/Client/index';
+import User from './details';
+import UIkit from "uikit";
 
 export default class Users extends React.Component {
     constructor(props) {
@@ -15,22 +17,16 @@ export default class Users extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://127.0.0.1:8001/admin/api/users", {credentials: 'same-origin'})
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        users: result
-                    });
-                },
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            );
+        Client.getMany(
+            "admin/api/users"
+        ).then(
+            (result) => {
+                this.setState({
+                    isLoaded: true,
+                    users: result
+                });
+            }
+        );
     }
 
     toggleUser(username) {
@@ -49,18 +45,22 @@ export default class Users extends React.Component {
             <div className="uk-grid">
                 <div className="uk-width-1-2">
                     <div className="uk-card uk-card-default">
-                        <div className="uk-card-header shf-remove-border-bottom">
-                            <h3 className="uk-card-title">Users</h3>
-                        </div>
                         <table className="uk-table uk-table-divider uk-table-hover uk-table-middle uk-margin-remove-top">
                             <thead>
-
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Class / Level</th>
+                                    <th>XP</th>
+                                    <th>PA</th>
+                                </tr>
                             </thead>
                             <tbody>
                             {users.map(user => (
                                 <tr key={user.username} onClick={() => {this.toggleUser(user.username)}} className="shf-clickable-neutral">
                                     <td>{user.username}</td>
-                                    <td>{user.status}</td>
+                                    <td>{user.character.class} - Lvl {user.character.level}</td>
+                                    <td>{user.character.currentExperience}/{user.character.nextLevelExperience}XP</td>
+                                    <td>{user.character.currentActionPoint}/{user.character.maxActionPoint}PA</td>
                                 </tr>
                             ))}
                             </tbody>

@@ -2,11 +2,11 @@
 
 namespace App\Controller\Admin\User;
 
-use App\Controller\Api\AbstractApiController;
+use App\Controller\AbstractProxyController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserProxyController extends AbstractApiController
+class UserProxyController extends AbstractProxyController
 {
     /**
      * @param Request $request
@@ -15,9 +15,10 @@ class UserProxyController extends AbstractApiController
      */
     public function getMany(Request $request): Response
     {
-        $request->query->set('groups', 'user-body-measurement');
-
-        return $this->forward('App\Controller\Api\User\UserApiController:getMany');
+        return $this->forwardToApi(
+            $request,
+            'App\Controller\Api\User\UserApiController:getMany'
+        );
     }
 
     /**
@@ -30,6 +31,10 @@ class UserProxyController extends AbstractApiController
     {
         $request->query->set('groups', 'admin,lifecycle');
 
-        return $this->forward('App\Controller\Api\User\UserApiController:getOne', ['username' => $username]);
+        return $this->forwardToApi(
+            $request,
+            'App\Controller\Api\User\UserApiController:getOne',
+            ['username' => $username]
+        );
     }
 }

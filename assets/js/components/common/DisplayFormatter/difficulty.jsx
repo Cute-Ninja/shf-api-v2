@@ -32,15 +32,15 @@ export default class Difficulty extends React.Component {
     render() {
         const {isLoaded, stars} = this.state;
         if (!isLoaded) {
-            return <div>Loading...</div>;
+            return <span>Loading...</span>;
         }
 
         return (
-            <div>
-                {stars.map(star => (
-                    <i className="material-icons">{star}</i>
+            <span>
+                {stars.map((star, index) => (
+                    <i key={index} className="material-icons">{star}</i>
                 ))}
-            </div>
+            </span>
         )
     }
 }
