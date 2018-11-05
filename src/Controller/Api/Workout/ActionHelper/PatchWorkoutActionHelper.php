@@ -48,10 +48,6 @@ class PatchWorkoutActionHelper
             return $this->completeWorkout($workoutId);
         }
 
-        if (self::PATCH_ACTION_UNDO === $action) {
-            return $this->undoCompleteWorkout($workoutId);
-        }
-
         if (self::PATCH_ACTION_SCHEDULE === $action) {
             return $this->scheduleWorkout($workoutId, $extraParams['user'], $extraParams['scheduledDate']);
         }
@@ -91,26 +87,6 @@ class PatchWorkoutActionHelper
                 PersonalWorkout::STATUS_COMPLETED
             );
 
-        }
-
-        throw new AccessDeniedHttpException();
-    }
-
-    /**
-     * @param int $workoutId
-     *
-     * @return AbstractWorkout
-     *
-     * @throws NotFoundHttpException|AccessDeniedHttpException
-     */
-    protected function undoCompleteWorkout(int $workoutId): AbstractWorkout
-    {
-        $workout = $this->getWorkout($workoutId);
-        if ($workout instanceof PersonalWorkout) {
-            return $this->personalWorkoutPersister->doStatusUpdate(
-                $workout,
-                PersonalWorkout::STATUS_ACTIVE
-            );
         }
 
         throw new AccessDeniedHttpException();

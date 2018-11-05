@@ -62,8 +62,11 @@ class PersonalWorkout extends AbstractWorkout
             }
         }
 
-        if (self::STATUS_COMPLETED === $status) {
+        if (self::STATUS_COMPLETED === $status && null !== $this->getOwner()) {
             $this->setCompletionDate(new \DateTime());
+            if (null !== $this->getOwner()->getCharacter()) {
+                $this->getOwner()->getCharacter()->earnExperience($this->getExperience());
+            }
         }
 
         parent::setStatus($status);

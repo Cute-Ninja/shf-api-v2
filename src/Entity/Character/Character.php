@@ -9,7 +9,7 @@ use Symfony\Component\Serializer\Annotation as Serializer;
 class Character extends AbstractBaseEntity
 {
     private const DEFAULT_LEVEL = 1;
-    private const EXPERIENCE_FOR_LVL_2 = 1000;
+    private const DEFAULT_LEVEL_EXPERIENCE = 1000;
     private const DEFAULT_ACTION_POINT = 5;
 
     /**
@@ -47,7 +47,7 @@ class Character extends AbstractBaseEntity
      *
      * @Serializer\Groups({"default", "test"})
      */
-    protected $nextLevelExperience = self::EXPERIENCE_FOR_LVL_2;
+    protected $nextLevelExperience = self::DEFAULT_LEVEL_EXPERIENCE;
 
 
     /**
@@ -64,11 +64,20 @@ class Character extends AbstractBaseEntity
      */
     protected $maxActionPoint = self::DEFAULT_ACTION_POINT;
 
-
     /**
      * @var User
      */
     protected $user;
+
+    /**
+     * Character constructor.
+     *
+     * @param User $user
+     */
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
 
     /**
      * @return int
@@ -76,14 +85,6 @@ class Character extends AbstractBaseEntity
     public function getId(): int
     {
         return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
     }
 
     /**
@@ -111,27 +112,11 @@ class Character extends AbstractBaseEntity
     }
 
     /**
-     * @param int $level
-     */
-    public function setLevel(int $level): void
-    {
-        $this->level = $level;
-    }
-
-    /**
      * @return int
      */
     public function getCurrentExperience(): int
     {
         return $this->currentExperience;
-    }
-
-    /**
-     * @param int $currentExperience
-     */
-    public function setCurrentExperience(int $currentExperience): void
-    {
-        $this->currentExperience = $currentExperience;
     }
 
     /**
@@ -143,27 +128,11 @@ class Character extends AbstractBaseEntity
     }
 
     /**
-     * @param int $nextLevelExperience
-     */
-    public function setNextLevelExperience(int $nextLevelExperience): void
-    {
-        $this->nextLevelExperience = $nextLevelExperience;
-    }
-
-    /**
      * @return int
      */
     public function getCurrentActionPoint(): int
     {
         return $this->currentActionPoint;
-    }
-
-    /**
-     * @param int $currentActionPoint
-     */
-    public function setCurrentActionPoint(int $currentActionPoint): void
-    {
-        $this->currentActionPoint = $currentActionPoint;
     }
 
     /**
@@ -175,26 +144,75 @@ class Character extends AbstractBaseEntity
     }
 
     /**
-     * @param int $maxActionPoint
+     * @return Character
      */
-    public function setMaxActionPoint(int $maxActionPoint): void
+    public function levelUp(): Character
     {
-        $this->maxActionPoint = $maxActionPoint;
+        $this->level = $this->getLevel() + 1;
+        $this->maxActionPoint = $this->calculateMaxActionPoint();
+        $this->nextLevelExperience = $this->calculateNextLevelExperience();
+
+        return $this;
     }
 
     /**
-     * @return User
+     * @param int $experience
+     *
+     * @return Character
      */
-    public function getUser(): User
+    public function earnExperience(int $experience): Character
     {
-        return $this->user;
+        $this->currentExperience = $this->getCurrentExperience() + $experience;
+        if ($this->getCurrentExperience() >= $this->getNextLevelExperience()) {
+            $this->levelUp();
+        }
+
+        return $this;
     }
 
     /**
-     * @param User $user
+     * @param int $actionPoint
+     *
+     * @return int
      */
-    public function setUser(User $user): void
+    public function spendActionPoint(int $actionPoint): int
     {
-        $this->user = $user;
+        $this->currentActionPoint = $this->getCurrentActionPoint() - $actionPoint;
+
+        return $this->getCurrentActionPoint();
+    }
+
+    /**
+     * @param int $actionPoint
+     *
+     * @return int
+     */
+    public function earnActionPoint(int $actionPoint): int
+    {
+        $this->currentActionPoint = $this->getCurrentActionPoint() + $actionPoint;
+
+        return $this->getCurrentActionPoint();
+    }
+
+    /**
+     * @return int
+     */
+    protected function calculateNextLevelExperience(): int
+    {
+        $nextLevelXP =  ($this->getLevel() * self::DEFAULT_LEVEL_EXPERIENCE) * 1.5;
+
+        return $this->getNextLevelExperience() + $nextLevelXP;
+    }
+
+    /**
+     * Earn 1 ActionPoint every other level
+     *
+     * @return int
+     */
+    protected function calculateMaxActionPoint(): int
+    {
+        $addMaxActionPoint = ($this->getLevel() % 2) === 0 ? 1 : 0;
+
+        return $this->getMaxActionPoint() + $addMaxActionPoint;
     }
 }
