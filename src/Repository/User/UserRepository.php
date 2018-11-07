@@ -27,6 +27,16 @@ class UserRepository extends AbstractBaseRepository implements UserProviderInter
     {
         return $this->addCriterion($queryBuilder, $this->getAlias(), 'username', $username);
     }
+    /**
+     * @param QueryBuilder    $queryBuilder
+     * @param string|string[] $username
+     *
+     * @return bool
+     */
+    public function addCriterionUsernameLike(QueryBuilder $queryBuilder, $username): bool
+    {
+        return $this->addCriterionLike($queryBuilder, $this->getAlias(), 'username', $username);
+    }
 
     /**
      * @param QueryBuilder $queryBuilder

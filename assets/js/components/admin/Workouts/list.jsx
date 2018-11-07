@@ -3,7 +3,6 @@ import Client from '../../common/Api/Client/index';
 import FormSelectComponent from "../../common/Form/select";
 import FormInputComponent from "../../common/Form/input";
 import FormComponent from "../../common/Form/form";
-import UIkit from "uikit";
 import Difficulty from "../../common/DisplayFormatter/difficulty";
 import Duration from "../../common/DisplayFormatter/duration";
 
@@ -30,17 +29,13 @@ export default class Workouts extends FormComponent {
             this.state.data
         ).then(
             (result) => {
-                console.log(result);
                 this.setState({
                     isLoaded: true,
                     workouts: result.data,
                     workoutsCount: result.count
                 });
             }
-        )
-        .catch((errorCode) => {
-            UIkit.notification('An error has occurred ! (Code: ' + errorCode + ')', 'danger');
-        });
+        );
     }
 
     componentDidMount() {
@@ -67,13 +62,13 @@ export default class Workouts extends FormComponent {
                         <div className="uk-grid" uk-grid="true">
                             <div className="uk-width-1-3">
                                 <FormInputComponent type={'text'} name={'name'} label="Workout" placeholder="Partial name allowed"
-                                                data={this.state.data} errors={this.state.errors.source} />
+                                                data={this.state.data} errors={this.state.errors.name} />
                             </div>
 
                             <div className="uk-width-1-3">
                                 <FormSelectComponent name={'source'} label="Source"
-                                                 data={this.state.data} errors={this.state.errors.source}
-                                                 options={[{label: 'All', value: ''}, {label: 'SHF', value: 'shf'}, {label: 'Community', value: 'community'}]} />
+                                                 data={this.state.data} errors={this.state.errors.source} nullable={true}
+                                                 options={[{label: 'SHF', value: 'shf'}, {label: 'Community', value: 'community'}]} />
                             </div>
                         </div>
                     </div>
@@ -103,14 +98,14 @@ export default class Workouts extends FormComponent {
                             </thead>
                             <tbody>
                                 {workouts.map(workout => (
-                                <tr key={workout.id}>
-                                    <td>{workout.name}</td>
-                                    <td><Difficulty value={workout.difficulty} /></td>
-                                    <td><Duration value={workout.estimatedDuration} /></td>
-                                    <td>{workout.experience}xp</td>
-                                    <td>{workout.calories}kcal</td>
-                                    <td>{workout.source}</td>
-                                </tr>
+                                    <tr key={workout.id}>
+                                        <td>{workout.name}</td>
+                                        <td><Difficulty value={workout.difficulty} /></td>
+                                        <td><Duration value={workout.estimatedDuration} /></td>
+                                        <td>{workout.experience}xp</td>
+                                        <td>{workout.calories}kcal</td>
+                                        <td>{workout.source}</td>
+                                    </tr>
                                 ))}
                             </tbody>
                         </table>

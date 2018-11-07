@@ -19,7 +19,5 @@ export default class FormFieldComponent extends React.Component {
         this.state.data[name] = value;
 
         this.forceUpdate();
-
-        console.log(this.state);
     }
 }

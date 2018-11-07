@@ -6,6 +6,10 @@ a:hover {
     text-decoration: none;
 }
 
+select option {
+    text-transform: capitalize;
+}
+
 .shf-list-inline > li {
     list-style: none;
     display: inline-block;

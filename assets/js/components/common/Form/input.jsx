@@ -3,7 +3,8 @@ import FormFieldComponent from "./field";
 
 export default class FormInputComponent extends FormFieldComponent {
     render() {
-        let info = this.props.info === undefined ? '' : this.props.info;
+        let info   = this.props.info === undefined ? '' : this.props.info;
+        let errors = this.props.errors === undefined ? [] : this.props.errors;
 
         return (
             <div className="shf-form-field">
@@ -18,7 +19,7 @@ export default class FormInputComponent extends FormFieldComponent {
                     <span className="info">{info}</span>
                     <div id={this.props.name + '-error'}>
                         <ul>
-                            {this.props.errors.map((error, index) => (
+                            {errors.map((error, index) => (
                                 <li key={this.props.name + "-error-" + index}>{error}</li>
                             ))}
                         </ul>

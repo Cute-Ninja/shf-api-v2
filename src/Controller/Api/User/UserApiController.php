@@ -41,8 +41,10 @@ class UserApiController extends AbstractApiController
         $builder = $this->getUserRepository()
                         ->findManyByCriteriaBuilder(
                             [
-                                'username' => $request->get('username'),
-                                'isAdmin'  => false
+                                'username'     => $request->get('username'),
+                                'usernameLike' => $request->get('usernameLike'),
+                                'status'       => $request->get('status'),
+                                'isAdmin'      => false
                             ]
                         );
 

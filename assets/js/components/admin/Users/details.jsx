@@ -13,7 +13,7 @@ export default class User extends React.Component{
     }
 
     componentDidUpdate() {
-        if (this.props.username !== this.state.usernameToLoad) {
+        if (undefined !== this.props.username && this.props.username !== this.state.usernameToLoad) {
             this.setState({usernameToLoad: this.props.username});
 
             Client.getOne(
