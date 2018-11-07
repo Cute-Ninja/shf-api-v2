@@ -4,6 +4,8 @@ import FormSelectComponent from "../../common/Form/select";
 import FormInputComponent from "../../common/Form/input";
 import FormComponent from "../../common/Form/form";
 import UIkit from "uikit";
+import Difficulty from "../../common/DisplayFormatter/difficulty";
+import Duration from "../../common/DisplayFormatter/duration";
 
 export default class Workouts extends FormComponent {
     constructor(props) {
@@ -12,6 +14,7 @@ export default class Workouts extends FormComponent {
             error: null,
             isLoaded: false,
             workouts: [],
+            workoutsCount: 0
         };
 
         this.initializeState(['name', 'source']);
@@ -27,9 +30,11 @@ export default class Workouts extends FormComponent {
             this.state.data
         ).then(
             (result) => {
+                console.log(result);
                 this.setState({
                     isLoaded: true,
-                    workouts: result
+                    workouts: result.data,
+                    workoutsCount: result.count
                 });
             }
         )
@@ -43,7 +48,7 @@ export default class Workouts extends FormComponent {
     }
 
     render() {
-        const {error, isLoaded, workouts} = this.state;
+        const {error, isLoaded, workouts, workoutsCount} = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
@@ -52,34 +57,63 @@ export default class Workouts extends FormComponent {
 
         return (
             <div>
-                <form id="workout-search-form" className="uk-card uk-card-default" method="GET" onSubmit={this.handleSubmit}>
+                <form id="workout-search-form" className="uk-card uk-card-default uk-form-stacked"
+                      method="GET" onSubmit={this.handleSubmit}>
                     <div className="uk-card-header">
                         Workouts
                     </div>
 
                     <div className="uk-card-body">
-                        <div className="uk-grid uk-child-width-1-3" uk-grid="true">
-                            <FormInputComponent type={'text'} name={'name'}  placeholder="Name of the Workout"
+                        <div className="uk-grid" uk-grid="true">
+                            <div className="uk-width-1-3">
+                                <FormInputComponent type={'text'} name={'name'} label="Workout" placeholder="Partial name allowed"
                                                 data={this.state.data} errors={this.state.errors.source} />
+                            </div>
 
-                            <FormSelectComponent name={'source'} data={this.state.data} errors={this.state.errors.source}
+                            <div className="uk-width-1-3">
+                                <FormSelectComponent name={'source'} label="Source"
+                                                 data={this.state.data} errors={this.state.errors.source}
                                                  options={[{label: 'All', value: ''}, {label: 'SHF', value: 'shf'}, {label: 'Community', value: 'community'}]} />
+                            </div>
                         </div>
                     </div>
 
-                    <div className="uk-card-footer">
-                        <button className="uk-button uk-button-primary shf-margin-small" type="submit">Search</button>
-                        <button className="uk-button uk-button-default shf-margin-small" onClick={this.resetForm}>Reset</button>
+                    <div className="uk-card-footer uk-text-center">
+                        <button className="uk-button uk-button-primary" type="submit">Search</button>
+                        &nbsp;
+                        <button className="uk-button uk-button-default" onClick={this.resetForm}>Reset</button>
                     </div>
                 </form>
 
-                <div className="uk-card">
+                <div className="uk-card uk-card-default uk-margin-top">
+                    <div className="uk-card-header">
+                        {workoutsCount} workout(s) found
+                    </div>
                     <div className="uk-card-body">
-                        {workouts.map(workout => (
-                            <div key={workout.id}>
-                                {workout.name}
-                            </div>
-                        ))}
+                        <table className="uk-table uk-table-divider uk-table-hover uk-table-middle uk-margin-remove-top">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Difficulty</th>
+                                <th>Duration</th>
+                                <th>XP</th>
+                                <th>Calories</th>
+                                <th>Source</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {workouts.map(workout => (
+                                <tr key={workout.id}>
+                                    <td>{workout.name}</td>
+                                    <td><Difficulty value={workout.difficulty} /></td>
+                                    <td><Duration value={workout.estimatedDuration} /></td>
+                                    <td>{workout.experience}xp</td>
+                                    <td>{workout.calories}kcal</td>
+                                    <td>{workout.source}</td>
+                                </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

@@ -21,7 +21,7 @@ export default class WorkoutSteps extends React.Component {
                 (result) => {
                     this.setState({
                         isLoaded: true,
-                        workoutSteps: result
+                        workoutSteps: result.data
                     });
                 }
             )

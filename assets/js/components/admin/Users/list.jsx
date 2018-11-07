@@ -23,7 +23,7 @@ export default class Users extends React.Component {
             (result) => {
                 this.setState({
                     isLoaded: true,
-                    users: result
+                    users: result.data
                 });
             }
         );

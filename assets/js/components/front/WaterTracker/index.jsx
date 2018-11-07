@@ -14,7 +14,7 @@ export default class WaterTracker extends React.Component {
     }
 
     componentDidMount() {
-        Client.getMany("front/api/water-trackers/today")
+        Client.getOne("front/api/water-trackers", "today")
             .then(
                 (result) => {
                     this.setState({

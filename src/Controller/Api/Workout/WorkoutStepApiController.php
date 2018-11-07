@@ -42,8 +42,7 @@ class WorkoutStepApiController extends AbstractApiController
         $builder = $this->getWorkoutStepRepository()
                         ->findManyByCriteriaBuilder(
                             [
-                                'workout' => $workoutId,
-                                'type'    => $request->get('type')
+                                'workout' => $workoutId
                             ],
                             ['workout', 'exercise'],
                             ['position' => 'ASC']

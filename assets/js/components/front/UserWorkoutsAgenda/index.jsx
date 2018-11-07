@@ -45,12 +45,11 @@ export default class UserWorkoutsAgenda extends React.Component {
                 let daysOfTheWeek = [];
                 days.map(day => {
                     let workout = null;
-                    results.map((result, index) => {
+                    results.data.map((workout, index) => {
                         let formattedDay      = moment(day).format('YYYY-MM-DD');
-                        let formattedSchedule = moment(result.scheduledDate).format('YYYY-MM-DD');
+                        let formattedSchedule = moment(workout.scheduledDate).format('YYYY-MM-DD');
                         if (formattedDay === formattedSchedule) {
-                            workout = result;
-                            results.splice(index, 1);
+                            results.data.splice(index, 1);
                         }
                     });
 

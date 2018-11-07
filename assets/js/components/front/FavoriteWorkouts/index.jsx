@@ -21,7 +21,7 @@ export default class FavoriteWorkouts extends React.Component {
                 (result) => {
                     this.setState({
                         isLoaded: true,
-                        favorites: result
+                        favorites: result.data
                     });
                 }
             );

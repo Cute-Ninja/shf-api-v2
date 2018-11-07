@@ -12,9 +12,17 @@ function getMany(url, parameters = null) {
 
             return new Promise((success) => {
                 if (200 === response.status) {
-                    success(response.json());
+                    response.json().then(data => {
+                        success({
+                            data: data,
+                            count: response.headers.get('X-Total-Count')
+                        });
+                    });
                 } else if (204 === response.status) {
-                    success([]);
+                    success({
+                        data: [],
+                        count: 0
+                    });
                 } else {
                     UIkit.notification('An error as occurred (code: ' + response.status + ')', 'danger');
                 }
