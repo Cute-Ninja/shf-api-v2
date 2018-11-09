@@ -66,6 +66,21 @@ function post(url, parameters) {
         });
 }
 
+function put(url, parameters) {
+    return fetch(getRootUrl() + url, {
+        method: 'PUT',
+        credentials: 'same-origin',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: urlEncodeParameters(parameters)
+    })
+        .then(response => {
+            NotificationsCount.refreshDisplay(response);
+            return new Promise((success, error) => {
+                true === response.ok ? success(response.json()) : error(response.json());
+            });
+        });
+}
+
 function deleteOne (url, id) {
     return fetch(getRootUrl() + url + "/" + id, {
             method: 'DELETE',
@@ -141,7 +156,7 @@ function getRootUrl() {
 }
 
 const Client = {
-    getMany, getOne, post, deleteOne, patch
+    getMany, getOne, post, put, deleteOne, patch
 };
 
 export default Client;

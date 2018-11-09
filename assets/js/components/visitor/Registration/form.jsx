@@ -1,6 +1,6 @@
 import React from 'react';
 import Client from "../../common/Api/Client/index";
-import FormComponent from "../../common/Form/form";
+import FormComponent from "../../common/Form/_form";
 import FormInputComponent from "../../common/Form/input";
 
 export default class RegistrationForm extends FormComponent {

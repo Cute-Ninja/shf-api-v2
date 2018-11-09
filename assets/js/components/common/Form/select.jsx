@@ -1,12 +1,11 @@
 import React from 'react';
-import FormFieldComponent from "./field";
+import FormFieldComponent from "./_field";
 import StringUtils from "../Utils/StringUtils";
 
 export default class FormSelectComponent extends FormFieldComponent {
     render() {
         let nullable = this.props.nullable === undefined ? true : this.props.nullable;
-        let info     = this.props.info === undefined ? '' : this.props.info;
-        let errors   = this.props.errors === undefined ? [] : this.props.errors;
+        let readOnly = this.props.readOnly === undefined ? false : this.props.readOnly;
 
         return (
             <div className="shf-form-field">
@@ -14,10 +13,9 @@ export default class FormSelectComponent extends FormFieldComponent {
                     {this.props.label}
                 </label>
                 <div className="uk-form-controls">
-                    <select id={this.props.name} name={this.props.name} value={this.state.data[this.props.name]}
-                           placeholder={this.props.placeholder}
-                           onChange={this.handleInputChange}
-                           className="uk-select">
+                    <select id={this.props.name} name={this.props.name} value={this.props.value}
+                            disabled={readOnly} onChange={this.props.onUpdate}
+                            className="uk-select">
 
                         {true === nullable ? (<option value="">All</option>) : ''}
 
@@ -27,14 +25,6 @@ export default class FormSelectComponent extends FormFieldComponent {
                             </option>
                         ))}
                     </select>
-                    <span className="info">{info}</span>
-                    <div id={this.props.name + '-error'}>
-                        <ul>
-                            {errors.map((error, index) => (
-                                <li key={this.props.name + "-error-" + index}>{error}</li>
-                            ))}
-                        </ul>
-                    </div>
                 </div>
             </div>
         );

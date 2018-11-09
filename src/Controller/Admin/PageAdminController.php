@@ -37,4 +37,15 @@ class PageAdminController extends AbstractBaseController
     {
         return $this->render('admin/admin-workouts.html.twig');
     }
+
+    /**
+     * @param int|null $id
+     *
+     * @return Response
+     */
+    public function workout(?int $id): Response
+    {
+        return $this->render('admin/admin-workout.html.twig', ['workoutId' => $id]);
+    }
+
 }

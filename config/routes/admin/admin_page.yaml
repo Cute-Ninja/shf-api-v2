@@ -12,3 +12,15 @@ admin_page_workouts:
     path: /workouts
     methods: GET
     controller: App\Controller\Admin\PageAdminController::workouts
+
+admin_page_workout:
+    path: /workouts/{id}
+    methods: GET
+    controller: App\Controller\Admin\PageAdminController::workout
+    requirements:
+        id: \d+
+
+admin_page_workout_add:
+    path: /workouts/add
+    methods: GET
+    controller: App\Controller\Admin\PageAdminController::workout

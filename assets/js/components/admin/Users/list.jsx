@@ -2,7 +2,7 @@ import React from "react";
 import Client from '../../common/Api/Client/index';
 import FormSelectComponent from "../../common/Form/select";
 import FormInputComponent from "../../common/Form/input";
-import FormComponent from "../../common/Form/form";
+import FormComponent from "../../common/Form/_form";
 import User from './details';
 
 export default class Users extends FormComponent {
