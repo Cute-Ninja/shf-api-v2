@@ -12,6 +12,8 @@ class User extends AbstractBaseEntity implements UserInterface
 {
     public const STATUS_PENDING = 'pending';
 
+    private const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
+
     /**
      * @var int
      *
@@ -236,6 +238,10 @@ class User extends AbstractBaseEntity implements UserInterface
      */
     public function hasRole(string $role): bool
     {
+        if (in_array(self::ROLE_SUPER_ADMIN, $this->getRoles())) {
+            return true;
+        }
+
         return in_array($role, $this->getRoles());
     }
 
