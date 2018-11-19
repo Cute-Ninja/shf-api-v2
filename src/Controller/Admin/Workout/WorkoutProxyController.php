@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class WorkoutProxyController extends AbstractProxyController
 {
-
     /**
      * @param Request $request
      * @param int     $id

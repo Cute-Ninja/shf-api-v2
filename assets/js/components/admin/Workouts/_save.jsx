@@ -48,9 +48,12 @@ export default class SaveWorkout extends FormComponent {
                 <form id="saveForm" className="uk-form-stacked" onSubmit={this.handleSubmit.bind(this)}>
                     <div className="uk-card-body">
                         <FormInputComponent type="text" name="name" value={formData.name}
+                                            label={"Workout name"}
                                             readOnly={readOnly}
                                             onUpdate={this.handleInputChange.bind(this)} />
                         <FormSelectComponent type="text" name="difficulty" value={formData.difficulty}
+                                             label={"Difficulty"}
+                                             info={"XP is auto calculated base en the difficulty"}
                                              options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
                                              readOnly={readOnly}
                                              onUpdate={this.handleInputChange.bind(this)} />

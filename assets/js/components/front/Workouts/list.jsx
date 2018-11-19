@@ -50,7 +50,7 @@ export default class Workouts extends React.Component {
                 <div className="uk-clearfix">
                     <div className="uk-inline uk-margin-bottom uk-float-right">
                         <button type="button" className="uk-button uk-button-primary">
-                            Source&nbsp;<span uk-icon="icon:  triangle-down"></span></button>
+                            Source&nbsp;<span uk-icon="icon: triangle-down"></span></button>
                         <div uk-dropdown="mode: click">
                             <ul className="uk-nav uk-dropdown-nav">
                                 <li onClick={() => this.loadWorkouts('shf')}>

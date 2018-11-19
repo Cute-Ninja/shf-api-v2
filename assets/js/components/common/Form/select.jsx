@@ -6,6 +6,8 @@ export default class FormSelectComponent extends FormFieldComponent {
     render() {
         let nullable = this.props.nullable === undefined ? true : this.props.nullable;
         let readOnly = this.props.readOnly === undefined ? false : this.props.readOnly;
+        let errors   = this.props.errors === undefined ? [] : this.props.errors;
+        let info     = this.props.info === undefined ? "" : this.props.info;
 
         return (
             <div className="shf-form-field">
@@ -25,6 +27,14 @@ export default class FormSelectComponent extends FormFieldComponent {
                             </option>
                         ))}
                     </select>
+                    <span className="info">{info}</span>
+                    <div id={this.props.name + '-error'}>
+                        <ul>
+                            {errors.map((error, index) => (
+                                <li key={this.props.name + "-error-" + index}>{error}</li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </div>
         );

@@ -1,9 +1,8 @@
 import React from 'react';
-import UIkit from 'uikit';
 import Client from "../../common/Api/Client";
-import Duration from "../../common/DisplayFormatter/duration";
+import BaseWorkoutStepComponent from "../../common/Domain/WorkoutSteps/_details";
 
-export default class WorkoutStep extends React.Component {
+export default class WorkoutStep extends BaseWorkoutStepComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,7 +10,20 @@ export default class WorkoutStep extends React.Component {
         };
 
         this.markWorkoutStepAs = this.markWorkoutStepAs.bind(this);
-        this.openVideo = this.openVideo.bind(this);
+    }
+
+    getActionDisplay(workoutStep) {
+        if (workoutStep.workout.type === 'personal') {
+            if (workoutStep.status === 'done') {
+                return (<a onClick={() => this.markWorkoutStepAs(workoutStep.id, 'undo-complete')}
+                           title="Re-open exercise" className="workout-step-action-undo">
+                    <i className="material-icons">remove_circle_outline</i></a>);
+            } else {
+                return (<a onClick={() => this.markWorkoutStepAs(workoutStep.id, 'complete')}
+                           title="Mark exercise as done" className="workout-step-action-complete">
+                    <i className="material-icons">check_circle_outline</i></a>);
+            }
+        }
     }
 
     markWorkoutStepAs(workoutStepId, action) {
@@ -24,52 +36,12 @@ export default class WorkoutStep extends React.Component {
         });
     }
 
-    openVideo(videoLink) {
-        UIkit.modal.dialog(
-            '<iframe id="ytplayer" type="text/html" width="640" height="360" frameborder="0" allowFullScreen src="' + videoLink + '?autoplay=1" />'
-        );
-    }
-
     render() {
         const {workoutStep} = this.state;
 
-        let details = null;
-        if (workoutStep.type === 'amrap' || workoutStep.type === 'duration' || workoutStep.type === 'rest') {
-            details = <Duration value={workoutStep.estimatedDuration} />;
-        } else if(workoutStep.type === 'distance') {
-            details = (<span><i className="material-icons">directions_run</i>{workoutStep.distance / 1000}km</span>);
-        } else if (workoutStep.type === 'reps') {
-            details = (<span><i className="material-icons">fitness_center</i>{workoutStep.repsPlanned} reps</span>);
-        }
-
-        let action = null;
-        if (workoutStep.workout.type === 'personal') {
-            if (workoutStep.status === 'done') {
-                action = (<a onClick={() => this.markWorkoutStepAs(workoutStep.id, 'undo-complete')}
-                             title="Re-open exercise" className="workout-step-action-undo">
-                    <i className="material-icons">remove_circle_outline</i></a>);
-            } else {
-                action = (<a onClick={() => this.markWorkoutStepAs(workoutStep.id, 'complete')}
-                             title="Mark exercise as done" className="workout-step-action-complete">
-                    <i className="material-icons">check_circle_outline</i></a>);
-            }
-        }
-
-        let cover = null;
-        if (null !== workoutStep.exercise.videoLink) {
-            cover = (
-                <div className="uk-inline uk-light">
-                    <a onClick={() => this.openVideo(workoutStep.exercise.videoLink)} title="Voir la vidéo">
-                        <img src={workoutStep.exercise.cover} alt="" className="shf-margin-x-small" />
-                        <div className="uk-position-center">
-                            <i className="material-icons shf-icon-x-large">play_circle_outline</i>
-                        </div>
-                    </a>
-                </div>
-            )
-        } else {
-            cover = (<img src={workoutStep.exercise.cover} alt="" className="shf-margin-x-small" />);
-        }
+        let cover   = this.getCoverDisplay(workoutStep);
+        let details = this.getDetailsDisplay(workoutStep);
+        let action  = this.getActionDisplay(workoutStep);
 
         return (
             <div key={workoutStep.id} uk-grid="true"

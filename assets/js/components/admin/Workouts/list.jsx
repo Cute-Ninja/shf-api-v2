@@ -75,9 +75,18 @@ export default class Workouts extends FormComponent {
 
                 <div className="uk-card uk-card-default uk-margin-top">
                     <div className="uk-card-header">
-                        {workoutsCount} workout(s) found
+                        <div className="uk-grid" uk-grid="true">
+                            <div className="uk-width-expand">
+                                {workoutsCount} workout(s) found
+                            </div>
 
-                        <button className="uk-button uk-button-primary">New</button>
+                            <div className="uk-width-5-6 uk-text-right">
+                                <a href={"workouts/add"} className="uk-button uk-button-primary">
+                                    <i className="material-icons">add</i>
+                                    <span>NEW</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div className="uk-card-body">
                         <table className="uk-table uk-table-divider uk-table-hover uk-table-middle uk-margin-remove-top">

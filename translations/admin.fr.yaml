@@ -3,5 +3,7 @@ admin:
         title: Admin Dashboard
     users:
         title: Utilisateurs
+    workout:
+        title: Entraînement
     workouts:
         title: Entraînements

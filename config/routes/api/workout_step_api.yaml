@@ -51,6 +51,16 @@ api_workout_step_patch:
         action: complete|undo-complete|start|undo-start
 
 
+
+admin_api_workout_step_get_many:
+    path: /admin/api/workouts/{workoutId}/steps
+    controller: App\Controller\Admin\Workout\WorkoutStepProxyController::getMany
+    methods: GET
+    requirements:
+        workoutId: \d+
+
+
+
 front_api_workout_step_get_many:
     path: /front/api/workouts/{workoutId}/steps
     controller: App\Controller\Front\Workout\WorkoutStepProxyController::getMany

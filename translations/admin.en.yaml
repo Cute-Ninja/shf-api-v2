@@ -3,5 +3,7 @@ admin:
         title: Admib Dashboard
     users:
         title: Users
+    workout:
+        title: Workout
     workouts:
         title: Workouts
